@@ -11,10 +11,10 @@ LDIR =../lib
 
 LIBS=-lm ../lib/libgtest.a ../lib/libsqlite3.a -lgtest -lpthread -ldl
 
-_DEPS = User.hpp SQLite_Handler.hpp
+_DEPS = User.hpp DB_Handler.hpp
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = $(PRINCIPAL).o User.o SQLite_Handler.o
+_OBJ = $(PRINCIPAL).o User.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 

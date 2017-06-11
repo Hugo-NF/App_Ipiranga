@@ -1,8 +1,0 @@
-//
-// Created by hugo on 10/06/17.
-//
-
-#ifndef APP_IPIRANGA_SQLITE_HANDLER_HPP
-#define APP_IPIRANGA_SQLITE_HANDLER_HPP
-
-#endif //APP_IPIRANGA_SQLITE_HANDLER_HPP

@@ -6,10 +6,11 @@
 #include <iostream>
 #include <fstream>
 #include <list>
+#include "DB_Handler.hpp"
 
 using namespace std;
 
-class User{
+class User : public DB_Handler{
 private: //Private attributes
     //Personal
     string firstName; //Real name
@@ -55,14 +56,14 @@ private: //Private attributes
     list<int> friends;
 
 public:
-    User(unsigned int id){ //Default constructor
+    User(unsigned int id){
         this->id = id;
-    }
-    virtual ~User(){  //Default destructor
-        friends.~list();
     };
-    //Get/Set Operations
+    ~User(){
+        this->friends.~list();
+    };
 
+    //Get/Set Operations
     //Personal
     void setFirstName(string);
     string getFirstName();
@@ -124,14 +125,13 @@ public:
     void setCountry(string);
     string getCountry();
 
-    static int callback(void *NotUsed, int argc, char **argv, char **azColName) {
-        int i;
-        for(i=0; i<argc; i++) {
-            printf("%s = %s\n", azColName[i], argv[i] ? argv[i] : "NULL") ;
-        }
-        printf("\n") ;
-        return 0;
-    }
+    int callback(void *, int, char **, char **);
+    int tableCreation(sqlite3 *, char *){};
+    int tableDeletion(sqlite3 *, char *){};
+    int insertOperation(sqlite3 *, char *){};
+    int selectionOperation(sqlite3 *, char *){};
+    int updateOperation(sqlite3 *, char *){};
+    int deleteOperation(sqlite3 *, char *){};
 
 };
 #endif //PROJETO_FINAL_USER_HPP

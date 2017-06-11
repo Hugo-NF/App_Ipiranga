@@ -212,4 +212,9 @@ string User::getCountry() {
     return this->country;
 }
 
+//Database Operations
+
+int User::callback(void *ptr, int argc, char **argv, char **colNames) {
+    return 0;
+}
 
