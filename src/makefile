@@ -9,9 +9,9 @@ GCOVDIR=gcov_files
 ODIR=obj
 LDIR =../lib
 
-LIBS=-lm ../lib/libgtest.a ../lib/libsqlite3.a -lgtest -lpthread -ldl
+LIBS=-lm ../lib/libgtest.a ../lib/libsqlite3.a -lgtest -lpthread -ldl -l sqlite3
 
-_DEPS = User.hpp DB_Handler.hpp
+_DEPS = User.hpp
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
 _OBJ = $(PRINCIPAL).o User.o

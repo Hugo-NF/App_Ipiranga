@@ -6,18 +6,21 @@
 #include <iostream>
 #include <fstream>
 #include <list>
-#include "DB_Handler.hpp"
+#include <vector>
+#include <string>
+#include <stdlib.h>
+#include <sqlite3.h>
 
 using namespace std;
 
-class User : public DB_Handler{
+class User{
 private: //Private attributes
     //Personal
     string firstName; //Real name
     string lastName;
-    unsigned long CPF;
-    unsigned long RG;
-    unsigned int age;
+    string CPF;
+    string RG;
+    string age;
     string phoneNumber;
 
     //Access
@@ -29,52 +32,48 @@ private: //Private attributes
 
     //Card information
     bool hasCard;
-    unsigned int type;
-    unsigned int cardOperator;
+    string type;
+    string cardOperator;
     string cardNumber;
     string cardName;
-    unsigned int securityCode;
+    string securityCode;
     string expirationDate;
 
     //Billing information
     string address;
     string zipCode;
     string state;
-    string country;
+    string city;
 
     //Banking information
     bool hasAccount;
-    unsigned int bank;
-    unsigned long accountNumber;
-    unsigned long agency;
+    string bank;
+    string accountNumber;
+    string agency;
 
     //App balance
-    float balance;
+    double balance;
 
-    //Friends
-    string friendsStr;
-    list<int> friends;
+    //Social Media (Friends)
+    string friendsString; //ID's of an user's friends, parse this string and do an selection in the database
 
 public:
     User(unsigned int id){
         this->id = id;
     };
-    ~User(){
-        this->friends.~list();
-    };
-
+    ~User(){};
     //Get/Set Operations
     //Personal
     void setFirstName(string);
     string getFirstName();
     void setLastName(string);
     string getLastName();
-    void setCPF(unsigned long);
-    unsigned long getCPF();
-    void setRG(unsigned long);
-    unsigned long getRG();
-    void setAge(unsigned int);
-    unsigned int getAge();
+    void setCPF(string);
+    string getCPF();
+    void setRG(string);
+    string getRG();
+    void setAge(string);
+    string getAge();
     void setPhoneNumber(string);
     string getPhoneNumber();
 
@@ -92,28 +91,28 @@ public:
     //Payment
     void registerCard(bool);
     bool cardRegistered();
-    void setCardType(unsigned int);
-    unsigned int getCardType();
-    void setCardOperator(unsigned int);
-    unsigned int getCardOperator();
+    void setCardType(string);
+    string getCardType();
+    void setCardOperator(string);
+    string getCardOperator();
     void setCardNumber(string);
     string getCardNumber();
     void setCardName(string);
     string getCardName();
-    void setSecurityCode(unsigned int);
-    unsigned int getSecurityCode();
+    void setSecurityCode(string);
+    string getSecurityCode();
     void setExpirationDate(string);
     string getExpirationDate();
 
     //Financial
     void registerAccount(bool);
     bool accountRegistered();
-    void setBank(unsigned int);
-    unsigned int getBank();
-    void setAccountNumber(unsigned long);
-    unsigned long getAccountNumber();
-    void setAgency(unsigned long);
-    unsigned long getAgency();
+    void setBank(string);
+    string getBank();
+    void setAccountNumber(string);
+    string getAccountNumber();
+    void setAgency(string);
+    string getAgency();
 
     //Billing
     void setAddress(string);
@@ -122,17 +121,31 @@ public:
     string getZipCode();
     void setState(string);
     string getState();
-    void setCountry(string);
-    string getCountry();
+    void setCity(string);
+    string getCity();
 
-    int callback(void *, int, char **, char **);
-    int tableCreation(sqlite3 *, char *){};
-    int tableDeletion(sqlite3 *, char *){};
-    int insertOperation(sqlite3 *, char *){};
-    int selectionOperation(sqlite3 *, char *){};
-    int updateOperation(sqlite3 *, char *){};
-    int deleteOperation(sqlite3 *, char *){};
+    //App balance
+    void setBalance(double);
+    double getBalance();
+
+    //Social Media
+    void setFriendsString(string);
+    string getFriendsString();
+
+    //Database operations
+
+    vector<User *> listUsers(sqlite3 *);
+
+    void createTable(sqlite3 *); //WARNING: This method may throw SQLite exceptions
+    void deleteTable(sqlite3 *); //WARNING: This method may throw SQLite exceptions
+    void cleanTable(sqlite3 *); //WARNING: This method may throw SQLite exceptions
+    void insertOperation(sqlite3 *, User *); //WARNING: This method may throw SQLite exceptions
+    void selectionOperation(sqlite3 *, User *); //WARNING: This method may throw SQLite exceptions
+    void updateOperation(sqlite3 *, User *); //WARNING: This method may throw SQLite exceptions
+    void deleteOperation(sqlite3 *, User *); //WARNING: This method may throw SQLite exceptions
 
 };
+
+static int userCallback(void *, int, char **, char **); //This method is defined outside the class User because it needs to be static
 #endif //PROJETO_FINAL_USER_HPP
 
