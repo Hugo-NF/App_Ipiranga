@@ -53,7 +53,7 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>0</y>
+        <y>-354</y>
         <width>485</width>
         <height>980</height>
        </rect>
@@ -661,7 +661,7 @@
             </datetime>
            </property>
            <property name="displayFormat">
-            <string>yy/MMMM</string>
+            <string>yyyy/MMM</string>
            </property>
           </widget>
           <widget class="QRadioButton" name="radioButton_Credit">

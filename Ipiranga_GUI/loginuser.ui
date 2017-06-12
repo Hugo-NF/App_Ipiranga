@@ -25,6 +25,10 @@
   <property name="windowTitle">
    <string>Login</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/img_login/images/Icon.png</normaloff>:/img_login/images/Icon.png</iconset>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QGroupBox" name="Login">
     <property name="geometry">
@@ -158,7 +162,7 @@
      <x>0</x>
      <y>0</y>
      <width>400</width>
-     <height>21</height>
+     <height>28</height>
     </rect>
    </property>
   </widget>

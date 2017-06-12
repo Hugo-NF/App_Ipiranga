@@ -48,6 +48,9 @@ public:
         LoginUser->resize(400, 310);
         LoginUser->setMaximumSize(QSize(400, 310));
         LoginUser->setMouseTracking(false);
+        QIcon icon;
+        icon.addFile(QStringLiteral(":/img_login/images/Icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        LoginUser->setWindowIcon(icon);
         centralWidget = new QWidget(LoginUser);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         Login = new QGroupBox(centralWidget);
@@ -88,7 +91,7 @@ public:
         LoginUser->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(LoginUser);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 400, 21));
+        menuBar->setGeometry(QRect(0, 0, 400, 28));
         LoginUser->setMenuBar(menuBar);
         statusBar = new QStatusBar(LoginUser);
         statusBar->setObjectName(QStringLiteral("statusBar"));
