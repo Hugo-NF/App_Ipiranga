@@ -24,82 +24,97 @@ void FormRegister::on_pushButton_Cancel_clicked()
 
 void FormRegister::on_pushButton_Register_clicked()
 {
-    UserDate.resize(21);
+    User NewUser(0);
+    this->UserDate.resize(21);
 
     //--------GET VALUE FROM FORM FIELDS-------
     // Personal Information
-    UserDate[0] = ui->lineFirstName->text();
-    UserDate[1] = ui->lineLastName->text();
-    UserDate[2] = ui->lineCPF->text();
-    UserDate[3] = ui->lineRG->text();
-    Age = ui->spinAge->value();
-    UserDate[5] = ui->linePhone->text();
+    this->UserDate[0] = ui->lineFirstName->text().toStdString();
+    this->UserDate[1] = ui->lineLastName->text().toStdString();
+    this->UserDate[2] = ui->lineCPF->text().toStdString();
+    this->UserDate[3] = ui->lineRG->text().toStdString();
+    this->UserDate[4] = to_string(ui->spinAge->value());
+    this->UserDate[5] = ui->linePhone->text().toStdString();
 
     // Acess
-    UserDate[6] = ui->lineLogin->text();
-    UserDate[7] = ui->linePass->text();
-    UserDate[8] = ui->lineConfirm->text();
-    UserDate[9] = ui->lineEmail->text();
+    this->UserDate[6] = ui->lineLogin->text().toStdString();
+    this->UserDate[7] = ui->linePass->text().toStdString();
+    this->PassConfirm = ui->lineConfirm->text().toStdString();
+    this->UserDate[8] = ui->lineEmail->text().toStdString();
 
     // Adress
-    UserDate[10] = ui->lineAdress->text();
-    UserDate[11] = ui->lineZIP->text();
-    UserDate[12] = ui->lineState->text();
-    UserDate[13] = ui->lineCity->text();
+    this->UserDate[9] = ui->lineAdress->text().toStdString();
+    this->UserDate[10] = ui->lineZIP->text().toStdString();
+    this->UserDate[11] = ui->lineState->text().toStdString();
+    this->UserDate[12] = ui->lineCity->text().toStdString();
 
     // Payment
-    Credit = ui->radioButton_Credit->isChecked();
-    Debit = ui->radioButton_Debit->isChecked();
-    UserDate[15] = ui->lineNumber->text();
-    UserDate[16] = ui->lineSecurity->text();
-    ExpirationDate = ui->dateExpiration->date();
+    this->Credit = ui->radioButton_Credit->isChecked();
+    this->Debit = ui->radioButton_Debit->isChecked();
+    this->UserDate[14] = ui->lineNumber->text().toStdString();
+    this->UserDate[15] = ui->lineSecurity->text().toStdString();
+    this->ExpirationDate = ui->dateExpiration->date();
 
     // Bank Account
-    UserDate[18] = ui->lineNamePayment->text();
-    UserDate[19] = ui->comboBox_Bank->currentText();
-    UserDate[20] = ui->lineAgency->text();
-    UserDate[21] = ui->lineAccount->text();
+    this->UserDate[17] = ui->lineNamePayment->text().toStdString();
+    this->UserDate[18] = ui->comboBox_Bank->currentText().toStdString();
+    this->UserDate[19] = ui->lineAgency->text().toStdString();
+    this->UserDate[20] = ui->lineAccount->text().toStdString();
     //-------------END GET VALUES--------------
 
     //-----------CALL METHODS--------------
-    if(checkFields())
-        QMessageBox::information(this,"Register","Sucesso");
-    else
-        QMessageBox::warning(this,"Register","Some field is empty \n\nFill in all required Fields!");
+    if(this->checkFields()){
+        sqlite3 *Connection;
+        sqlite3_open("../database/Ipiranga.db", &Connection);
+
+        this->UserDate[16]="11/set";
+
+        try{
+            NewUser.createTable(Connection);
+            NewUser.registerUser(Connection, this->UserDate, this->Payment_active, this->Bank_active);
+            QMessageBox::information(this,tr("Register"),tr("Registered with sucess!\n You will receive a confirmation in your E-mail!"));
+            close();
+        }
+        catch(string erro){
+            QMessageBox::information(this,tr("Register"),tr(erro.c_str()));
+        }
+        sqlite3_close(Connection);
+    }else
+        QMessageBox::warning(this,tr("Register"),tr("Some field is empty \n\nFill in all required Fields!"));
 }
 
 bool FormRegister::checkFields()
 {
     bool check=true;        //Set to true check fields
-    Bank_active = true;     //Set to true bank account activation
-    Payment_active = true;  //Set to true method payment activation
+    this->Bank_active = true;     //Set to true bank account activation
+    this->Payment_active = true;  //Set to true method payment activation
 
-    // Personal Information - IsEmpty?
-    check *= !UserDate[0].isEmpty() * !UserDate[1].isEmpty() * !UserDate[2].isEmpty()
-              * !UserDate[3].isEmpty() * !UserDate[5].isEmpty();
+    //Personal Information - empty?
+    check *= !this->UserDate[0].empty() * !this->UserDate[1].empty() * !this->UserDate[2].empty()
+              * !this->UserDate[3].empty() * !this->UserDate[5].empty();
 
-    //Acess - IsEmpty?
-   check *= !UserDate[6].isEmpty() * !UserDate[7].isEmpty()
-              * !UserDate[8].isEmpty() * !UserDate[9].isEmpty();
+    //Acess - empty?
+   check *= !this->UserDate[6].empty() * !this->UserDate[7].empty()
+              * !this->UserDate[8].empty();
 
-    //Adress - IsEmpty?
-    check *= !UserDate[10].isEmpty() * !UserDate[11].isEmpty()
-              * !UserDate[12].isEmpty() * !UserDate[13].isEmpty();
+    //Adress - empty?
+    check *= !this->UserDate[9].empty() * !this->UserDate[10].empty()
+              * !this->UserDate[11].empty() * !this->UserDate[12].empty();
 
-    //Payment - IsEmpty?
-    Payment_active *= (Credit or Debit) * !UserDate[15].isEmpty() * ! UserDate[16].isEmpty;
+    //Payment - empty?
+    this->Payment_active *= (this->Credit || this->Debit) * !this->UserDate[15].empty() * !this->UserDate[16].empty();
 
-    if(Credit){
-        UserDate[14] = "Credit";
-    }else if(Debit){
-        UserDate[14] = "Debit";
+    if(this->Credit){
+        this->UserDate[13] = "Credit";
+    }else if(this->Debit){
+        this->UserDate[13] = "Debit";
     }
 
-    //Bank Account - IsEmpty?
+    //Bank Account - empty?
 
-    if(Password!=Confirm){
+    if(this->UserDate[7]!=this->PassConfirm){
         check = false;
-        QMessageBox::warning(this,tr("Fields"),tr("Passoword confirmation incorrect!"));
+        QMessageBox::warning(this,tr("Fields"),tr("Password confirmation incorrect!"));
     }
 
     return check;

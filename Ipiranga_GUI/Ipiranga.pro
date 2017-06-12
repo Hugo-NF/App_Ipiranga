@@ -8,7 +8,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = IPIRANGA
+TARGET = Ipiranga
 TEMPLATE = app
 
 DEFINES += QT_DEPRECATED_WARNINGS
@@ -18,12 +18,14 @@ SOURCES += \
         main.cpp \
         loginuser.cpp \
         userapp.cpp \
-        formregister.cpp
+        formregister.cpp \
+    ../src/User.cpp
 
 HEADERS += \
         loginuser.h \
         userapp.h \
-        formregister.h
+        formregister.h \
+    ../include/User.hpp
 
 FORMS += \
         loginuser.ui \

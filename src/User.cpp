@@ -255,7 +255,7 @@ void User::createTable(sqlite3 *connection) {
             "  `bank`           VARCHAR(30)                       NOT NULL,"\
             "  `accountNumber`  VARCHAR(20)                       NOT NULL,"\
             "  `agency`         VARCHAR(10)                       NOT NULL,"\
-            "  `balance`        DOUBLE UNSIGNED ZEROFILL          NOT NULL,"\
+            "  `balance`        VARCHAR(15)                       NOT NULL,"\
             "  `address`        VARCHAR(100)                      NOT NULL,"\
             "  `zipCode`        VARCHAR(10)                       NOT NULL,"\
             "  `state`          VARCHAR(2)                        NOT NULL,"\
@@ -290,7 +290,7 @@ void User::insertOperation(sqlite3 *connection, User *user) {
     "hasCard, type, cardOperator, cardNumber, cardName, securityCode, expirationDate,"\
     "hasAccount, bank, accountNumber, agency, balance, address, zipCode, state, city)"\
     " VALUES('%s','%s','%s','%s','%s','%s','%s','%s','%s',%d,%d,'%s','%s','%s','%s','%s','%s',%d,"\
-    "'%s','%s','%s',%lf,'%s','%s','%s','%s');",\
+    "'%s','%s','%s','%lf','%s','%s','%s','%s');",\
      user->getFirstName().c_str(), user->getLastName().c_str(), user->getCPF().c_str(),\
      user->getRG().c_str(), user->getAge().c_str(), user->getPhoneNumber().c_str(), user->getUsername().c_str(),\
      user->getPassword().c_str(), user->getEmail().c_str(), user->isActivated(),\
@@ -298,7 +298,7 @@ void User::insertOperation(sqlite3 *connection, User *user) {
      user->getSecurityCode().c_str(), user->getExpirationDate().c_str(), user->accountRegistered(),\
      user->getBank().c_str(), user->getAccountNumber().c_str(), user->getAgency().c_str(),user->getBalance(),\
      user->getAddress().c_str(), user->getZipCode().c_str(), user->getState().c_str(), user->getCity().c_str());
-
+    cout<<SQL<<endl;
     result = sqlite3_exec(connection, SQL, userCallback, 0, &errMsg);
     if(result != SQLITE_OK)
         throw errMsg;
@@ -311,7 +311,7 @@ void User::updateOperation(sqlite3 *connection, User *user) {
     sprintf(SQL, "UPDATE USERS set firstName='%s', lastName='%s', CPF='%s', RG='%s', age='%s', phoneNumber='%s',"\
     "username='%s', password='%s', email='%s', activation=%d, hasCard=%d, type='%s', cardOperator='%s',"\
     "cardNumber='%s', cardName='%s', securityCode='%s', expirationDate='%s', hasAccount=%d, bank='%s', accountNumber='%s',"\
-    "agency='%s', balance=%lf, address='%s', zipCode='%s', state='%s', city='%s' WHERE id=%d;", user->getFirstName().c_str(), user->getLastName().c_str(), user->getCPF().c_str(),\
+    "agency='%s', balance='%lf', address='%s', zipCode='%s', state='%s', city='%s' WHERE id=%d;", user->getFirstName().c_str(), user->getLastName().c_str(), user->getCPF().c_str(),\
      user->getRG().c_str(), user->getAge().c_str(), user->getPhoneNumber().c_str(), user->getUsername().c_str(),\
      user->getPassword().c_str(), user->getEmail().c_str(), user->isActivated(),\
      user->cardRegistered(), user->getCardType().c_str(), user->getCardOperator().c_str(),user->getCardNumber().c_str(),user->getCardName().c_str(),\
@@ -351,25 +351,6 @@ vector<User *> User::selectionOperation(sqlite3 *connection, string matchingCrit
     return result;
 }
 
-/*vector<User *> User::searchBy(sqlite3 *connection, vector<string> criteria, vector<string> keywords) {
-    unsigned long argcCriteria = criteria.size();
-    unsigned long argcKeywords = keywords.size();
-    unsigned int i;
-    char queries[100];
-    if(argcCriteria != argcKeywords || argcCriteria==SQLITE_OK || argcKeywords==SQLITE_OK){
-        string errMsg = "Invalid search query";
-        throw errMsg;
-    }
-    string SQL = "SELECT * FROM USERS WHERE ";
-    for(i=0; i<argcCriteria-1; i++){
-        sprintf(queries, "%s='%s' AND", criteria[i], keywords[i]);
-        SQL.append(queries);
-    }
-    sprintf(queries, "%s='%s';", criteria[i], keywords[i]);
-    cout<<SQL;
-
-}*/
-
 void User::registerUser(sqlite3 *connection, vector<string> fields, bool Card, bool Bank){
     string errMsg;
     User newUser(0);
@@ -398,7 +379,7 @@ void User::registerUser(sqlite3 *connection, vector<string> fields, bool Card, b
     newUser.registerCard(Card);
     newUser.setActivation(false);
     newUser.setBalance(0.0);
-    newUser.setCardOperator("Visa"); //Call security module
+    newUser.setCardOperator("Visa");
     try{
         newUser.insertOperation(connection, &newUser);
         newUser.~User();
@@ -417,13 +398,6 @@ void User::registerUser(sqlite3 *connection, vector<string> fields, bool Card, b
             newUser.~User();
             throw errMsg;
     }
-}
-
-User* User::login(string username, string password) {
-    int result;
-    char *errMsg;
-    char SQL[100];
-
 }
 
 static int userCallback(void *ptr, int argc, char **argv, char **colNames) {

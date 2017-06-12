@@ -3,7 +3,8 @@
 
 #include <QDialog>
 #include <QDate>
-#include <vector>
+#include "../include/User.hpp"
+#include <string>
 
 namespace Ui {
 class FormRegister;
@@ -24,9 +25,9 @@ private slots:
 private:
     Ui::FormRegister *ui;
 
-    vector <Qstring> UserDate; //User informations
+    vector <string> UserDate; //User informations
 
-    QString PassConfirm;    //password confirmation
+    string PassConfirm;    //password confirmation
 
     QDate ExpirationDate;    //date of credit card expiration
 
