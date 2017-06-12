@@ -11,6 +11,11 @@
 #include <stdlib.h>
 #include <sqlite3.h>
 
+#define DATABASE "../database/Ipiranga.db"
+#define CONNECTION_ERROR "Could not connect to database"
+#define QUERY_INVALID "Invalid search parameters"
+#define LOGIN_FAILED "Invalid credentials"
+
 using namespace std;
 
 class User{
@@ -57,16 +62,19 @@ private: //Private attributes
 private: //Private methods
     //WARNING: The following methods may throw SQLite error messages
     void deleteTable(sqlite3 *);
+    void insertOperation(sqlite3 *, User *);
+    void createTable(sqlite3 *);
 
 public: //Public methods
-    void createTable(sqlite3 *);
-    void cleanTable(sqlite3 *);
-    void insertOperation(sqlite3 *, User *); //Must be changed to private
+    void cleanTable();
     void updateOperation(sqlite3 *, User *); //Must be changed to private
     void deleteOperation(sqlite3 *, User *); //Must be changed to private
     vector<User *> selectionOperation(sqlite3 *, string, string);
-    void registerUser(sqlite3 *, vector<string>, bool, bool);
-    User login(string, string);
+    vector<User *> searchBy(vector<string>, vector<string>);
+
+    void registerUser(vector<string>, bool, bool);
+    User* login(string, string);
+    void logout(User *);
 
 public: //Public Methods
     User(unsigned int id){

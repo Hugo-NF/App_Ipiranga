@@ -274,9 +274,16 @@ void User::deleteTable(sqlite3 *connection){
         throw errMsg;
 }
 
-void User::cleanTable(sqlite3 *connection) {
+void User::cleanTable() {
+    sqlite3 *connection;
+    int flag = sqlite3_open(DATABASE, &connection);
+    if(flag!= SQLITE_OK)
+        throw CONNECTION_ERROR;
     this->deleteTable(connection);
     this->createTable(connection);
+    flag = sqlite3_close(connection);
+    if(flag != SQLITE_OK)
+        throw CONNECTION_ERROR;
 }
 
 //Database CRUD Operations
@@ -284,7 +291,7 @@ void User::cleanTable(sqlite3 *connection) {
 void User::insertOperation(sqlite3 *connection, User *user) {
     int result;
     char *errMsg = 0;
-    char SQL[5000];
+    char SQL[1500];
     sprintf(SQL, "INSERT INTO USERS ("\
     "firstName, lastName, CPF, RG, age, phoneNumber, username, password, email, activation,"\
     "hasCard, type, cardOperator, cardNumber, cardName, securityCode, expirationDate,"\
@@ -298,7 +305,6 @@ void User::insertOperation(sqlite3 *connection, User *user) {
      user->getSecurityCode().c_str(), user->getExpirationDate().c_str(), user->accountRegistered(),\
      user->getBank().c_str(), user->getAccountNumber().c_str(), user->getAgency().c_str(),user->getBalance(),\
      user->getAddress().c_str(), user->getZipCode().c_str(), user->getState().c_str(), user->getCity().c_str());
-    cout<<SQL<<endl;
     result = sqlite3_exec(connection, SQL, userCallback, 0, &errMsg);
     if(result != SQLITE_OK)
         throw errMsg;
@@ -307,7 +313,7 @@ void User::insertOperation(sqlite3 *connection, User *user) {
 void User::updateOperation(sqlite3 *connection, User *user) {
     int result;
     char *errMsg = 0;
-    char SQL[5000];
+    char SQL[1500];
     sprintf(SQL, "UPDATE USERS set firstName='%s', lastName='%s', CPF='%s', RG='%s', age='%s', phoneNumber='%s',"\
     "username='%s', password='%s', email='%s', activation=%d, hasCard=%d, type='%s', cardOperator='%s',"\
     "cardNumber='%s', cardName='%s', securityCode='%s', expirationDate='%s', hasAccount=%d, bank='%s', accountNumber='%s',"\
@@ -351,8 +357,48 @@ vector<User *> User::selectionOperation(sqlite3 *connection, string matchingCrit
     return result;
 }
 
-void User::registerUser(sqlite3 *connection, vector<string> fields, bool Card, bool Bank){
-    string errMsg;
+vector<User *> User::searchBy(vector<string> criteria, vector<string> keywords) {
+    unsigned long argcCriteria = criteria.size();
+    unsigned long argcKeywords = keywords.size();
+    unsigned int i;
+    char query[100];
+    char SQL[5000] = "SELECT * FROM USERS WHERE ";
+    vector<User *> result;
+    char *errMsg = 0;
+    sqlite3 *connection;
+
+    int flag = sqlite3_open(DATABASE, &connection);
+    if(flag != SQLITE_OK)
+        throw CONNECTION_ERROR;
+
+    if(argcCriteria != argcKeywords || argcCriteria == SQLITE_OK || argcKeywords == SQLITE_OK)
+        throw QUERY_INVALID;
+    for(i=0; i<argcCriteria-1; i++){
+        sprintf(query, "%s = '%s' AND ", criteria[i], keywords[i]);
+        strcat(SQL, query);
+        memset(query, 0, 100);
+    }
+    sprintf(query, "%s = '%s');", criteria[i], keywords[i]);
+    memset(query, 0, 100);
+
+    flag = sqlite3_exec(connection, SQL, userCallback, &result, &errMsg);
+
+    if(flag!=SQLITE_OK)
+        throw errMsg;
+
+    flag = sqlite3_close(connection);
+    if(flag != SQLITE_OK)
+        throw CONNECTION_ERROR;
+
+    return result;
+}
+
+void User::registerUser(vector<string> fields, bool Card, bool Bank){
+    sqlite3 *connection;
+    int flag = sqlite3_open(DATABASE, &connection);
+    if(flag!=SQLITE_OK)
+        throw CONNECTION_ERROR;
+
     User newUser(0);
     newUser.setFirstName(fields[0]);
     newUser.setLastName(fields[1]);
@@ -379,25 +425,51 @@ void User::registerUser(sqlite3 *connection, vector<string> fields, bool Card, b
     newUser.registerCard(Card);
     newUser.setActivation(false);
     newUser.setBalance(0.0);
-    newUser.setCardOperator("Visa");
+    newUser.setCardOperator("Visa"); //WARNING: Call security module
+
     try{
         newUser.insertOperation(connection, &newUser);
         newUser.~User();
+        flag = sqlite3_close(connection);
+        if(flag!=SQLITE_OK)
+            throw CONNECTION_ERROR;
     }
     catch (char *err){
-            if(strcmp(err,"UNIQUE constraint failed: USERS.RG")==SQLITE_OK)
-                errMsg = "RG is already registered";
-            else if(strcmp(err,"UNIQUE constraint failed: USERS.CPF")==SQLITE_OK)
-                errMsg = "CPF is already registered";
-            else if(strcmp(err,"UNIQUE constraint failed: USERS.username")==SQLITE_OK)
-                errMsg = "Login is already registered";
-            else if(strcmp(err,"UNIQUE constraint failed: USERS.email")==SQLITE_OK)
-                errMsg = "E-mail is already registered";
-            else
-                errMsg = err;
             newUser.~User();
-            throw errMsg;
+            flag = sqlite3_close(connection);
+            if(flag!=SQLITE_OK)
+                throw CONNECTION_ERROR;
+            if(strcmp(err,"UNIQUE constraint failed: USERS.RG")==SQLITE_OK)
+                throw "RG is already registered";
+            else if(strcmp(err,"UNIQUE constraint failed: USERS.CPF")==SQLITE_OK)
+                throw "CPF is already registered";
+            else if(strcmp(err,"UNIQUE constraint failed: USERS.username")==SQLITE_OK)
+                throw "Login is already registered";
+            else if(strcmp(err,"UNIQUE constraint failed: USERS.email")==SQLITE_OK)
+                throw "E-mail is already registered";
+            else
+                throw err;
     }
+}
+
+User* User::login(string username, string password) {
+    vector<string> criteria;
+    vector<string> keywords;
+    vector<User *> result;
+    criteria[0] = "username";
+    criteria[1] = "password";
+    keywords[0] = username;
+    keywords[1] = password;
+    result = searchBy(criteria, keywords);
+    criteria.~vector();
+    keywords.~vector();
+    if(result.size() != 1)
+        throw LOGIN_FAILED;
+    return result[0];
+}
+
+void User::logout(User *currentUser) {
+    delete(currentUser);
 }
 
 static int userCallback(void *ptr, int argc, char **argv, char **colNames) {
@@ -433,4 +505,3 @@ static int userCallback(void *ptr, int argc, char **argv, char **colNames) {
     result->push_back(currentUser);
     return 0;
 }
-
