@@ -7,6 +7,7 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <string.h>
 #include <stdlib.h>
 #include <sqlite3.h>
 
@@ -64,6 +65,8 @@ public: //Public methods
     void updateOperation(sqlite3 *, User *); //Must be changed to private
     void deleteOperation(sqlite3 *, User *); //Must be changed to private
     vector<User *> selectionOperation(sqlite3 *, string, string);
+    void registerUser(sqlite3 *, vector<string>, bool, bool);
+    User login(string, string);
 
 public: //Public Methods
     User(unsigned int id){
