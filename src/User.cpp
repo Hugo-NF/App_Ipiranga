@@ -284,7 +284,7 @@ void User::cleanTable(sqlite3 *connection) {
 void User::insertOperation(sqlite3 *connection, User *user) {
     int result;
     char *errMsg = 0;
-    char SQL[1200];
+    char SQL[5000];
     sprintf(SQL, "INSERT INTO USERS ("\
     "firstName, lastName, CPF, RG, age, phoneNumber, username, password, email, activation,"\
     "hasCard, type, cardOperator, cardNumber, cardName, securityCode, expirationDate,"\
@@ -307,7 +307,7 @@ void User::insertOperation(sqlite3 *connection, User *user) {
 void User::updateOperation(sqlite3 *connection, User *user) {
     int result;
     char *errMsg = 0;
-    char SQL[1200];
+    char SQL[5000];
     sprintf(SQL, "UPDATE USERS set firstName='%s', lastName='%s', CPF='%s', RG='%s', age='%s', phoneNumber='%s',"\
     "username='%s', password='%s', email='%s', activation=%d, hasCard=%d, type='%s', cardOperator='%s',"\
     "cardNumber='%s', cardName='%s', securityCode='%s', expirationDate='%s', hasAccount=%d, bank='%s', accountNumber='%s',"\
@@ -349,6 +349,52 @@ vector<User *> User::selectionOperation(sqlite3 *connection, string matchingCrit
     if(flag != SQLITE_OK)
         throw errMsg;
     return result;
+}
+
+void User::registerUser(sqlite3 *connection, vector<string> fields, bool Card, bool Bank){
+    string errMsg;
+    User newUser(0);
+    newUser.setFirstName(fields[0]);
+    newUser.setLastName(fields[1]);
+    newUser.setCPF(fields[2]);
+    newUser.setRG(fields[3]);
+    newUser.setAge(fields[4]);
+    newUser.setPhoneNumber(fields[5]);
+    newUser.setUsername(fields[6]);
+    newUser.setPassword(fields[7]);
+    newUser.setEmail(fields[8]);
+    newUser.setAddress(fields[9]);
+    newUser.setZipCode(fields[10]);
+    newUser.setState(fields[11]);
+    newUser.setCity(fields[12]);
+    newUser.setCardType(fields[13]);
+    newUser.setCardNumber(fields[14]);
+    newUser.setSecurityCode(fields[15]);
+    newUser.setExpirationDate(fields[16]);
+    newUser.setCardName(fields[17]);
+    newUser.setBank(fields[18]);
+    newUser.setAgency(fields[19]);
+    newUser.setAccountNumber(fields[20]);
+    newUser.registerAccount(Bank);
+    newUser.registerCard(Card);
+    try{
+        newUser.insertOperation(connection, &newUser);
+        newUser.~User();
+    }
+    catch (char *err){
+            if(strcmp(err,"UNIQUE constraint failed: USERS.RG")==SQLITE_OK)
+                errMsg = "RG is already registered";
+            else if(strcmp(err,"UNIQUE constraint failed: USERS.CPF")==SQLITE_OK)
+                errMsg = "CPF is already registered";
+            else if(strcmp(err,"UNIQUE constraint failed: USERS.username")==SQLITE_OK)
+                errMsg = "Login is already registered";
+            else if(strcmp(err,"UNIQUE constraint failed: USERS.email")==SQLITE_OK)
+                errMsg = "E-mail is already registered";
+            else
+                errMsg = err;
+            newUser.~User();
+            throw errMsg;
+    }
 }
 
 static int userCallback(void *ptr, int argc, char **argv, char **colNames) {
