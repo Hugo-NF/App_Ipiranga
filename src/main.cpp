@@ -232,6 +232,8 @@ TEST(Database_Operation, Selection){
         cout<<query[i]->getCPF()<<"\n";
         delete(query[i]);
     }
+    vector<User *> query1;
+
     rc = sqlite3_close(db) ;
     ASSERT_EQ(SQLITE_OK, rc);
     ASSERT_NE(SQLITE_ERROR, rc);

@@ -351,6 +351,25 @@ vector<User *> User::selectionOperation(sqlite3 *connection, string matchingCrit
     return result;
 }
 
+/*vector<User *> User::searchBy(sqlite3 *connection, vector<string> criteria, vector<string> keywords) {
+    unsigned long argcCriteria = criteria.size();
+    unsigned long argcKeywords = keywords.size();
+    unsigned int i;
+    char queries[100];
+    if(argcCriteria != argcKeywords || argcCriteria==SQLITE_OK || argcKeywords==SQLITE_OK){
+        string errMsg = "Invalid search query";
+        throw errMsg;
+    }
+    string SQL = "SELECT * FROM USERS WHERE ";
+    for(i=0; i<argcCriteria-1; i++){
+        sprintf(queries, "%s='%s' AND", criteria[i], keywords[i]);
+        SQL.append(queries);
+    }
+    sprintf(queries, "%s='%s';", criteria[i], keywords[i]);
+    cout<<SQL;
+
+}*/
+
 void User::registerUser(sqlite3 *connection, vector<string> fields, bool Card, bool Bank){
     string errMsg;
     User newUser(0);
@@ -377,6 +396,9 @@ void User::registerUser(sqlite3 *connection, vector<string> fields, bool Card, b
     newUser.setAccountNumber(fields[20]);
     newUser.registerAccount(Bank);
     newUser.registerCard(Card);
+    newUser.setActivation(false);
+    newUser.setBalance(0.0);
+    newUser.setCardOperator("Visa"); //Call security module
     try{
         newUser.insertOperation(connection, &newUser);
         newUser.~User();
@@ -395,6 +417,13 @@ void User::registerUser(sqlite3 *connection, vector<string> fields, bool Card, b
             newUser.~User();
             throw errMsg;
     }
+}
+
+User* User::login(string username, string password) {
+    int result;
+    char *errMsg;
+    char SQL[100];
+
 }
 
 static int userCallback(void *ptr, int argc, char **argv, char **colNames) {

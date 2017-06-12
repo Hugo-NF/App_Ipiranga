@@ -1,4 +1,3 @@
-
 #ifndef PROJETO_FINAL_USER_HPP
 #define PROJETO_FINAL_USER_HPP
 
@@ -58,15 +57,17 @@ private: //Private methods
     //WARNING: The following methods may throw SQLite error messages
     void createTable(sqlite3 *);
     void deleteTable(sqlite3 *);
+    void insertOperation(sqlite3 *, User *);
 
 public: //Public methods
     void cleanTable(sqlite3 *);
-    void insertOperation(sqlite3 *, User *); //Must be changed to private
     void updateOperation(sqlite3 *, User *); //Must be changed to private
     void deleteOperation(sqlite3 *, User *); //Must be changed to private
     vector<User *> selectionOperation(sqlite3 *, string, string);
+    vector<User *> searchBy(sqlite3 *, vector<string>, vector<string>);
     void registerUser(sqlite3 *, vector<string>, bool, bool);
-    User login(string, string);
+    User* login(string, string);
+    void logout(User *);
 
 public: //Public Methods
     User(unsigned int id){
