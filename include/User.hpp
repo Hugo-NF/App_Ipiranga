@@ -54,10 +54,17 @@ private: //Private attributes
     //App balance
     double balance;
 
-    //Social Media (Friends)
-    string friendsString; //ID's of an user's friends, parse this string and do an selection in the database
+private: //Private Methods
+    //WARNING: The following methods may throw SQLite error messages
+    void createTable(sqlite3 *);
+    void deleteTable(sqlite3 *);
+    void cleanTable(sqlite3 *);
+    void insertOperation(sqlite3 *, User *);
+    void updateOperation(sqlite3 *, User *);
+    void deleteOperation(sqlite3 *, User *);
+    vector<User *> selectionOperation(sqlite3 *, string, string);
 
-public:
+public: //Public Methods
     User(unsigned int id){
         this->id = id;
     };
@@ -127,22 +134,6 @@ public:
     //App balance
     void setBalance(double);
     double getBalance();
-
-    //Social Media
-    void setFriendsString(string);
-    string getFriendsString();
-
-    //Database operations
-
-    vector<User *> listUsers(sqlite3 *);
-
-    void createTable(sqlite3 *); //WARNING: This method may throw SQLite exceptions
-    void deleteTable(sqlite3 *); //WARNING: This method may throw SQLite exceptions
-    void cleanTable(sqlite3 *); //WARNING: This method may throw SQLite exceptions
-    void insertOperation(sqlite3 *, User *); //WARNING: This method may throw SQLite exceptions
-    void selectionOperation(sqlite3 *, User *); //WARNING: This method may throw SQLite exceptions
-    void updateOperation(sqlite3 *, User *); //WARNING: This method may throw SQLite exceptions
-    void deleteOperation(sqlite3 *, User *); //WARNING: This method may throw SQLite exceptions
 
 };
 

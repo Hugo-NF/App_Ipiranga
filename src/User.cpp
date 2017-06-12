@@ -225,16 +225,6 @@ double User::getBalance() {
     return this->balance;
 }
 
-//Social Media
-
-void User::setFriendsString(string friends) {
-    this->friendsString = friends;
-}
-
-string User::getFriendsString() {
-    return this->friendsString;
-}
-
 //----------------------------------Methods for manipulating SQLite-------------------------------
 
 //Database Setup Operations
@@ -254,7 +244,6 @@ void User::createTable(sqlite3 *connection) {
             "  `password`       VARCHAR(30)                       NOT NULL,"\
             "  `email`          VARCHAR(45) UNIQUE                NOT NULL,"\
             "  `activation`     UNSIGNED INT(1)                   NOT NULL,"\
-            "  `friends`        VARCHAR(200)                      NOT NULL,"\
             "  `hasCard`        UNSIGNED ZEROFILL INT(1)          NOT NULL,"\
             "  `type`           VARCHAR(10)                       NOT NULL,"\
             "  `cardOperator`   VARCHAR(20)                       NOT NULL,"\
@@ -292,42 +281,74 @@ void User::cleanTable(sqlite3 *connection) {
 
 //Database CRUD Operations
 
-vector<User *> User::listUsers(sqlite3 *connection) {
-    vector<User *> result;
-    char *errMsg = 0;
-    sqlite3_exec(connection, "SELECT * FROM CLIENTE", userCallback, &result, &errMsg);
-    return result;
-}
-
 void User::insertOperation(sqlite3 *connection, User *user) {
     int result;
     char *errMsg = 0;
-    char SQL[1000];
+    char SQL[5000];
     sprintf(SQL, "INSERT INTO USERS ("\
     "firstName, lastName, CPF, RG, age, phoneNumber, username, password, email, activation,"\
-    "friends, hasCard, type, cardOperator, cardNumber, cardName, securityCode, expirationDate,"\
+    "hasCard, type, cardOperator, cardNumber, cardName, securityCode, expirationDate,"\
     "hasAccount, bank, accountNumber, agency, balance, address, zipCode, state, city)"\
-    " VALUES('%s','%s','%s','%s','%s','%s','%s','%s','%s',%d,'%s',%d,'%s','%s','%s','%s','%s','%s','%d',"\
+    " VALUES('%s','%s','%s','%s','%s','%s','%s','%s','%s',%d,%d,'%s','%s','%s','%s','%s','%s',%d,"\
     "'%s','%s','%s',%lf,'%s','%s','%s','%s');",\
      user->getFirstName().c_str(), user->getLastName().c_str(), user->getCPF().c_str(),\
      user->getRG().c_str(), user->getAge().c_str(), user->getPhoneNumber().c_str(), user->getUsername().c_str(),\
-     user->getPassword().c_str(), user->getEmail().c_str(), user->isActivated(), user->getFriendsString().c_str(),\
+     user->getPassword().c_str(), user->getEmail().c_str(), user->isActivated(),\
      user->cardRegistered(), user->getCardType().c_str(), user->getCardOperator().c_str(),user->getCardNumber().c_str(),user->getCardName().c_str(),\
      user->getSecurityCode().c_str(), user->getExpirationDate().c_str(), user->accountRegistered(),\
      user->getBank().c_str(), user->getAccountNumber().c_str(), user->getAgency().c_str(),user->getBalance(),\
      user->getAddress().c_str(), user->getZipCode().c_str(), user->getState().c_str(), user->getCity().c_str());
+
     result = sqlite3_exec(connection, SQL, userCallback, 0, &errMsg);
     if(result != SQLITE_OK)
         throw errMsg;
 }
 
-void User::selectionOperation(sqlite3 *connection, User *obj){
+void User::updateOperation(sqlite3 *connection, User *user) {
+    int result;
+    char *errMsg = 0;
+    char SQL[5000];
+    sprintf(SQL, "UPDATE USERS set firstName='%s', lastName='%s', CPF='%s', RG='%s', age='%s', phoneNumber='%s',"\
+    "username='%s', password='%s', email='%s', activation=%d, hasCard=%d, type='%s', cardOperator='%s',"\
+    "cardNumber='%s', cardName='%s', securityCode='%s', expirationDate='%s', hasAccount=%d, bank='%s', accountNumber='%s',"\
+    "agency='%s', balance=%lf, address='%s', zipCode='%s', state='%s', city='%s' WHERE id=%d;", user->getFirstName().c_str(), user->getLastName().c_str(), user->getCPF().c_str(),\
+     user->getRG().c_str(), user->getAge().c_str(), user->getPhoneNumber().c_str(), user->getUsername().c_str(),\
+     user->getPassword().c_str(), user->getEmail().c_str(), user->isActivated(),\
+     user->cardRegistered(), user->getCardType().c_str(), user->getCardOperator().c_str(),user->getCardNumber().c_str(),user->getCardName().c_str(),\
+     user->getSecurityCode().c_str(), user->getExpirationDate().c_str(), user->accountRegistered(),\
+     user->getBank().c_str(), user->getAccountNumber().c_str(), user->getAgency().c_str(),user->getBalance(),\
+     user->getAddress().c_str(), user->getZipCode().c_str(), user->getState().c_str(), user->getCity().c_str(), user->getId());
+    result = sqlite3_exec(connection, SQL, userCallback, 0, &errMsg);
+    if(result != SQLITE_OK)
+        throw errMsg;
 }
 
-void User::updateOperation(sqlite3 *connection, User *obj) {
+void User::deleteOperation(sqlite3 *connection, User *user) {
+    int result;
+    char *errMsg = 0;
+    char SQL[100];
+    sprintf(SQL, "DELETE FROM USERS WHERE id=%d", user->getId());
+
+    result = sqlite3_exec(connection, SQL, userCallback, 0, &errMsg);
+    if(result != SQLITE_OK)
+        throw errMsg;
 }
 
-void User::deleteOperation(sqlite3 *connection, User *obj) {
+vector<User *> User::selectionOperation(sqlite3 *connection, string matchingCriteria, string keyword){
+    vector<User *> result;
+    int flag;
+    char *errMsg = 0;
+    char SQL[100];
+    if(matchingCriteria.compare("ALL") == SQLITE_OK || keyword.compare("ALL") == SQLITE_OK){
+        sprintf(SQL, "SELECT * FROM USERS");
+    }
+    else{
+        sprintf(SQL, "SELECT * FROM USERS WHERE %s=%s", matchingCriteria.c_str(), keyword.c_str());
+    }
+    flag = sqlite3_exec(connection, SQL, userCallback, &result, &errMsg);
+    if(flag != SQLITE_OK)
+        throw errMsg;
+    return result;
 }
 
 static int userCallback(void *ptr, int argc, char **argv, char **colNames) {
@@ -343,23 +364,22 @@ static int userCallback(void *ptr, int argc, char **argv, char **colNames) {
     currentUser->setPassword(argv[8]);
     currentUser->setEmail(argv[9]);
     currentUser->setActivation(atoi(argv[10]));
-    currentUser->setFriendsString(argv[11]);
-    currentUser->registerCard(atoi(argv[12]));
-    currentUser->setCardType(argv[13]);
-    currentUser->setCardOperator(argv[14]);
-    currentUser->setCardNumber(argv[15]);
-    currentUser->setCardName(argv[16]);
-    currentUser->setSecurityCode(argv[17]);
-    currentUser->setExpirationDate(argv[18]);
-    currentUser->registerAccount(atoi(argv[19]));
-    currentUser->setBank(argv[20]);
-    currentUser->setAccountNumber(argv[21]);
-    currentUser->setAgency(argv[22]);
-    currentUser->setBalance(atof(argv[23]));
-    currentUser->setAddress(argv[24]);
-    currentUser->setZipCode(argv[25]);
-    currentUser->setState(argv[26]);
-    currentUser->setCity(argv[27]);
+    currentUser->registerCard(atoi(argv[11]));
+    currentUser->setCardType(argv[12]);
+    currentUser->setCardOperator(argv[13]);
+    currentUser->setCardNumber(argv[14]);
+    currentUser->setCardName(argv[15]);
+    currentUser->setSecurityCode(argv[16]);
+    currentUser->setExpirationDate(argv[17]);
+    currentUser->registerAccount(atoi(argv[18]));
+    currentUser->setBank(argv[19]);
+    currentUser->setAccountNumber(argv[20]);
+    currentUser->setAgency(argv[21]);
+    currentUser->setBalance(atof(argv[22]));
+    currentUser->setAddress(argv[23]);
+    currentUser->setZipCode(argv[24]);
+    currentUser->setState(argv[25]);
+    currentUser->setCity(argv[26]);
 
     result->push_back(currentUser);
     return 0;
