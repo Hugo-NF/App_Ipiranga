@@ -374,11 +374,11 @@ vector<User *> User::searchBy(vector<string> criteria, vector<string> keywords) 
     if(argcCriteria != argcKeywords || argcCriteria == SQLITE_OK || argcKeywords == SQLITE_OK)
         throw QUERY_INVALID;
     for(i=0; i<argcCriteria-1; i++){
-        sprintf(query, "%s = '%s' AND ", criteria[i], keywords[i]);
+        sprintf(query, "%s = '%s' AND ", criteria[i].c_str(), keywords[i].c_str());
         strcat(SQL, query);
         memset(query, 0, 100);
     }
-    sprintf(query, "%s = '%s');", criteria[i], keywords[i]);
+    sprintf(query, "%s = '%s');", criteria[i].c_str(), keywords[i].c_str());
     memset(query, 0, 100);
 
     flag = sqlite3_exec(connection, SQL, userCallback, &result, &errMsg);
