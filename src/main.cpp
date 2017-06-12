@@ -25,50 +25,6 @@ TEST(classUser, Gets_Sets){
 
     teste.~User();
 }
-/*
-TEST(SQLite, Connection_Test){
-    sqlite3 *db;
-    int rc;
-
-    rc = sqlite3_open("../database/Ipiranga.db", &db) ;
-    ASSERT_EQ(SQLITE_OK, rc);
-    ASSERT_NE(SQLITE_ERROR, rc);
-
-    rc = sqlite3_close(db) ;
-    ASSERT_EQ(SQLITE_OK, rc);
-    ASSERT_NE(SQLITE_ERROR, rc);
-}
-
-TEST(SQLite, Creating_USERS_Table){
-    sqlite3 *db;
-    int rc;
-    rc = sqlite3_open("../database/Ipiranga.db", &db) ;
-    ASSERT_EQ(SQLITE_OK, rc);
-    ASSERT_NE(SQLITE_ERROR, rc);
-
-    User teste(0);
-    teste.createTable(db);
-    teste.~User();
-
-    rc = sqlite3_close(db) ;
-    ASSERT_EQ(SQLITE_OK, rc);
-    ASSERT_NE(SQLITE_ERROR, rc);
-}
-TEST(SQLite, Deleting_USERS_Table){
-    sqlite3 *db;
-    int rc;
-    rc = sqlite3_open("../database/Ipiranga.db", &db) ;
-    ASSERT_EQ(SQLITE_OK, rc);
-    ASSERT_NE(SQLITE_ERROR, rc);
-
-    User teste(0);
-    teste.deleteTable(db);
-    teste.~User();
-
-    rc = sqlite3_close(db) ;
-    ASSERT_EQ(SQLITE_OK, rc);
-    ASSERT_NE(SQLITE_ERROR, rc);
-}
 
 TEST(SQLite, Cleaning_USERS_Table){
     sqlite3 *db;
@@ -89,6 +45,7 @@ TEST(SQLite, Cleaning_USERS_Table){
 
 TEST(Database_Operation, User_Insertion){
     User teste(614);
+    User teste1(613);
     sqlite3 *db;
     int rc;
     rc = sqlite3_open("../database/Ipiranga.db", &db) ;
@@ -120,6 +77,32 @@ TEST(Database_Operation, User_Insertion){
     teste.setZipCode("72215-039");
     teste.setState("DF");
     teste.setCity("Brazil");
+    teste1.setFirstName("Big Moas");
+    teste1.setLastName("Nascimento");
+    teste1.setCPF("05685177102");
+    teste1.setRG("2874747");
+    teste1.setAge("19");
+    teste1.setPhoneNumber("+556199110155");
+    teste1.setUsername("BigMoas_1234");
+    teste1.setPassword("123456789GO");
+    teste1.setEmail("hugonfoca@gmail.com");
+    teste1.setActivation(true);
+    teste1.registerCard(false);
+    teste1.setCardType("Credit");
+    teste1.setCardOperator("Visa");
+    teste1.setCardNumber("4592 8001 8552 9641");
+    teste1.setCardName("HUGO N. FONSECA");
+    teste1.setSecurityCode("549");
+    teste1.setExpirationDate("05/2025");
+    teste1.registerAccount(false);
+    teste1.setBank("Itaú");
+    teste1.setAccountNumber("247896-3");
+    teste1.setAgency("0479");
+    teste1.setBalance(2789.63);
+    teste1.setAddress("QNM 03 CONJ I CS 26");
+    teste1.setZipCode("72215-039");
+    teste1.setState("DF");
+    teste1.setCity("Brazil");
 
     try{
         teste.insertOperation(db, &teste);
@@ -136,6 +119,22 @@ TEST(Database_Operation, User_Insertion){
         else
             cout<<err;
         teste.~User();
+    }
+    try{
+        teste.insertOperation(db, &teste1);
+    }
+    catch (char *err){
+        if(strcmp(err,"UNIQUE constraint failed: USERS.RG")==SQLITE_OK)
+            cout<<"RG coincide com um usuario previamente registrado";
+        else if(strcmp(err,"UNIQUE constraint failed: USERS.CPF")==SQLITE_OK)
+            cout<<"CPF coincide com um usuario previamente registrado";
+        else if(strcmp(err,"UNIQUE constraint failed: USERS.username")==SQLITE_OK)
+            cout<<"Username coincide com um usuario previamente registrado";
+        else if(strcmp(err,"UNIQUE constraint failed: USERS.email")==SQLITE_OK)
+            cout<<"Email coincide com um usuario previamente registrado";
+        else
+            cout<<err;
+        teste1.~User();
     }
 
 
@@ -200,7 +199,7 @@ TEST(Database_Operation, Update_User){
     ASSERT_EQ(SQLITE_OK, rc);
     ASSERT_NE(SQLITE_ERROR, rc);
 }
-
+/*
 TEST(Database_Operation, Delete_User){
     sqlite3 *db;
     int rc;
@@ -217,8 +216,27 @@ TEST(Database_Operation, Delete_User){
     rc = sqlite3_close(db) ;
     ASSERT_EQ(SQLITE_OK, rc);
     ASSERT_NE(SQLITE_ERROR, rc);
+}*/
+
+TEST(Database_Operation, Selection){
+    sqlite3 *db;
+    unsigned int i;
+    int rc = sqlite3_open("../database/Ipiranga.db", &db) ;
+    ASSERT_EQ(SQLITE_OK, rc);
+    ASSERT_NE(SQLITE_ERROR, rc);
+
+    vector<User *> query;
+    User teste(0);
+    query = teste.selectionOperation(db, "age", "19");
+    for(i=0; i<query.size(); i++){
+        cout<<query[i]->getCPF()<<"\n";
+        delete(query[i]);
+    }
+    rc = sqlite3_close(db) ;
+    ASSERT_EQ(SQLITE_OK, rc);
+    ASSERT_NE(SQLITE_ERROR, rc);
 }
-*/
+
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();

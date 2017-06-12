@@ -54,14 +54,16 @@ private: //Private attributes
     //App balance
     double balance;
 
-private: //Private Methods
+private: //Private methods
     //WARNING: The following methods may throw SQLite error messages
     void createTable(sqlite3 *);
     void deleteTable(sqlite3 *);
+
+public: //Public methods
     void cleanTable(sqlite3 *);
-    void insertOperation(sqlite3 *, User *);
-    void updateOperation(sqlite3 *, User *);
-    void deleteOperation(sqlite3 *, User *);
+    void insertOperation(sqlite3 *, User *); //Must be changed to private
+    void updateOperation(sqlite3 *, User *); //Must be changed to private
+    void deleteOperation(sqlite3 *, User *); //Must be changed to private
     vector<User *> selectionOperation(sqlite3 *, string, string);
 
 public: //Public Methods
