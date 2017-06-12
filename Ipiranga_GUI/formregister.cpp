@@ -64,19 +64,14 @@ void FormRegister::on_pushButton_Register_clicked()
 
     //-----------CALL METHODS--------------
     if(this->checkFields()){
-        sqlite3 *Connection;
-        sqlite3_open("../database/Ipiranga.db", &Connection);
-
         try{
-            NewUser.createTable(Connection);
-            NewUser.registerUser(Connection, this->UserDate, this->Payment_active, this->Bank_active);
+            NewUser.registerUser(this->UserDate, this->Payment_active, this->Bank_active);
             QMessageBox::information(this,tr("Register"),tr("Registered with sucess!\n You will receive a confirmation in your E-mail!"));
             close();
         }
-        catch(string erro){
-            QMessageBox::information(this,tr("Register"),tr(erro.c_str()));
+        catch(const char *erro){
+            QMessageBox::information(this,tr("Register"),tr(erro));
         }
-        sqlite3_close(Connection);
     }else
         QMessageBox::warning(this,tr("Register"),tr("Some field is empty \n\nFill in all required Fields!"));
 }

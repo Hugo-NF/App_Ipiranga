@@ -1,4 +1,5 @@
 #include "loginuser.h"
+#include "../include/User.hpp"
 #include "ui_loginuser.h"
 #include <QMessageBox>
 #include <iostream>
@@ -20,22 +21,19 @@ LoginUser::~LoginUser()
 //--------------------LOGIN Click-----------------------------
 void LoginUser::on_pushLogin_clicked()
 {
-    QString username = ui->lineName->text();
-    QString password = ui->linePass->text();
+    User *CurrentUser;
+    string username = ui->lineName->text().toStdString();
+    string password = ui->linePass->text().toStdString();
 
-    string name=username.toStdString();
-    string pass=password.toStdString();
-
-    cout<<"Name:"<<name<<endl;
-    cout<<"Pass:"<<pass<<endl;
-
-    if(username == "Frodo" && password == "12345"){
+    try{
+        CurrentUser = CurrentUser->login(username,password);
         close();
         userapp = new UserApp(this);
         userapp->show();
 
-    }else{
-        QMessageBox::warning(this,tr("Login"),tr("UserName or PassWord is incorrect!"));
+    }
+    catch(const char *erro){
+        QMessageBox::warning(this,tr("Login"),tr(erro));
         ui->linePass->setText("");
     }
 }

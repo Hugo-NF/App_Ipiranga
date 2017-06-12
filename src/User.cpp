@@ -367,20 +367,22 @@ vector<User *> User::searchBy(vector<string> criteria, vector<string> keywords) 
     char *errMsg = 0;
     sqlite3 *connection;
 
+    if(argcCriteria != argcKeywords || argcCriteria == SQLITE_OK || argcKeywords == SQLITE_OK)
+        throw QUERY_INVALID;
+
     int flag = sqlite3_open(DATABASE, &connection);
     if(flag != SQLITE_OK)
         throw CONNECTION_ERROR;
 
-    if(argcCriteria != argcKeywords || argcCriteria == SQLITE_OK || argcKeywords == SQLITE_OK)
-        throw QUERY_INVALID;
     for(i=0; i<argcCriteria-1; i++){
         sprintf(query, "%s = '%s' AND ", criteria[i].c_str(), keywords[i].c_str());
         strcat(SQL, query);
         memset(query, 0, 100);
     }
-    sprintf(query, "%s = '%s');", criteria[i].c_str(), keywords[i].c_str());
+    sprintf(query, "%s = '%s';", criteria[i].c_str(), keywords[i].c_str());
+    strcat(SQL, query);
     memset(query, 0, 100);
-
+    cout<<SQL;
     flag = sqlite3_exec(connection, SQL, userCallback, &result, &errMsg);
 
     if(flag!=SQLITE_OK)
@@ -395,6 +397,7 @@ vector<User *> User::searchBy(vector<string> criteria, vector<string> keywords) 
 
 void User::registerUser(vector<string> fields, bool Card, bool Bank){
     sqlite3 *connection;
+    const char *errMsg;
     int flag = sqlite3_open(DATABASE, &connection);
     if(flag!=SQLITE_OK)
         throw CONNECTION_ERROR;
@@ -440,32 +443,69 @@ void User::registerUser(vector<string> fields, bool Card, bool Bank){
             if(flag!=SQLITE_OK)
                 throw CONNECTION_ERROR;
             if(strcmp(err,"UNIQUE constraint failed: USERS.RG")==SQLITE_OK)
-                throw "RG is already registered";
+                throw RG_REPEATED;
             else if(strcmp(err,"UNIQUE constraint failed: USERS.CPF")==SQLITE_OK)
-                throw "CPF is already registered";
+                throw CPF_REPEATED;
             else if(strcmp(err,"UNIQUE constraint failed: USERS.username")==SQLITE_OK)
-                throw "Login is already registered";
+                throw USERNAME_REPEATED;
             else if(strcmp(err,"UNIQUE constraint failed: USERS.email")==SQLITE_OK)
-                throw "E-mail is already registered";
-            else
-                throw err;
+                throw ;
+            else{
+                strcpy(errMsg, err);
+                throw errMsg;
+            }
+
     }
 }
 
 User* User::login(string username, string password) {
     vector<string> criteria;
+    criteria.resize(2);
     vector<string> keywords;
+    keywords.resize(2);
     vector<User *> result;
     criteria[0] = "username";
     criteria[1] = "password";
     keywords[0] = username;
     keywords[1] = password;
     result = searchBy(criteria, keywords);
-    criteria.~vector();
-    keywords.~vector();
-    if(result.size() != 1)
+    //delete(&criteria);
+    //delete(&keywords);
+    if(result.size() != 1){
+        result.~vector();
         throw LOGIN_FAILED;
+    }
     return result[0];
+}
+
+void User::instantiateUser(User *currentUser, User *data){
+    currentUser = new User(data->getId());
+    currentUser->setFirstName(data->getFirstName());
+    currentUser->setLastName(data->getLastName());
+    currentUser->setCPF(data->getCPF());
+    currentUser->setRG(data->getRG());
+    currentUser->setAge(data->getAge());
+    currentUser->setPhoneNumber(data->getPhoneNumber());
+    currentUser->setUsername(data->getUsername());
+    currentUser->setPassword(data->getPassword());
+    currentUser->setEmail(data->getEmail());
+    currentUser->setActivation(data->isActivated());
+    currentUser->registerCard(data->cardRegistered());
+    currentUser->setCardType(data->getCardType());
+    currentUser->setCardOperator(data->getCardOperator());
+    currentUser->setCardNumber(data->getCardNumber());
+    currentUser->setCardName(data->getCardName());
+    currentUser->setSecurityCode(data->getSecurityCode());
+    currentUser->setExpirationDate(data->getExpirationDate());
+    currentUser->registerAccount(data->accountRegistered());
+    currentUser->setBank(data->getBank());
+    currentUser->setAccountNumber(data->getAccountNumber());
+    currentUser->setAgency(data->getAgency());
+    currentUser->setBalance(data->getBalance());
+    currentUser->setAddress(data->getAddress());
+    currentUser->setZipCode(data->getZipCode());
+    currentUser->setState(data->getState());
+    currentUser->setCity(data->getCity());
 }
 
 void User::logout(User *currentUser) {
