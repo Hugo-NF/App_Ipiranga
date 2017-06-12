@@ -70,9 +70,11 @@ void FormRegister::on_pushButton_Register_clicked()
 
 bool FormRegister::checkFields()
 {
-    bool check=true;
+    bool check=true;        //Set to true check fields
+    Bank_active = true;     //Set to true bank account activation
+    Payment_active = true;  //Set to true method payment activation
 
-    //Personal Information - IsEmpty?
+    // Personal Information - IsEmpty?
     check *= !UserDate[0].isEmpty() * !UserDate[1].isEmpty() * !UserDate[2].isEmpty()
               * !UserDate[3].isEmpty() * !UserDate[5].isEmpty();
 
@@ -85,6 +87,13 @@ bool FormRegister::checkFields()
               * !UserDate[12].isEmpty() * !UserDate[13].isEmpty();
 
     //Payment - IsEmpty?
+    Payment_active *= (Credit or Debit) * !UserDate[15].isEmpty() * ! UserDate[16].isEmpty;
+
+    if(Credit){
+        UserDate[14] = "Credit";
+    }else if(Debit){
+        UserDate[14] = "Debit";
+    }
 
     //Bank Account - IsEmpty?
 

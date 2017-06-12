@@ -284,7 +284,7 @@ void User::cleanTable(sqlite3 *connection) {
 void User::insertOperation(sqlite3 *connection, User *user) {
     int result;
     char *errMsg = 0;
-    char SQL[5000];
+    char SQL[1200];
     sprintf(SQL, "INSERT INTO USERS ("\
     "firstName, lastName, CPF, RG, age, phoneNumber, username, password, email, activation,"\
     "hasCard, type, cardOperator, cardNumber, cardName, securityCode, expirationDate,"\
@@ -307,7 +307,7 @@ void User::insertOperation(sqlite3 *connection, User *user) {
 void User::updateOperation(sqlite3 *connection, User *user) {
     int result;
     char *errMsg = 0;
-    char SQL[5000];
+    char SQL[1200];
     sprintf(SQL, "UPDATE USERS set firstName='%s', lastName='%s', CPF='%s', RG='%s', age='%s', phoneNumber='%s',"\
     "username='%s', password='%s', email='%s', activation=%d, hasCard=%d, type='%s', cardOperator='%s',"\
     "cardNumber='%s', cardName='%s', securityCode='%s', expirationDate='%s', hasAccount=%d, bank='%s', accountNumber='%s',"\
