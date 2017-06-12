@@ -43,6 +43,9 @@
    </property>
    <item>
     <widget class="QScrollArea" name="scrollArea">
+     <property name="locale">
+      <locale language="English" country="UnitedStates"/>
+     </property>
      <property name="widgetResizable">
       <bool>true</bool>
      </property>
@@ -50,8 +53,8 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>-522</y>
-        <width>481</width>
+        <y>0</y>
+        <width>485</width>
         <height>980</height>
        </rect>
       </property>
@@ -79,6 +82,9 @@
            <height>0</height>
           </size>
          </property>
+         <property name="locale">
+          <locale language="English" country="UnitedStates"/>
+         </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
          </property>
@@ -98,6 +104,9 @@
            <height>980</height>
           </size>
          </property>
+         <property name="locale">
+          <locale language="English" country="UnitedStates"/>
+         </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
          </property>
@@ -113,8 +122,11 @@
             <height>41</height>
            </rect>
           </property>
+          <property name="locale">
+           <locale language="English" country="UnitedStates"/>
+          </property>
           <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt; font-weight:600; text-decoration: underline; color:#f06c00;&quot;&gt;Register Now&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt; font-weight:600; text-decoration: underline; color:#087add;&quot;&gt;Register Now&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
          <widget class="QGroupBox" name="Personal">
@@ -129,6 +141,9 @@
             <height>201</height>
            </rect>
           </property>
+          <property name="locale">
+           <locale language="English" country="UnitedStates"/>
+          </property>
           <property name="title">
            <string>Personal Information</string>
           </property>
@@ -140,6 +155,9 @@
              <width>71</width>
              <height>20</height>
             </rect>
+           </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
             <string>First Name</string>
@@ -154,6 +172,9 @@
              <height>20</height>
             </rect>
            </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
+           </property>
            <property name="text">
             <string>Last Name</string>
            </property>
@@ -166,6 +187,9 @@
              <width>47</width>
              <height>13</height>
             </rect>
+           </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
             <string>CPF</string>
@@ -180,6 +204,9 @@
              <height>13</height>
             </rect>
            </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
+           </property>
            <property name="text">
             <string>RG</string>
            </property>
@@ -188,10 +215,13 @@
            <property name="geometry">
             <rect>
              <x>70</x>
-             <y>140</y>
-             <width>47</width>
-             <height>13</height>
+             <y>135</y>
+             <width>61</width>
+             <height>21</height>
             </rect>
+           </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
             <string>Age</string>
@@ -202,9 +232,12 @@
             <rect>
              <x>70</x>
              <y>170</y>
-             <width>47</width>
-             <height>13</height>
+             <width>61</width>
+             <height>16</height>
             </rect>
+           </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
             <string>Phone</string>
@@ -222,11 +255,17 @@
            <property name="focusPolicy">
             <enum>Qt::StrongFocus</enum>
            </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
+           </property>
            <property name="text">
             <string/>
            </property>
+           <property name="maxLength">
+            <number>20</number>
+           </property>
           </widget>
-          <widget class="QLineEdit" name="lineSecondName">
+          <widget class="QLineEdit" name="lineLastName">
            <property name="geometry">
             <rect>
              <x>160</x>
@@ -238,6 +277,12 @@
            <property name="focusPolicy">
             <enum>Qt::StrongFocus</enum>
            </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
+           </property>
+           <property name="maxLength">
+            <number>20</number>
+           </property>
           </widget>
           <widget class="QLineEdit" name="lineCPF">
            <property name="geometry">
@@ -247,6 +292,12 @@
              <width>171</width>
              <height>20</height>
             </rect>
+           </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
+           </property>
+           <property name="maxLength">
+            <number>11</number>
            </property>
           </widget>
           <widget class="QLineEdit" name="lineRG">
@@ -258,6 +309,12 @@
              <height>20</height>
             </rect>
            </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
+           </property>
+           <property name="maxLength">
+            <number>11</number>
+           </property>
           </widget>
           <widget class="QSpinBox" name="spinAge">
            <property name="geometry">
@@ -267,6 +324,15 @@
              <width>42</width>
              <height>22</height>
             </rect>
+           </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
+           </property>
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="value">
+            <number>18</number>
            </property>
           </widget>
           <widget class="QLineEdit" name="linePhone">
@@ -278,8 +344,14 @@
              <height>20</height>
             </rect>
            </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
+           </property>
            <property name="text">
             <string/>
+           </property>
+           <property name="maxLength">
+            <number>15</number>
            </property>
           </widget>
          </widget>
@@ -295,6 +367,9 @@
             <height>141</height>
            </rect>
           </property>
+          <property name="locale">
+           <locale language="English" country="UnitedStates"/>
+          </property>
           <property name="title">
            <string>Adress</string>
           </property>
@@ -307,6 +382,9 @@
              <height>16</height>
             </rect>
            </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
+           </property>
            <property name="text">
             <string>Adress</string>
            </property>
@@ -316,9 +394,12 @@
             <rect>
              <x>70</x>
              <y>50</y>
-             <width>51</width>
+             <width>81</width>
              <height>16</height>
             </rect>
+           </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
             <string>Zip Code</string>
@@ -333,21 +414,27 @@
              <height>13</height>
             </rect>
            </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
+           </property>
            <property name="text">
             <string>State</string>
            </property>
           </widget>
-          <widget class="QLabel" name="labelCountry">
+          <widget class="QLabel" name="labelCity">
            <property name="geometry">
             <rect>
              <x>70</x>
              <y>110</y>
-             <width>47</width>
-             <height>13</height>
+             <width>71</width>
+             <height>16</height>
             </rect>
            </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
+           </property>
            <property name="text">
-            <string>Country</string>
+            <string>City</string>
            </property>
           </widget>
           <widget class="QLineEdit" name="lineAdress">
@@ -359,6 +446,12 @@
              <height>20</height>
             </rect>
            </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
+           </property>
+           <property name="maxLength">
+            <number>100</number>
+           </property>
           </widget>
           <widget class="QLineEdit" name="lineZIP">
            <property name="geometry">
@@ -369,18 +462,30 @@
              <height>20</height>
             </rect>
            </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
+           </property>
+           <property name="maxLength">
+            <number>10</number>
+           </property>
           </widget>
           <widget class="QLineEdit" name="lineState">
            <property name="geometry">
             <rect>
              <x>160</x>
              <y>80</y>
-             <width>113</width>
+             <width>31</width>
              <height>20</height>
             </rect>
            </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
+           </property>
+           <property name="maxLength">
+            <number>2</number>
+           </property>
           </widget>
-          <widget class="QLineEdit" name="lineCountry">
+          <widget class="QLineEdit" name="lineCity">
            <property name="geometry">
             <rect>
              <x>160</x>
@@ -388,6 +493,12 @@
              <width>113</width>
              <height>20</height>
             </rect>
+           </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
+           </property>
+           <property name="maxLength">
+            <number>20</number>
            </property>
           </widget>
          </widget>
@@ -403,6 +514,9 @@
             <height>171</height>
            </rect>
           </property>
+          <property name="locale">
+           <locale language="English" country="UnitedStates"/>
+          </property>
           <property name="title">
            <string>Payment</string>
           </property>
@@ -411,9 +525,12 @@
             <rect>
              <x>70</x>
              <y>140</y>
-             <width>51</width>
+             <width>91</width>
              <height>16</height>
             </rect>
+           </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
             <string>Expiration</string>
@@ -424,9 +541,12 @@
             <rect>
              <x>70</x>
              <y>80</y>
-             <width>47</width>
-             <height>13</height>
+             <width>61</width>
+             <height>16</height>
             </rect>
+           </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
             <string>Number</string>
@@ -441,6 +561,9 @@
              <height>13</height>
             </rect>
            </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
+           </property>
            <property name="text">
             <string>Name</string>
            </property>
@@ -450,9 +573,12 @@
             <rect>
              <x>70</x>
              <y>110</y>
-             <width>71</width>
+             <width>91</width>
              <height>16</height>
             </rect>
+           </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
             <string>Nº Security</string>
@@ -467,6 +593,12 @@
              <height>20</height>
             </rect>
            </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
+           </property>
+           <property name="maxLength">
+            <number>30</number>
+           </property>
           </widget>
           <widget class="QLineEdit" name="lineNumber">
            <property name="geometry">
@@ -477,15 +609,27 @@
              <height>20</height>
             </rect>
            </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
+           </property>
+           <property name="maxLength">
+            <number>20</number>
+           </property>
           </widget>
           <widget class="QLineEdit" name="lineSecurity">
            <property name="geometry">
             <rect>
              <x>160</x>
              <y>110</y>
-             <width>31</width>
+             <width>51</width>
              <height>20</height>
             </rect>
+           </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
+           </property>
+           <property name="maxLength">
+            <number>4</number>
            </property>
           </widget>
           <widget class="QDateEdit" name="dateExpiration">
@@ -493,12 +637,28 @@
             <rect>
              <x>160</x>
              <y>140</y>
-             <width>110</width>
+             <width>171</width>
              <height>22</height>
             </rect>
            </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="minimumDateTime">
+            <datetime>
+             <hour>0</hour>
+             <minute>0</minute>
+             <second>0</second>
+             <year>2017</year>
+             <month>1</month>
+             <day>14</day>
+            </datetime>
+           </property>
            <property name="displayFormat">
-            <string>MM/yyyy</string>
+            <string>yy/MMMM</string>
            </property>
           </widget>
           <widget class="QRadioButton" name="radioButton_Credit">
@@ -509,6 +669,9 @@
              <width>82</width>
              <height>17</height>
             </rect>
+           </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
             <string>Credit</string>
@@ -522,6 +685,9 @@
              <width>82</width>
              <height>17</height>
             </rect>
+           </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
             <string>Debit</string>
@@ -537,6 +703,9 @@
             <height>141</height>
            </rect>
           </property>
+          <property name="locale">
+           <locale language="English" country="UnitedStates"/>
+          </property>
           <property name="title">
            <string>Access</string>
           </property>
@@ -544,10 +713,13 @@
            <property name="geometry">
             <rect>
              <x>70</x>
-             <y>20</y>
+             <y>16</y>
              <width>47</width>
-             <height>13</height>
+             <height>20</height>
             </rect>
+           </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
             <string>Login</string>
@@ -558,9 +730,12 @@
             <rect>
              <x>70</x>
              <y>50</y>
-             <width>61</width>
+             <width>91</width>
              <height>16</height>
             </rect>
+           </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
             <string>Password</string>
@@ -575,6 +750,9 @@
              <height>13</height>
             </rect>
            </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
+           </property>
            <property name="text">
             <string>E-mail</string>
            </property>
@@ -588,6 +766,12 @@
              <height>20</height>
             </rect>
            </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
+           </property>
+           <property name="maxLength">
+            <number>20</number>
+           </property>
           </widget>
           <widget class="QLineEdit" name="linePass">
            <property name="geometry">
@@ -598,6 +782,15 @@
              <height>20</height>
             </rect>
            </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
+           </property>
+           <property name="maxLength">
+            <number>30</number>
+           </property>
+           <property name="echoMode">
+            <enum>QLineEdit::Password</enum>
+           </property>
           </widget>
           <widget class="QLabel" name="labelConfirm">
            <property name="geometry">
@@ -607,6 +800,9 @@
              <width>81</width>
              <height>16</height>
             </rect>
+           </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
             <string>Confirm</string>
@@ -621,6 +817,15 @@
              <height>20</height>
             </rect>
            </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
+           </property>
+           <property name="maxLength">
+            <number>30</number>
+           </property>
+           <property name="echoMode">
+            <enum>QLineEdit::Password</enum>
+           </property>
           </widget>
           <widget class="QLineEdit" name="lineEmail">
            <property name="geometry">
@@ -630,6 +835,12 @@
              <width>211</width>
              <height>20</height>
             </rect>
+           </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
+           </property>
+           <property name="maxLength">
+            <number>45</number>
            </property>
           </widget>
          </widget>
@@ -641,6 +852,9 @@
             <width>101</width>
             <height>31</height>
            </rect>
+          </property>
+          <property name="locale">
+           <locale language="English" country="UnitedStates"/>
           </property>
           <property name="text">
            <string>Cancel</string>
@@ -655,6 +869,9 @@
             <height>31</height>
            </rect>
           </property>
+          <property name="locale">
+           <locale language="English" country="UnitedStates"/>
+          </property>
           <property name="text">
            <string>Register</string>
           </property>
@@ -668,6 +885,9 @@
             <height>151</height>
            </rect>
           </property>
+          <property name="locale">
+           <locale language="English" country="UnitedStates"/>
+          </property>
           <property name="title">
            <string>Bank Account</string>
           </property>
@@ -679,6 +899,9 @@
              <width>47</width>
              <height>13</height>
             </rect>
+           </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
             <string>Name</string>
@@ -693,6 +916,9 @@
              <height>13</height>
             </rect>
            </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
+           </property>
            <property name="text">
             <string>Bank</string>
            </property>
@@ -702,9 +928,12 @@
             <rect>
              <x>80</x>
              <y>90</y>
-             <width>47</width>
-             <height>13</height>
+             <width>51</width>
+             <height>21</height>
             </rect>
+           </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
             <string>Agency</string>
@@ -715,9 +944,12 @@
             <rect>
              <x>80</x>
              <y>120</y>
-             <width>47</width>
-             <height>13</height>
+             <width>61</width>
+             <height>21</height>
             </rect>
+           </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
             <string>Account</string>
@@ -732,6 +964,12 @@
              <height>20</height>
             </rect>
            </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
+           </property>
+           <property name="maxLength">
+            <number>30</number>
+           </property>
           </widget>
           <widget class="QLineEdit" name="lineAgency">
            <property name="geometry">
@@ -741,6 +979,12 @@
              <width>113</width>
              <height>20</height>
             </rect>
+           </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
+           </property>
+           <property name="maxLength">
+            <number>10</number>
            </property>
           </widget>
           <widget class="QLineEdit" name="lineAccount">
@@ -752,21 +996,25 @@
              <height>20</height>
             </rect>
            </property>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
+           </property>
+           <property name="maxLength">
+            <number>20</number>
+           </property>
           </widget>
           <widget class="QComboBox" name="comboBox_Bank">
            <property name="geometry">
             <rect>
              <x>160</x>
              <y>60</y>
-             <width>141</width>
+             <width>161</width>
              <height>22</height>
             </rect>
            </property>
-           <item>
-            <property name="text">
-             <string>Caixa Econômica</string>
-            </property>
-           </item>
+           <property name="locale">
+            <locale language="English" country="UnitedStates"/>
+           </property>
            <item>
             <property name="text">
              <string>Banco do Brasil</string>
@@ -775,6 +1023,11 @@
            <item>
             <property name="text">
              <string>Bradesco</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Caixa Econômica</string>
             </property>
            </item>
            <item>
@@ -799,6 +1052,9 @@
            <height>0</height>
           </size>
          </property>
+         <property name="locale">
+          <locale language="English" country="UnitedStates"/>
+         </property>
          <property name="frameShape">
           <enum>QFrame::StyledPanel</enum>
          </property>
@@ -816,7 +1072,7 @@
  <tabstops>
   <tabstop>scrollArea</tabstop>
   <tabstop>lineFirstName</tabstop>
-  <tabstop>lineSecondName</tabstop>
+  <tabstop>lineLastName</tabstop>
   <tabstop>lineCPF</tabstop>
   <tabstop>lineRG</tabstop>
   <tabstop>spinAge</tabstop>
@@ -828,7 +1084,7 @@
   <tabstop>lineAdress</tabstop>
   <tabstop>lineZIP</tabstop>
   <tabstop>lineState</tabstop>
-  <tabstop>lineCountry</tabstop>
+  <tabstop>lineCity</tabstop>
   <tabstop>radioButton_Credit</tabstop>
   <tabstop>radioButton_Debit</tabstop>
   <tabstop>lineNamePayment</tabstop>
@@ -843,5 +1099,38 @@
   <tabstop>pushButton_Cancel</tabstop>
  </tabstops>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>lineNamePayment</sender>
+   <signal>textEdited(QString)</signal>
+   <receiver>lineNameBank</receiver>
+   <slot>setText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>407</x>
+     <y>113</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>409</x>
+     <y>282</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineNameBank</sender>
+   <signal>textEdited(QString)</signal>
+   <receiver>lineNamePayment</receiver>
+   <slot>setText(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>377</x>
+     <y>275</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>390</x>
+     <y>112</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

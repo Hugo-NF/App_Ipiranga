@@ -1,0 +1,12 @@
+- Abrir formularios:
+	Não fecha o anteriror, somente abre um novo;
+	Aumento de espaço memória;
+
+- Fechar fomularios:
+	Não desconstroi o objeto;
+	Aumento de espaço memória;
+
+- Campos:
+	Podem receber qualquer caracter;
+
+- 
