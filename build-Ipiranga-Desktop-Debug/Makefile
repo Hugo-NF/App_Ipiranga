@@ -33,10 +33,10 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = Ipiranga1.0.0
-DISTDIR = /home/luiz/Documentos/App_Ipiranga-master_2/build-Ipiranga-Desktop-Debug/.tmp/Ipiranga1.0.0
+DISTDIR = /home/luiz/Documentos/App_Ipiranga/build-Ipiranga-Desktop-Debug/.tmp/Ipiranga1.0.0
 LINK          = g++
 LFLAGS        = 
-LIBS          = $(SUBLIBS) -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread -lm ../lib/libsqlite3.a -ldl -l sqlite3  
+LIBS          = $(SUBLIBS) -lm ../lib/libsqlite3.a -ldl -l sqlite3 -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread 
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -314,7 +314,8 @@ compiler_rcc_make_all: qrc_resources.cpp
 compiler_rcc_clean:
 	-$(DEL_FILE) qrc_resources.cpp
 qrc_resources.cpp: ../Ipiranga_GUI/resources.qrc \
-		../Ipiranga_GUI/images/Ipiranga_logo.png
+		../Ipiranga_GUI/images/Ipiranga_logo.png \
+		../Ipiranga_GUI/images/Icon.png
 	/usr/lib64/qt5/bin/rcc -name resources ../Ipiranga_GUI/resources.qrc -o qrc_resources.cpp
 
 compiler_moc_predefs_make_all: moc_predefs.h
@@ -331,16 +332,16 @@ moc_loginuser.cpp: ../Ipiranga_GUI/userapp.h \
 		../include/User.hpp \
 		../Ipiranga_GUI/loginuser.h \
 		moc_predefs.h
-	/usr/lib64/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/luiz/Documentos/App_Ipiranga-master_2/Ipiranga_GUI -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I/usr/include/c++/6.3.1 -I/usr/include/c++/6.3.1/x86_64-redhat-linux -I/usr/include/c++/6.3.1/backward -I/usr/lib/gcc/x86_64-redhat-linux/6.3.1/include -I/usr/local/include -I/usr/include ../Ipiranga_GUI/loginuser.h -o moc_loginuser.cpp
+	/usr/lib64/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/luiz/Documentos/App_Ipiranga/Ipiranga_GUI -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I/usr/include/c++/6.3.1 -I/usr/include/c++/6.3.1/x86_64-redhat-linux -I/usr/include/c++/6.3.1/backward -I/usr/lib/gcc/x86_64-redhat-linux/6.3.1/include -I/usr/local/include -I/usr/include ../Ipiranga_GUI/loginuser.h -o moc_loginuser.cpp
 
 moc_userapp.cpp: ../Ipiranga_GUI/userapp.h \
 		moc_predefs.h
-	/usr/lib64/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/luiz/Documentos/App_Ipiranga-master_2/Ipiranga_GUI -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I/usr/include/c++/6.3.1 -I/usr/include/c++/6.3.1/x86_64-redhat-linux -I/usr/include/c++/6.3.1/backward -I/usr/lib/gcc/x86_64-redhat-linux/6.3.1/include -I/usr/local/include -I/usr/include ../Ipiranga_GUI/userapp.h -o moc_userapp.cpp
+	/usr/lib64/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/luiz/Documentos/App_Ipiranga/Ipiranga_GUI -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I/usr/include/c++/6.3.1 -I/usr/include/c++/6.3.1/x86_64-redhat-linux -I/usr/include/c++/6.3.1/backward -I/usr/lib/gcc/x86_64-redhat-linux/6.3.1/include -I/usr/local/include -I/usr/include ../Ipiranga_GUI/userapp.h -o moc_userapp.cpp
 
 moc_formregister.cpp: ../include/User.hpp \
 		../Ipiranga_GUI/formregister.h \
 		moc_predefs.h
-	/usr/lib64/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/luiz/Documentos/App_Ipiranga-master_2/Ipiranga_GUI -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I/usr/include/c++/6.3.1 -I/usr/include/c++/6.3.1/x86_64-redhat-linux -I/usr/include/c++/6.3.1/backward -I/usr/lib/gcc/x86_64-redhat-linux/6.3.1/include -I/usr/local/include -I/usr/include ../Ipiranga_GUI/formregister.h -o moc_formregister.cpp
+	/usr/lib64/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/luiz/Documentos/App_Ipiranga/Ipiranga_GUI -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I/usr/include/c++/6.3.1 -I/usr/include/c++/6.3.1/x86_64-redhat-linux -I/usr/include/c++/6.3.1/backward -I/usr/lib/gcc/x86_64-redhat-linux/6.3.1/include -I/usr/local/include -I/usr/include ../Ipiranga_GUI/formregister.h -o moc_formregister.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:

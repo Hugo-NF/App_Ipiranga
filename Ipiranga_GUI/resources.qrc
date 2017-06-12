@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/img_login">
         <file>images/Ipiranga_logo.png</file>
+        <file>images/Icon.png</file>
     </qresource>
 </RCC>

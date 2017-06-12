@@ -117,7 +117,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidget = new QWidget();
         scrollAreaWidget->setObjectName(QStringLiteral("scrollAreaWidget"));
-        scrollAreaWidget->setGeometry(QRect(0, 0, 485, 980));
+        scrollAreaWidget->setGeometry(QRect(0, -354, 485, 980));
         horizontalLayout = new QHBoxLayout(scrollAreaWidget);
         horizontalLayout->setSpacing(0);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
@@ -458,7 +458,7 @@ public:
         labelNumber->setText(QApplication::translate("FormRegister", "Number", 0));
         labelName->setText(QApplication::translate("FormRegister", "Name", 0));
         labelSecurity->setText(QApplication::translate("FormRegister", "N\302\272 Security", 0));
-        dateExpiration->setDisplayFormat(QApplication::translate("FormRegister", "yy/MMMM", 0));
+        dateExpiration->setDisplayFormat(QApplication::translate("FormRegister", "yyyy/MMM", 0));
         radioButton_Credit->setText(QApplication::translate("FormRegister", "Credit", 0));
         radioButton_Debit->setText(QApplication::translate("FormRegister", "Debit", 0));
         Acess->setTitle(QApplication::translate("FormRegister", "Access", 0));
