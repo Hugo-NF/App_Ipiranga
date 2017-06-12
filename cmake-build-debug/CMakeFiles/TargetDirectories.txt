@@ -1,0 +1,3 @@
+/home/hugo/Documentos/UnB/3° Semestre/MP/App_Ipiranga/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/hugo/Documentos/UnB/3° Semestre/MP/App_Ipiranga/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/hugo/Documentos/UnB/3° Semestre/MP/App_Ipiranga/cmake-build-debug/CMakeFiles/App_Ipiranga.dir
