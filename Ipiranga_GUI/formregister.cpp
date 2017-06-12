@@ -67,8 +67,6 @@ void FormRegister::on_pushButton_Register_clicked()
         sqlite3 *Connection;
         sqlite3_open("../database/Ipiranga.db", &Connection);
 
-        this->UserDate[16]="11/set";
-
         try{
             NewUser.createTable(Connection);
             NewUser.registerUser(Connection, this->UserDate, this->Payment_active, this->Bank_active);
@@ -102,15 +100,34 @@ bool FormRegister::checkFields()
               * !this->UserDate[11].empty() * !this->UserDate[12].empty();
 
     //Payment - empty?
-    this->Payment_active *= (this->Credit || this->Debit) * !this->UserDate[15].empty() * !this->UserDate[16].empty();
+    this->Payment_active *= (this->Credit || this->Debit)
+                            * !this->UserDate[14].empty() * !this->UserDate[15].empty();
+    if(!this->Payment_active){
+        for(int i=13; i<=16; i++)
+            this->UserDate[i]="empty";
+    }else{
+        //Whitch card operation?
+        if(this->Credit){
+            this->UserDate[13] = "Credit";
+        }else if(this->Debit){
+            this->UserDate[13] = "Debit";
+        }
 
-    if(this->Credit){
-        this->UserDate[13] = "Credit";
-    }else if(this->Debit){
-        this->UserDate[13] = "Debit";
+        //Witch expiration date?
+        this->UserDate[16] = to_string(ExpirationDate.year());
+        this->UserDate[16].append("/");
+        this->UserDate[16].append(to_string(ExpirationDate.month()));
     }
 
     //Bank Account - empty?
+    this->Bank_active *= !this->UserDate[17].empty() * !this->UserDate[18].empty()
+                       *!this->UserDate[19].empty() * !this->UserDate[20].empty();
+
+    if(!this->Bank_active){
+        for (int i=17; i<=20; i++)
+            this->UserDate[i]="empty";
+    }
+
 
     if(this->UserDate[7]!=this->PassConfirm){
         check = false;
