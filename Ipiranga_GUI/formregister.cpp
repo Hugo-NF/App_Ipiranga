@@ -24,39 +24,41 @@ void FormRegister::on_pushButton_Cancel_clicked()
 
 void FormRegister::on_pushButton_Register_clicked()
 {
+    UserDate.resize(21);
+
     //--------GET VALUE FROM FORM FIELDS-------
     // Personal Information
-    FirstName = ui->lineFirstName->text();
-    LastName = ui->lineLastName->text();
-    CPF = ui->lineCPF->text();
-    RG = ui->lineRG->text();
+    UserDate[0] = ui->lineFirstName->text();
+    UserDate[1] = ui->lineLastName->text();
+    UserDate[2] = ui->lineCPF->text();
+    UserDate[3] = ui->lineRG->text();
     Age = ui->spinAge->value();
-    Phone = ui->linePhone->text();
+    UserDate[5] = ui->linePhone->text();
 
     // Acess
-    Login = ui->lineLogin->text();
-    Password = ui->linePass->text();
-    Confirm = ui->lineConfirm->text();
-    Email = ui->lineEmail->text();
+    UserDate[6] = ui->lineLogin->text();
+    UserDate[7] = ui->linePass->text();
+    UserDate[8] = ui->lineConfirm->text();
+    UserDate[9] = ui->lineEmail->text();
 
     // Adress
-    Adress = ui->lineAdress->text();
-    Zip = ui->lineZIP->text();
-    State = ui->lineState->text();
-    City = ui->lineCity->text();
+    UserDate[10] = ui->lineAdress->text();
+    UserDate[11] = ui->lineZIP->text();
+    UserDate[12] = ui->lineState->text();
+    UserDate[13] = ui->lineCity->text();
 
     // Payment
     Credit = ui->radioButton_Credit->isChecked();
     Debit = ui->radioButton_Debit->isChecked();
-    Number = ui->lineNumber->text();
-    NSecurity = ui->lineSecurity->text();
-    Expiration = ui->dateExpiration->date();
+    UserDate[15] = ui->lineNumber->text();
+    UserDate[16] = ui->lineSecurity->text();
+    ExpirationDate = ui->dateExpiration->date();
 
     // Bank Account
-    Name_account = ui->lineNamePayment->text();
-    Bank = ui->comboBox_Bank->currentText();
-    Agency = ui->lineAgency->text();
-    N_Account = ui->lineAccount->text();
+    UserDate[18] = ui->lineNamePayment->text();
+    UserDate[19] = ui->comboBox_Bank->currentText();
+    UserDate[20] = ui->lineAgency->text();
+    UserDate[21] = ui->lineAccount->text();
     //-------------END GET VALUES--------------
 
     //-----------CALL METHODS--------------
@@ -71,16 +73,16 @@ bool FormRegister::checkFields()
     bool check=true;
 
     //Personal Information - IsEmpty?
-    check *= !FirstName.isEmpty() * !LastName.isEmpty() * !CPF.isEmpty()
-              * !RG.isEmpty() * !Phone.isEmpty();
+    check *= !UserDate[0].isEmpty() * !UserDate[1].isEmpty() * !UserDate[2].isEmpty()
+              * !UserDate[3].isEmpty() * !UserDate[5].isEmpty();
 
     //Acess - IsEmpty?
-   check *= !Login.isEmpty() * !Password.isEmpty()
-              * !Confirm.isEmpty() * !Email.isEmpty();
+   check *= !UserDate[6].isEmpty() * !UserDate[7].isEmpty()
+              * !UserDate[8].isEmpty() * !UserDate[9].isEmpty();
 
     //Adress - IsEmpty?
-    check *= !Adress.isEmpty() * !Zip.isEmpty()
-              * !State.isEmpty() * !City.isEmpty();
+    check *= !UserDate[10].isEmpty() * !UserDate[11].isEmpty()
+              * !UserDate[12].isEmpty() * !UserDate[13].isEmpty();
 
     //Payment - IsEmpty?
 

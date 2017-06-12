@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QDate>
+#include <vector>
 
 namespace Ui {
 class FormRegister;
@@ -23,42 +24,54 @@ private slots:
 private:
     Ui::FormRegister *ui;
 
+    vector <Qstring> UserDate; //User informations
+
+    QString PassConfirm;    //password confirmation
+
+    QDate ExpirationDate;    //date of credit card expiration
+
+    bool Credit, Debit;     //credit or debit?
+    bool Payment_active;    //payment method is activated?
+    bool Bank_active;       //bank account is activated?
+
+
     //-----VAR FORM FIELDS------
 
-    // Personal Information
-    QString FirstName;
-    QString LastName;
-    QString CPF;
-    QString RG;
-    int Age;
-    QString Phone;
+    /* Personal Information
+    UserDate[0] = FirstName;
+    UserDate[1] = LastName;
+    UserDate[2] = CPF;
+    UserDate[3] = RG;
+    UserDate[4] = Age;
+    UserDate[5] = Phone;*/
 
-    // Acess
-    QString Login;
-    QString Password;
-    QString Confirm;
-    QString Email;
+    /* Acess
+    UserDate[6] = Login;
+    UserDate[7] = Password;
+    UserDate[8] = Confirm;
+    UserDate[9] = Email;*/
 
-    // Adress
-    QString Adress;
-    QString Zip;
-    QString State;
-    QString City;
+    /* Adress
+    UserDate[10] = Adress;
+    UserDate[11] = Zip;
+    UserDate[12] = State;
+    UserDate[13] = City;*/
 
-    // Payment
+    /* Payment
     bool Payment_active;
-    bool Credit;
-    bool Debit;
-    QString Number;
-    QString NSecurity;
-    QDate Expiration;
+    UserDate[14] = Credit;
+     or
+    UserDate[14] = Debit;
+    UserDate[15] = Number;
+    UserDate[16] = NSecurity;
+    UserDate[17] = Expiration;*/
 
-    // Bank Account
+    /* Bank Account
     bool Bank_active;
-    QString Name_account;
-    QString Bank;
-    QString Agency;
-    QString N_Account;
+    UserDate[18] = Name_account;
+    UserDate[19] = Bank;
+    UserDate[20] = Agency;
+    UserDate[21] = N_Account;*/
 
     //---------END FORM FIELDS-------------
 
