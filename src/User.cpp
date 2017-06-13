@@ -382,7 +382,6 @@ vector<User *> User::searchBy(vector<string> criteria, vector<string> keywords) 
     sprintf(query, "%s = '%s';", criteria[i].c_str(), keywords[i].c_str());
     strcat(SQL, query);
     memset(query, 0, 100);
-    cout<<SQL;
     flag = sqlite3_exec(connection, SQL, userCallback, &result, &errMsg);
 
     if(flag!=SQLITE_OK)
@@ -397,7 +396,6 @@ vector<User *> User::searchBy(vector<string> criteria, vector<string> keywords) 
 
 void User::registerUser(vector<string> fields, bool Card, bool Bank){
     sqlite3 *connection;
-    const char *errMsg;
     int flag = sqlite3_open(DATABASE, &connection);
     if(flag!=SQLITE_OK)
         throw CONNECTION_ERROR;
@@ -449,12 +447,9 @@ void User::registerUser(vector<string> fields, bool Card, bool Bank){
             else if(strcmp(err,"UNIQUE constraint failed: USERS.username")==SQLITE_OK)
                 throw USERNAME_REPEATED;
             else if(strcmp(err,"UNIQUE constraint failed: USERS.email")==SQLITE_OK)
-                throw ;
-            else{
-                strcpy(errMsg, err);
-                throw errMsg;
-            }
-
+                throw EMAIL_REPEATED;
+            else
+                throw err;
     }
 }
 
@@ -478,7 +473,7 @@ User* User::login(string username, string password) {
     return result[0];
 }
 
-void User::instantiateUser(User *currentUser, User *data){
+void User::instantiateUser(User *currentUser, User *data){ //No utility until now
     currentUser = new User(data->getId());
     currentUser->setFirstName(data->getFirstName());
     currentUser->setLastName(data->getLastName());

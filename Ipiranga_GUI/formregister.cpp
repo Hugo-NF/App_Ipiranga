@@ -69,8 +69,11 @@ void FormRegister::on_pushButton_Register_clicked()
             QMessageBox::information(this,tr("Register"),tr("Registered with sucess!\n You will receive a confirmation in your E-mail!"));
             close();
         }
-        catch(const char *erro){
-            QMessageBox::information(this,tr("Register"),tr(erro));
+        catch(const char *error){
+            QMessageBox::information(this,tr("Register"),tr(error));
+        }
+        catch (char *error){
+            QMessageBox::information(this,tr("Register"),tr(error));
         }
     }else
         QMessageBox::warning(this,tr("Register"),tr("Some field is empty \n\nFill in all required Fields!"));

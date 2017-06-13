@@ -32,8 +32,12 @@ void LoginUser::on_pushLogin_clicked()
         userapp->show();
 
     }
-    catch(const char *erro){
-        QMessageBox::warning(this,tr("Login"),tr(erro));
+    catch(const char *error){
+        QMessageBox::warning(this,tr("Login"),tr(error));
+        ui->linePass->setText("");
+    }
+    catch (char *error){
+        QMessageBox::warning(this,tr("Login"),tr(error));
         ui->linePass->setText("");
     }
 }
