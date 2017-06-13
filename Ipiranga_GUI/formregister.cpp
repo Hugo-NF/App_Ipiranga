@@ -67,7 +67,7 @@ void FormRegister::on_pushButton_Register_clicked()
         try{
             NewUser.registerUser(this->UserDate, this->Payment_active, this->Bank_active);
             QMessageBox::information(this,tr("Register"),tr("Registered with sucess!\n You will receive a confirmation in your E-mail!"));
-            close();
+            this->~FormRegister();
         }
         catch(const char *erro){
             QMessageBox::information(this,tr("Register"),tr(erro));

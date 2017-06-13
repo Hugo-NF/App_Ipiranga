@@ -27,8 +27,8 @@ void LoginUser::on_pushLogin_clicked()
 
     try{
         CurrentUser = CurrentUser->login(username,password);
-        close();
-        userapp = new UserApp(this);
+        hide();
+        userapp = new UserApp(this, CurrentUser);
         userapp->show();
 
     }

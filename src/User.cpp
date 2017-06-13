@@ -451,7 +451,7 @@ void User::registerUser(vector<string> fields, bool Card, bool Bank){
             else if(strcmp(err,"UNIQUE constraint failed: USERS.email")==SQLITE_OK)
                 throw ;
             else{
-                strcpy(errMsg, err);
+                //strcpy(errMsg, err);
                 throw errMsg;
             }
 
