@@ -11,6 +11,11 @@ LoginUser::LoginUser(QWidget *parent) :
     ui(new Ui::LoginUser)
 {
     ui->setupUi(this);
+
+    //WARNING: APAGAR DEPOIS
+    User *a;
+    userapp = new UserApp(this,a);
+    userapp->show();
 }
 
 LoginUser::~LoginUser()

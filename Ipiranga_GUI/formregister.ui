@@ -25,6 +25,10 @@
   <property name="windowTitle">
    <string>Register Now</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/img_login/images/Icon.png</normaloff>:/img_login/images/Icon.png</iconset>
+  </property>
   <layout class="QHBoxLayout" name="horizontalLayout_2">
    <property name="spacing">
     <number>0</number>
@@ -53,7 +57,7 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>-354</y>
+        <y>0</y>
         <width>485</width>
         <height>980</height>
        </rect>
@@ -1101,7 +1105,9 @@
   <tabstop>pushButton_Register</tabstop>
   <tabstop>pushButton_Cancel</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>lineNamePayment</sender>

@@ -6,8 +6,9 @@ UserApp::UserApp(QWidget *parent, User* _CurrentUser) :
     ui(new Ui::UserApp)
 {
     ui->setupUi(this);
+    this->setGeometry(0,0,1000,600);
+    this->setMinimumSize(650,600);
     CurrentUser = _CurrentUser;
-    ui->label->setText(QString::fromStdString(CurrentUser->getUsername()));
 }
 
 UserApp::~UserApp()

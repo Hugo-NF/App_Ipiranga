@@ -107,6 +107,9 @@ public:
         sizePolicy.setHeightForWidth(FormRegister->sizePolicy().hasHeightForWidth());
         FormRegister->setSizePolicy(sizePolicy);
         FormRegister->setMinimumSize(QSize(500, 460));
+        QIcon icon;
+        icon.addFile(QStringLiteral(":/img_login/images/Icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        FormRegister->setWindowIcon(icon);
         horizontalLayout_2 = new QHBoxLayout(FormRegister);
         horizontalLayout_2->setSpacing(0);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
@@ -117,7 +120,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidget = new QWidget();
         scrollAreaWidget->setObjectName(QStringLiteral("scrollAreaWidget"));
-        scrollAreaWidget->setGeometry(QRect(0, -354, 485, 980));
+        scrollAreaWidget->setGeometry(QRect(0, 0, 485, 980));
         horizontalLayout = new QHBoxLayout(scrollAreaWidget);
         horizontalLayout->setSpacing(0);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));

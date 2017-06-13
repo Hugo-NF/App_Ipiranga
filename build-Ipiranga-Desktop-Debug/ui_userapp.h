@@ -13,11 +13,12 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QFrame>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
-#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenuBar>
-#include <QtWidgets/QStatusBar>
+#include <QtWidgets/QStackedWidget>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -26,28 +27,114 @@ class Ui_UserApp
 {
 public:
     QWidget *centralwidget;
-    QLabel *label;
-    QMenuBar *menubar;
-    QStatusBar *statusbar;
+    QVBoxLayout *verticalLayout;
+    QFrame *Frame_Search;
+    QHBoxLayout *horizontalLayout;
+    QVBoxLayout *Box_Menu;
+    QFrame *Menu;
+    QFrame *Anuncio_Menu;
+    QStackedWidget *Pages;
+    QWidget *page_1;
+    QWidget *page_3;
+    QVBoxLayout *Box_anuncio;
+    QFrame *frame;
 
     void setupUi(QMainWindow *UserApp)
     {
         if (UserApp->objectName().isEmpty())
             UserApp->setObjectName(QStringLiteral("UserApp"));
-        UserApp->resize(640, 480);
+        UserApp->resize(651, 412);
+        QIcon icon;
+        icon.addFile(QStringLiteral(":/img_login/images/Icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        UserApp->setWindowIcon(icon);
         centralwidget = new QWidget(UserApp);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
-        label = new QLabel(centralwidget);
-        label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(280, 150, 81, 61));
+        verticalLayout = new QVBoxLayout(centralwidget);
+        verticalLayout->setSpacing(6);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        verticalLayout->setContentsMargins(4, 3, 4, 3);
+        Frame_Search = new QFrame(centralwidget);
+        Frame_Search->setObjectName(QStringLiteral("Frame_Search"));
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(Frame_Search->sizePolicy().hasHeightForWidth());
+        Frame_Search->setSizePolicy(sizePolicy);
+        Frame_Search->setMinimumSize(QSize(0, 40));
+        Frame_Search->setStyleSheet(QStringLiteral("background:red"));
+        Frame_Search->setFrameShape(QFrame::StyledPanel);
+        Frame_Search->setFrameShadow(QFrame::Raised);
+
+        verticalLayout->addWidget(Frame_Search);
+
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setSpacing(3);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, -1, -1, -1);
+        Box_Menu = new QVBoxLayout();
+        Box_Menu->setObjectName(QStringLiteral("Box_Menu"));
+        Box_Menu->setSizeConstraint(QLayout::SetDefaultConstraint);
+        Menu = new QFrame(centralwidget);
+        Menu->setObjectName(QStringLiteral("Menu"));
+        QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(Menu->sizePolicy().hasHeightForWidth());
+        Menu->setSizePolicy(sizePolicy1);
+        Menu->setMinimumSize(QSize(150, 500));
+        Menu->setStyleSheet(QStringLiteral("background:blue"));
+        Menu->setFrameShape(QFrame::StyledPanel);
+        Menu->setFrameShadow(QFrame::Raised);
+
+        Box_Menu->addWidget(Menu);
+
+        Anuncio_Menu = new QFrame(centralwidget);
+        Anuncio_Menu->setObjectName(QStringLiteral("Anuncio_Menu"));
+        QSizePolicy sizePolicy2(QSizePolicy::Fixed, QSizePolicy::Preferred);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(Anuncio_Menu->sizePolicy().hasHeightForWidth());
+        Anuncio_Menu->setSizePolicy(sizePolicy2);
+        Anuncio_Menu->setMinimumSize(QSize(150, 0));
+        Anuncio_Menu->setFrameShape(QFrame::StyledPanel);
+        Anuncio_Menu->setFrameShadow(QFrame::Raised);
+
+        Box_Menu->addWidget(Anuncio_Menu);
+
+
+        horizontalLayout->addLayout(Box_Menu);
+
+        Pages = new QStackedWidget(centralwidget);
+        Pages->setObjectName(QStringLiteral("Pages"));
+        page_1 = new QWidget();
+        page_1->setObjectName(QStringLiteral("page_1"));
+        page_1->setStyleSheet(QStringLiteral("background:black"));
+        Pages->addWidget(page_1);
+        page_3 = new QWidget();
+        page_3->setObjectName(QStringLiteral("page_3"));
+        page_3->setStyleSheet(QLatin1String("background:green\n"
+""));
+        Pages->addWidget(page_3);
+
+        horizontalLayout->addWidget(Pages);
+
+        Box_anuncio = new QVBoxLayout();
+        Box_anuncio->setObjectName(QStringLiteral("Box_anuncio"));
+        frame = new QFrame(centralwidget);
+        frame->setObjectName(QStringLiteral("frame"));
+        frame->setMinimumSize(QSize(100, 0));
+        frame->setFrameShape(QFrame::StyledPanel);
+        frame->setFrameShadow(QFrame::Raised);
+
+        Box_anuncio->addWidget(frame);
+
+
+        horizontalLayout->addLayout(Box_anuncio);
+
+
+        verticalLayout->addLayout(horizontalLayout);
+
         UserApp->setCentralWidget(centralwidget);
-        menubar = new QMenuBar(UserApp);
-        menubar->setObjectName(QStringLiteral("menubar"));
-        menubar->setGeometry(QRect(0, 0, 640, 21));
-        UserApp->setMenuBar(menubar);
-        statusbar = new QStatusBar(UserApp);
-        statusbar->setObjectName(QStringLiteral("statusbar"));
-        UserApp->setStatusBar(statusbar);
 
         retranslateUi(UserApp);
 
@@ -57,7 +144,6 @@ public:
     void retranslateUi(QMainWindow *UserApp)
     {
         UserApp->setWindowTitle(QApplication::translate("UserApp", "Ipiranga", 0));
-        label->setText(QApplication::translate("UserApp", "BIRRRRRRLLLL", 0));
     } // retranslateUi
 
 };

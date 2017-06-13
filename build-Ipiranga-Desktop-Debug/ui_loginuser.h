@@ -18,9 +18,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -37,8 +35,6 @@ public:
     QPushButton *pushLogin;
     QPushButton *pushRegister;
     QLabel *label_ImgLogo;
-    QMenuBar *menuBar;
-    QStatusBar *statusBar;
 
     void setupUi(QMainWindow *LoginUser)
     {
@@ -89,13 +85,6 @@ public:
         label_ImgLogo->setScaledContents(true);
         label_ImgLogo->setAlignment(Qt::AlignCenter);
         LoginUser->setCentralWidget(centralWidget);
-        menuBar = new QMenuBar(LoginUser);
-        menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 400, 28));
-        LoginUser->setMenuBar(menuBar);
-        statusBar = new QStatusBar(LoginUser);
-        statusBar->setObjectName(QStringLiteral("statusBar"));
-        LoginUser->setStatusBar(statusBar);
         QWidget::setTabOrder(lineName, linePass);
 
         retranslateUi(LoginUser);
