@@ -473,7 +473,7 @@ User* User::login(string username, string password) {
     return result[0];
 }
 
-void User::instantiateUser(User *currentUser, User *data){ //No utility until now
+void User::instantiateUser(User *currentUser, User *data){ //Dead function
     currentUser = new User(data->getId());
     currentUser->setFirstName(data->getFirstName());
     currentUser->setLastName(data->getLastName());
