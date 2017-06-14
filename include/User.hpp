@@ -12,6 +12,13 @@
 #include <sqlite3.h>
 
 #define DATABASE "../database/Ipiranga.db"
+#define LOGIN_FAILED "Invalid login credentials"
+#define CONNECTION_ERROR "Could not connect to the application database"
+#define RG_CONSTRAINT "RG previously registered"
+#define CPF_CONSTRAINT "CPF previously registered"
+#define EMAIL_CONSTRAINT "E-mail current in use by another user"
+#define USERNAME_CONSTRAINT "Username unavailable"
+#define QUERY_INVALID "Invalid search parameters"
 
 using namespace std;
 
