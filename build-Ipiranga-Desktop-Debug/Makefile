@@ -314,7 +314,9 @@ compiler_rcc_make_all: qrc_resources.cpp
 compiler_rcc_clean:
 	-$(DEL_FILE) qrc_resources.cpp
 qrc_resources.cpp: ../Ipiranga_GUI/resources.qrc \
+		../Ipiranga_GUI/images/User_img_mold.png \
 		../Ipiranga_GUI/images/Ipiranga_logo.png \
+		../Ipiranga_GUI/images/User_img.png \
 		../Ipiranga_GUI/images/Icon.png
 	/usr/lib64/qt5/bin/rcc -name resources ../Ipiranga_GUI/resources.qrc -o qrc_resources.cpp
 
@@ -328,13 +330,14 @@ compiler_moc_header_make_all: moc_loginuser.cpp moc_userapp.cpp moc_formregister
 compiler_moc_header_clean:
 	-$(DEL_FILE) moc_loginuser.cpp moc_userapp.cpp moc_formregister.cpp
 moc_loginuser.cpp: ../Ipiranga_GUI/userapp.h \
-		../Ipiranga_GUI/formregister.h \
 		../include/User.hpp \
+		../Ipiranga_GUI/formregister.h \
 		../Ipiranga_GUI/loginuser.h \
 		moc_predefs.h
 	/usr/lib64/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/luiz/Documentos/App_Ipiranga/Ipiranga_GUI -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I/usr/include/c++/6.3.1 -I/usr/include/c++/6.3.1/x86_64-redhat-linux -I/usr/include/c++/6.3.1/backward -I/usr/lib/gcc/x86_64-redhat-linux/6.3.1/include -I/usr/local/include -I/usr/include ../Ipiranga_GUI/loginuser.h -o moc_loginuser.cpp
 
-moc_userapp.cpp: ../Ipiranga_GUI/userapp.h \
+moc_userapp.cpp: ../include/User.hpp \
+		../Ipiranga_GUI/userapp.h \
 		moc_predefs.h
 	/usr/lib64/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/luiz/Documentos/App_Ipiranga/Ipiranga_GUI -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I/usr/include/c++/6.3.1 -I/usr/include/c++/6.3.1/x86_64-redhat-linux -I/usr/include/c++/6.3.1/backward -I/usr/lib/gcc/x86_64-redhat-linux/6.3.1/include -I/usr/local/include -I/usr/include ../Ipiranga_GUI/userapp.h -o moc_userapp.cpp
 
@@ -369,18 +372,19 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 
 main.o: ../Ipiranga_GUI/main.cpp ../Ipiranga_GUI/loginuser.h \
 		../Ipiranga_GUI/userapp.h \
-		../Ipiranga_GUI/formregister.h \
-		../include/User.hpp
+		../include/User.hpp \
+		../Ipiranga_GUI/formregister.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Ipiranga_GUI/main.cpp
 
 loginuser.o: ../Ipiranga_GUI/loginuser.cpp ../Ipiranga_GUI/loginuser.h \
 		../Ipiranga_GUI/userapp.h \
-		../Ipiranga_GUI/formregister.h \
 		../include/User.hpp \
+		../Ipiranga_GUI/formregister.h \
 		ui_loginuser.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o loginuser.o ../Ipiranga_GUI/loginuser.cpp
 
 userapp.o: ../Ipiranga_GUI/userapp.cpp ../Ipiranga_GUI/userapp.h \
+		../include/User.hpp \
 		ui_userapp.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o userapp.o ../Ipiranga_GUI/userapp.cpp
 

@@ -24,8 +24,8 @@ void FormRegister::on_pushButton_Cancel_clicked()
 
 void FormRegister::on_pushButton_Register_clicked()
 {
-    User NewUser(0);
-    this->UserDate.resize(21);
+    User NewUser(0);             //User constructed with the form fields
+    this->UserDate.resize(21);  //Dates of the User based on the form fields
 
     //--------GET VALUE FROM FORM FIELDS-------
     // Personal Information
@@ -63,14 +63,12 @@ void FormRegister::on_pushButton_Register_clicked()
     //-------------END GET VALUES--------------
 
     //-----------CALL METHODS--------------
-    if(this->checkFields()){
+    if(this->checkFields()){        // Check the fields of the form
         try{
+            // Register a new user on the BD
             NewUser.registerUser(this->UserDate, this->Payment_active, this->Bank_active);
             QMessageBox::information(this,tr("Register"),tr("Registered with sucess!\n You will receive a confirmation in your E-mail!"));
-            this->~FormRegister();
-        }
-        catch(const char *error){
-            QMessageBox::information(this,tr("Register"),tr(error));
+            this->~FormRegister();  // Eliminate the Form Register
         }
         catch (char *error){
             QMessageBox::information(this,tr("Register"),tr(error));
@@ -81,7 +79,7 @@ void FormRegister::on_pushButton_Register_clicked()
 
 bool FormRegister::checkFields()
 {
-    bool check=true;        //Set to true check fields
+    bool check=true;              //Set to true check fields
     this->Bank_active = true;     //Set to true bank account activation
     this->Payment_active = true;  //Set to true method payment activation
 
@@ -100,6 +98,8 @@ bool FormRegister::checkFields()
     //Payment - empty?
     this->Payment_active *= (this->Credit || this->Debit)
                             * !this->UserDate[14].empty() * !this->UserDate[15].empty();
+
+    //CreditCard is active?
     if(!this->Payment_active){
         for(int i=13; i<=16; i++)
             this->UserDate[i]="empty";
@@ -121,12 +121,13 @@ bool FormRegister::checkFields()
     this->Bank_active *= !this->UserDate[17].empty() * !this->UserDate[18].empty()
                        *!this->UserDate[19].empty() * !this->UserDate[20].empty();
 
+    //BankAccount is active?
     if(!this->Bank_active){
         for (int i=17; i<=20; i++)
             this->UserDate[i]="empty";
     }
 
-
+    //Password confirmation is correct?
     if(this->UserDate[7]!=this->PassConfirm){
         check = false;
         QMessageBox::warning(this,tr("Fields"),tr("Password confirmation incorrect!"));

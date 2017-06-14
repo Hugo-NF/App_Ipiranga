@@ -16,6 +16,7 @@
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QVBoxLayout>
@@ -32,6 +33,8 @@ public:
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *Box_Menu;
     QFrame *Menu;
+    QLabel *User_img;
+    QLabel *UserName;
     QFrame *Anuncio_Menu;
     QStackedWidget *Pages;
     QWidget *page_1;
@@ -43,7 +46,7 @@ public:
     {
         if (UserApp->objectName().isEmpty())
             UserApp->setObjectName(QStringLiteral("UserApp"));
-        UserApp->resize(651, 412);
+        UserApp->resize(651, 562);
         QIcon icon;
         icon.addFile(QStringLiteral(":/img_login/images/Icon.png"), QSize(), QIcon::Normal, QIcon::Off);
         UserApp->setWindowIcon(icon);
@@ -85,6 +88,21 @@ public:
         Menu->setStyleSheet(QStringLiteral("background:blue"));
         Menu->setFrameShape(QFrame::StyledPanel);
         Menu->setFrameShadow(QFrame::Raised);
+        User_img = new QLabel(Menu);
+        User_img->setObjectName(QStringLiteral("User_img"));
+        User_img->setGeometry(QRect(10, 10, 50, 50));
+        User_img->setPixmap(QPixmap(QString::fromUtf8(":/img_login/images/User_img.png")));
+        User_img->setScaledContents(true);
+        User_img->setTextInteractionFlags(Qt::NoTextInteraction);
+        UserName = new QLabel(Menu);
+        UserName->setObjectName(QStringLiteral("UserName"));
+        UserName->setGeometry(QRect(70, 19, 81, 31));
+        QFont font;
+        font.setBold(true);
+        font.setUnderline(true);
+        font.setWeight(75);
+        UserName->setFont(font);
+        UserName->setAlignment(Qt::AlignJustify|Qt::AlignVCenter);
 
         Box_Menu->addWidget(Menu);
 
@@ -122,7 +140,7 @@ public:
         Box_anuncio->setObjectName(QStringLiteral("Box_anuncio"));
         frame = new QFrame(centralwidget);
         frame->setObjectName(QStringLiteral("frame"));
-        frame->setMinimumSize(QSize(100, 0));
+        frame->setMinimumSize(QSize(0, 0));
         frame->setFrameShape(QFrame::StyledPanel);
         frame->setFrameShadow(QFrame::Raised);
 
@@ -144,6 +162,8 @@ public:
     void retranslateUi(QMainWindow *UserApp)
     {
         UserApp->setWindowTitle(QApplication::translate("UserApp", "Ipiranga", 0));
+        User_img->setText(QString());
+        UserName->setText(QApplication::translate("UserApp", "User Name", 0));
     } // retranslateUi
 
 };

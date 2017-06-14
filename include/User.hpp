@@ -12,13 +12,6 @@
 #include <sqlite3.h>
 
 #define DATABASE "../database/Ipiranga.db"
-#define CONNECTION_ERROR "Could not connect to database"
-#define QUERY_INVALID "Invalid search parameters"
-#define LOGIN_FAILED "Invalid credentials"
-#define RG_REPEATED "RG is already registered"
-#define CPF_REPEATED "CPF is already registered"
-#define EMAIL_REPEATED "E-mail is already registered"
-#define USERNAME_REPEATED "Username is already registered"
 
 using namespace std;
 
@@ -84,8 +77,8 @@ public: //Public methods
 public: //Public Methods
     User(unsigned int id){
         this->id = id;
-    };
-    ~User(){};
+    }
+    ~User(){}
     //Get/Set Operations
     //Personal
     void setFirstName(string);

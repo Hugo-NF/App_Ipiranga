@@ -18,14 +18,14 @@ public:
     ~LoginUser();
 
 private slots:
-    void on_pushLogin_clicked();
-
-    void on_pushRegister_clicked();
+    void on_pushLogin_clicked();    //Login Button
+    void on_pushRegister_clicked(); //Register Button
 
 private:
     Ui::LoginUser *ui;
-    UserApp *userapp;
-    FormRegister *formregister;
+
+    UserApp *userapp;               // Widget Home
+    FormRegister *formregister;     // Widget Register
 };
 
 #endif // LOGINUSER_H

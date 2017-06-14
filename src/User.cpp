@@ -278,12 +278,12 @@ void User::cleanTable() {
     sqlite3 *connection;
     int flag = sqlite3_open(DATABASE, &connection);
     if(flag!= SQLITE_OK)
-        throw CONNECTION_ERROR;
+        throw "CONNECTION_ERROR";
     this->deleteTable(connection);
     this->createTable(connection);
     flag = sqlite3_close(connection);
     if(flag != SQLITE_OK)
-        throw CONNECTION_ERROR;
+        throw "CONNECTION_ERROR";
 }
 
 //Database CRUD Operations
@@ -368,11 +368,11 @@ vector<User *> User::searchBy(vector<string> criteria, vector<string> keywords) 
     sqlite3 *connection;
 
     if(argcCriteria != argcKeywords || argcCriteria == SQLITE_OK || argcKeywords == SQLITE_OK)
-        throw QUERY_INVALID;
+        throw "QUERY_INVALID";
 
     int flag = sqlite3_open(DATABASE, &connection);
     if(flag != SQLITE_OK)
-        throw CONNECTION_ERROR;
+        throw "CONNECTION_ERROR";
 
     for(i=0; i<argcCriteria-1; i++){
         sprintf(query, "%s = '%s' AND ", criteria[i].c_str(), keywords[i].c_str());
@@ -389,7 +389,7 @@ vector<User *> User::searchBy(vector<string> criteria, vector<string> keywords) 
 
     flag = sqlite3_close(connection);
     if(flag != SQLITE_OK)
-        throw CONNECTION_ERROR;
+        throw "CONNECTION_ERROR";
 
     return result;
 }
@@ -398,7 +398,7 @@ void User::registerUser(vector<string> fields, bool Card, bool Bank){
     sqlite3 *connection;
     int flag = sqlite3_open(DATABASE, &connection);
     if(flag!=SQLITE_OK)
-        throw CONNECTION_ERROR;
+        throw "CONNECTION_ERROR";
 
     User newUser(0);
     newUser.setFirstName(fields[0]);
@@ -427,27 +427,26 @@ void User::registerUser(vector<string> fields, bool Card, bool Bank){
     newUser.setActivation(false);
     newUser.setBalance(0.0);
     newUser.setCardOperator("Visa"); //WARNING: Call security module
-
     try{
         newUser.insertOperation(connection, &newUser);
         newUser.~User();
         flag = sqlite3_close(connection);
         if(flag!=SQLITE_OK)
-            throw CONNECTION_ERROR;
+            throw "CONNECTION_ERROR";
     }
     catch (char *err){
             newUser.~User();
             flag = sqlite3_close(connection);
             if(flag!=SQLITE_OK)
-                throw CONNECTION_ERROR;
+                throw "CONNECTION_ERROR";
             if(strcmp(err,"UNIQUE constraint failed: USERS.RG")==SQLITE_OK)
-                throw RG_REPEATED;
+                throw "RG_REPEATED";
             else if(strcmp(err,"UNIQUE constraint failed: USERS.CPF")==SQLITE_OK)
-                throw CPF_REPEATED;
+                throw "CPF_REPEATED";
             else if(strcmp(err,"UNIQUE constraint failed: USERS.username")==SQLITE_OK)
-                throw USERNAME_REPEATED;
+                throw "USERNAME_REPEATED";
             else if(strcmp(err,"UNIQUE constraint failed: USERS.email")==SQLITE_OK)
-                throw EMAIL_REPEATED;
+                throw "foo";
             else
                 throw err;
     }
@@ -468,7 +467,7 @@ User* User::login(string username, string password) {
     //delete(&keywords);
     if(result.size() != 1){
         result.~vector();
-        throw LOGIN_FAILED;
+        throw "LOGIN_FAILED";
     }
     return result[0];
 }
