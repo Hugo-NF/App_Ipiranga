@@ -19,15 +19,15 @@ public:
     ~FormRegister();
 
 private slots:
-    void on_pushButton_Cancel_clicked();
-    void on_pushButton_Register_clicked();
+    void on_pushButton_Cancel_clicked();    //Cancel Button
+    void on_pushButton_Register_clicked();  //Register Button
 
 private:
     Ui::FormRegister *ui;
 
     vector <string> UserDate; //User informations
 
-    string PassConfirm;    //password confirmation
+    string PassConfirm;      //password confirmation
 
     QDate ExpirationDate;    //date of credit card expiration
 
@@ -76,11 +76,8 @@ private:
 
     //---------END FORM FIELDS-------------
 
-    //----------METHODS FORM----------------
+    // Methods
     bool checkFields();
-    void sendDateFields();
-    //--------END METHODS FORM--------------
-
 };
 
 #endif // FORMREGISTER_H

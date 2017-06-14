@@ -2,5 +2,7 @@
     <qresource prefix="/img_login">
         <file>images/Ipiranga_logo.png</file>
         <file>images/Icon.png</file>
+        <file>images/User_img.png</file>
+        <file>images/User_img_mold.png</file>
     </qresource>
 </RCC>

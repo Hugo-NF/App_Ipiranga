@@ -19,6 +19,9 @@ public:
 private:
     Ui::UserApp *ui;
     User* CurrentUser;
+
+    //Methods
+    void SetPropertyUserCurrent();  //Set the property of the actual user
 };
 
 #endif // USERAPP_H
