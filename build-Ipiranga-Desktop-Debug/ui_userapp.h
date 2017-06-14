@@ -37,8 +37,6 @@ public:
     QLabel *UserName;
     QFrame *Anuncio_Menu;
     QStackedWidget *Pages;
-    QWidget *page_1;
-    QWidget *page_3;
     QVBoxLayout *Box_anuncio;
     QFrame *frame;
 
@@ -124,15 +122,8 @@ public:
 
         Pages = new QStackedWidget(centralwidget);
         Pages->setObjectName(QStringLiteral("Pages"));
-        page_1 = new QWidget();
-        page_1->setObjectName(QStringLiteral("page_1"));
-        page_1->setStyleSheet(QStringLiteral("background:black"));
-        Pages->addWidget(page_1);
-        page_3 = new QWidget();
-        page_3->setObjectName(QStringLiteral("page_3"));
-        page_3->setStyleSheet(QLatin1String("background:green\n"
+        Pages->setStyleSheet(QLatin1String("background:black\n"
 ""));
-        Pages->addWidget(page_3);
 
         horizontalLayout->addWidget(Pages);
 
