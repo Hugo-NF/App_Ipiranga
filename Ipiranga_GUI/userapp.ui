@@ -292,8 +292,8 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>150</width>
-            <height>500</height>
+            <width>160</width>
+            <height>400</height>
            </size>
           </property>
           <property name="styleSheet">
@@ -545,8 +545,8 @@
             <string>Edit. Profile</string>
            </property>
            <property name="icon">
-            <iconset>
-             <normaloff>images/teste.png</normaloff>images/teste.png</iconset>
+            <iconset resource="resources.qrc">
+             <normaloff>:/img_login/images/profile_icon.png</normaloff>:/img_login/images/profile_icon.png</iconset>
            </property>
           </widget>
           <widget class="QCommandLinkButton" name="Button_friends">
@@ -603,6 +603,37 @@
              <normaloff>:/img_login/images/home_icon.png</normaloff>:/img_login/images/home_icon.png</iconset>
            </property>
           </widget>
+          <widget class="Line" name="line">
+           <property name="geometry">
+            <rect>
+             <x>155</x>
+             <y>10</y>
+             <width>3</width>
+             <height>350</height>
+            </rect>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>320</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>350</height>
+            </size>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+          </widget>
          </widget>
         </item>
         <item>
@@ -615,7 +646,7 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>150</width>
+            <width>160</width>
             <height>0</height>
            </size>
           </property>
@@ -661,6 +692,18 @@
    </layout>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>Button_search_friends</tabstop>
+  <tabstop>line_search</tabstop>
+  <tabstop>Button_search_advertise</tabstop>
+  <tabstop>Button_search</tabstop>
+  <tabstop>Button_home</tabstop>
+  <tabstop>Button_edit</tabstop>
+  <tabstop>Button_friends</tabstop>
+  <tabstop>Button_historic</tabstop>
+  <tabstop>Button_advertise</tabstop>
+  <tabstop>Button_logout</tabstop>
+ </tabstops>
  <resources>
   <include location="resources.qrc"/>
  </resources>

@@ -28,7 +28,9 @@ void LoginUser::on_pushLogin_clicked()
     try{
         //Catch the user on te BD
         CurrentUser = CurrentUser->login(username,password);
-        this->hide(); //Hide de login form
+
+        this->hide(); //Hide login form
+
         userapp = new UserApp(this, CurrentUser);
         userapp->showMaximized();
     }

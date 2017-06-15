@@ -52,6 +52,7 @@ public:
     QCommandLinkButton *Button_friends;
     QCommandLinkButton *Button_advertise;
     QCommandLinkButton *Button_home;
+    QFrame *line;
     QFrame *Anuncio_Menu;
     QStackedWidget *Pages;
     QVBoxLayout *Box_anuncio;
@@ -179,7 +180,7 @@ public:
         Menu->setObjectName(QStringLiteral("Menu"));
         sizePolicy2.setHeightForWidth(Menu->sizePolicy().hasHeightForWidth());
         Menu->setSizePolicy(sizePolicy2);
-        Menu->setMinimumSize(QSize(150, 500));
+        Menu->setMinimumSize(QSize(160, 400));
         Menu->setStyleSheet(QStringLiteral(""));
         Menu->setFrameShape(QFrame::StyledPanel);
         Menu->setFrameShadow(QFrame::Raised);
@@ -235,7 +236,7 @@ public:
         Button_edit->setObjectName(QStringLiteral("Button_edit"));
         Button_edit->setGeometry(QRect(30, 120, 121, 30));
         QIcon icon6;
-        icon6.addFile(QStringLiteral("images/teste.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon6.addFile(QStringLiteral(":/img_login/images/profile_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
         Button_edit->setIcon(icon6);
         Button_friends = new QCommandLinkButton(Menu);
         Button_friends->setObjectName(QStringLiteral("Button_friends"));
@@ -256,6 +257,15 @@ public:
         QIcon icon9;
         icon9.addFile(QStringLiteral(":/img_login/images/home_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
         Button_home->setIcon(icon9);
+        line = new QFrame(Menu);
+        line->setObjectName(QStringLiteral("line"));
+        line->setGeometry(QRect(155, 10, 3, 350));
+        sizePolicy2.setHeightForWidth(line->sizePolicy().hasHeightForWidth());
+        line->setSizePolicy(sizePolicy2);
+        line->setMinimumSize(QSize(0, 320));
+        line->setMaximumSize(QSize(16777215, 350));
+        line->setFrameShape(QFrame::VLine);
+        line->setFrameShadow(QFrame::Sunken);
 
         Box_Menu->addWidget(Menu);
 
@@ -266,7 +276,7 @@ public:
         sizePolicy3.setVerticalStretch(0);
         sizePolicy3.setHeightForWidth(Anuncio_Menu->sizePolicy().hasHeightForWidth());
         Anuncio_Menu->setSizePolicy(sizePolicy3);
-        Anuncio_Menu->setMinimumSize(QSize(150, 0));
+        Anuncio_Menu->setMinimumSize(QSize(160, 0));
         Anuncio_Menu->setFrameShape(QFrame::StyledPanel);
         Anuncio_Menu->setFrameShadow(QFrame::Raised);
 
@@ -298,6 +308,15 @@ public:
         verticalLayout->addLayout(horizontalLayout);
 
         UserApp->setCentralWidget(centralwidget);
+        QWidget::setTabOrder(Button_search_friends, line_search);
+        QWidget::setTabOrder(line_search, Button_search_advertise);
+        QWidget::setTabOrder(Button_search_advertise, Button_search);
+        QWidget::setTabOrder(Button_search, Button_home);
+        QWidget::setTabOrder(Button_home, Button_edit);
+        QWidget::setTabOrder(Button_edit, Button_friends);
+        QWidget::setTabOrder(Button_friends, Button_historic);
+        QWidget::setTabOrder(Button_historic, Button_advertise);
+        QWidget::setTabOrder(Button_advertise, Button_logout);
 
         retranslateUi(UserApp);
 

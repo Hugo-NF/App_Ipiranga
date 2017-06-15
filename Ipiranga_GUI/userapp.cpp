@@ -17,8 +17,9 @@ UserApp::UserApp(QWidget *parent, User* _CurrentUser) :
 
     this->SetPropertyUserCurrent();     //set dates of the current users in the window
 
-    ui->Button_search_friends->setEnabled(true);    // Initial Search False
-    ui->Button_search_advertise->setEnabled(false); // Initial Search True
+    ui->Button_search_friends->setEnabled(true);    // If the parameter in the 'setEnable' is false
+    ui->Button_search_advertise->setEnabled(false); // the search is for that kind
+    SearchType = false;                             // Set the search to Advertise
 
     //------------------------------------------------------
 
@@ -30,6 +31,7 @@ UserApp::UserApp(QWidget *parent, User* _CurrentUser) :
 
     // Page 1 - Profile Edit
     ui->Pages->insertWidget(1,&PageOne);
+    PageOne.SetCurrentUser(CurrentUser);
 
     // Page 2 - FriendsPage
     ui->Pages->insertWidget(2,&PageTwo);
@@ -54,7 +56,7 @@ UserApp::~UserApp()
 }
 
 void UserApp::SetPropertyUserCurrent(){
-    ui->UserName->setText(QString::fromStdString(CurrentUser.getUsername()));  //set User name in the window
+    ui->UserName->setText(QString::fromStdString(CurrentUser.getFirstName()));  //set User name in the window
 }
 
 //---------------MENU BUTTONS-----------------
@@ -86,7 +88,9 @@ void UserApp::on_Button_advertise_clicked()
 
 void UserApp::on_Button_logout_clicked()
 {
-    cout<<"Ainda não implementado"<<endl;
+    this->hide();
+    system("./Ipiranga");
+    this->close();
 }
 //---------------------------------------------
 

@@ -2,6 +2,7 @@
 #define INITIALPAGE_H
 
 #include <QWidget>
+#include "../include/User.hpp"
 
 namespace Ui {
 class InitialPage;
@@ -17,6 +18,8 @@ public:
 
 private:
     Ui::InitialPage *ui;
+
+    User CurrentUser;
 };
 
 #endif // INITIALPAGE_H

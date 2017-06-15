@@ -403,11 +403,13 @@ moc_formregister.cpp: ../include/User.hpp \
 		moc_predefs.h
 	/usr/lib64/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/luiz/Documentos/App_Ipiranga/Ipiranga_GUI -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I/usr/include/c++/6.3.1 -I/usr/include/c++/6.3.1/x86_64-redhat-linux -I/usr/include/c++/6.3.1/backward -I/usr/lib/gcc/x86_64-redhat-linux/6.3.1/include -I/usr/local/include -I/usr/include ../Ipiranga_GUI/formregister.h -o moc_formregister.cpp
 
-moc_initialpage.cpp: ../Ipiranga_GUI/UserPages/initialpage.h \
+moc_initialpage.cpp: ../include/User.hpp \
+		../Ipiranga_GUI/UserPages/initialpage.h \
 		moc_predefs.h
 	/usr/lib64/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/luiz/Documentos/App_Ipiranga/Ipiranga_GUI -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I/usr/include/c++/6.3.1 -I/usr/include/c++/6.3.1/x86_64-redhat-linux -I/usr/include/c++/6.3.1/backward -I/usr/lib/gcc/x86_64-redhat-linux/6.3.1/include -I/usr/local/include -I/usr/include ../Ipiranga_GUI/UserPages/initialpage.h -o moc_initialpage.cpp
 
-moc_editprofile.cpp: ../Ipiranga_GUI/UserPages/editprofile.h \
+moc_editprofile.cpp: ../include/User.hpp \
+		../Ipiranga_GUI/UserPages/editprofile.h \
 		moc_predefs.h
 	/usr/lib64/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/luiz/Documentos/App_Ipiranga/Ipiranga_GUI -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I/usr/include/c++/6.3.1 -I/usr/include/c++/6.3.1/x86_64-redhat-linux -I/usr/include/c++/6.3.1/backward -I/usr/lib/gcc/x86_64-redhat-linux/6.3.1/include -I/usr/local/include -I/usr/include ../Ipiranga_GUI/UserPages/editprofile.h -o moc_editprofile.cpp
 
@@ -516,10 +518,12 @@ User.o: ../src/User.cpp ../include/User.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o User.o ../src/User.cpp
 
 initialpage.o: ../Ipiranga_GUI/UserPages/initialpage.cpp ../Ipiranga_GUI/UserPages/initialpage.h \
+		../include/User.hpp \
 		ui_initialpage.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o initialpage.o ../Ipiranga_GUI/UserPages/initialpage.cpp
 
 editprofile.o: ../Ipiranga_GUI/UserPages/editprofile.cpp ../Ipiranga_GUI/UserPages/editprofile.h \
+		../include/User.hpp \
 		ui_editprofile.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o editprofile.o ../Ipiranga_GUI/UserPages/editprofile.cpp
 
