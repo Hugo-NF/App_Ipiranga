@@ -235,7 +235,7 @@ public:
         Button_edit->setObjectName(QStringLiteral("Button_edit"));
         Button_edit->setGeometry(QRect(30, 120, 121, 30));
         QIcon icon6;
-        icon6.addFile(QStringLiteral("images/teste.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon6.addFile(QStringLiteral(":/img_login/images/profile_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
         Button_edit->setIcon(icon6);
         Button_friends = new QCommandLinkButton(Menu);
         Button_friends->setObjectName(QStringLiteral("Button_friends"));

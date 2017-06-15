@@ -67,7 +67,7 @@ void FormRegister::on_pushButton_Register_clicked()
         try{
             // Register a new user on the BD
             NewUser.registerUser(this->UserDate, this->Payment_active, this->Bank_active);
-            QMessageBox::information(this,tr("Register"),tr("Registered with sucess!\n You will receive a confirmation in your E-mail!"));
+            QMessageBox::information(this,tr("Register"),tr("Registered with sucess!"));
             this->~FormRegister();  // Eliminate the Form Register
         }
         catch (char *error){
