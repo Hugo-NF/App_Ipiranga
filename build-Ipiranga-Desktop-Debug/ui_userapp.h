@@ -35,6 +35,8 @@ public:
     QFrame *Frame_Search;
     QHBoxLayout *horizontalLayout_2;
     QFrame *left;
+    QPushButton *Button_search_advertise;
+    QPushButton *Button_search_friends;
     QFrame *content;
     QLineEdit *line_search;
     QPushButton *Button_search;
@@ -91,6 +93,30 @@ public:
 
         horizontalLayout_2->addWidget(left);
 
+        Button_search_advertise = new QPushButton(Frame_Search);
+        Button_search_advertise->setObjectName(QStringLiteral("Button_search_advertise"));
+        Button_search_advertise->setMinimumSize(QSize(30, 30));
+        Button_search_advertise->setMaximumSize(QSize(30, 30));
+        QIcon icon1;
+        icon1.addFile(QStringLiteral(":/img_login/images/announcement-icon_inactive.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon1.addFile(QStringLiteral(":/img_login/images/announcement-icon.png"), QSize(), QIcon::Disabled, QIcon::Off);
+        Button_search_advertise->setIcon(icon1);
+        Button_search_advertise->setFlat(true);
+
+        horizontalLayout_2->addWidget(Button_search_advertise);
+
+        Button_search_friends = new QPushButton(Frame_Search);
+        Button_search_friends->setObjectName(QStringLiteral("Button_search_friends"));
+        Button_search_friends->setMinimumSize(QSize(30, 30));
+        Button_search_friends->setMaximumSize(QSize(30, 30));
+        QIcon icon2;
+        icon2.addFile(QStringLiteral(":/img_login/images/friends_icon_inactive.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon2.addFile(QStringLiteral(":/img_login/images/friends_icon.png"), QSize(), QIcon::Disabled, QIcon::Off);
+        Button_search_friends->setIcon(icon2);
+        Button_search_friends->setFlat(true);
+
+        horizontalLayout_2->addWidget(Button_search_friends);
+
         content = new QFrame(Frame_Search);
         content->setObjectName(QStringLiteral("content"));
         QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Preferred);
@@ -123,9 +149,9 @@ public:
         QPalette palette;
         Button_search->setPalette(palette);
         Button_search->setStyleSheet(QStringLiteral("Background:none;"));
-        QIcon icon1;
-        icon1.addFile(QStringLiteral(":/img_login/images/search_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
-        Button_search->setIcon(icon1);
+        QIcon icon3;
+        icon3.addFile(QStringLiteral(":/img_login/images/search_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        Button_search->setIcon(icon3);
         Button_search->setIconSize(QSize(30, 30));
         Button_search->setAutoDefault(false);
         Button_search->setFlat(false);
@@ -196,40 +222,40 @@ public:
         Button_logout = new QCommandLinkButton(Menu);
         Button_logout->setObjectName(QStringLiteral("Button_logout"));
         Button_logout->setGeometry(QRect(30, 260, 121, 30));
-        QIcon icon2;
-        icon2.addFile(QStringLiteral(":/img_login/images/logout.ico"), QSize(), QIcon::Normal, QIcon::Off);
-        Button_logout->setIcon(icon2);
+        QIcon icon4;
+        icon4.addFile(QStringLiteral(":/img_login/images/logout_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        Button_logout->setIcon(icon4);
         Button_historic = new QCommandLinkButton(Menu);
         Button_historic->setObjectName(QStringLiteral("Button_historic"));
         Button_historic->setGeometry(QRect(30, 180, 121, 30));
-        QIcon icon3;
-        icon3.addFile(QStringLiteral(":/img_login/images/historic_icon.jpg"), QSize(), QIcon::Normal, QIcon::Off);
-        Button_historic->setIcon(icon3);
+        QIcon icon5;
+        icon5.addFile(QStringLiteral(":/img_login/images/historic_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        Button_historic->setIcon(icon5);
         Button_edit = new QCommandLinkButton(Menu);
         Button_edit->setObjectName(QStringLiteral("Button_edit"));
         Button_edit->setGeometry(QRect(30, 120, 121, 30));
-        QIcon icon4;
-        icon4.addFile(QStringLiteral("images/profile_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
-        Button_edit->setIcon(icon4);
+        QIcon icon6;
+        icon6.addFile(QStringLiteral("images/teste.png"), QSize(), QIcon::Normal, QIcon::Off);
+        Button_edit->setIcon(icon6);
         Button_friends = new QCommandLinkButton(Menu);
         Button_friends->setObjectName(QStringLiteral("Button_friends"));
         Button_friends->setGeometry(QRect(30, 150, 121, 30));
-        QIcon icon5;
-        icon5.addFile(QStringLiteral(":/img_login/images/friends_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
-        Button_friends->setIcon(icon5);
+        QIcon icon7;
+        icon7.addFile(QStringLiteral(":/img_login/images/friends_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        Button_friends->setIcon(icon7);
         Button_advertise = new QCommandLinkButton(Menu);
         Button_advertise->setObjectName(QStringLiteral("Button_advertise"));
         Button_advertise->setGeometry(QRect(30, 210, 121, 30));
         Button_advertise->setStyleSheet(QStringLiteral(""));
-        QIcon icon6;
-        icon6.addFile(QStringLiteral(":/img_login/images/announcement-icon.png"), QSize(), QIcon::Normal, QIcon::Off);
-        Button_advertise->setIcon(icon6);
+        QIcon icon8;
+        icon8.addFile(QStringLiteral(":/img_login/images/announcement-icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        Button_advertise->setIcon(icon8);
         Button_home = new QCommandLinkButton(Menu);
         Button_home->setObjectName(QStringLiteral("Button_home"));
         Button_home->setGeometry(QRect(30, 90, 121, 30));
-        QIcon icon7;
-        icon7.addFile(QStringLiteral(":/img_login/images/home.ico"), QSize(), QIcon::Normal, QIcon::Off);
-        Button_home->setIcon(icon7);
+        QIcon icon9;
+        icon9.addFile(QStringLiteral(":/img_login/images/home_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        Button_home->setIcon(icon9);
 
         Box_Menu->addWidget(Menu);
 
@@ -262,7 +288,6 @@ public:
         frame->setMinimumSize(QSize(0, 0));
         frame->setFrameShape(QFrame::StyledPanel);
         frame->setFrameShadow(QFrame::Raised);
-        Pages->raise();
 
         Box_anuncio->addWidget(frame);
 
@@ -285,6 +310,8 @@ public:
     void retranslateUi(QMainWindow *UserApp)
     {
         UserApp->setWindowTitle(QApplication::translate("UserApp", "Ipiranga", 0));
+        Button_search_advertise->setText(QString());
+        Button_search_friends->setText(QString());
         Button_search->setText(QString());
         User_img->setText(QString());
         UserName->setText(QApplication::translate("UserApp", "User Name", 0));

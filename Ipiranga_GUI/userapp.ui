@@ -84,6 +84,60 @@
         </widget>
        </item>
        <item>
+        <widget class="QPushButton" name="Button_search_advertise">
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="resources.qrc">
+           <normaloff>:/img_login/images/announcement-icon_inactive.png</normaloff>
+           <disabledoff>:/img_login/images/announcement-icon.png</disabledoff>:/img_login/images/announcement-icon_inactive.png</iconset>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="Button_search_friends">
+         <property name="minimumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>30</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="resources.qrc">
+           <normaloff>:/img_login/images/friends_icon_inactive.png</normaloff>
+           <disabledoff>:/img_login/images/friends_icon.png</disabledoff>:/img_login/images/friends_icon_inactive.png</iconset>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QFrame" name="content">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -455,7 +509,7 @@
            </property>
            <property name="icon">
             <iconset resource="resources.qrc">
-             <normaloff>:/img_login/images/logout.ico</normaloff>:/img_login/images/logout.ico</iconset>
+             <normaloff>:/img_login/images/logout_icon.png</normaloff>:/img_login/images/logout_icon.png</iconset>
            </property>
           </widget>
           <widget class="QCommandLinkButton" name="Button_historic">
@@ -472,7 +526,7 @@
            </property>
            <property name="icon">
             <iconset resource="resources.qrc">
-             <normaloff>:/img_login/images/historic_icon.jpg</normaloff>:/img_login/images/historic_icon.jpg</iconset>
+             <normaloff>:/img_login/images/historic_icon.png</normaloff>:/img_login/images/historic_icon.png</iconset>
            </property>
           </widget>
           <widget class="QCommandLinkButton" name="Button_edit">
@@ -492,7 +546,7 @@
            </property>
            <property name="icon">
             <iconset>
-             <normaloff>images/profile_icon.png</normaloff>images/profile_icon.png</iconset>
+             <normaloff>images/teste.png</normaloff>images/teste.png</iconset>
            </property>
           </widget>
           <widget class="QCommandLinkButton" name="Button_friends">
@@ -546,7 +600,7 @@
            </property>
            <property name="icon">
             <iconset resource="resources.qrc">
-             <normaloff>:/img_login/images/home.ico</normaloff>:/img_login/images/home.ico</iconset>
+             <normaloff>:/img_login/images/home_icon.png</normaloff>:/img_login/images/home_icon.png</iconset>
            </property>
           </widget>
          </widget>
@@ -598,7 +652,6 @@
           <property name="frameShadow">
            <enum>QFrame::Raised</enum>
           </property>
-          <zorder>Pages</zorder>
          </widget>
         </item>
        </layout>

@@ -8,13 +8,19 @@ UserApp::UserApp(QWidget *parent, User* _CurrentUser) :
 {
     ui->setupUi(this);
 
+    //--------------Iniciation Setups-----------------------
+
     this->setMinimumSize(650,600);      //set the minimum window size
 
     CurrentUser = *_CurrentUser;         //CurrentUser is a atribute of the class with the user current dates
-
     _CurrentUser->~User();              //Adios User O/, that came from the LoginUser
 
     this->SetPropertyUserCurrent();     //set dates of the current users in the window
+
+    ui->Button_search_friends->setEnabled(true);    // Initial Search False
+    ui->Button_search_advertise->setEnabled(false); // Initial Search True
+
+    //------------------------------------------------------
 
 
     //ISERTING PAGES IN THE FRAME OF USER APP
@@ -33,6 +39,9 @@ UserApp::UserApp(QWidget *parent, User* _CurrentUser) :
 
     // Page 4 - Advertise
     ui->Pages->insertWidget(4,&PageFour);
+
+    // Page Result - Search
+    ui->Pages->insertWidget(5,&PageResult);
 
     //Set witch is the first page
     ui->Pages->setCurrentIndex(0);
@@ -81,6 +90,24 @@ void UserApp::on_Button_logout_clicked()
 }
 //---------------------------------------------
 
+//------------SEARCH TYPE BUTTONS--------------
+void UserApp::on_Button_search_friends_clicked()
+{
+    SearchType = true;  //Set the search to friends
+
+    ui->Button_search_advertise->setEnabled(true);
+    ui->Button_search_friends->setEnabled(false);
+}
+
+void UserApp::on_Button_search_advertise_clicked()
+{
+    SearchType = false;  //Set the search to advertise
+
+    ui->Button_search_friends->setEnabled(true);
+    ui->Button_search_advertise->setEnabled(false);
+}
+//---------------------------------------------
+
 //---------------SEARCH BUTTONS----------------
 void UserApp::on_Button_search_clicked()
 {
@@ -90,5 +117,6 @@ void UserApp::on_Button_search_clicked()
 void UserApp::on_line_search_returnPressed()
 {
     cout<<"Fazer Busca"<<endl;
+    ui->Pages->setCurrentWidget(&PageResult);
 }
 //---------------------------------------------

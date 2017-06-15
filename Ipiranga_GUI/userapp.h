@@ -10,6 +10,7 @@
 #include "UserPages/friendspage.h"
 #include "UserPages/historic.h"
 #include "UserPages/advertise.h"
+#include "UserPages/searchresult.h"
 
 
 namespace Ui {
@@ -38,6 +39,10 @@ private slots:
     void on_line_search_returnPressed();
     void on_Button_search_clicked();
 
+    void on_Button_search_friends_clicked();
+
+    void on_Button_search_advertise_clicked();
+
 private:
     Ui::UserApp *ui;
 
@@ -50,6 +55,10 @@ private:
     FriendsPage PageTwo;
     Historic PageThree;
     Advertise PageFour;
+    SearchResult PageResult;
+
+    //King of search
+    bool SearchType; // 1 to Friends - o to Advertise
 
 
     //Methods
