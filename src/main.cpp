@@ -2,38 +2,85 @@
 #include <gtest/gtest.h>
 #include <sqlite3.h>
 #include "../include/User.hpp"
+#include "../include/Account.hpp"
+#include "../include/Security.hpp"
 
 using namespace std;
+/*
+TEST(Account_Manipulation, Register){
+    vector<string> fields (21);
+    fields[0] = "Big Moai";
+    fields[1] = "Nascimento";
+    fields[2] = "17970148387";
+    fields[3] = "2874";
+    fields[4] = "19";
+    fields[5] = "+556199110155";
+    fields[6] = "Big_Moas22";
+    fields[7] = "123456789GO";
+    fields[8] = "hugofonseca5@gmail.com";
+    fields[9] = "QNM 03 CONJ I CS 26";
+    fields[10] = "72215-039";
+    fields[11] = "DF";
+    fields[12] = "Brasília";
+    fields[13] = "Credit";
+    fields[14] = "4592800185529641";
+    fields[15] = "549";
+    fields[16] = "05/2025";
+    fields[17] = "HUGO N. FONSECA";
+    fields[18] = "Itaú";
+    fields[19] = "0479";
+    fields[20] = "247896-3";
 
-TEST(classUser, Gets_Sets){
-    User teste (0);
+    try{
+        Account::registerUser(fields, true, true);
+    } catch (char *errors){
+        cout<<errors<<endl;
+    }
 
-    teste.setFirstName("Moas");
-    teste.setLastName("Fonseca");
-    string fname = teste.getFirstName();
-    string lname = teste.getLastName();
-    ASSERT_EQ(0, fname.compare("Moas"));
-    ASSERT_EQ(0, lname.compare("Fonseca"));
-    ASSERT_EQ(0, teste.getId());
-    teste.setRG("2904591");
-    ASSERT_EQ("2904591", teste.getRG());
+    fields[0] = "Big Moai";
+    fields[1] = "Nascimento";
+    fields[2] = "14308253918";
+    fields[3] = "2872319";
+    fields[4] = "19";
+    fields[5] = "+556199110155";
+    fields[6] = "Big_Moas15";
+    fields[7] = "123456789GO";
+    fields[8] = "hugofonseca2@gmail.com";
+    fields[9] = "QNM 03 CONJ I CS 26";
+    fields[10] = "72215-039";
+    fields[11] = "DF";
+    fields[12] = "Brasília";
+    fields[13] = "Credit";
+    fields[14] = "9858001855296411";
+    fields[15] = "549";
+    fields[16] = "05/2025";
+    fields[17] = "HUGO N. FONSECA";
+    fields[18] = "Itaú";
+    fields[19] = "0479";
+    fields[20] = "247896-3";
 
-    teste.~User();
+    try{
+        Account::registerUser(fields, true, true);
+    } catch (char *errors){
+        cout<<errors<<endl;
+    }
+}
+*/
+/*
+TEST(Security_Module, CPF_autentication){
+    string CPF = "25725661337";
+    bool validation = true;
+    try{
+        Security::verifyCPF(CPF.c_str());
+    }
+    catch(char *error) {
+        validation = false;
+    }
+    ASSERT_EQ(validation, false);
 }
 
-TEST(SQLite, Cleaning_USERS_Table){
+TEST(Security_Module, Card_autentication){
     User teste(0);
-    teste.cleanTable();
-    teste.~User();
-}
-
-TEST(Database_Operation, Update_User){
-    User teste(1);
-    sqlite3 *db;
-    int rc;
-    rc = sqlite3_open("../database/Ipiranga.db", &db) ;
-    ASSERT_EQ(SQLITE_OK, rc);
-    ASSERT_NE(SQLITE_ERROR, rc);
     teste.setFirstName("Big Moas");
     teste.setLastName("Nascimento");
     teste.setCPF("0568502");
@@ -44,14 +91,13 @@ TEST(Database_Operation, Update_User){
     teste.setPassword("123456789GO");
     teste.setEmail("hugonfonseca@gmail.com");
     teste.setActivation(true);
-    teste.registerCard(false);
+    teste.registerCard(true);
     teste.setCardType("Credit");
-    teste.setCardOperator("Visa");
-    teste.setCardNumber("4592 8001 8552 9641");
+    teste.setCardNumber("5005800185529641");
     teste.setCardName("HUGO N. FONSECA");
     teste.setSecurityCode("549");
     teste.setExpirationDate("05/2025");
-    teste.registerAccount(false);
+    teste.registerAccount(true);
     teste.setBank("Itaú");
     teste.setAccountNumber("247896-3");
     teste.setAgency("0479");
@@ -59,68 +105,79 @@ TEST(Database_Operation, Update_User){
     teste.setAddress("QNM 03 CONJ I CS 26");
     teste.setZipCode("72215-039");
     teste.setState("DF");
-    teste.setCity("Brazil");
+    teste.setCity("Brasilia");
+
+    try {
+        Security::verifyCard(&teste);
+    }
+    catch (char *errors){
+        cout<<errors;
+    }
+    ASSERT_EQ(teste.getCardOperator(), "MasterCard");
+
+}
+*/
+
+TEST(Account_Manipulation, Register){
+    vector<string> fields(21);
+    fields[0] = "Big Moai";
+    fields[1] = "Nascimento";
+    fields[2] = "14308253918";
+    fields[3] = "2872319";
+    fields[4] = "19";
+    fields[5] = "+556199110155";
+    fields[6] = "Big_Moas15";
+    fields[7] = "123456789GO";
+    fields[8] = "hugofonseca2@gmail.com";
+    fields[9] = "QNM 03 CONJ I CS 26";
+    fields[10] = "72215-039";
+    fields[11] = "DF";
+    fields[12] = "Brasília";
+    fields[13] = "Credit";
+    fields[14] = "3741185452964196";
+    fields[15] = "549";
+    fields[16] = "05/2025";
+    fields[17] = "HUGO N. FONSECA";
+    fields[18] = "Itaú";
+    fields[19] = "0479";
+    fields[20] = "247896-3";
 
     try{
-        teste.updateOperation(db, &teste);
+        Account::registerUser(fields, true, true);
+    } catch (char *errors){
+        cout<<errors<<endl;
     }
-    catch (char *err){
-        if(strcmp(err,"UNIQUE constraint failed: USERS.RG")==SQLITE_OK)
-            cout<<"RG coincide com um usuario previamente registrado";
-        else if(strcmp(err,"UNIQUE constraint failed: USERS.CPF")==SQLITE_OK)
-            cout<<"CPF coincide com um usuario previamente registrado";
-        else if(strcmp(err,"UNIQUE constraint failed: USERS.username")==SQLITE_OK)
-            cout<<"Username coincide com um usuario previamente registrado";
-        else if(strcmp(err,"UNIQUE constraint failed: USERS.email")==SQLITE_OK)
-            cout<<"Email coincide com um usuario previamente registrado";
-        else
-            cout<<err;
-        teste.~User();
-    }
-
-
-    rc = sqlite3_close(db) ;
-    ASSERT_EQ(SQLITE_OK, rc);
-    ASSERT_NE(SQLITE_ERROR, rc);
 }
 
-TEST(Database_Operation, Delete_User){
-    sqlite3 *db;
-    int rc;
-
-    rc = sqlite3_open("../database/Ipiranga.db", &db) ;
-    ASSERT_EQ(SQLITE_OK, rc);
-    ASSERT_NE(SQLITE_ERROR, rc);
-
-
-    User teste(1);
-    teste.deleteOperation(db, &teste);
-    teste.~User();
-
-    rc = sqlite3_close(db) ;
-    ASSERT_EQ(SQLITE_OK, rc);
-    ASSERT_NE(SQLITE_ERROR, rc);
-}
-
-TEST(Database_Operation, Selection){
-    sqlite3 *db;
-    unsigned int i;
-    int rc = sqlite3_open("../database/Ipiranga.db", &db) ;
-    ASSERT_EQ(SQLITE_OK, rc);
-    ASSERT_NE(SQLITE_ERROR, rc);
-
-    vector<User *> query;
-    User teste(0);
-    query = teste.selectionOperation(db, "age", "18");
-    for(i=0; i<query.size(); i++){
-        cout<<query[i]->getCPF()<<"\n";
-        delete(query[i]);
+TEST(Account_Manipulation, Login){
+    User *usuario_logado;
+    try {
+        usuario_logado = Account::login("Big_Moas15", "ca9GO");
+        ASSERT_EQ("Big_Moas22", usuario_logado->getUsername());
+        ASSERT_EQ("Big Moai", usuario_logado->getFirstName());
+        ASSERT_EQ("2874", usuario_logado->getRG());
+    } catch (char *errors) {
+        cout<<errors<<endl;
     }
-    rc = sqlite3_close(db) ;
-    ASSERT_EQ(SQLITE_OK, rc);
-    ASSERT_NE(SQLITE_ERROR, rc);
+
+}
+/*
+TEST(Account_Manipulation, Account_Activation){
+    Account::activateAccount(4, false);
+    User *usuario_logado = Account::login("Big_Moas15", "123456789GO");
+    ASSERT_NE(true, usuario_logado->isActivated());
 }
 
+TEST(Account_Manipulation, Account_Deletion){
+    Account::deleteAccount(4);
+    try{
+        User *usuario_logado = Account::login("Big_Moas15", "123456789GO");
+    }
+    catch (char *error){
+        cout<<error<<endl;
+    }
+}
+*/
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
