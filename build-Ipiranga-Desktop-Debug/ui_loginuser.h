@@ -102,7 +102,7 @@ public:
 #ifndef QT_NO_ACCESSIBILITY
         lineName->setAccessibleName(QString());
 #endif // QT_NO_ACCESSIBILITY
-        lineName->setText(QApplication::translate("LoginUser", "Luiz", 0));
+        lineName->setText(QApplication::translate("LoginUser", "Eumemo", 0));
         pushLogin->setText(QApplication::translate("LoginUser", "Login", 0));
         pushLogin->setShortcut(QApplication::translate("LoginUser", "Return", 0));
         pushRegister->setText(QApplication::translate("LoginUser", "Register", 0));

@@ -31,6 +31,7 @@ UserApp::UserApp(QWidget *parent, User* _CurrentUser) :
 
     // Page 1 - Profile Edit
     ui->Pages->insertWidget(1,&PageOne);
+    PageOne.SetCurrentUser(CurrentUser);
 
     // Page 2 - FriendsPage
     ui->Pages->insertWidget(2,&PageTwo);
@@ -87,8 +88,9 @@ void UserApp::on_Button_advertise_clicked()
 
 void UserApp::on_Button_logout_clicked()
 {
-    this->~UserApp();
-    cout<<"Emplementar volta para tela de login"<<endl;
+    this->hide();
+    system("./Ipiranga");
+    this->close();
 }
 //---------------------------------------------
 

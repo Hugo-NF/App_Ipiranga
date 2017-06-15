@@ -97,7 +97,7 @@
       <string/>
      </property>
      <property name="text">
-      <string>Luiz</string>
+      <string>Eumemo</string>
      </property>
      <property name="echoMode">
       <enum>QLineEdit::Normal</enum>
