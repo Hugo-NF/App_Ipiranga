@@ -54,6 +54,7 @@ public:
     QLineEdit *lineRG;
     QSpinBox *spinAge;
     QLineEdit *linePhone;
+    QLabel *Private_1;
     QGroupBox *Adress;
     QLabel *labelAdress;
     QLabel *labelZIP;
@@ -63,6 +64,7 @@ public:
     QLineEdit *lineZIP;
     QLineEdit *lineState;
     QLineEdit *lineCity;
+    QLabel *Private_3;
     QGroupBox *Payment;
     QLabel *labelExpiration;
     QLabel *labelNumber;
@@ -83,6 +85,7 @@ public:
     QLabel *labelConfirm;
     QLineEdit *lineConfirm;
     QLineEdit *lineEmail;
+    QLabel *Private_2;
     QPushButton *pushButton_Cancel;
     QPushButton *pushButton_Register;
     QGroupBox *BankAccount;
@@ -94,6 +97,7 @@ public:
     QLineEdit *lineAgency;
     QLineEdit *lineAccount;
     QComboBox *comboBox_Bank;
+    QLabel *label;
     QFrame *right;
 
     void setupUi(QDialog *FormRegister)
@@ -120,7 +124,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidget = new QWidget();
         scrollAreaWidget->setObjectName(QStringLiteral("scrollAreaWidget"));
-        scrollAreaWidget->setGeometry(QRect(0, -524, 485, 980));
+        scrollAreaWidget->setGeometry(QRect(0, 0, 485, 980));
         horizontalLayout = new QHBoxLayout(scrollAreaWidget);
         horizontalLayout->setSpacing(0);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
@@ -208,6 +212,9 @@ public:
         linePhone->setGeometry(QRect(160, 170, 101, 20));
         linePhone->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
         linePhone->setMaxLength(15);
+        Private_1 = new QLabel(Personal);
+        Private_1->setObjectName(QStringLiteral("Private_1"));
+        Private_1->setGeometry(QRect(10, -10, 21, 41));
         Adress = new QGroupBox(form);
         Adress->setObjectName(QStringLiteral("Adress"));
         Adress->setEnabled(true);
@@ -215,7 +222,7 @@ public:
         Adress->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
         labelAdress = new QLabel(Adress);
         labelAdress->setObjectName(QStringLiteral("labelAdress"));
-        labelAdress->setGeometry(QRect(70, 20, 51, 16));
+        labelAdress->setGeometry(QRect(70, 20, 91, 16));
         labelAdress->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
         labelZIP = new QLabel(Adress);
         labelZIP->setObjectName(QStringLiteral("labelZIP"));
@@ -249,6 +256,9 @@ public:
         lineCity->setGeometry(QRect(160, 110, 113, 20));
         lineCity->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
         lineCity->setMaxLength(20);
+        Private_3 = new QLabel(Adress);
+        Private_3->setObjectName(QStringLiteral("Private_3"));
+        Private_3->setGeometry(QRect(10, -10, 21, 41));
         Payment = new QGroupBox(form);
         Payment->setObjectName(QStringLiteral("Payment"));
         Payment->setEnabled(true);
@@ -341,6 +351,9 @@ public:
         lineEmail->setGeometry(QRect(160, 110, 211, 20));
         lineEmail->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
         lineEmail->setMaxLength(45);
+        Private_2 = new QLabel(Acess);
+        Private_2->setObjectName(QStringLiteral("Private_2"));
+        Private_2->setGeometry(QRect(10, -10, 21, 41));
         pushButton_Cancel = new QPushButton(form);
         pushButton_Cancel->setObjectName(QStringLiteral("pushButton_Cancel"));
         pushButton_Cancel->setGeometry(QRect(60, 940, 101, 31));
@@ -388,6 +401,9 @@ public:
         comboBox_Bank->setObjectName(QStringLiteral("comboBox_Bank"));
         comboBox_Bank->setGeometry(QRect(160, 60, 161, 22));
         comboBox_Bank->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
+        label = new QLabel(form);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(10, 910, 251, 20));
 
         horizontalLayout->addWidget(form);
 
@@ -442,7 +458,7 @@ public:
     {
         FormRegister->setWindowTitle(QApplication::translate("FormRegister", "Register Now", 0));
         TitleRegister->setText(QApplication::translate("FormRegister", "<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; font-weight:600; text-decoration: underline; color:#087add;\">Register Now</span></p></body></html>", 0));
-        Personal->setTitle(QApplication::translate("FormRegister", "Personal Information", 0));
+        Personal->setTitle(QApplication::translate("FormRegister", "   Personal Information ", 0));
         labelFirstName->setText(QApplication::translate("FormRegister", "First Name", 0));
         labelLastName->setText(QApplication::translate("FormRegister", "Last Name", 0));
         labelCPF->setText(QApplication::translate("FormRegister", "CPF", 0));
@@ -454,8 +470,9 @@ public:
         lineCPF->setText(QApplication::translate("FormRegister", "70317311190", 0));
         lineRG->setText(QApplication::translate("FormRegister", "9964762", 0));
         linePhone->setText(QApplication::translate("FormRegister", "062999923105", 0));
-        Adress->setTitle(QApplication::translate("FormRegister", "Adress", 0));
-        labelAdress->setText(QApplication::translate("FormRegister", "Adress", 0));
+        Private_1->setText(QApplication::translate("FormRegister", "<html><head/><body><p><span style=\" color:#a40000;\">*</span></p></body></html>", 0));
+        Adress->setTitle(QApplication::translate("FormRegister", "   Address", 0));
+        labelAdress->setText(QApplication::translate("FormRegister", "Address", 0));
         labelZIP->setText(QApplication::translate("FormRegister", "Zip Code", 0));
         labelState->setText(QApplication::translate("FormRegister", "State", 0));
         labelCity->setText(QApplication::translate("FormRegister", "City", 0));
@@ -463,6 +480,7 @@ public:
         lineZIP->setText(QApplication::translate("FormRegister", "70636015", 0));
         lineState->setText(QApplication::translate("FormRegister", "DF", 0));
         lineCity->setText(QApplication::translate("FormRegister", "Brasilia", 0));
+        Private_3->setText(QApplication::translate("FormRegister", "<html><head/><body><p><span style=\" color:#a40000;\">*</span></p></body></html>", 0));
         Payment->setTitle(QApplication::translate("FormRegister", "Payment", 0));
         labelExpiration->setText(QApplication::translate("FormRegister", "Expiration", 0));
         labelNumber->setText(QApplication::translate("FormRegister", "Number", 0));
@@ -474,7 +492,7 @@ public:
         dateExpiration->setDisplayFormat(QApplication::translate("FormRegister", "yyyy/MMM", 0));
         radioButton_Credit->setText(QApplication::translate("FormRegister", "Credit", 0));
         radioButton_Debit->setText(QApplication::translate("FormRegister", "Debit", 0));
-        Acess->setTitle(QApplication::translate("FormRegister", "Access", 0));
+        Acess->setTitle(QApplication::translate("FormRegister", "   Access", 0));
         labelLogin->setText(QApplication::translate("FormRegister", "Login", 0));
         labelPass->setText(QApplication::translate("FormRegister", "Password", 0));
         labelEmail->setText(QApplication::translate("FormRegister", "E-mail", 0));
@@ -483,6 +501,7 @@ public:
         labelConfirm->setText(QApplication::translate("FormRegister", "Confirm", 0));
         lineConfirm->setText(QApplication::translate("FormRegister", "12345678", 0));
         lineEmail->setText(QApplication::translate("FormRegister", "joseluizgnogueira@hotmail.com", 0));
+        Private_2->setText(QApplication::translate("FormRegister", "<html><head/><body><p><span style=\" color:#a40000;\">*</span></p></body></html>", 0));
         pushButton_Cancel->setText(QApplication::translate("FormRegister", "Cancel", 0));
         pushButton_Register->setText(QApplication::translate("FormRegister", "Register", 0));
         BankAccount->setTitle(QApplication::translate("FormRegister", "Bank Account", 0));
@@ -501,6 +520,7 @@ public:
          << QApplication::translate("FormRegister", "Ita\303\272", 0)
          << QApplication::translate("FormRegister", "Santander", 0)
         );
+        label->setText(QApplication::translate("FormRegister", "<html><head/><body><p><span style=\" font-size:8pt;\">Sections that contain </span><span style=\" font-size:8pt; color:#a40000;\">*</span><span style=\" font-size:8pt;\"> are required</span></p></body></html>", 0));
     } // retranslateUi
 
 };

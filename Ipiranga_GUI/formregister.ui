@@ -57,7 +57,7 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>-524</y>
+        <y>0</y>
         <width>485</width>
         <height>980</height>
        </rect>
@@ -149,7 +149,7 @@
            <locale language="English" country="UnitedStates"/>
           </property>
           <property name="title">
-           <string>Personal Information</string>
+           <string>   Personal Information </string>
           </property>
           <widget class="QLabel" name="labelFirstName">
            <property name="geometry">
@@ -370,6 +370,19 @@
             <number>15</number>
            </property>
           </widget>
+          <widget class="QLabel" name="Private_1">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>-10</y>
+             <width>21</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#a40000;&quot;&gt;*&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
          </widget>
          <widget class="QGroupBox" name="Adress">
           <property name="enabled">
@@ -387,14 +400,14 @@
            <locale language="English" country="UnitedStates"/>
           </property>
           <property name="title">
-           <string>Adress</string>
+           <string>   Address</string>
           </property>
           <widget class="QLabel" name="labelAdress">
            <property name="geometry">
             <rect>
              <x>70</x>
              <y>20</y>
-             <width>51</width>
+             <width>91</width>
              <height>16</height>
             </rect>
            </property>
@@ -402,7 +415,7 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
-            <string>Adress</string>
+            <string>Address</string>
            </property>
           </widget>
           <widget class="QLabel" name="labelZIP">
@@ -527,6 +540,19 @@
            </property>
            <property name="maxLength">
             <number>20</number>
+           </property>
+          </widget>
+          <widget class="QLabel" name="Private_3">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>-10</y>
+             <width>21</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#a40000;&quot;&gt;*&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
          </widget>
@@ -744,7 +770,7 @@
            <locale language="English" country="UnitedStates"/>
           </property>
           <property name="title">
-           <string>Access</string>
+           <string>   Access</string>
           </property>
           <widget class="QLabel" name="labelLogin">
            <property name="geometry">
@@ -890,6 +916,19 @@
            </property>
            <property name="maxLength">
             <number>45</number>
+           </property>
+          </widget>
+          <widget class="QLabel" name="Private_2">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>-10</y>
+             <width>21</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#a40000;&quot;&gt;*&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
          </widget>
@@ -1099,6 +1138,19 @@
             </property>
            </item>
           </widget>
+         </widget>
+         <widget class="QLabel" name="label">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>910</y>
+            <width>251</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Sections that contain &lt;/span&gt;&lt;span style=&quot; font-size:8pt; color:#a40000;&quot;&gt;*&lt;/span&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt; are required&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
          </widget>
         </widget>
        </item>

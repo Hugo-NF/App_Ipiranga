@@ -13,10 +13,10 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
-#include <QtWidgets/QFrame>
-#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QScrollArea>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -24,8 +24,10 @@ QT_BEGIN_NAMESPACE
 class Ui_InitialPage
 {
 public:
-    QHBoxLayout *horizontalLayout;
-    QFrame *frame;
+    QVBoxLayout *verticalLayout;
+    QScrollArea *scrollArea;
+    QWidget *scrollAreaWidgetContents;
+    QVBoxLayout *verticalLayout_2;
     QPushButton *pushButton;
 
     void setupUi(QWidget *InitialPage)
@@ -39,20 +41,28 @@ public:
         sizePolicy.setHeightForWidth(InitialPage->sizePolicy().hasHeightForWidth());
         InitialPage->setSizePolicy(sizePolicy);
         InitialPage->setMinimumSize(QSize(100, 0));
-        InitialPage->setStyleSheet(QStringLiteral("Background:rgb(115, 210, 22)"));
-        horizontalLayout = new QHBoxLayout(InitialPage);
-        horizontalLayout->setSpacing(0);
-        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        frame = new QFrame(InitialPage);
-        frame->setObjectName(QStringLiteral("frame"));
-        frame->setFrameShape(QFrame::StyledPanel);
-        frame->setFrameShadow(QFrame::Raised);
-        pushButton = new QPushButton(frame);
+        InitialPage->setStyleSheet(QStringLiteral(""));
+        verticalLayout = new QVBoxLayout(InitialPage);
+        verticalLayout->setSpacing(0);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        scrollArea = new QScrollArea(InitialPage);
+        scrollArea->setObjectName(QStringLiteral("scrollArea"));
+        scrollArea->setWidgetResizable(true);
+        scrollAreaWidgetContents = new QWidget();
+        scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 385, 1018));
+        verticalLayout_2 = new QVBoxLayout(scrollAreaWidgetContents);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        pushButton = new QPushButton(scrollAreaWidgetContents);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(110, 80, 181, 121));
+        pushButton->setMinimumSize(QSize(0, 1000));
 
-        horizontalLayout->addWidget(frame);
+        verticalLayout_2->addWidget(pushButton);
+
+        scrollArea->setWidget(scrollAreaWidgetContents);
+
+        verticalLayout->addWidget(scrollArea);
 
 
         retranslateUi(InitialPage);
@@ -63,7 +73,7 @@ public:
     void retranslateUi(QWidget *InitialPage)
     {
         InitialPage->setWindowTitle(QApplication::translate("InitialPage", "Form", 0));
-        pushButton->setText(QApplication::translate("InitialPage", "Loooooool", 0));
+        pushButton->setText(QApplication::translate("InitialPage", "PushButton", 0));
     } // retranslateUi
 
 };

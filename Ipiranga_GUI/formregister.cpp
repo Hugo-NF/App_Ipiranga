@@ -19,7 +19,7 @@ FormRegister::~FormRegister()
 
 void FormRegister::on_pushButton_Cancel_clicked()
 {
-    close();
+    this->~FormRegister();  // Eliminate the Form Register
 }
 
 void FormRegister::on_pushButton_Register_clicked()

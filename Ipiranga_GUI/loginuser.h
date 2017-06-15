@@ -5,6 +5,7 @@
 #include "formregister.h"
 #include <QMainWindow>
 
+
 namespace Ui {
 class LoginUser;
 }

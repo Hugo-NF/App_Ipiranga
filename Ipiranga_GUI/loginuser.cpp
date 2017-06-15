@@ -28,10 +28,9 @@ void LoginUser::on_pushLogin_clicked()
     try{
         //Catch the user on te BD
         CurrentUser = CurrentUser->login(username,password);
-        hide(); //Hide de login form
+        this->hide(); //Hide de login form
         userapp = new UserApp(this, CurrentUser);
-        userapp->show();
-
+        userapp->showMaximized();
     }
     catch (char *error){
         QMessageBox::warning(this,tr("Login"),tr(error));

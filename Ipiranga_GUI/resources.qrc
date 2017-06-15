@@ -4,5 +4,13 @@
         <file>images/Icon.png</file>
         <file>images/User_img.png</file>
         <file>images/User_img_mold.png</file>
+        <file>images/search_icon.png</file>
+        <file>images/announcement-icon.png</file>
+        <file>images/Ipiranga_logo.psd</file>
+        <file>images/logout.ico</file>
+        <file>images/historic_icon.jpg</file>
+        <file>images/friends_icon.png</file>
+        <file>images/profile_icon.png</file>
+        <file>images/home.ico</file>
     </qresource>
 </RCC>
