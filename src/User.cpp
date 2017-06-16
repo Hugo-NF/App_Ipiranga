@@ -225,6 +225,14 @@ double User::getBalance() {
     return this->balance;
 }
 
+void User::setRating(double rating) {
+    this->rating = rating;
+}
+
+double User::getRating() {
+    return this->rating;
+}
+
 //----------------------------------Methods for manipulating SQLite-------------------------------
 
 //Database Setup Operations
@@ -259,7 +267,8 @@ void User::createTable(sqlite3 *connection) {
             "  `address`        VARCHAR(100)                      NOT NULL,"\
             "  `zipCode`        VARCHAR(10)                       NOT NULL,"\
             "  `state`          VARCHAR(2)                        NOT NULL,"\
-            "  `city`           VARCHAR(20)                       NOT NULL);";
+            "  `city`           VARCHAR(20)                       NOT NULL,"\
+            "  `rating`         DOUBLE                            NOT NULL);";
     result = sqlite3_exec(connection, SQL.c_str(), Callbacks::userCallback, 0, &errMsg);
     if(result != SQLITE_OK)
         throw errMsg;
@@ -279,8 +288,8 @@ void User::cleanTable() {
     int flag = sqlite3_open(DATABASE, &connection);
     if(flag!= SQLITE_OK)
         throw (char *) CONNECTION_ERROR;
-    this->deleteTable(connection);
-    this->createTable(connection);
+    User::deleteTable(connection);
+    User::createTable(connection);
     flag = sqlite3_close(connection);
     if(flag != SQLITE_OK)
         throw (char *) CONNECTION_ERROR;
@@ -295,16 +304,16 @@ void User::insertOperation(sqlite3 *connection, User *user) {
     sprintf(SQL, "INSERT INTO USERS ("\
     "firstName, lastName, CPF, RG, age, phoneNumber, username, password, email, activation,"\
     "hasCard, type, cardOperator, cardNumber, cardName, securityCode, expirationDate,"\
-    "hasAccount, bank, accountNumber, agency, balance, address, zipCode, state, city)"\
+    "hasAccount, bank, accountNumber, agency, balance, address, zipCode, state, city, rating)"\
     " VALUES('%s','%s','%s','%s','%s','%s','%s','%s','%s',%d,%d,'%s','%s','%s','%s','%s','%s',%d,"\
-    "'%s','%s','%s','%lf','%s','%s','%s','%s');",\
+    "'%s','%s','%s','%lf','%s','%s','%s','%s', %lf);",\
      user->getFirstName().c_str(), user->getLastName().c_str(), user->getCPF().c_str(),\
      user->getRG().c_str(), user->getAge().c_str(), user->getPhoneNumber().c_str(), user->getUsername().c_str(),\
      user->getPassword().c_str(), user->getEmail().c_str(), user->isActivated(),\
      user->cardRegistered(), user->getCardType().c_str(), user->getCardOperator().c_str(),user->getCardNumber().c_str(),user->getCardName().c_str(),\
      user->getSecurityCode().c_str(), user->getExpirationDate().c_str(), user->accountRegistered(),\
      user->getBank().c_str(), user->getAccountNumber().c_str(), user->getAgency().c_str(),user->getBalance(),\
-     user->getAddress().c_str(), user->getZipCode().c_str(), user->getState().c_str(), user->getCity().c_str());
+     user->getAddress().c_str(), user->getZipCode().c_str(), user->getState().c_str(), user->getCity().c_str(), user->getRating());
     result = sqlite3_exec(connection, SQL, Callbacks::userCallback, 0, &errMsg);
     if(result != SQLITE_OK)
         throw errMsg;
@@ -317,12 +326,12 @@ void User::updateOperation(sqlite3 *connection, User *user) {
     sprintf(SQL, "UPDATE USERS set firstName='%s', lastName='%s', CPF='%s', RG='%s', age='%s', phoneNumber='%s',"\
     "username='%s', password='%s', email='%s', activation=%d, hasCard=%d, type='%s', cardOperator='%s',"\
     "cardNumber='%s', cardName='%s', securityCode='%s', expirationDate='%s', hasAccount=%d, bank='%s', accountNumber='%s',"\
-    "agency='%s', balance='%lf', address='%s', zipCode='%s', state='%s', city='%s' WHERE id=%u;", user->getFirstName().c_str(), user->getLastName().c_str(), user->getCPF().c_str(),\
+    "agency='%s', address='%s', zipCode='%s', state='%s', city='%s' WHERE id=%u;", user->getFirstName().c_str(), user->getLastName().c_str(), user->getCPF().c_str(),\
      user->getRG().c_str(), user->getAge().c_str(), user->getPhoneNumber().c_str(), user->getUsername().c_str(),\
      user->getPassword().c_str(), user->getEmail().c_str(), user->isActivated(),\
      user->cardRegistered(), user->getCardType().c_str(), user->getCardOperator().c_str(),user->getCardNumber().c_str(),user->getCardName().c_str(),\
      user->getSecurityCode().c_str(), user->getExpirationDate().c_str(), user->accountRegistered(),\
-     user->getBank().c_str(), user->getAccountNumber().c_str(), user->getAgency().c_str(),user->getBalance(),\
+     user->getBank().c_str(), user->getAccountNumber().c_str(), user->getAgency().c_str(),\
      user->getAddress().c_str(), user->getZipCode().c_str(), user->getState().c_str(), user->getCity().c_str(), user->getId());
     result = sqlite3_exec(connection, SQL, Callbacks::userCallback, 0, &errMsg);
     if(result != SQLITE_OK)

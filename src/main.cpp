@@ -1,12 +1,14 @@
 #include <iostream>
 #include <gtest/gtest.h>
-#include <sqlite3.h>
 #include "../include/User.hpp"
 #include "../include/Account.hpp"
 #include "../include/Security.hpp"
 
 using namespace std;
-/*
+TEST(Clean, Users_table){
+    User::cleanTable();
+}
+
 TEST(Account_Manipulation, Register){
     vector<string> fields (21);
     fields[0] = "Big Moai";
@@ -65,7 +67,7 @@ TEST(Account_Manipulation, Register){
         cout<<errors<<endl;
     }
 }
-*/
+
 /*
 TEST(Security_Module, CPF_autentication){
     string CPF = "25725661337";
@@ -118,7 +120,7 @@ TEST(Security_Module, Card_autentication){
 }
 */
 
-TEST(Account_Manipulation, Register){
+/*TEST(Account_Manipulation, Register){
     vector<string> fields(21);
     fields[0] = "Big Moai";
     fields[1] = "Nascimento";
@@ -147,29 +149,16 @@ TEST(Account_Manipulation, Register){
     } catch (char *errors){
         cout<<errors<<endl;
     }
-}
-
-TEST(Account_Manipulation, Login){
-    User *usuario_logado;
-    try {
-        usuario_logado = Account::login("Big_Moas15", "ca9GO");
-        ASSERT_EQ("Big_Moas22", usuario_logado->getUsername());
-        ASSERT_EQ("Big Moai", usuario_logado->getFirstName());
-        ASSERT_EQ("2874", usuario_logado->getRG());
-    } catch (char *errors) {
-        cout<<errors<<endl;
-    }
-
-}
+}*/
 /*
 TEST(Account_Manipulation, Account_Activation){
-    Account::activateAccount(4, false);
+    Account::activateAccount(5, true);
     User *usuario_logado = Account::login("Big_Moas15", "123456789GO");
-    ASSERT_NE(true, usuario_logado->isActivated());
+    ASSERT_EQ(true, usuario_logado->isActivated());
 }
 
 TEST(Account_Manipulation, Account_Deletion){
-    Account::deleteAccount(4);
+    Account::deleteAccount(5);
     try{
         User *usuario_logado = Account::login("Big_Moas15", "123456789GO");
     }
@@ -177,7 +166,50 @@ TEST(Account_Manipulation, Account_Deletion){
         cout<<error<<endl;
     }
 }
+
+TEST(Account_Manipulation, Updating_Profile){
+    User *usuario_logado;
+    vector<string> fields(21);
+    fields[0] = "Sr Frodo";
+    fields[1] = "Senhor dos Aneis";
+    fields[2] = "14308253918";
+    fields[3] = "2872319";
+    fields[4] = "19";
+    fields[5] = "+589199110155";
+    fields[6] = "Viado";
+    fields[7] = "123456789GO";
+    fields[8] = "hhubtyonseca2@gmail.com";
+    fields[9] = "QNM 03 CONJ I CS 26";
+    fields[10] = "72215-039";
+    fields[11] = "DF";
+    fields[12] = "Brasília";
+    fields[13] = "Credit";
+    fields[14] = "3741185452964196";
+    fields[15] = "549";
+    fields[16] = "05/2025";
+    fields[17] = "HUGO N. FONSECA";
+    fields[18] = "Itaú";
+    fields[19] = "0479";
+    fields[20] = "247896-3";
+    try{
+        Account::updateProfile(fields, 3, true, true);
+        try {
+            usuario_logado = Account::login("V", "123456789GO");
+            ASSERT_EQ("Sr Frodo", usuario_logado->getFirstName());
+            ASSERT_EQ("Viado", usuario_logado->getUsername());
+            cout<<usuario_logado->getFirstName()<<endl;
+        }
+        catch(char *error){
+            cout<<error<<endl;
+        }
+    }
+    catch (char *error){
+        cout<<error<<endl;
+    }
+
+}
 */
+
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();

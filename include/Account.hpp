@@ -15,7 +15,7 @@ public:
     static void registerUser(vector<string>, bool, bool);
     static void activateAccount(int, bool);
     static void deleteAccount(int);
-    static void updateAccount(vector<string>, bool, bool);
+    static void updateProfile(vector<string>, unsigned int, bool, bool);
 };
 
 #endif //APP_IPIRANGA_AUTENTICATION_HPP

@@ -11,10 +11,10 @@ LDIR =../lib
 
 LIBS=-lm ../lib/libgtest.a ../lib/libsqlite3.a -lgtest -lpthread -ldl -l sqlite3
 
-_DEPS = User.hpp Account.hpp Callbacks.hpp Search.hpp Security.hpp
+_DEPS = User.hpp Account.hpp Callbacks.hpp Search.hpp Security.hpp Ads.hpp Advertise.hpp
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = $(PRINCIPAL).o User.o Account.o Callbacks.o Search.o Security.o
+_OBJ = $(PRINCIPAL).o User.o Account.o Callbacks.o Search.o Security.o Ads.o Advertise.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 
@@ -44,6 +44,8 @@ gcov:
 	cp Callbacks.cpp $(GCOVDIR)
 	cp Search.cpp $(GCOVDIR)
 	cp Security.cpp $(GCOVDIR)
+	cp Ads.cpp $(GCOVDIR)
+	cp Advertise.cpp $(GCOVDIR)
 
 .PHONY: cppcheck
 cppcheck:

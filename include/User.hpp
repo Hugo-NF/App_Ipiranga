@@ -61,13 +61,15 @@ private:
 
     //App balance
     double balance;
+    //Average Rating
+    double rating;
 
     //Class methods
-    void deleteTable(sqlite3 *); //WARNING: The following methods may throw SQLite error messages
-    void createTable(sqlite3 *);
+    static void deleteTable(sqlite3 *); //WARNING: The following methods may throw SQLite error messages
+    static void createTable(sqlite3 *);
 
 public:
-    void cleanTable();
+    static void cleanTable();
     void insertOperation(sqlite3 *, User *);
     void updateOperation(sqlite3 *, User *);
 
@@ -143,7 +145,9 @@ public: //Public Methods
     //App balance
     void setBalance(double);
     double getBalance();
-
+    //Average rating
+    void setRating(double);
+    double getRating();
 };
 
 #endif //APP_IPIRANGA_USER_HPP
