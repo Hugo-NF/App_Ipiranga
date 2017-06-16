@@ -56,6 +56,7 @@ public:
 
     void cleanTable();
     void insertOperation(sqlite3 *, Ads *);
+    void updateOperation(sqlite3 *, Ads *);
 };
 
 

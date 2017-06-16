@@ -81,7 +81,7 @@ void Ads::createTable(sqlite3 *connection) {
             "  `id`             INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"\
             "  `title`          VARCHAR(20)                       NOT NULL,"\
             "  `category`       VARCHAR(20)                       NOT NULL,"\
-            "  `date`           VARCHAR(11)                       NOT NULL,"\
+            "  `date`           VARCHAR(20)                       NOT NULL,"\
             "  `seller`         VARCHAR(20)                       NOT NULL,"\
             "  `sellerId`       UNSIGNED INT                      NOT NULL,"\
             "  `description`    VARCHAR(540)                      NOT NULL,"\
@@ -118,16 +118,33 @@ void Ads::cleanTable() {
 
 void Ads::insertOperation(sqlite3 *connection, Ads *newAd) {
     int result;
+    ostringstream streamPrice;
+    streamPrice << newAd->getPrice();
+    string price = streamPrice.str();
+    ostringstream streamRating;
+    streamRating << newAd->getSellerRating();
+    string rating = streamRating.str();
     char *errMsg = 0;
     char SQL[3000];
     sprintf(SQL, "INSERT INTO ADS ("\
     "title, category, date, seller, sellerId, description, city, state, quantity, sellerRating,"\
-    "price) VALUES('%s','%s','%s','%s',%u,'%s','%s','%s',%u,%lf,%lf);", newAd->getTitle().c_str(),\
+    "price) VALUES('%s','%s','%s','%s',%u,'%s','%s','%s',%u,%s,%s);", newAd->getTitle().c_str(),\
     newAd->getCategory().c_str(), newAd->getDate(), newAd->getSellerUsername().c_str(), newAd->getSellerId(),\
     newAd->getDescription().c_str(), newAd->getCity().c_str(), newAd->getState().c_str(), newAd->getAmount(),\
-    newAd->getSellerRating(), newAd->getPrice());
+    rating.c_str(), price.c_str());
     cout<<SQL<<endl; //WARNING
-    result = sqlite3_exec(connection, SQL, Callbacks::userCallback, 0, &errMsg);
+    result = sqlite3_exec(connection, SQL, Callbacks::adsCallback, 0, &errMsg);
+    if(result != SQLITE_OK)
+        throw errMsg;
+}
+
+void Ads::updateOperation(sqlite3 *connection, Ads *currentAd) {
+    int result;
+    char *errMsg = 0;
+    char SQL[1500];
+    sprintf(SQL, "UPDATE ADS set title='%s', category='%s', date='%s', description='%s', quantity=%u WHERE id = %u;",
+    currentAd->getTitle().c_str(), currentAd->getCategory().c_str(), currentAd->getDate().c_str(), currentAd->getDescription().c_str(), currentAd->getAmount(), currentAd->getId());
+    result = sqlite3_exec(connection, SQL, Callbacks::adsCallback, 0, &errMsg);
     if(result != SQLITE_OK)
         throw errMsg;
 }

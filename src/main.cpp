@@ -5,10 +5,7 @@
 #include "../include/Security.hpp"
 
 using namespace std;
-TEST(Clean, Users_table){
-    User::cleanTable();
-}
-
+/*
 TEST(Account_Manipulation, Register){
     vector<string> fields (21);
     fields[0] = "Big Moai";
@@ -67,7 +64,7 @@ TEST(Account_Manipulation, Register){
         cout<<errors<<endl;
     }
 }
-
+*/
 /*
 TEST(Security_Module, CPF_autentication){
     string CPF = "25725661337";
@@ -120,45 +117,20 @@ TEST(Security_Module, Card_autentication){
 }
 */
 
-/*TEST(Account_Manipulation, Register){
-    vector<string> fields(21);
-    fields[0] = "Big Moai";
-    fields[1] = "Nascimento";
-    fields[2] = "14308253918";
-    fields[3] = "2872319";
-    fields[4] = "19";
-    fields[5] = "+556199110155";
-    fields[6] = "Big_Moas15";
-    fields[7] = "123456789GO";
-    fields[8] = "hugofonseca2@gmail.com";
-    fields[9] = "QNM 03 CONJ I CS 26";
-    fields[10] = "72215-039";
-    fields[11] = "DF";
-    fields[12] = "Brasília";
-    fields[13] = "Credit";
-    fields[14] = "3741185452964196";
-    fields[15] = "549";
-    fields[16] = "05/2025";
-    fields[17] = "HUGO N. FONSECA";
-    fields[18] = "Itaú";
-    fields[19] = "0479";
-    fields[20] = "247896-3";
-
-    try{
-        Account::registerUser(fields, true, true);
-    } catch (char *errors){
-        cout<<errors<<endl;
+TEST(Account_Manipulation, Account_Login) {
+    try {
+        User *usuario_logado = Account::login("Viado", "123456789GO");
+        ASSERT_EQ(true, usuario_logado->isActivated());
+        ASSERT_EQ(0.0, usuario_logado->getRating());
+        ASSERT_EQ(0.0, usuario_logado->getBalance());
     }
-}*/
-/*
-TEST(Account_Manipulation, Account_Activation){
-    Account::activateAccount(5, true);
-    User *usuario_logado = Account::login("Big_Moas15", "123456789GO");
-    ASSERT_EQ(true, usuario_logado->isActivated());
+    catch (char *error){
+        cout<<error<<endl;
+    }
 }
-
+/*
 TEST(Account_Manipulation, Account_Deletion){
-    Account::deleteAccount(5);
+    Account::deleteAccount(2);
     try{
         User *usuario_logado = Account::login("Big_Moas15", "123456789GO");
     }
@@ -192,9 +164,9 @@ TEST(Account_Manipulation, Updating_Profile){
     fields[19] = "0479";
     fields[20] = "247896-3";
     try{
-        Account::updateProfile(fields, 3, true, true);
+        Account::updateProfile(fields, 1, true, true);
         try {
-            usuario_logado = Account::login("V", "123456789GO");
+            usuario_logado = Account::login("Viado", "123456789GO");
             ASSERT_EQ("Sr Frodo", usuario_logado->getFirstName());
             ASSERT_EQ("Viado", usuario_logado->getUsername());
             cout<<usuario_logado->getFirstName()<<endl;
@@ -209,7 +181,6 @@ TEST(Account_Manipulation, Updating_Profile){
 
 }
 */
-
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();

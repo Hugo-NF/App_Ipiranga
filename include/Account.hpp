@@ -7,7 +7,8 @@
 #define CPF_CONSTRAINT "CPF previously registered"
 #define EMAIL_CONSTRAINT "E-mail current in use by another user"
 #define USERNAME_CONSTRAINT "Username unavailable"
-#define ACTIVATION_ERROR "Could not activate your account"
+#define ACTIVATION_ERROR "Sorry, we could not activate your account, please try again later"
+#define DELETE_ERROR "Sorry, we could not delete your account, please try again later"
 
 class Account {
 public:

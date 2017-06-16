@@ -125,7 +125,7 @@ void Account::deleteAccount(int id) {
 
     result = sqlite3_exec(connection, SQL, Callbacks::userCallback, 0, &errMsg);
     if(result != SQLITE_OK)
-        throw (char *) ACTIVATION_ERROR;
+        throw (char *) DELETE_ERROR;
 
     flag = sqlite3_close(connection);
     if(flag!=SQLITE_OK)

@@ -4,6 +4,7 @@
 
 
 #include <iostream>
+#include <sstream>
 #include <vector>
 #include <list>
 #include <string>
@@ -15,7 +16,7 @@
 #include "../include/Callbacks.hpp"
 
 #define DATABASE "../database/Ipiranga.db"
-#define CONNECTION_ERROR "Could not connect to the application database"
+#define CONNECTION_ERROR "Unfortunately, we could not connect to the application database"
 
 
 using namespace std;

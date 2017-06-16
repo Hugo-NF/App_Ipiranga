@@ -9,6 +9,9 @@ public:
     static int userCallback(void *, int, char **, char **);
     static int adsCallback(void *, int, char **, char **);
     static int averageCallback(void *, int, char **, char **);
+    static int countCallback(void *, int, char **, char **);
+    static int sumCallback(void *, int, char **, char **);
+    static string getCurrentDate();
 };
 
 #endif //APP_IPIRANGA_CALLBACKS_HPP
