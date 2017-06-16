@@ -19,7 +19,11 @@ FormRegister::~FormRegister()
 
 void FormRegister::on_pushButton_Cancel_clicked()
 {
-    this->~FormRegister();  // Eliminate the Form Register
+    if(QMessageBox::question(this,tr("Cancel Form"),tr("Are you sure that want to leave?"))
+            == QMessageBox::Yes)
+    {
+        this->~FormRegister();  // Eliminate the Form Register
+    }
 }
 
 void FormRegister::on_pushButton_Register_clicked()

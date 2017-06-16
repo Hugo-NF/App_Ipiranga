@@ -1,5 +1,6 @@
 #include "editprofile.h"
 #include "ui_editprofile.h"
+#include <QMessageBox>
 
 EditProfile::EditProfile(QWidget *parent) :
     QWidget(parent),
@@ -67,4 +68,34 @@ void EditProfile::SetUserFields(){
 void EditProfile::on_pushButton_Undo_clicked()
 {
     SetUserFields(); // Undo fields
+}
+
+void EditProfile::on_pushButton_Save_clicked()
+{
+
+}
+
+void EditProfile::on_pushButton_Delete_clicked()
+{
+    if(QMessageBox::question(this,tr("Delete Account"),tr("Are you sure that want to DELETE your account?"))
+            == QMessageBox::Yes)
+    {
+        if(QMessageBox::question(this,tr("Delete Account"),tr("Are you REALLY sure that want to DELETE your account?"))
+                == QMessageBox::Yes)
+        {
+            QMessageBox::information(this, tr("Delete Account"),tr("OK, Ok, ok, you win\n We will DELETE you account\n Good Bye :'["));
+            cout<<"Houuuly Vai Sair"<<endl;
+        }
+
+    }
+
+}
+
+void EditProfile::on_pushButton_Inactive_clicked()
+{
+    if(QMessageBox::question(this,tr("Inactive Account"),tr("Are You sure that want to DESABLE your account?"))
+            == QMessageBox::Yes)
+    {
+        cout<<"Houuuly Vai Passear"<<endl;
+    }
 }

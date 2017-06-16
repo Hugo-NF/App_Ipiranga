@@ -20,6 +20,12 @@ public:
 private slots:
     void on_pushButton_Undo_clicked();
 
+    void on_pushButton_Save_clicked();
+
+    void on_pushButton_Delete_clicked();
+
+    void on_pushButton_Inactive_clicked();
+
 private:
     Ui::EditProfile *ui;
 

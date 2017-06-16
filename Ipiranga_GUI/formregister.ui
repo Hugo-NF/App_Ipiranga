@@ -262,9 +262,6 @@
            <property name="locale">
             <locale language="English" country="UnitedStates"/>
            </property>
-           <property name="text">
-            <string>Jose Luiz</string>
-           </property>
            <property name="maxLength">
             <number>20</number>
            </property>
@@ -285,7 +282,7 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
-            <string>Gomes Nogueira</string>
+            <string/>
            </property>
            <property name="maxLength">
             <number>20</number>
@@ -303,11 +300,8 @@
            <property name="locale">
             <locale language="English" country="UnitedStates"/>
            </property>
-           <property name="inputMethodHints">
-            <set>Qt::ImhFormattedNumbersOnly</set>
-           </property>
            <property name="text">
-            <string>70317311190</string>
+            <string/>
            </property>
            <property name="maxLength">
             <number>11</number>
@@ -326,7 +320,7 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
-            <string>9964762</string>
+            <string/>
            </property>
            <property name="maxLength">
             <number>11</number>
@@ -364,7 +358,7 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
-            <string>062999923105</string>
+            <string/>
            </property>
            <property name="maxLength">
             <number>15</number>
@@ -479,7 +473,7 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
-            <string>Granja do torto Casa 28 Qd.C</string>
+            <string/>
            </property>
            <property name="maxLength">
             <number>100</number>
@@ -497,8 +491,11 @@
            <property name="locale">
             <locale language="English" country="UnitedStates"/>
            </property>
+           <property name="inputMask">
+            <string>9999999999</string>
+           </property>
            <property name="text">
-            <string>70636015</string>
+            <string/>
            </property>
            <property name="maxLength">
             <number>10</number>
@@ -516,8 +513,11 @@
            <property name="locale">
             <locale language="English" country="UnitedStates"/>
            </property>
+           <property name="inputMask">
+            <string>&gt;AA</string>
+           </property>
            <property name="text">
-            <string>DF</string>
+            <string/>
            </property>
            <property name="maxLength">
             <number>2</number>
@@ -535,8 +535,11 @@
            <property name="locale">
             <locale language="English" country="UnitedStates"/>
            </property>
+           <property name="inputMask">
+            <string>NNNNNNNNNNNNNNNNNNNN</string>
+           </property>
            <property name="text">
-            <string>Brasilia</string>
+            <string/>
            </property>
            <property name="maxLength">
             <number>20</number>
@@ -651,7 +654,7 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
-            <string>meu pai</string>
+            <string/>
            </property>
            <property name="maxLength">
             <number>30</number>
@@ -670,7 +673,7 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
-            <string>00000000000000000000</string>
+            <string/>
            </property>
            <property name="maxLength">
             <number>20</number>
@@ -689,7 +692,7 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
-            <string>9999</string>
+            <string/>
            </property>
            <property name="maxLength">
             <number>4</number>
@@ -833,7 +836,7 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
-            <string>Luiz</string>
+            <string/>
            </property>
            <property name="maxLength">
             <number>20</number>
@@ -852,7 +855,7 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
-            <string>12345678</string>
+            <string/>
            </property>
            <property name="maxLength">
             <number>30</number>
@@ -890,7 +893,7 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
-            <string>12345678</string>
+            <string/>
            </property>
            <property name="maxLength">
             <number>30</number>
@@ -912,7 +915,7 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
-            <string>joseluizgnogueira@hotmail.com</string>
+            <string/>
            </property>
            <property name="maxLength">
             <number>45</number>
@@ -946,6 +949,9 @@
           </property>
           <property name="text">
            <string>Cancel</string>
+          </property>
+          <property name="shortcut">
+           <string>Esc</string>
           </property>
          </widget>
          <widget class="QPushButton" name="pushButton_Register">
@@ -1075,7 +1081,7 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
-            <string>1234567890</string>
+            <string/>
            </property>
            <property name="maxLength">
             <number>10</number>
@@ -1094,7 +1100,7 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
-            <string>99999999999999999</string>
+            <string/>
            </property>
            <property name="maxLength">
             <number>20</number>

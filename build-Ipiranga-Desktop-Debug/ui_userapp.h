@@ -40,7 +40,10 @@ public:
     QFrame *content;
     QLineEdit *line_search;
     QPushButton *Button_search;
+    QPushButton *pushButton;
     QFrame *right;
+    QFrame *frame_3;
+    QFrame *frame_2;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *Box_Menu;
     QFrame *Menu;
@@ -159,6 +162,15 @@ public:
 
         horizontalLayout_2->addWidget(content);
 
+        pushButton = new QPushButton(Frame_Search);
+        pushButton->setObjectName(QStringLiteral("pushButton"));
+        pushButton->setMaximumSize(QSize(30, 30));
+        QIcon icon4(QIcon::fromTheme(QStringLiteral("icon")));
+        pushButton->setIcon(icon4);
+        pushButton->setFlat(true);
+
+        horizontalLayout_2->addWidget(pushButton);
+
         right = new QFrame(Frame_Search);
         right->setObjectName(QStringLiteral("right"));
         right->setFrameShape(QFrame::StyledPanel);
@@ -169,10 +181,28 @@ public:
 
         verticalLayout->addWidget(Frame_Search);
 
+        frame_3 = new QFrame(centralwidget);
+        frame_3->setObjectName(QStringLiteral("frame_3"));
+        frame_3->setMinimumSize(QSize(0, 100));
+        frame_3->setStyleSheet(QStringLiteral("background:black"));
+        frame_3->setFrameShape(QFrame::StyledPanel);
+        frame_3->setFrameShadow(QFrame::Raised);
+
+        verticalLayout->addWidget(frame_3);
+
+        frame_2 = new QFrame(centralwidget);
+        frame_2->setObjectName(QStringLiteral("frame_2"));
+        frame_2->setMinimumSize(QSize(0, 100));
+        frame_2->setStyleSheet(QStringLiteral("background:green"));
+        frame_2->setFrameShape(QFrame::StyledPanel);
+        frame_2->setFrameShadow(QFrame::Raised);
+
+        verticalLayout->addWidget(frame_2);
+
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(3);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        horizontalLayout->setContentsMargins(0, -1, -1, -1);
+        horizontalLayout->setContentsMargins(0, 15, -1, -1);
         Box_Menu = new QVBoxLayout();
         Box_Menu->setObjectName(QStringLiteral("Box_Menu"));
         Box_Menu->setSizeConstraint(QLayout::SetDefaultConstraint);
@@ -186,13 +216,13 @@ public:
         Menu->setFrameShadow(QFrame::Raised);
         User_img = new QLabel(Menu);
         User_img->setObjectName(QStringLiteral("User_img"));
-        User_img->setGeometry(QRect(10, 30, 50, 50));
+        User_img->setGeometry(QRect(10, 20, 50, 50));
         User_img->setPixmap(QPixmap(QString::fromUtf8(":/img_login/images/User_img.png")));
         User_img->setScaledContents(true);
         User_img->setTextInteractionFlags(Qt::NoTextInteraction);
         UserName = new QLabel(Menu);
         UserName->setObjectName(QStringLiteral("UserName"));
-        UserName->setGeometry(QRect(70, 39, 81, 31));
+        UserName->setGeometry(QRect(70, 29, 81, 31));
         QPalette palette1;
         QBrush brush(QColor(0, 0, 0, 255));
         brush.setStyle(Qt::SolidPattern);
@@ -222,41 +252,41 @@ public:
         UserName->setAlignment(Qt::AlignJustify|Qt::AlignVCenter);
         Button_logout = new QCommandLinkButton(Menu);
         Button_logout->setObjectName(QStringLiteral("Button_logout"));
-        Button_logout->setGeometry(QRect(30, 260, 121, 30));
-        QIcon icon4;
-        icon4.addFile(QStringLiteral(":/img_login/images/logout_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
-        Button_logout->setIcon(icon4);
+        Button_logout->setGeometry(QRect(30, 250, 121, 30));
+        QIcon icon5;
+        icon5.addFile(QStringLiteral(":/img_login/images/logout_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        Button_logout->setIcon(icon5);
         Button_historic = new QCommandLinkButton(Menu);
         Button_historic->setObjectName(QStringLiteral("Button_historic"));
-        Button_historic->setGeometry(QRect(30, 180, 121, 30));
-        QIcon icon5;
-        icon5.addFile(QStringLiteral(":/img_login/images/historic_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
-        Button_historic->setIcon(icon5);
+        Button_historic->setGeometry(QRect(30, 170, 121, 30));
+        QIcon icon6;
+        icon6.addFile(QStringLiteral(":/img_login/images/historic_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        Button_historic->setIcon(icon6);
         Button_edit = new QCommandLinkButton(Menu);
         Button_edit->setObjectName(QStringLiteral("Button_edit"));
-        Button_edit->setGeometry(QRect(30, 120, 121, 30));
-        QIcon icon6;
-        icon6.addFile(QStringLiteral(":/img_login/images/profile_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
-        Button_edit->setIcon(icon6);
+        Button_edit->setGeometry(QRect(30, 110, 121, 30));
+        QIcon icon7;
+        icon7.addFile(QStringLiteral(":/img_login/images/profile_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        Button_edit->setIcon(icon7);
         Button_friends = new QCommandLinkButton(Menu);
         Button_friends->setObjectName(QStringLiteral("Button_friends"));
-        Button_friends->setGeometry(QRect(30, 150, 121, 30));
-        QIcon icon7;
-        icon7.addFile(QStringLiteral(":/img_login/images/friends_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
-        Button_friends->setIcon(icon7);
+        Button_friends->setGeometry(QRect(30, 140, 121, 30));
+        QIcon icon8;
+        icon8.addFile(QStringLiteral(":/img_login/images/friends_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        Button_friends->setIcon(icon8);
         Button_advertise = new QCommandLinkButton(Menu);
         Button_advertise->setObjectName(QStringLiteral("Button_advertise"));
-        Button_advertise->setGeometry(QRect(30, 210, 121, 30));
+        Button_advertise->setGeometry(QRect(30, 200, 121, 30));
         Button_advertise->setStyleSheet(QStringLiteral(""));
-        QIcon icon8;
-        icon8.addFile(QStringLiteral(":/img_login/images/announcement-icon.png"), QSize(), QIcon::Normal, QIcon::Off);
-        Button_advertise->setIcon(icon8);
+        QIcon icon9;
+        icon9.addFile(QStringLiteral(":/img_login/images/announcement-icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        Button_advertise->setIcon(icon9);
         Button_home = new QCommandLinkButton(Menu);
         Button_home->setObjectName(QStringLiteral("Button_home"));
-        Button_home->setGeometry(QRect(30, 90, 121, 30));
-        QIcon icon9;
-        icon9.addFile(QStringLiteral(":/img_login/images/home_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
-        Button_home->setIcon(icon9);
+        Button_home->setGeometry(QRect(30, 80, 121, 30));
+        QIcon icon10;
+        icon10.addFile(QStringLiteral(":/img_login/images/home_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        Button_home->setIcon(icon10);
         line = new QFrame(Menu);
         line->setObjectName(QStringLiteral("line"));
         line->setGeometry(QRect(155, 10, 3, 350));
@@ -332,6 +362,7 @@ public:
         Button_search_advertise->setText(QString());
         Button_search_friends->setText(QString());
         Button_search->setText(QString());
+        pushButton->setText(QString());
         User_img->setText(QString());
         UserName->setText(QApplication::translate("UserApp", "User Name", 0));
         Button_logout->setText(QApplication::translate("UserApp", "Logout", 0));

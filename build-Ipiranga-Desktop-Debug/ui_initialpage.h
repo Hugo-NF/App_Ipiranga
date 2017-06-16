@@ -14,7 +14,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
-#include <QtWidgets/QPushButton>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QScrollArea>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -28,13 +28,13 @@ public:
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
     QVBoxLayout *verticalLayout_2;
-    QPushButton *pushButton;
+    QLabel *label;
 
     void setupUi(QWidget *InitialPage)
     {
         if (InitialPage->objectName().isEmpty())
             InitialPage->setObjectName(QStringLiteral("InitialPage"));
-        InitialPage->resize(400, 300);
+        InitialPage->resize(526, 409);
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -51,14 +51,15 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 385, 1018));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 522, 405));
         verticalLayout_2 = new QVBoxLayout(scrollAreaWidgetContents);
+        verticalLayout_2->setSpacing(0);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-        pushButton = new QPushButton(scrollAreaWidgetContents);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setMinimumSize(QSize(0, 1000));
+        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
+        label = new QLabel(scrollAreaWidgetContents);
+        label->setObjectName(QStringLiteral("label"));
 
-        verticalLayout_2->addWidget(pushButton);
+        verticalLayout_2->addWidget(label);
 
         scrollArea->setWidget(scrollAreaWidgetContents);
 
@@ -73,7 +74,7 @@ public:
     void retranslateUi(QWidget *InitialPage)
     {
         InitialPage->setWindowTitle(QApplication::translate("InitialPage", "Form", 0));
-        pushButton->setText(QApplication::translate("InitialPage", "PushButton", 0));
+        label->setText(QApplication::translate("InitialPage", "<html><head/><body><p align=\"center\"><span style=\" font-size:72pt; font-weight:600; font-style:italic; color:#3465a4;\">I</span><span style=\" font-size:72pt; font-weight:600; font-style:italic; color:#3f66ca;\">piranga!</span></p><p align=\"center\"><span style=\" font-weight:600; color:#729fcf;\">Welcome</span><span style=\" font-weight:600;\"> to a new world,</span></p><p align=\"center\"><span style=\" font-weight:600;\">where you can find all, that exist in the universe!</span></p></body></html>", 0));
     } // retranslateUi
 
 };

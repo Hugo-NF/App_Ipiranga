@@ -97,6 +97,8 @@ public:
     QLineEdit *lineAccount;
     QComboBox *comboBox_Bank;
     QLabel *label;
+    QPushButton *pushButton_Delete;
+    QPushButton *pushButton_Inactive;
     QFrame *right;
 
     void setupUi(QWidget *EditProfile)
@@ -392,6 +394,52 @@ public:
         label = new QLabel(form);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(10, 910, 251, 20));
+        pushButton_Delete = new QPushButton(form);
+        pushButton_Delete->setObjectName(QStringLiteral("pushButton_Delete"));
+        pushButton_Delete->setGeometry(QRect(310, 910, 85, 16));
+        QPalette palette;
+        QBrush brush(QColor(32, 74, 135, 255));
+        brush.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette.setBrush(QPalette::Active, QPalette::Button, brush);
+        palette.setBrush(QPalette::Active, QPalette::Text, brush);
+        palette.setBrush(QPalette::Active, QPalette::ButtonText, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::Button, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
+        QBrush brush1(QColor(141, 144, 145, 255));
+        brush1.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette.setBrush(QPalette::Disabled, QPalette::Button, brush);
+        palette.setBrush(QPalette::Disabled, QPalette::Text, brush);
+        palette.setBrush(QPalette::Disabled, QPalette::ButtonText, brush1);
+        pushButton_Delete->setPalette(palette);
+        QFont font;
+        font.setPointSize(8);
+        pushButton_Delete->setFont(font);
+        pushButton_Delete->setStyleSheet(QStringLiteral(""));
+        pushButton_Delete->setFlat(true);
+        pushButton_Inactive = new QPushButton(form);
+        pushButton_Inactive->setObjectName(QStringLiteral("pushButton_Inactive"));
+        pushButton_Inactive->setGeometry(QRect(220, 910, 85, 16));
+        QPalette palette1;
+        palette1.setBrush(QPalette::Active, QPalette::WindowText, brush);
+        palette1.setBrush(QPalette::Active, QPalette::Button, brush);
+        palette1.setBrush(QPalette::Active, QPalette::Text, brush);
+        palette1.setBrush(QPalette::Active, QPalette::ButtonText, brush);
+        palette1.setBrush(QPalette::Inactive, QPalette::WindowText, brush);
+        palette1.setBrush(QPalette::Inactive, QPalette::Button, brush);
+        palette1.setBrush(QPalette::Inactive, QPalette::Text, brush);
+        palette1.setBrush(QPalette::Inactive, QPalette::ButtonText, brush);
+        palette1.setBrush(QPalette::Disabled, QPalette::WindowText, brush1);
+        palette1.setBrush(QPalette::Disabled, QPalette::Button, brush);
+        palette1.setBrush(QPalette::Disabled, QPalette::Text, brush);
+        palette1.setBrush(QPalette::Disabled, QPalette::ButtonText, brush1);
+        pushButton_Inactive->setPalette(palette1);
+        pushButton_Inactive->setFont(font);
+        pushButton_Inactive->setStyleSheet(QStringLiteral(""));
+        pushButton_Inactive->setFlat(true);
 
         horizontalLayout->addWidget(form);
 
@@ -509,6 +557,8 @@ public:
          << QApplication::translate("EditProfile", "Santander", 0)
         );
         label->setText(QApplication::translate("EditProfile", "<html><head/><body><p><span style=\" font-size:8pt;\">Sections that contain </span><span style=\" font-size:8pt; color:#a40000;\">*</span><span style=\" font-size:8pt;\"> are required</span></p></body></html>", 0));
+        pushButton_Delete->setText(QApplication::translate("EditProfile", "Delete Account", 0));
+        pushButton_Inactive->setText(QApplication::translate("EditProfile", "Inactive Account", 0));
     } // retranslateUi
 
 };

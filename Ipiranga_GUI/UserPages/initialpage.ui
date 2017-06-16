@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>526</width>
+    <height>409</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -26,8 +26,7 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">
-</string>
+   <string notr="true"/>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
@@ -55,21 +54,30 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>385</width>
-        <height>1018</height>
+        <width>522</width>
+        <height>405</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
        <item>
-        <widget class="QPushButton" name="pushButton">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>1000</height>
-          </size>
-         </property>
+        <widget class="QLabel" name="label">
          <property name="text">
-          <string>PushButton</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:72pt; font-weight:600; font-style:italic; color:#3465a4;&quot;&gt;I&lt;/span&gt;&lt;span style=&quot; font-size:72pt; font-weight:600; font-style:italic; color:#3f66ca;&quot;&gt;piranga!&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600; color:#729fcf;&quot;&gt;Welcome&lt;/span&gt;&lt;span style=&quot; font-weight:600;&quot;&gt; to a new world,&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;where you can find all, that exist in the universe!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
         </widget>
        </item>

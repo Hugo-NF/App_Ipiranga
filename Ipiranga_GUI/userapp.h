@@ -43,8 +43,12 @@ private slots:
 
     void on_Button_search_advertise_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::UserApp *ui;
+
+    bool toolactive;
 
     //Actual User
     User CurrentUser;
