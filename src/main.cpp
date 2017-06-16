@@ -3,6 +3,7 @@
 #include "../include/User.hpp"
 #include "../include/Account.hpp"
 #include "../include/Security.hpp"
+#include "../include/Advertise.hpp"
 
 using namespace std;
 /*
@@ -116,7 +117,7 @@ TEST(Security_Module, Card_autentication){
 
 }
 */
-
+/*
 TEST(Account_Manipulation, Account_Login) {
     try {
         User *usuario_logado = Account::login("Viado", "123456789GO");
@@ -128,7 +129,6 @@ TEST(Account_Manipulation, Account_Login) {
         cout<<error<<endl;
     }
 }
-/*
 TEST(Account_Manipulation, Account_Deletion){
     Account::deleteAccount(2);
     try{
@@ -180,7 +180,67 @@ TEST(Account_Manipulation, Updating_Profile){
     }
 
 }
+
 */
+TEST(AdsClass, CreateAd){
+    sqlite3 *connection;
+    int flag;
+    char *errMsg=0;
+    vector<Ads *> result;
+    flag = sqlite3_open(DATABASE, &connection);
+    if(flag!=SQLITE_OK)
+        throw (char *) REGISTER_AD_ERROR;
+
+    vector<string> campos(3);
+
+    campos[0] = "Carros";
+    campos[1] = "Honda Type R";
+    campos[2] = "Só faltou ser tração traseira";
+    try{
+        Advertise::editAd(4, campos, 129000, 2);
+    }
+    catch (char *error){
+        cout<<error<<endl;
+    }
+    flag = sqlite3_exec(connection, "SELECT * from ADS", Callbacks::adsCallback, &result, &errMsg);
+    if(flag!=SQLITE_OK)
+        throw (char *) REGISTER_AD_ERROR;
+
+    for (int i = 0; i<result.size(); i++){
+        ASSERT_EQ("Carros", result[i]->getCategory());
+        cout<<result[i]->getDate()<<endl;
+        cout<<result[i]->getTitle()<<endl;
+    }
+
+    flag = sqlite3_close(connection);
+    if(flag!=SQLITE_OK)
+        throw (char *) REGISTER_AD_ERROR;
+}
+/*
+TEST(AdsClass, GetAds){
+    sqlite3 *connection;
+    int flag;
+    char *errMsg=0;
+    vector<Ads *> result;
+    flag = sqlite3_open(DATABASE, &connection);
+    if(flag!=SQLITE_OK)
+        throw (char *) REGISTER_AD_ERROR;
+
+    flag = sqlite3_exec(connection, "SELECT * from ADS", Callbacks::adsCallback, &result, &errMsg);
+    if(flag!=SQLITE_OK)
+        throw (char *) REGISTER_AD_ERROR;
+
+    for (int i = 0; i<result.size(); i++){
+        ASSERT_EQ("Carros", result[i]->getCategory());
+        cout<<result[i]->getDate()<<endl;
+        cout<<result[i]->getTitle()<<endl;
+    }
+
+    flag = sqlite3_close(connection);
+    if(flag!=SQLITE_OK)
+        throw (char *) REGISTER_AD_ERROR;
+}*/
+
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();

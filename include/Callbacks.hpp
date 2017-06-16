@@ -2,7 +2,10 @@
 #ifndef APP_IPIRANGA_CALLBACKS_HPP
 #define APP_IPIRANGA_CALLBACKS_HPP
 
+#include "User.hpp"
 #include "Ads.hpp"
+
+using namespace std;
 
 class Callbacks {
 public:

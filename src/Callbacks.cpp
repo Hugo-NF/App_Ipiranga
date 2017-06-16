@@ -77,11 +77,11 @@ int Callbacks::sumCallback(void *ptr, int argc, char **argv, char **colNames){
 string Callbacks::getCurrentDate(){
     time_t Ad_toggle;
     struct tm *timeinfo;
-    char date[20];
+    char date[30];
     string returningDate;
     time(&Ad_toggle);
     timeinfo = localtime(&Ad_toggle);
-    strftime (date,20,"%a, %F, %R",timeinfo);
+    strftime (date, 30,"%a, %b %e %Y - %R", timeinfo);
     returningDate = date;
     return returningDate;
 }

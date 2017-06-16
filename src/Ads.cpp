@@ -81,7 +81,7 @@ void Ads::createTable(sqlite3 *connection) {
             "  `id`             INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"\
             "  `title`          VARCHAR(20)                       NOT NULL,"\
             "  `category`       VARCHAR(20)                       NOT NULL,"\
-            "  `date`           VARCHAR(20)                       NOT NULL,"\
+            "  `date`           VARCHAR(30)                       NOT NULL,"\
             "  `seller`         VARCHAR(20)                       NOT NULL,"\
             "  `sellerId`       UNSIGNED INT                      NOT NULL,"\
             "  `description`    VARCHAR(540)                      NOT NULL,"\
@@ -109,8 +109,8 @@ void Ads::cleanTable() {
     int flag = sqlite3_open(DATABASE, &connection);
     if(flag!= SQLITE_OK)
         throw (char *) CONNECTION_ERROR;
-    this->deleteTable(connection);
-    this->createTable(connection);
+    Ads::deleteTable(connection);
+    Ads::createTable(connection);
     flag = sqlite3_close(connection);
     if(flag != SQLITE_OK)
         throw (char *) CONNECTION_ERROR;
@@ -129,7 +129,7 @@ void Ads::insertOperation(sqlite3 *connection, Ads *newAd) {
     sprintf(SQL, "INSERT INTO ADS ("\
     "title, category, date, seller, sellerId, description, city, state, quantity, sellerRating,"\
     "price) VALUES('%s','%s','%s','%s',%u,'%s','%s','%s',%u,%s,%s);", newAd->getTitle().c_str(),\
-    newAd->getCategory().c_str(), newAd->getDate(), newAd->getSellerUsername().c_str(), newAd->getSellerId(),\
+    newAd->getCategory().c_str(), newAd->getDate().c_str(), newAd->getSellerUsername().c_str(), newAd->getSellerId(),\
     newAd->getDescription().c_str(), newAd->getCity().c_str(), newAd->getState().c_str(), newAd->getAmount(),\
     rating.c_str(), price.c_str());
     cout<<SQL<<endl; //WARNING

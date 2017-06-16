@@ -10,9 +10,10 @@
 #define MODIFY_AD_ERROR "Sorry, we could not update your ad right now, please try again later"
 
 class Advertise {
-    static void createAd(User *, vector<string>);
+public:
+    static void createAd(User *, vector<string>, double, unsigned int);
     static void deleteAd(unsigned int);
-    static void editAd(unsigned int, vector<string>);
+    static void editAd(unsigned int, vector<string>, double, unsigned int);
 };
 
 #endif //APP_IPIRANGA_ADVERTISE_HPP

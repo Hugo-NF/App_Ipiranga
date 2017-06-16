@@ -87,7 +87,7 @@ void Search::enableFriendsofFriendsSearch(bool toggle) {
 bool Search::friendsOfFriendsSearchEnabled() {
     return this->toggleFriendsofFriends;
 }
-
+/*
 vector<User *> Search::userSearch(Search *parameters) {
     int i, flag;
     char query[100];
@@ -129,3 +129,4 @@ vector<User *> Search::userSearch(Search *parameters) {
 
     return result;
 }
+*/

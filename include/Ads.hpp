@@ -20,8 +20,8 @@ private:
     unsigned int amount;
     double price;
 
-    void createTable(sqlite3 *);
-    void deleteTable(sqlite3 *);
+    static void createTable(sqlite3 *);
+    static void deleteTable(sqlite3 *);
 
 public:
     Ads(unsigned int id){
@@ -54,7 +54,7 @@ public:
     double getPrice();
 
 
-    void cleanTable();
+    static void cleanTable();
     void insertOperation(sqlite3 *, Ads *);
     void updateOperation(sqlite3 *, Ads *);
 };

@@ -1,7 +1,7 @@
 
 #include "../include/Advertise.hpp"
 
-void Advertise::createAd(User *currentUser, vector<string> fields) {
+void Advertise::createAd(User *currentUser, vector<string> fields, double price, unsigned int amount) {
     Ads newAd(0);
     sqlite3 *connection;
     int flag;
@@ -13,9 +13,9 @@ void Advertise::createAd(User *currentUser, vector<string> fields) {
     newAd.setDate(Callbacks::getCurrentDate());
     newAd.setCategory(fields[0]);
     newAd.setTitle(fields[1]);
-    newAd.setPrice(atof(fields[2]));
-    newAd.setAmount(atoi(fields[3]));
-    newAd.setDescription(fields[4]);
+    newAd.setDescription(fields[2]);
+    newAd.setPrice(price);
+    newAd.setAmount(amount);
 
     flag = sqlite3_open(DATABASE, &connection);
     if(flag!=SQLITE_OK)
@@ -49,15 +49,16 @@ void Advertise::deleteAd(unsigned int id) {
         throw (char *) DELETE_AD_ERROR;
 }
 
-void Advertise::editAd(unsigned int id, vector<string> fields){
+void Advertise::editAd(unsigned int id, vector<string> fields, double price, unsigned int amount){
     sqlite3 *connection;
     int flag;
     Ads currentAd(id);
     currentAd.setCategory(fields[0]);
     currentAd.setTitle(fields[1]);
-    currentAd.setPrice(atof(fields[2]));
-    currentAd.setAmount(atoi(fields[3]));
-    currentAd.setDescription(fields[4]);
+    currentAd.setDescription(fields[2]);
+    currentAd.setPrice(price);
+    currentAd.setAmount(amount);
+    currentAd.setDate(Callbacks::getCurrentDate());
 
     flag = sqlite3_open(DATABASE, &connection);
     if(flag!=SQLITE_OK)
