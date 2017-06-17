@@ -54,7 +54,6 @@ public:
     QLabel *label_quantity;
     QLabel *label_title;
     QLabel *labe_text_character;
-    QComboBox *comboBox_category;
     QLabel *label_price;
     QLabel *label_n_character;
     QPushButton *pushButton_reset;
@@ -63,10 +62,12 @@ public:
     QLineEdit *line_price;
     QLineEdit *line_title;
     QSpinBox *spinBox_quantity;
+    QComboBox *comboBox_category;
     QFrame *right_2;
     QFrame *Active_ads;
     QVBoxLayout *verticalLayout_3;
     QLabel *TitleAds;
+    QFrame *line;
     QVBoxLayout *Ads;
     QFrame *right;
 
@@ -161,9 +162,6 @@ public:
         QFont font1;
         font1.setPointSize(9);
         labe_text_character->setFont(font1);
-        comboBox_category = new QComboBox(Create_Advertise);
-        comboBox_category->setObjectName(QStringLiteral("comboBox_category"));
-        comboBox_category->setGeometry(QRect(140, 50, 221, 22));
         label_price = new QLabel(Create_Advertise);
         label_price->setObjectName(QStringLiteral("label_price"));
         label_price->setGeometry(QRect(50, 110, 68, 20));
@@ -194,6 +192,15 @@ public:
         spinBox_quantity->setGeometry(QRect(140, 140, 60, 22));
         spinBox_quantity->setMinimum(1);
         spinBox_quantity->setMaximum(999);
+        comboBox_category = new QComboBox(Create_Advertise);
+        comboBox_category->setObjectName(QStringLiteral("comboBox_category"));
+        comboBox_category->setGeometry(QRect(140, 50, 190, 22));
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(comboBox_category->sizePolicy().hasHeightForWidth());
+        comboBox_category->setSizePolicy(sizePolicy);
+        comboBox_category->setMaximumSize(QSize(225, 22));
 
         Banalce_advertise_2->addWidget(Create_Advertise);
 
@@ -212,29 +219,39 @@ public:
 
         Active_ads = new QFrame(scrollAreaWidgetContents);
         Active_ads->setObjectName(QStringLiteral("Active_ads"));
-        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(Active_ads->sizePolicy().hasHeightForWidth());
-        Active_ads->setSizePolicy(sizePolicy);
-        Active_ads->setMinimumSize(QSize(450, 100));
+        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(Active_ads->sizePolicy().hasHeightForWidth());
+        Active_ads->setSizePolicy(sizePolicy1);
+        Active_ads->setMaximumSize(QSize(800, 16777215));
         Active_ads->setStyleSheet(QStringLiteral(""));
         Active_ads->setFrameShape(QFrame::StyledPanel);
         Active_ads->setFrameShadow(QFrame::Raised);
         verticalLayout_3 = new QVBoxLayout(Active_ads);
-        verticalLayout_3->setSpacing(6);
+        verticalLayout_3->setSpacing(15);
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
-        verticalLayout_3->setContentsMargins(0, 0, 0, 0);
+        verticalLayout_3->setContentsMargins(0, 30, 0, 0);
         TitleAds = new QLabel(Active_ads);
         TitleAds->setObjectName(QStringLiteral("TitleAds"));
-        TitleAds->setMaximumSize(QSize(16777215, 50));
+        TitleAds->setMaximumSize(QSize(16777215, 30));
         TitleAds->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
 
         verticalLayout_3->addWidget(TitleAds);
 
+        line = new QFrame(Active_ads);
+        line->setObjectName(QStringLiteral("line"));
+        line->setMaximumSize(QSize(16777215, 2));
+        line->setStyleSheet(QStringLiteral("background:rgb(51, 144, 231)"));
+        line->setFrameShape(QFrame::HLine);
+        line->setFrameShadow(QFrame::Sunken);
+
+        verticalLayout_3->addWidget(line);
+
         Ads = new QVBoxLayout();
         Ads->setSpacing(20);
         Ads->setObjectName(QStringLiteral("Ads"));
+        Ads->setContentsMargins(-1, 15, -1, -1);
 
         verticalLayout_3->addLayout(Ads);
 
@@ -257,9 +274,6 @@ public:
 
 
         retranslateUi(Advertise);
-
-        comboBox_category->setCurrentIndex(0);
-
 
         QMetaObject::connectSlotsByName(Advertise);
     } // setupUi
@@ -285,10 +299,6 @@ public:
         label_quantity->setText(QApplication::translate("Advertise", "Quantity", 0));
         label_title->setText(QApplication::translate("Advertise", "Title", 0));
         labe_text_character->setText(QApplication::translate("Advertise", "Characters remaining", 0));
-        comboBox_category->clear();
-        comboBox_category->insertItems(0, QStringList()
-         << QApplication::translate("Advertise", "Select a Category", 0)
-        );
         label_price->setText(QApplication::translate("Advertise", "<html><head/><body><p>Price <span style=\" font-size:10pt; font-weight:600; font-style:italic;\">(R$)</span></p></body></html>", 0));
         label_n_character->setText(QApplication::translate("Advertise", "500", 0));
         pushButton_reset->setText(QApplication::translate("Advertise", "Reset", 0));
@@ -296,7 +306,34 @@ public:
         label_description->setText(QApplication::translate("Advertise", "Description", 0));
         line_price->setInputMask(QApplication::translate("Advertise", "99999999.\\0\\0", 0));
         line_price->setText(QApplication::translate("Advertise", ".00", 0));
-        TitleAds->setText(QApplication::translate("Advertise", "<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; font-weight:600; text-decoration: underline; color:#087add;\">Active Ads</span></p></body></html>", 0));
+        comboBox_category->clear();
+        comboBox_category->insertItems(0, QStringList()
+         << QString()
+         << QApplication::translate("Advertise", "Animals", 0)
+         << QApplication::translate("Advertise", "Automobiles", 0)
+         << QApplication::translate("Advertise", "Books", 0)
+         << QApplication::translate("Advertise", "Clothes", 0)
+         << QApplication::translate("Advertise", "Computing", 0)
+         << QApplication::translate("Advertise", "Construction", 0)
+         << QApplication::translate("Advertise", "Drinks", 0)
+         << QApplication::translate("Advertise", "Electronics", 0)
+         << QApplication::translate("Advertise", "Food", 0)
+         << QApplication::translate("Advertise", "Furniture", 0)
+         << QApplication::translate("Advertise", "Games", 0)
+         << QApplication::translate("Advertise", "Home Appliances", 0)
+         << QApplication::translate("Advertise", "Kitchen", 0)
+         << QApplication::translate("Advertise", "Leisure", 0)
+         << QApplication::translate("Advertise", "Leisure Services", 0)
+         << QApplication::translate("Advertise", "Medicines", 0)
+         << QApplication::translate("Advertise", "Music", 0)
+         << QApplication::translate("Advertise", "Office", 0)
+         << QApplication::translate("Advertise", "Properties", 0)
+         << QApplication::translate("Advertise", "Shoes", 0)
+         << QApplication::translate("Advertise", "Sport", 0)
+         << QApplication::translate("Advertise", "Ticket", 0)
+         << QApplication::translate("Advertise", "Travel", 0)
+        );
+        TitleAds->setText(QApplication::translate("Advertise", "<html><head/><body><p><span style=\" font-size:18pt; font-weight:600; color:#087add;\">Active Ads</span></p></body></html>", 0));
     } // retranslateUi
 
 };

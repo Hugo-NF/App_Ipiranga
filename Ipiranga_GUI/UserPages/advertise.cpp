@@ -12,13 +12,27 @@ Advertise::Advertise(QWidget *parent) :
     ui->setupUi(this);
     Description ="";    //There is nothing in the initial description
 
-    set_ActivesAds();
+    set_ActivesAds();   //Set the Ads Actives on the screen
 
 }
 
 Advertise::~Advertise()
 {
     delete ui;
+}
+
+void Advertise::SetCurrentUser(User _CurrentUser){
+    CurrentUser = _CurrentUser;
+}
+
+void Advertise::set_ActivesAds()
+{
+    for(int i=0; i<5; i++){
+        Ads *ads_active = new Ads;
+        ads_active->setTitle(QString::number(i));
+        ads_active->setPrice("12000.00");
+        ui->Ads->addWidget(ads_active);
+    }
 }
 
 void Advertise::on_text_description_textChanged() //Count of Characters
@@ -44,14 +58,4 @@ void Advertise::on_pushButton_reset_clicked()
     ui->line_price->setText("");
     ui->spinBox_quantity->setValue(1);
     ui->text_description->setText("");
-}
-
-void Advertise::set_ActivesAds()
-{
-    for(int i=0; i<5; i++){
-        Ads *ads_active = new Ads;
-        ads_active->contator(i);
-        ui->Active_ads->setMinimumHeight((ui->Active_ads->minimumHeight()) + 150);
-        ui->Ads->addWidget(ads_active);
-    }
 }

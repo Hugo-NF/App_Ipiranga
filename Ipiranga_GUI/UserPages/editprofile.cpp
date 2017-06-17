@@ -7,6 +7,10 @@ EditProfile::EditProfile(QWidget *parent) :
     ui(new Ui::EditProfile)
 {
     ui->setupUi(this);
+
+    // Unenable Fields
+    ui->lineLogin->setEnabled(false);
+    ui->lineCPF->setEnabled(false);
 }
 
 EditProfile::~EditProfile()
@@ -17,10 +21,6 @@ EditProfile::~EditProfile()
 void EditProfile::SetCurrentUser(User _CurrentUser){
     CurrentUser = _CurrentUser;
     SetUserFields();
-
-    // Unenable Fields
-    ui->lineLogin->setEnabled(false);
-    ui->lineCPF->setEnabled(false);
 }
 
 void EditProfile::SetUserFields(){

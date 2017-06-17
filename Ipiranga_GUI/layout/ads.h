@@ -13,11 +13,17 @@ class Ads : public QWidget
 
 public:
     explicit Ads(QWidget *parent = 0);
-    void contator(int);
     ~Ads();
 
+    //Sets Methods
+    void setDescription(QString);
+    void setTitle(QString);
+    void setPrice(QString);
+    void setDate(QString);
+    void setQuantity(QString);
+
 private slots:
-    void on_pushButton_clicked();
+    void on_Button_delete_clicked(); // Delete the Ads
 
 private:
     Ui::Ads *ui;

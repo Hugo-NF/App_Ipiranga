@@ -28,7 +28,10 @@ SOURCES += \
     UserPages/friendspage.cpp \
     UserPages/advertise.cpp \
     UserPages/searchresult.cpp \
-    layout/ads.cpp
+    layout/ads.cpp \
+    layout/searchs.cpp \
+    layout/historiclayout.cpp \
+    layout/friendslayout.cpp
 
 HEADERS += \
         loginuser.h \
@@ -41,7 +44,10 @@ HEADERS += \
     UserPages/friendspage.h \
     UserPages/advertise.h \
     UserPages/searchresult.h \
-    layout/ads.h
+    layout/ads.h \
+    layout/searchs.h \
+    layout/historiclayout.h \
+    layout/friendslayout.h
 
 FORMS += \
         loginuser.ui \
@@ -53,7 +59,9 @@ FORMS += \
     UserPages/friendspage.ui \
     UserPages/advertise.ui \
     UserPages/searchresult.ui \
-    layout/ads.ui
-
+    layout/ads.ui \
+    layout/searchs.ui \
+    layout/historiclayout.ui \
+    layout/friendslayout.ui
 RESOURCES += \
     resources.qrc

@@ -15,11 +15,15 @@ class InitialPage : public QWidget
 public:
     explicit InitialPage(QWidget *parent = 0);
     ~InitialPage();
+    void SetCurrentUser(User);  //Set the User Active
 
 private:
     Ui::InitialPage *ui;
 
-    User CurrentUser;
+    User CurrentUser; //User Active
+
+    //Methods
+    void SetFields();
 };
 
 #endif // INITIALPAGE_H

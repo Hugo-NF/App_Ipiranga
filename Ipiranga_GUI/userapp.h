@@ -38,17 +38,12 @@ private slots:
     //Search Buttons Actions
     void on_line_search_returnPressed();
     void on_Button_search_clicked();
-
     void on_Button_search_friends_clicked();
-
     void on_Button_search_advertise_clicked();
-
-    void on_pushButton_clicked();
+    void on_Button_adjust_clicked();
 
 private:
     Ui::UserApp *ui;
-
-    bool toolactive;
 
     //Actual User
     User CurrentUser;
@@ -63,6 +58,7 @@ private:
 
     //King of search
     bool SearchType; // 1 to Friends - o to Advertise
+    bool ToolActive; // Filters Active or Not Active
 
 
     //Methods

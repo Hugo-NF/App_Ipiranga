@@ -2,6 +2,7 @@
 #define ADVERTISE_H
 
 #include <QWidget>
+#include "../include/User.hpp"
 
 namespace Ui {
 class Advertise;
@@ -14,6 +15,7 @@ class Advertise : public QWidget
 public:
     explicit Advertise(QWidget *parent = 0);
     ~Advertise();
+    void SetCurrentUser(User);  //Set the User Active
 
 private slots:
     void on_text_description_textChanged();
@@ -23,6 +25,8 @@ private slots:
 private:
     Ui::Advertise *ui;
     QString Description;
+
+    User CurrentUser; //User Active
 
     void set_ActivesAds();
 };

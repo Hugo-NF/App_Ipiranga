@@ -13,5 +13,6 @@
         <file>images/profile_icon.png</file>
         <file>images/announcement-icon_inactive.png</file>
         <file>images/friends_icon_inactive.png</file>
+        <file>images/adjuste_icon.png</file>
     </qresource>
 </RCC>

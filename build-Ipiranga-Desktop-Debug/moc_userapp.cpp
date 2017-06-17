@@ -20,7 +20,7 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_UserApp_t {
     QByteArrayData data[13];
-    char stringdata0[305];
+    char stringdata0[308];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -41,7 +41,7 @@ QT_MOC_LITERAL(8, 161, 28), // "on_line_search_returnPressed"
 QT_MOC_LITERAL(9, 190, 24), // "on_Button_search_clicked"
 QT_MOC_LITERAL(10, 215, 32), // "on_Button_search_friends_clicked"
 QT_MOC_LITERAL(11, 248, 34), // "on_Button_search_advertise_cl..."
-QT_MOC_LITERAL(12, 283, 21) // "on_pushButton_clicked"
+QT_MOC_LITERAL(12, 283, 24) // "on_Button_adjust_clicked"
 
     },
     "UserApp\0on_Button_edit_clicked\0\0"
@@ -53,7 +53,7 @@ QT_MOC_LITERAL(12, 283, 21) // "on_pushButton_clicked"
     "on_Button_search_clicked\0"
     "on_Button_search_friends_clicked\0"
     "on_Button_search_advertise_clicked\0"
-    "on_pushButton_clicked"
+    "on_Button_adjust_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -115,7 +115,7 @@ void UserApp::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         case 7: _t->on_Button_search_clicked(); break;
         case 8: _t->on_Button_search_friends_clicked(); break;
         case 9: _t->on_Button_search_advertise_clicked(); break;
-        case 10: _t->on_pushButton_clicked(); break;
+        case 10: _t->on_Button_adjust_clicked(); break;
         default: ;
         }
     }

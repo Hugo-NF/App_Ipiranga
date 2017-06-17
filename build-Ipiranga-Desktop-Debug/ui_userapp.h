@@ -13,14 +13,19 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QComboBox>
 #include <QtWidgets/QCommandLinkButton>
 #include <QtWidgets/QFrame>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QRadioButton>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStackedWidget>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -40,10 +45,59 @@ public:
     QFrame *content;
     QLineEdit *line_search;
     QPushButton *Button_search;
-    QPushButton *pushButton;
+    QPushButton *Button_adjust;
     QFrame *right;
-    QFrame *frame_3;
-    QFrame *frame_2;
+    QFrame *Adjust_ads;
+    QGridLayout *gridLayout_7;
+    QLabel *label_category;
+    QGroupBox *Order_by;
+    QGridLayout *gridLayout_5;
+    QCommandLinkButton *command_rating;
+    QCommandLinkButton *command_quantity;
+    QCommandLinkButton *command_price;
+    QCommandLinkButton *command_city;
+    QCommandLinkButton *command_title;
+    QCommandLinkButton *command_category;
+    QComboBox *comboBox_category;
+    QGroupBox *Friendship;
+    QGridLayout *gridLayout_6;
+    QRadioButton *radio_all;
+    QRadioButton *radio_friends;
+    QRadioButton *radio_friends_of;
+    QLabel *label_state;
+    QSpacerItem *horizontalSpacer_8;
+    QLineEdit *line_state;
+    QSpacerItem *horizontalSpacer_5;
+    QSpacerItem *horizontalSpacer_6;
+    QSpacerItem *horizontalSpacer_7;
+    QLabel *label_rating;
+    QGroupBox *price;
+    QGridLayout *gridLayout_4;
+    QLineEdit *line_min;
+    QLineEdit *line_max;
+    QLabel *label_min;
+    QLabel *label_max;
+    QComboBox *comboBox_rating;
+    QFrame *Adjust_friends;
+    QGridLayout *gridLayout;
+    QGroupBox *Order_by_2;
+    QVBoxLayout *verticalLayout_5;
+    QCommandLinkButton *command_rating_2;
+    QCommandLinkButton *command_name;
+    QCommandLinkButton *command_city_2;
+    QComboBox *comboBox_rating_2;
+    QLineEdit *line_state_2;
+    QSpacerItem *horizontalSpacer_3;
+    QGroupBox *Friendship_2;
+    QVBoxLayout *verticalLayout_2;
+    QRadioButton *radio_all_2;
+    QRadioButton *radio_friends_2;
+    QRadioButton *radio_friends_of_2;
+    QSpacerItem *horizontalSpacer_4;
+    QSpacerItem *horizontalSpacer_2;
+    QSpacerItem *horizontalSpacer;
+    QLabel *label_state_2;
+    QLabel *label_rating_2;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *Box_Menu;
     QFrame *Menu;
@@ -65,7 +119,7 @@ public:
     {
         if (UserApp->objectName().isEmpty())
             UserApp->setObjectName(QStringLiteral("UserApp"));
-        UserApp->resize(651, 562);
+        UserApp->resize(778, 888);
         QIcon icon;
         icon.addFile(QStringLiteral(":/img_login/images/Icon.png"), QSize(), QIcon::Normal, QIcon::Off);
         UserApp->setWindowIcon(icon);
@@ -162,14 +216,15 @@ public:
 
         horizontalLayout_2->addWidget(content);
 
-        pushButton = new QPushButton(Frame_Search);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setMaximumSize(QSize(30, 30));
-        QIcon icon4(QIcon::fromTheme(QStringLiteral("icon")));
-        pushButton->setIcon(icon4);
-        pushButton->setFlat(true);
+        Button_adjust = new QPushButton(Frame_Search);
+        Button_adjust->setObjectName(QStringLiteral("Button_adjust"));
+        Button_adjust->setMaximumSize(QSize(30, 30));
+        QIcon icon4;
+        icon4.addFile(QStringLiteral(":/img_login/images/adjuste_icon.png"), QSize(), QIcon::Normal, QIcon::Off);
+        Button_adjust->setIcon(icon4);
+        Button_adjust->setFlat(true);
 
-        horizontalLayout_2->addWidget(pushButton);
+        horizontalLayout_2->addWidget(Button_adjust);
 
         right = new QFrame(Frame_Search);
         right->setObjectName(QStringLiteral("right"));
@@ -181,23 +236,284 @@ public:
 
         verticalLayout->addWidget(Frame_Search);
 
-        frame_3 = new QFrame(centralwidget);
-        frame_3->setObjectName(QStringLiteral("frame_3"));
-        frame_3->setMinimumSize(QSize(0, 100));
-        frame_3->setStyleSheet(QStringLiteral("background:black"));
-        frame_3->setFrameShape(QFrame::StyledPanel);
-        frame_3->setFrameShadow(QFrame::Raised);
+        Adjust_ads = new QFrame(centralwidget);
+        Adjust_ads->setObjectName(QStringLiteral("Adjust_ads"));
+        Adjust_ads->setMinimumSize(QSize(0, 200));
+        Adjust_ads->setStyleSheet(QStringLiteral("background:rgb(8, 122, 221)"));
+        Adjust_ads->setFrameShape(QFrame::StyledPanel);
+        Adjust_ads->setFrameShadow(QFrame::Raised);
+        gridLayout_7 = new QGridLayout(Adjust_ads);
+        gridLayout_7->setObjectName(QStringLiteral("gridLayout_7"));
+        label_category = new QLabel(Adjust_ads);
+        label_category->setObjectName(QStringLiteral("label_category"));
+        sizePolicy2.setHeightForWidth(label_category->sizePolicy().hasHeightForWidth());
+        label_category->setSizePolicy(sizePolicy2);
 
-        verticalLayout->addWidget(frame_3);
+        gridLayout_7->addWidget(label_category, 0, 1, 1, 1);
 
-        frame_2 = new QFrame(centralwidget);
-        frame_2->setObjectName(QStringLiteral("frame_2"));
-        frame_2->setMinimumSize(QSize(0, 100));
-        frame_2->setStyleSheet(QStringLiteral("background:green"));
-        frame_2->setFrameShape(QFrame::StyledPanel);
-        frame_2->setFrameShadow(QFrame::Raised);
+        Order_by = new QGroupBox(Adjust_ads);
+        Order_by->setObjectName(QStringLiteral("Order_by"));
+        gridLayout_5 = new QGridLayout(Order_by);
+        gridLayout_5->setObjectName(QStringLiteral("gridLayout_5"));
+        command_rating = new QCommandLinkButton(Order_by);
+        command_rating->setObjectName(QStringLiteral("command_rating"));
+        command_rating->setMaximumSize(QSize(100, 16777215));
 
-        verticalLayout->addWidget(frame_2);
+        gridLayout_5->addWidget(command_rating, 0, 1, 1, 1);
+
+        command_quantity = new QCommandLinkButton(Order_by);
+        command_quantity->setObjectName(QStringLiteral("command_quantity"));
+        command_quantity->setMaximumSize(QSize(100, 16777215));
+
+        gridLayout_5->addWidget(command_quantity, 2, 1, 1, 1);
+
+        command_price = new QCommandLinkButton(Order_by);
+        command_price->setObjectName(QStringLiteral("command_price"));
+        command_price->setMaximumSize(QSize(100, 16777215));
+
+        gridLayout_5->addWidget(command_price, 2, 0, 1, 1);
+
+        command_city = new QCommandLinkButton(Order_by);
+        command_city->setObjectName(QStringLiteral("command_city"));
+        command_city->setMaximumSize(QSize(100, 16777215));
+
+        gridLayout_5->addWidget(command_city, 1, 1, 1, 1);
+
+        command_title = new QCommandLinkButton(Order_by);
+        command_title->setObjectName(QStringLiteral("command_title"));
+        command_title->setMaximumSize(QSize(100, 16777215));
+
+        gridLayout_5->addWidget(command_title, 0, 0, 1, 1);
+
+        command_category = new QCommandLinkButton(Order_by);
+        command_category->setObjectName(QStringLiteral("command_category"));
+        command_category->setMaximumSize(QSize(100, 16777215));
+
+        gridLayout_5->addWidget(command_category, 1, 0, 1, 1);
+
+
+        gridLayout_7->addWidget(Order_by, 0, 6, 6, 1);
+
+        comboBox_category = new QComboBox(Adjust_ads);
+        comboBox_category->setObjectName(QStringLiteral("comboBox_category"));
+        sizePolicy2.setHeightForWidth(comboBox_category->sizePolicy().hasHeightForWidth());
+        comboBox_category->setSizePolicy(sizePolicy2);
+        comboBox_category->setMaximumSize(QSize(225, 22));
+        comboBox_category->setStyleSheet(QStringLiteral("background:white;"));
+
+        gridLayout_7->addWidget(comboBox_category, 1, 1, 1, 2);
+
+        Friendship = new QGroupBox(Adjust_ads);
+        Friendship->setObjectName(QStringLiteral("Friendship"));
+        Friendship->setMaximumSize(QSize(150, 16777215));
+        gridLayout_6 = new QGridLayout(Friendship);
+        gridLayout_6->setObjectName(QStringLiteral("gridLayout_6"));
+        radio_all = new QRadioButton(Friendship);
+        radio_all->setObjectName(QStringLiteral("radio_all"));
+
+        gridLayout_6->addWidget(radio_all, 0, 0, 1, 1);
+
+        radio_friends = new QRadioButton(Friendship);
+        radio_friends->setObjectName(QStringLiteral("radio_friends"));
+
+        gridLayout_6->addWidget(radio_friends, 1, 0, 1, 1);
+
+        radio_friends_of = new QRadioButton(Friendship);
+        radio_friends_of->setObjectName(QStringLiteral("radio_friends_of"));
+
+        gridLayout_6->addWidget(radio_friends_of, 2, 0, 1, 1);
+
+
+        gridLayout_7->addWidget(Friendship, 1, 4, 5, 1);
+
+        label_state = new QLabel(Adjust_ads);
+        label_state->setObjectName(QStringLiteral("label_state"));
+        sizePolicy2.setHeightForWidth(label_state->sizePolicy().hasHeightForWidth());
+        label_state->setSizePolicy(sizePolicy2);
+
+        gridLayout_7->addWidget(label_state, 2, 1, 1, 1);
+
+        horizontalSpacer_8 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_7->addItem(horizontalSpacer_8, 3, 0, 1, 1);
+
+        line_state = new QLineEdit(Adjust_ads);
+        line_state->setObjectName(QStringLiteral("line_state"));
+        sizePolicy2.setHeightForWidth(line_state->sizePolicy().hasHeightForWidth());
+        line_state->setSizePolicy(sizePolicy2);
+        line_state->setMaximumSize(QSize(225, 22));
+
+        gridLayout_7->addWidget(line_state, 3, 1, 1, 2);
+
+        horizontalSpacer_5 = new QSpacerItem(30, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        gridLayout_7->addItem(horizontalSpacer_5, 3, 3, 1, 1);
+
+        horizontalSpacer_6 = new QSpacerItem(30, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        gridLayout_7->addItem(horizontalSpacer_6, 3, 5, 1, 1);
+
+        horizontalSpacer_7 = new QSpacerItem(59, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_7->addItem(horizontalSpacer_7, 3, 7, 1, 1);
+
+        label_rating = new QLabel(Adjust_ads);
+        label_rating->setObjectName(QStringLiteral("label_rating"));
+        sizePolicy2.setHeightForWidth(label_rating->sizePolicy().hasHeightForWidth());
+        label_rating->setSizePolicy(sizePolicy2);
+
+        gridLayout_7->addWidget(label_rating, 4, 1, 1, 1);
+
+        price = new QGroupBox(Adjust_ads);
+        price->setObjectName(QStringLiteral("price"));
+        gridLayout_4 = new QGridLayout(price);
+        gridLayout_4->setObjectName(QStringLiteral("gridLayout_4"));
+        gridLayout_4->setHorizontalSpacing(3);
+        gridLayout_4->setVerticalSpacing(0);
+        gridLayout_4->setContentsMargins(3, 0, 2, 0);
+        line_min = new QLineEdit(price);
+        line_min->setObjectName(QStringLiteral("line_min"));
+        sizePolicy2.setHeightForWidth(line_min->sizePolicy().hasHeightForWidth());
+        line_min->setSizePolicy(sizePolicy2);
+        line_min->setMaximumSize(QSize(51, 21));
+
+        gridLayout_4->addWidget(line_min, 0, 1, 1, 1);
+
+        line_max = new QLineEdit(price);
+        line_max->setObjectName(QStringLiteral("line_max"));
+        sizePolicy2.setHeightForWidth(line_max->sizePolicy().hasHeightForWidth());
+        line_max->setSizePolicy(sizePolicy2);
+        line_max->setMaximumSize(QSize(51, 21));
+
+        gridLayout_4->addWidget(line_max, 1, 1, 1, 1);
+
+        label_min = new QLabel(price);
+        label_min->setObjectName(QStringLiteral("label_min"));
+        sizePolicy2.setHeightForWidth(label_min->sizePolicy().hasHeightForWidth());
+        label_min->setSizePolicy(sizePolicy2);
+
+        gridLayout_4->addWidget(label_min, 0, 0, 1, 1);
+
+        label_max = new QLabel(price);
+        label_max->setObjectName(QStringLiteral("label_max"));
+        sizePolicy2.setHeightForWidth(label_max->sizePolicy().hasHeightForWidth());
+        label_max->setSizePolicy(sizePolicy2);
+
+        gridLayout_4->addWidget(label_max, 1, 0, 1, 1);
+
+
+        gridLayout_7->addWidget(price, 4, 2, 2, 1);
+
+        comboBox_rating = new QComboBox(Adjust_ads);
+        comboBox_rating->setObjectName(QStringLiteral("comboBox_rating"));
+        sizePolicy2.setHeightForWidth(comboBox_rating->sizePolicy().hasHeightForWidth());
+        comboBox_rating->setSizePolicy(sizePolicy2);
+        comboBox_rating->setMaximumSize(QSize(55, 22));
+        comboBox_rating->setStyleSheet(QStringLiteral("background:white;"));
+
+        gridLayout_7->addWidget(comboBox_rating, 5, 1, 1, 1);
+
+
+        verticalLayout->addWidget(Adjust_ads);
+
+        Adjust_friends = new QFrame(centralwidget);
+        Adjust_friends->setObjectName(QStringLiteral("Adjust_friends"));
+        Adjust_friends->setMinimumSize(QSize(0, 100));
+        Adjust_friends->setStyleSheet(QStringLiteral("background:rgb(8, 122, 221)"));
+        Adjust_friends->setFrameShape(QFrame::StyledPanel);
+        Adjust_friends->setFrameShadow(QFrame::Raised);
+        gridLayout = new QGridLayout(Adjust_friends);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        Order_by_2 = new QGroupBox(Adjust_friends);
+        Order_by_2->setObjectName(QStringLiteral("Order_by_2"));
+        Order_by_2->setMaximumSize(QSize(100, 16777215));
+        verticalLayout_5 = new QVBoxLayout(Order_by_2);
+        verticalLayout_5->setObjectName(QStringLiteral("verticalLayout_5"));
+        command_rating_2 = new QCommandLinkButton(Order_by_2);
+        command_rating_2->setObjectName(QStringLiteral("command_rating_2"));
+        command_rating_2->setMaximumSize(QSize(100, 16777215));
+
+        verticalLayout_5->addWidget(command_rating_2);
+
+        command_name = new QCommandLinkButton(Order_by_2);
+        command_name->setObjectName(QStringLiteral("command_name"));
+        command_name->setMaximumSize(QSize(100, 16777215));
+
+        verticalLayout_5->addWidget(command_name);
+
+        command_city_2 = new QCommandLinkButton(Order_by_2);
+        command_city_2->setObjectName(QStringLiteral("command_city_2"));
+        command_city_2->setMaximumSize(QSize(100, 16777215));
+
+        verticalLayout_5->addWidget(command_city_2);
+
+
+        gridLayout->addWidget(Order_by_2, 0, 7, 6, 1);
+
+        comboBox_rating_2 = new QComboBox(Adjust_friends);
+        comboBox_rating_2->setObjectName(QStringLiteral("comboBox_rating_2"));
+        comboBox_rating_2->setMaximumSize(QSize(55, 22));
+        comboBox_rating_2->setStyleSheet(QStringLiteral("background:white;"));
+
+        gridLayout->addWidget(comboBox_rating_2, 4, 1, 1, 1);
+
+        line_state_2 = new QLineEdit(Adjust_friends);
+        line_state_2->setObjectName(QStringLiteral("line_state_2"));
+        line_state_2->setMaximumSize(QSize(55, 22));
+
+        gridLayout->addWidget(line_state_2, 2, 1, 1, 1);
+
+        horizontalSpacer_3 = new QSpacerItem(35, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer_3, 2, 2, 1, 1);
+
+        Friendship_2 = new QGroupBox(Adjust_friends);
+        Friendship_2->setObjectName(QStringLiteral("Friendship_2"));
+        Friendship_2->setMaximumSize(QSize(150, 16777215));
+        verticalLayout_2 = new QVBoxLayout(Friendship_2);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        radio_all_2 = new QRadioButton(Friendship_2);
+        radio_all_2->setObjectName(QStringLiteral("radio_all_2"));
+
+        verticalLayout_2->addWidget(radio_all_2);
+
+        radio_friends_2 = new QRadioButton(Friendship_2);
+        radio_friends_2->setObjectName(QStringLiteral("radio_friends_2"));
+
+        verticalLayout_2->addWidget(radio_friends_2);
+
+        radio_friends_of_2 = new QRadioButton(Friendship_2);
+        radio_friends_of_2->setObjectName(QStringLiteral("radio_friends_of_2"));
+
+        verticalLayout_2->addWidget(radio_friends_of_2);
+
+
+        gridLayout->addWidget(Friendship_2, 0, 3, 6, 1);
+
+        horizontalSpacer_4 = new QSpacerItem(35, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer_4, 2, 4, 1, 1);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer_2, 2, 8, 1, 1);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer, 2, 0, 1, 1);
+
+        label_state_2 = new QLabel(Adjust_friends);
+        label_state_2->setObjectName(QStringLiteral("label_state_2"));
+
+        gridLayout->addWidget(label_state_2, 1, 1, 1, 2);
+
+        label_rating_2 = new QLabel(Adjust_friends);
+        label_rating_2->setObjectName(QStringLiteral("label_rating_2"));
+
+        gridLayout->addWidget(label_rating_2, 3, 1, 1, 2);
+
+
+        verticalLayout->addWidget(Adjust_friends);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(3);
@@ -362,7 +678,81 @@ public:
         Button_search_advertise->setText(QString());
         Button_search_friends->setText(QString());
         Button_search->setText(QString());
-        pushButton->setText(QString());
+        Button_adjust->setText(QString());
+        label_category->setText(QApplication::translate("UserApp", "Category", 0));
+        Order_by->setTitle(QApplication::translate("UserApp", " Order by", 0));
+        command_rating->setText(QApplication::translate("UserApp", "Rating", 0));
+        command_quantity->setText(QApplication::translate("UserApp", "Quantity", 0));
+        command_price->setText(QApplication::translate("UserApp", "Price", 0));
+        command_city->setText(QApplication::translate("UserApp", "City", 0));
+        command_title->setText(QApplication::translate("UserApp", "Title", 0));
+        command_category->setText(QApplication::translate("UserApp", "Category", 0));
+        comboBox_category->clear();
+        comboBox_category->insertItems(0, QStringList()
+         << QString()
+         << QApplication::translate("UserApp", "Animals", 0)
+         << QApplication::translate("UserApp", "Automobiles", 0)
+         << QApplication::translate("UserApp", "Books", 0)
+         << QApplication::translate("UserApp", "Clothes", 0)
+         << QApplication::translate("UserApp", "Computing", 0)
+         << QApplication::translate("UserApp", "Construction", 0)
+         << QApplication::translate("UserApp", "Drinks", 0)
+         << QApplication::translate("UserApp", "Electronics", 0)
+         << QApplication::translate("UserApp", "Food", 0)
+         << QApplication::translate("UserApp", "Furniture", 0)
+         << QApplication::translate("UserApp", "Games", 0)
+         << QApplication::translate("UserApp", "Home Appliances", 0)
+         << QApplication::translate("UserApp", "Kitchen", 0)
+         << QApplication::translate("UserApp", "Leisure", 0)
+         << QApplication::translate("UserApp", "Leisure Services", 0)
+         << QApplication::translate("UserApp", "Medicines", 0)
+         << QApplication::translate("UserApp", "Music", 0)
+         << QApplication::translate("UserApp", "Office", 0)
+         << QApplication::translate("UserApp", "Properties", 0)
+         << QApplication::translate("UserApp", "Shoes", 0)
+         << QApplication::translate("UserApp", "Sport", 0)
+         << QApplication::translate("UserApp", "Ticket", 0)
+         << QApplication::translate("UserApp", "Travel", 0)
+        );
+        Friendship->setTitle(QApplication::translate("UserApp", "Friendship", 0));
+        radio_all->setText(QApplication::translate("UserApp", "All", 0));
+        radio_friends->setText(QApplication::translate("UserApp", "Friends", 0));
+        radio_friends_of->setText(QApplication::translate("UserApp", "Friends of \n"
+"Friends", 0));
+        label_state->setText(QApplication::translate("UserApp", "State", 0));
+        label_rating->setText(QApplication::translate("UserApp", "Rating", 0));
+        price->setTitle(QApplication::translate("UserApp", "Price", 0));
+        label_min->setText(QApplication::translate("UserApp", "Min(R$)", 0));
+        label_max->setText(QApplication::translate("UserApp", "Max(R$)", 0));
+        comboBox_rating->clear();
+        comboBox_rating->insertItems(0, QStringList()
+         << QApplication::translate("UserApp", "1", 0)
+         << QApplication::translate("UserApp", "2", 0)
+         << QApplication::translate("UserApp", "3", 0)
+         << QApplication::translate("UserApp", "4", 0)
+         << QApplication::translate("UserApp", "5", 0)
+        );
+        Order_by_2->setTitle(QApplication::translate("UserApp", " Order by", 0));
+        command_rating_2->setText(QApplication::translate("UserApp", "Rating", 0));
+        command_name->setText(QApplication::translate("UserApp", "Name", 0));
+        command_city_2->setText(QApplication::translate("UserApp", "City", 0));
+        comboBox_rating_2->clear();
+        comboBox_rating_2->insertItems(0, QStringList()
+         << QApplication::translate("UserApp", "1", 0)
+         << QApplication::translate("UserApp", "2", 0)
+         << QApplication::translate("UserApp", "3", 0)
+         << QApplication::translate("UserApp", "4", 0)
+         << QApplication::translate("UserApp", "5", 0)
+        );
+        line_state_2->setInputMask(QApplication::translate("UserApp", "AA", 0));
+        line_state_2->setText(QString());
+        Friendship_2->setTitle(QApplication::translate("UserApp", "Friendship", 0));
+        radio_all_2->setText(QApplication::translate("UserApp", "All", 0));
+        radio_friends_2->setText(QApplication::translate("UserApp", "Friends", 0));
+        radio_friends_of_2->setText(QApplication::translate("UserApp", "Friends of \n"
+"Friends", 0));
+        label_state_2->setText(QApplication::translate("UserApp", "State", 0));
+        label_rating_2->setText(QApplication::translate("UserApp", "Rating", 0));
         User_img->setText(QString());
         UserName->setText(QApplication::translate("UserApp", "User Name", 0));
         Button_logout->setText(QApplication::translate("UserApp", "Logout", 0));

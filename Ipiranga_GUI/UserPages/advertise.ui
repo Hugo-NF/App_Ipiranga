@@ -286,24 +286,6 @@ p, li { white-space: pre-wrap; }
                  <string>Characters remaining</string>
                 </property>
                </widget>
-               <widget class="QComboBox" name="comboBox_category">
-                <property name="geometry">
-                 <rect>
-                  <x>140</x>
-                  <y>50</y>
-                  <width>221</width>
-                  <height>22</height>
-                 </rect>
-                </property>
-                <property name="currentIndex">
-                 <number>0</number>
-                </property>
-                <item>
-                 <property name="text">
-                  <string>Select a Category</string>
-                 </property>
-                </item>
-               </widget>
                <widget class="QLabel" name="label_price">
                 <property name="geometry">
                  <rect>
@@ -425,6 +407,148 @@ p, li { white-space: pre-wrap; }
                  <number>999</number>
                 </property>
                </widget>
+               <widget class="QComboBox" name="comboBox_category">
+                <property name="geometry">
+                 <rect>
+                  <x>140</x>
+                  <y>50</y>
+                  <width>190</width>
+                  <height>22</height>
+                 </rect>
+                </property>
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>225</width>
+                  <height>22</height>
+                 </size>
+                </property>
+                <item>
+                 <property name="text">
+                  <string/>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Animals</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Automobiles</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Books</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Clothes</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Computing</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Construction</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Drinks</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Electronics</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Food</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Furniture</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Games</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Home Appliances</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Kitchen</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Leisure</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Leisure Services</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Medicines</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Music</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Office</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Properties</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Shoes</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Sport</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Ticket</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Travel</string>
+                 </property>
+                </item>
+               </widget>
               </widget>
              </item>
             </layout>
@@ -449,10 +573,10 @@ p, li { white-space: pre-wrap; }
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
-           <property name="minimumSize">
+           <property name="maximumSize">
             <size>
-             <width>450</width>
-             <height>100</height>
+             <width>800</width>
+             <height>16777215</height>
             </size>
            </property>
            <property name="styleSheet">
@@ -466,13 +590,13 @@ p, li { white-space: pre-wrap; }
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_3">
             <property name="spacing">
-             <number>6</number>
+             <number>15</number>
             </property>
             <property name="leftMargin">
              <number>0</number>
             </property>
             <property name="topMargin">
-             <number>0</number>
+             <number>30</number>
             </property>
             <property name="rightMargin">
              <number>0</number>
@@ -485,14 +609,30 @@ p, li { white-space: pre-wrap; }
               <property name="maximumSize">
                <size>
                 <width>16777215</width>
-                <height>50</height>
+                <height>30</height>
                </size>
               </property>
               <property name="locale">
                <locale language="English" country="UnitedStates"/>
               </property>
               <property name="text">
-               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt; font-weight:600; text-decoration: underline; color:#087add;&quot;&gt;Active Ads&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:18pt; font-weight:600; color:#087add;&quot;&gt;Active Ads&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="Line" name="line">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>2</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background:rgb(51, 144, 231)</string>
+              </property>
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
               </property>
              </widget>
             </item>
@@ -500,6 +640,9 @@ p, li { white-space: pre-wrap; }
              <layout class="QVBoxLayout" name="Ads">
               <property name="spacing">
                <number>20</number>
+              </property>
+              <property name="topMargin">
+               <number>15</number>
               </property>
              </layout>
             </item>

@@ -28,6 +28,7 @@ UserApp::UserApp(QWidget *parent, User* _CurrentUser) :
 
     // Page 0 - Home
     ui->Pages->insertWidget(0,&PageZero);
+    PageZero.SetCurrentUser(CurrentUser);
 
     // Page 1 - Profile Edit
     ui->Pages->insertWidget(1,&PageOne);
@@ -46,11 +47,11 @@ UserApp::UserApp(QWidget *parent, User* _CurrentUser) :
     ui->Pages->insertWidget(5,&PageResult);
 
     //Set witch is the first page
-    ui->Pages->setCurrentIndex(4);
+    ui->Pages->setCurrentIndex(0);
 
-    ui->frame_2->hide();
-    ui->frame_3->hide();
-    toolactive = false;
+    ui->Adjust_friends->hide();
+    ui->Adjust_ads->hide();
+    ToolActive = false;
 
 }
 
@@ -101,8 +102,8 @@ void UserApp::on_Button_logout_clicked()
 //------------SEARCH TYPE BUTTONS--------------
 void UserApp::on_Button_search_friends_clicked()
 {
-    if(toolactive){
-        on_pushButton_clicked();
+    if(ToolActive){
+        on_Button_adjust_clicked();
     }
 
     SearchType = true;  //Set the search to friends
@@ -113,8 +114,8 @@ void UserApp::on_Button_search_friends_clicked()
 
 void UserApp::on_Button_search_advertise_clicked()
 {
-    if(toolactive){
-        on_pushButton_clicked();
+    if(ToolActive){
+        on_Button_adjust_clicked();
     }
 
     SearchType = false;  //Set the search to advertise
@@ -137,23 +138,23 @@ void UserApp::on_line_search_returnPressed()
 }
 //---------------------------------------------
 
-void UserApp::on_pushButton_clicked()
+void UserApp::on_Button_adjust_clicked()
 {
-    if(toolactive){
+    if(ToolActive){
         if(SearchType){
-            ui->frame_2->hide();
-            toolactive=false;
+            ui->Adjust_friends->hide();
+            ToolActive=false;
         }else{
-            ui->frame_3->hide();
-            toolactive=false;
+            ui->Adjust_ads->hide();
+            ToolActive=false;
         }
     }else{
         if(SearchType){
-            ui->frame_2->show();
-            toolactive=true;
+            ui->Adjust_friends->show();
+            ToolActive=true;
         }else{
-            ui->frame_3->show();
-            toolactive=true;
+            ui->Adjust_ads->show();
+            ToolActive=true;
         }
     }
 }

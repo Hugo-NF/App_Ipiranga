@@ -12,3 +12,7 @@ Historic::~Historic()
 {
     delete ui;
 }
+
+void Historic::SetCurrentUser(User _CurrentUser){
+    CurrentUser = _CurrentUser;
+}
