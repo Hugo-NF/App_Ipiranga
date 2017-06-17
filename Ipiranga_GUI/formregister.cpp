@@ -28,7 +28,6 @@ void FormRegister::on_pushButton_Cancel_clicked()
 
 void FormRegister::on_pushButton_Register_clicked()
 {
-    User NewUser(0);             //User constructed with the form fields
     this->UserDate.resize(21);  //Dates of the User based on the form fields
 
     //--------GET VALUE FROM FORM FIELDS-------
@@ -70,7 +69,7 @@ void FormRegister::on_pushButton_Register_clicked()
     if(this->checkFields()){        // Check the fields of the form
         try{
             // Register a new user on the BD
-            NewUser.registerUser(this->UserDate, this->Payment_active, this->Bank_active);
+            Account::registerUser(this->UserDate, this->Payment_active, this->Bank_active);
             QMessageBox::information(this,tr("Register"),tr("Registered with sucess!"));
             this->~FormRegister();  // Eliminate the Form Register
         }

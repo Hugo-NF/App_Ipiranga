@@ -1,6 +1,7 @@
 #include "userapp.h"
 #include "ui_userapp.h"
 #include "loginuser.h"
+#include <QMessageBox>
 
 UserApp::UserApp(QWidget *parent, User* _CurrentUser) :
     QMainWindow(parent),
@@ -14,6 +15,11 @@ UserApp::UserApp(QWidget *parent, User* _CurrentUser) :
 
     CurrentUser = *_CurrentUser;         //CurrentUser is a atribute of the class with the user current dates
     _CurrentUser->~User();              //Adios User O/, that came from the LoginUser
+
+    if(!CurrentUser.isActivated()){
+        QMessageBox::information(this,tr("Welcome"),tr("Welcome to Ipiranga\n Let's get started, make a search!"));
+        Account::activateAccount(CurrentUser.getId(),true);
+    }
 
     this->SetPropertyUserCurrent();     //set dates of the current users in the window
 
@@ -38,10 +44,11 @@ UserApp::UserApp(QWidget *parent, User* _CurrentUser) :
     ui->Pages->insertWidget(2,&PageTwo);
 
     // Page 3 - Historic
-    ui->Pages->insertWidget(3,&PageThree);
+    //ui->Pages->insertWidget(3,&PageThree);
 
     // Page 4 - Advertise
     ui->Pages->insertWidget(4,&PageFour);
+    PageFour.SetCurrentUser(CurrentUser);
 
     // Page Result - Search
     ui->Pages->insertWidget(5,&PageResult);

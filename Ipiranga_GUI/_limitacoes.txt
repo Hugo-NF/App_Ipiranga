@@ -7,3 +7,6 @@
 
 - Paginas do programa
     Passar CurrentUser para todas elas ou herdar o campo já preenchido?
+
+-Delete Account e Inactiv
+    Deslogar usuario apos

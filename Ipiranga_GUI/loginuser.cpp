@@ -1,4 +1,5 @@
 #include "loginuser.h"
+#include "../include/Account.hpp"
 #include "../include/User.hpp"
 #include "ui_loginuser.h"
 #include <QMessageBox>
@@ -27,7 +28,7 @@ void LoginUser::on_pushLogin_clicked()
 
     try{
         //Catch the user on te BD
-        CurrentUser = CurrentUser->login(username,password);
+        CurrentUser = Account::login(username,password);
 
         this->hide(); //Hide login form
 

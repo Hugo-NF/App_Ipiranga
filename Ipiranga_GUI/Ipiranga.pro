@@ -24,14 +24,21 @@ SOURCES += \
         ../src/User.cpp \
         UserPages/initialpage.cpp \
         UserPages/editprofile.cpp \
-    UserPages/historic.cpp \
     UserPages/friendspage.cpp \
-    UserPages/advertise.cpp \
     UserPages/searchresult.cpp \
-    layout/ads.cpp \
     layout/searchs.cpp \
     layout/historiclayout.cpp \
-    layout/friendslayout.cpp
+    layout/friendslayout.cpp \
+    ../src/Account.cpp \
+    ../src/Ads.cpp \
+    ../src/Deals.cpp \
+    ../src/Callbacks.cpp \
+    ../src/Historic.cpp \
+    ../src/Payment.cpp \
+    ../src/Search.cpp \
+    ../src/Security.cpp \
+    layout/adslayout.cpp \
+    UserPages/advertise.cpp
 
 HEADERS += \
         loginuser.h \
@@ -40,14 +47,21 @@ HEADERS += \
         ../include/User.hpp \
         UserPages/initialpage.h \
         UserPages/editprofile.h \
-    UserPages/historic.h \
     UserPages/friendspage.h \
     UserPages/advertise.h \
     UserPages/searchresult.h \
-    layout/ads.h \
     layout/searchs.h \
     layout/historiclayout.h \
-    layout/friendslayout.h
+    layout/friendslayout.h \
+    ../include/Account.hpp \
+    ../include/Ads.hpp \
+    ../include/Deals.hpp \
+    ../include/Callbacks.hpp \
+    ../include/Historic.hpp \
+    ../include/Payment.hpp \
+    ../include/Search.hpp \
+    ../include/Security.hpp \
+    layout/adslayout.h
 
 FORMS += \
         loginuser.ui \
@@ -55,13 +69,12 @@ FORMS += \
         formregister.ui \
         UserPages/initialpage.ui \
         UserPages/editprofile.ui \
-    UserPages/historic.ui \
     UserPages/friendspage.ui \
     UserPages/advertise.ui \
     UserPages/searchresult.ui \
-    layout/ads.ui \
     layout/searchs.ui \
     layout/historiclayout.ui \
-    layout/friendslayout.ui
+    layout/friendslayout.ui \
+    layout/adslayout.ui
 RESOURCES += \
     resources.qrc

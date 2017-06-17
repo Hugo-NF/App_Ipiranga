@@ -3,7 +3,7 @@
 
 #include <QDialog>
 #include <QDate>
-#include "../include/User.hpp"
+#include "../include/Account.hpp"
 #include <string>
 
 namespace Ui {

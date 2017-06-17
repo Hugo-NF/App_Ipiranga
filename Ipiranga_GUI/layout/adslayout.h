@@ -1,19 +1,19 @@
-#ifndef ADS_H
-#define ADS_H
+#ifndef AdsLayout_H
+#define AdsLayout_H
 
 #include <QWidget>
 
 namespace Ui {
-class Ads;
+class AdsLayout;
 }
 
-class Ads : public QWidget
+class AdsLayout : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit Ads(QWidget *parent = 0);
-    ~Ads();
+    explicit AdsLayout(QWidget *parent = 0);
+    ~AdsLayout();
 
     //Sets Methods
     void setDescription(QString);
@@ -23,10 +23,10 @@ public:
     void setQuantity(QString);
 
 private slots:
-    void on_Button_delete_clicked(); // Delete the Ads
+    void on_Button_delete_clicked(); // Delete the AdsLayout
 
 private:
-    Ui::Ads *ui;
+    Ui::AdsLayout *ui;
 };
 
-#endif // ADS_H
+#endif // AdsLayout_H

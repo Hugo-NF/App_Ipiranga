@@ -1,7 +1,9 @@
 #include "advertise.h"
 #include "ui_advertise.h"
 #include <iostream>
-#include "layout/ads.h"
+#include "layout/adslayout.h"
+#include "../include/Deals.hpp"
+#include <QMessageBox>
 
 using namespace std;
 
@@ -28,7 +30,7 @@ void Advertise::SetCurrentUser(User _CurrentUser){
 void Advertise::set_ActivesAds()
 {
     for(int i=0; i<5; i++){
-        Ads *ads_active = new Ads;
+        AdsLayout *ads_active = new AdsLayout;
         ads_active->setTitle(QString::number(i));
         ads_active->setPrice("12000.00");
         ui->Ads->addWidget(ads_active);
@@ -48,7 +50,21 @@ void Advertise::on_text_description_textChanged() //Count of Characters
 
 void Advertise::on_pushButton_create_clicked()
 {
-    cout << ui->line_price->text().toStdString()<< endl;
+    vector <string> Fields(3);
+    double price;
+    int quantity;
+
+    Fields[0] = ui->comboBox_category->currentText().toStdString();
+    Fields[1] = ui->line_title->text().toStdString();
+    Fields[2] = ui->text_description->toPlainText().toStdString();
+
+    price = stod(ui->line_price->text().toStdString());
+    quantity = ui->spinBox_quantity->value();
+
+    Deals::createAd(&CurrentUser,Fields,price,quantity);
+
+    QMessageBox::information(this,tr("Create Advertisement"),tr("Create with sucess!"));
+    on_pushButton_reset_clicked();
 }
 
 void Advertise::on_pushButton_reset_clicked()

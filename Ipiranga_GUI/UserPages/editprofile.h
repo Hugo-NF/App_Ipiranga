@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "../include/User.hpp"
+#include <QDate>
 
 namespace Ui {
 class EditProfile;
@@ -28,8 +29,19 @@ private:
 
     User CurrentUser; //User Active
 
+    vector <string> UserDate; //User informations
+
+    string PassConfirm;      //password confirmation
+
+    QDate ExpirationDate;    //date of credit card expiration
+
+    bool Credit, Debit;     //credit or debit?
+    bool Payment_active;    //payment method is activated?
+    bool Bank_active;       //bank account is activated?
+
     //Methods
     void SetUserFields();
+    bool checkFields();
 };
 
 #endif // EDITPROFILE_H

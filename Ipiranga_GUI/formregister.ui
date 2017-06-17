@@ -57,7 +57,7 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>0</y>
+        <y>-389</y>
         <width>485</width>
         <height>980</height>
        </rect>
@@ -262,6 +262,9 @@
            <property name="locale">
             <locale language="English" country="UnitedStates"/>
            </property>
+           <property name="text">
+            <string>Jośe Luiz</string>
+           </property>
            <property name="maxLength">
             <number>20</number>
            </property>
@@ -282,7 +285,7 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
-            <string/>
+            <string>Gomes Nogueira</string>
            </property>
            <property name="maxLength">
             <number>20</number>
@@ -301,7 +304,7 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
-            <string/>
+            <string>70317311190</string>
            </property>
            <property name="maxLength">
             <number>11</number>
@@ -320,7 +323,7 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
-            <string/>
+            <string>9964762</string>
            </property>
            <property name="maxLength">
             <number>11</number>
@@ -358,7 +361,7 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
-            <string/>
+            <string>062999923105</string>
            </property>
            <property name="maxLength">
             <number>15</number>
@@ -473,7 +476,7 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
-            <string/>
+            <string>Não me lembro</string>
            </property>
            <property name="maxLength">
             <number>100</number>
@@ -495,7 +498,7 @@
             <string>9999999999</string>
            </property>
            <property name="text">
-            <string/>
+            <string>70636015</string>
            </property>
            <property name="maxLength">
             <number>10</number>
@@ -517,7 +520,7 @@
             <string>&gt;AA</string>
            </property>
            <property name="text">
-            <string/>
+            <string>AC</string>
            </property>
            <property name="maxLength">
             <number>2</number>
@@ -539,7 +542,7 @@
             <string>NNNNNNNNNNNNNNNNNNNN</string>
            </property>
            <property name="text">
-            <string/>
+            <string>acre</string>
            </property>
            <property name="maxLength">
             <number>20</number>
@@ -836,7 +839,7 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
-            <string/>
+            <string>Eumemo</string>
            </property>
            <property name="maxLength">
             <number>20</number>
@@ -855,7 +858,7 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
-            <string/>
+            <string>12345678</string>
            </property>
            <property name="maxLength">
             <number>30</number>
@@ -893,7 +896,7 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
-            <string/>
+            <string>12345678</string>
            </property>
            <property name="maxLength">
             <number>30</number>
@@ -915,7 +918,7 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
-            <string/>
+            <string>joseluiz@teste.com</string>
            </property>
            <property name="maxLength">
             <number>45</number>

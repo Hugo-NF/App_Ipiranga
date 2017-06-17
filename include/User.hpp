@@ -1,29 +1,29 @@
 
-#ifndef PROJETO_FINAL_USER_HPP
-#define PROJETO_FINAL_USER_HPP
+#ifndef APP_IPIRANGA_USER_HPP
+#define APP_IPIRANGA_USER_HPP
 
 
 #include <iostream>
-#include <fstream>
+#include <sstream>
 #include <vector>
+#include <list>
 #include <string>
 #include <string.h>
 #include <stdlib.h>
+#include <cstdio>
+#include <stdio.h>
 #include <sqlite3.h>
+#include "../include/Callbacks.hpp"
 
 #define DATABASE "../database/Ipiranga.db"
-#define LOGIN_FAILED "Invalid login credentials"
-#define CONNECTION_ERROR "Could not connect to the application database"
-#define RG_CONSTRAINT "RG previously registered"
-#define CPF_CONSTRAINT "CPF previously registered"
-#define EMAIL_CONSTRAINT "E-mail current in use by another user"
-#define USERNAME_CONSTRAINT "Username unavailable"
-#define QUERY_INVALID "Invalid search parameters"
+#define CONNECTION_ERROR "Unfortunately, we could not connect to the application database"
+
 
 using namespace std;
 
-class User{
-private: //Private attributes
+class User {
+    //Class attributes
+private:
     //Personal
     string firstName; //Real name
     string lastName;
@@ -62,31 +62,25 @@ private: //Private attributes
 
     //App balance
     double balance;
+    //Average Rating
+    double rating;
 
-private: //Private methods
-    //WARNING: The following methods may throw SQLite error messages
-    void instantiateUser(User *, User *);
-    void deleteTable(sqlite3 *);
+    //Class methods
+    static void deleteTable(sqlite3 *); //WARNING: The following methods may throw SQLite error messages
+    static void createTable(sqlite3 *);
+
+public:
+    static void cleanTable();
     void insertOperation(sqlite3 *, User *);
-    void createTable(sqlite3 *);
-
-public: //Public methods
-    void cleanTable();
-    void updateOperation(sqlite3 *, User *); //Must be changed to private
-    void deleteOperation(sqlite3 *, User *); //Must be changed to private
-    vector<User *> selectionOperation(sqlite3 *, string, string);
-    vector<User *> searchBy(vector<string>, vector<string>);
-
-    void registerUser(vector<string>, bool, bool);
-    User* login(string, string);
-    void logout(User *);
+    void updateOperation(sqlite3 *, User *);
 
 public: //Public Methods
     User(unsigned int id){
         this->id = id;
-    }
+    } //Constructor
     User(){}
-    ~User(){}
+    ~User(){} //Destructor
+
     //Get/Set Operations
     //Personal
     void setFirstName(string);
@@ -152,9 +146,10 @@ public: //Public Methods
     //App balance
     void setBalance(double);
     double getBalance();
-
+    //Average rating
+    void setRating(double);
+    double getRating();
 };
 
-static int userCallback(void *, int, char **, char **); //This method is defined outside the class User because it needs to be static
-#endif //PROJETO_FINAL_USER_HPP
+#endif //APP_IPIRANGA_USER_HPP
 
