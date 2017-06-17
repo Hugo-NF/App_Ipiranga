@@ -65,8 +65,7 @@ TEST(Account_Manipulation, Register){
         cout<<errors<<endl;
     }
 }
-*/
-/*
+
 TEST(Security_Module, CPF_autentication){
     string CPF = "25725661337";
     bool validation = true;
@@ -116,8 +115,8 @@ TEST(Security_Module, Card_autentication){
     ASSERT_EQ(teste.getCardOperator(), "MasterCard");
 
 }
-*/
-/*
+
+
 TEST(Account_Manipulation, Account_Login) {
     try {
         User *usuario_logado = Account::login("Viado", "123456789GO");
@@ -181,7 +180,6 @@ TEST(Account_Manipulation, Updating_Profile){
 
 }
 
-*/
 TEST(AdsClass, CreateAd){
     sqlite3 *connection;
     int flag;
@@ -216,7 +214,7 @@ TEST(AdsClass, CreateAd){
     if(flag!=SQLITE_OK)
         throw (char *) REGISTER_AD_ERROR;
 }
-/*
+
 TEST(AdsClass, GetAds){
     sqlite3 *connection;
     int flag;
@@ -240,6 +238,8 @@ TEST(AdsClass, GetAds){
     if(flag!=SQLITE_OK)
         throw (char *) REGISTER_AD_ERROR;
 }*/
+
+
 
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);

@@ -132,7 +132,6 @@ void Ads::insertOperation(sqlite3 *connection, Ads *newAd) {
     newAd->getCategory().c_str(), newAd->getDate().c_str(), newAd->getSellerUsername().c_str(), newAd->getSellerId(),\
     newAd->getDescription().c_str(), newAd->getCity().c_str(), newAd->getState().c_str(), newAd->getAmount(),\
     rating.c_str(), price.c_str());
-    cout<<SQL<<endl; //WARNING
     result = sqlite3_exec(connection, SQL, Callbacks::adsCallback, 0, &errMsg);
     if(result != SQLITE_OK)
         throw errMsg;

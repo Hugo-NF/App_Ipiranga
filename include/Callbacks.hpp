@@ -4,6 +4,7 @@
 
 #include "User.hpp"
 #include "Ads.hpp"
+#include "Historic.hpp"
 
 using namespace std;
 
@@ -11,6 +12,7 @@ class Callbacks {
 public:
     static int userCallback(void *, int, char **, char **);
     static int adsCallback(void *, int, char **, char **);
+    static int historicCallback(void *, int, char **, char **);
     static int averageCallback(void *, int, char **, char **);
     static int countCallback(void *, int, char **, char **);
     static int sumCallback(void *, int, char **, char **);

@@ -1,6 +1,7 @@
 #include "../include/Callbacks.hpp"
 
 
+
 int Callbacks::userCallback(void *ptr, int argc, char **argv, char **colNames) {
     vector<User *>* result = (vector<User *>*) ptr;
     User *currentUser = new User((atoi(argv[0])));
@@ -52,6 +53,24 @@ int Callbacks::adsCallback(void *ptr, int argc, char **argv, char **colNames){
     currentAd->setPrice(atof(argv[11]));
 
     result->push_back(currentAd);
+    return 0;
+}
+
+int Callbacks::historicCallback(void *ptr, int argc, char **argv, char **colNames){
+    vector<Historic *>* result = (vector<Historic *>*) ptr;
+    Historic *currentReg = new Historic((atoi(argv[0])));
+    currentReg->setSellerId(atoi(argv[1]));
+    currentReg->setSellerUsername(argv[2]);
+    currentReg->setBuyerId(atoi(argv[3]));
+    currentReg->setBuyerUsername(argv[4]);
+    currentReg->setRating(atoi(argv[5]));
+    currentReg->setAdId(atoi(argv[6]));
+    currentReg->setQuantity(atoi(argv[7]));
+    currentReg->setAdTitle(argv[8]);
+    currentReg->setPrice(atof(argv[9]));
+    currentReg->setDate(argv[10]);
+
+    result->push_back(currentReg);
     return 0;
 }
 
