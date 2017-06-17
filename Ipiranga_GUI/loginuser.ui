@@ -77,6 +77,9 @@
        <height>20</height>
       </rect>
      </property>
+     <property name="text">
+      <string>12345678</string>
+     </property>
      <property name="echoMode">
       <enum>QLineEdit::Password</enum>
      </property>
@@ -92,6 +95,9 @@
      </property>
      <property name="accessibleName">
       <string/>
+     </property>
+     <property name="text">
+      <string>Eumemo</string>
      </property>
      <property name="echoMode">
       <enum>QLineEdit::Normal</enum>

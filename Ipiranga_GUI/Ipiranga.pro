@@ -21,18 +21,47 @@ SOURCES += \
         loginuser.cpp \
         userapp.cpp \
         formregister.cpp \
-    ../src/User.cpp
+        ../src/User.cpp \
+        UserPages/initialpage.cpp \
+        UserPages/editprofile.cpp \
+    UserPages/historic.cpp \
+    UserPages/friendspage.cpp \
+    UserPages/advertise.cpp \
+    UserPages/searchresult.cpp \
+    layout/ads.cpp \
+    layout/searchs.cpp \
+    layout/historiclayout.cpp \
+    layout/friendslayout.cpp
 
 HEADERS += \
         loginuser.h \
         userapp.h \
         formregister.h \
-    ../include/User.hpp
+        ../include/User.hpp \
+        UserPages/initialpage.h \
+        UserPages/editprofile.h \
+    UserPages/historic.h \
+    UserPages/friendspage.h \
+    UserPages/advertise.h \
+    UserPages/searchresult.h \
+    layout/ads.h \
+    layout/searchs.h \
+    layout/historiclayout.h \
+    layout/friendslayout.h
 
 FORMS += \
         loginuser.ui \
         userapp.ui \
-        formregister.ui
-
+        formregister.ui \
+        UserPages/initialpage.ui \
+        UserPages/editprofile.ui \
+    UserPages/historic.ui \
+    UserPages/friendspage.ui \
+    UserPages/advertise.ui \
+    UserPages/searchresult.ui \
+    layout/ads.ui \
+    layout/searchs.ui \
+    layout/historiclayout.ui \
+    layout/friendslayout.ui
 RESOURCES += \
     resources.qrc

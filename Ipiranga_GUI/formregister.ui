@@ -149,7 +149,7 @@
            <locale language="English" country="UnitedStates"/>
           </property>
           <property name="title">
-           <string>Personal Information</string>
+           <string>   Personal Information </string>
           </property>
           <widget class="QLabel" name="labelFirstName">
            <property name="geometry">
@@ -262,9 +262,12 @@
            <property name="locale">
             <locale language="English" country="UnitedStates"/>
            </property>
+<<<<<<< HEAD
+=======
            <property name="text">
             <string>Jose Luiz</string>
            </property>
+>>>>>>> origin/master
            <property name="maxLength">
             <number>20</number>
            </property>
@@ -285,7 +288,11 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
+<<<<<<< HEAD
+            <string/>
+=======
             <string>Gomes Nogueira</string>
+>>>>>>> origin/master
            </property>
            <property name="maxLength">
             <number>20</number>
@@ -303,8 +310,8 @@
            <property name="locale">
             <locale language="English" country="UnitedStates"/>
            </property>
-           <property name="inputMethodHints">
-            <set>Qt::ImhFormattedNumbersOnly</set>
+           <property name="text">
+            <string/>
            </property>
            <property name="text">
             <string>70317311190</string>
@@ -326,7 +333,11 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
+<<<<<<< HEAD
+            <string/>
+=======
             <string>9964762</string>
+>>>>>>> origin/master
            </property>
            <property name="maxLength">
             <number>11</number>
@@ -370,6 +381,19 @@
             <number>15</number>
            </property>
           </widget>
+          <widget class="QLabel" name="Private_1">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>-10</y>
+             <width>21</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#a40000;&quot;&gt;*&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
          </widget>
          <widget class="QGroupBox" name="Adress">
           <property name="enabled">
@@ -387,14 +411,14 @@
            <locale language="English" country="UnitedStates"/>
           </property>
           <property name="title">
-           <string>Adress</string>
+           <string>   Address</string>
           </property>
           <widget class="QLabel" name="labelAdress">
            <property name="geometry">
             <rect>
              <x>70</x>
              <y>20</y>
-             <width>51</width>
+             <width>91</width>
              <height>16</height>
             </rect>
            </property>
@@ -402,7 +426,7 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
-            <string>Adress</string>
+            <string>Address</string>
            </property>
           </widget>
           <widget class="QLabel" name="labelZIP">
@@ -466,7 +490,11 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
+<<<<<<< HEAD
+            <string/>
+=======
             <string>Granja do torto Casa 28 Qd.C</string>
+>>>>>>> origin/master
            </property>
            <property name="maxLength">
             <number>100</number>
@@ -484,8 +512,16 @@
            <property name="locale">
             <locale language="English" country="UnitedStates"/>
            </property>
+<<<<<<< HEAD
+           <property name="inputMask">
+            <string>9999999999</string>
+           </property>
+           <property name="text">
+            <string/>
+=======
            <property name="text">
             <string>70636015</string>
+>>>>>>> origin/master
            </property>
            <property name="maxLength">
             <number>10</number>
@@ -503,8 +539,16 @@
            <property name="locale">
             <locale language="English" country="UnitedStates"/>
            </property>
+<<<<<<< HEAD
+           <property name="inputMask">
+            <string>&gt;AA</string>
+           </property>
+           <property name="text">
+            <string/>
+=======
            <property name="text">
             <string>DF</string>
+>>>>>>> origin/master
            </property>
            <property name="maxLength">
             <number>2</number>
@@ -522,11 +566,32 @@
            <property name="locale">
             <locale language="English" country="UnitedStates"/>
            </property>
+<<<<<<< HEAD
+           <property name="inputMask">
+            <string>NNNNNNNNNNNNNNNNNNNN</string>
+           </property>
+           <property name="text">
+            <string/>
+=======
            <property name="text">
             <string>Brasilia</string>
+>>>>>>> origin/master
            </property>
            <property name="maxLength">
             <number>20</number>
+           </property>
+          </widget>
+          <widget class="QLabel" name="Private_3">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>-10</y>
+             <width>21</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#a40000;&quot;&gt;*&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
          </widget>
@@ -625,7 +690,11 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
+<<<<<<< HEAD
+            <string/>
+=======
             <string>meu pai</string>
+>>>>>>> origin/master
            </property>
            <property name="maxLength">
             <number>30</number>
@@ -644,7 +713,11 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
+<<<<<<< HEAD
+            <string/>
+=======
             <string>00000000000000000000</string>
+>>>>>>> origin/master
            </property>
            <property name="maxLength">
             <number>20</number>
@@ -663,7 +736,11 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
+<<<<<<< HEAD
+            <string/>
+=======
             <string>9999</string>
+>>>>>>> origin/master
            </property>
            <property name="maxLength">
             <number>4</number>
@@ -744,7 +821,7 @@
            <locale language="English" country="UnitedStates"/>
           </property>
           <property name="title">
-           <string>Access</string>
+           <string>   Access</string>
           </property>
           <widget class="QLabel" name="labelLogin">
            <property name="geometry">
@@ -807,7 +884,11 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
+<<<<<<< HEAD
+            <string/>
+=======
             <string>Luiz</string>
+>>>>>>> origin/master
            </property>
            <property name="maxLength">
             <number>20</number>
@@ -826,7 +907,11 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
+<<<<<<< HEAD
+            <string/>
+=======
             <string>12345678</string>
+>>>>>>> origin/master
            </property>
            <property name="maxLength">
             <number>30</number>
@@ -864,7 +949,11 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
+<<<<<<< HEAD
+            <string/>
+=======
             <string>12345678</string>
+>>>>>>> origin/master
            </property>
            <property name="maxLength">
             <number>30</number>
@@ -886,10 +975,27 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
+<<<<<<< HEAD
+            <string/>
+=======
             <string>joseluizgnogueira@hotmail.com</string>
+>>>>>>> origin/master
            </property>
            <property name="maxLength">
             <number>45</number>
+           </property>
+          </widget>
+          <widget class="QLabel" name="Private_2">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>-10</y>
+             <width>21</width>
+             <height>41</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#a40000;&quot;&gt;*&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
          </widget>
@@ -907,6 +1013,9 @@
           </property>
           <property name="text">
            <string>Cancel</string>
+          </property>
+          <property name="shortcut">
+           <string>Esc</string>
           </property>
          </widget>
          <widget class="QPushButton" name="pushButton_Register">
@@ -1036,7 +1145,11 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
+<<<<<<< HEAD
+            <string/>
+=======
             <string>1234567890</string>
+>>>>>>> origin/master
            </property>
            <property name="maxLength">
             <number>10</number>
@@ -1055,7 +1168,11 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
+<<<<<<< HEAD
+            <string/>
+=======
             <string>99999999999999999</string>
+>>>>>>> origin/master
            </property>
            <property name="maxLength">
             <number>20</number>
@@ -1099,6 +1216,19 @@
             </property>
            </item>
           </widget>
+         </widget>
+         <widget class="QLabel" name="label">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>910</y>
+            <width>251</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;Sections that contain &lt;/span&gt;&lt;span style=&quot; font-size:8pt; color:#a40000;&quot;&gt;*&lt;/span&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt; are required&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
          </widget>
         </widget>
        </item>

@@ -19,7 +19,11 @@ FormRegister::~FormRegister()
 
 void FormRegister::on_pushButton_Cancel_clicked()
 {
-    close();
+    if(QMessageBox::question(this,tr("Cancel Form"),tr("Are you sure that want to leave?"))
+            == QMessageBox::Yes)
+    {
+        this->~FormRegister();  // Eliminate the Form Register
+    }
 }
 
 void FormRegister::on_pushButton_Register_clicked()
@@ -67,7 +71,11 @@ void FormRegister::on_pushButton_Register_clicked()
         try{
             // Register a new user on the BD
             NewUser.registerUser(this->UserDate, this->Payment_active, this->Bank_active);
+<<<<<<< HEAD
+            QMessageBox::information(this,tr("Register"),tr("Registered with sucess!"));
+=======
             QMessageBox::information(this,tr("Register"),tr("Registered with sucess!\n You will receive a confirmation in your E-mail!"));
+>>>>>>> origin/master
             this->~FormRegister();  // Eliminate the Form Register
         }
         catch (char *error){

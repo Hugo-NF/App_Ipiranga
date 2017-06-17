@@ -4,5 +4,18 @@
         <file>images/Icon.png</file>
         <file>images/User_img.png</file>
         <file>images/User_img_mold.png</file>
+<<<<<<< HEAD
+        <file>images/search_icon.png</file>
+        <file>images/announcement-icon.png</file>
+        <file>images/friends_icon.png</file>
+        <file>images/historic_icon.png</file>
+        <file>images/home_icon.png</file>
+        <file>images/logout_icon.png</file>
+        <file>images/profile_icon.png</file>
+        <file>images/announcement-icon_inactive.png</file>
+        <file>images/friends_icon_inactive.png</file>
+        <file>images/adjuste_icon.png</file>
+=======
+>>>>>>> origin/master
     </qresource>
 </RCC>
