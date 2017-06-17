@@ -1,0 +1,347 @@
+        -:    0:Source:User.cpp
+        -:    0:Graph:User.gcno
+        -:    0:Data:User.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    0:Source is newer than graph
+        -:    1:#include "../include/User.hpp"
+        -:    2:
+        -:    3:using namespace std;
+        -:    4:
+        -:    5://------------------------------------Get and Set Methods-----------------------------------------
+        -:    6:
+    #####:    7:unsigned int User::getId(){ //Attention: The id is set in the class constructor
+    #####:    8:    return this->id;
+        -:    9:}
+        -:   10:
+        -:   11://Personal
+        1:   12:void User::setFirstName(string firstName){
+        1:   13:    this->firstName = firstName;
+        1:   14:}
+        -:   15:
+        1:   16:string User::getFirstName(){
+        1:   17:    return this->firstName;
+        -:   18:}
+        -:   19:
+        1:   20:void User::setLastName(string lastName){
+        1:   21:    this->lastName = lastName;
+        1:   22:}
+        -:   23:
+    #####:   24:string User::getLastName(){
+    #####:   25:    return this->lastName;
+        -:   26:}
+        -:   27:
+        1:   28:void User::setCPF(string CPF) {
+        1:   29:    this->CPF = CPF;
+        1:   30:}
+        -:   31:
+    #####:   32:string User::getCPF() {
+    #####:   33:    return this->CPF;
+        -:   34:}
+        -:   35:
+        1:   36:void User::setRG(string RG) {
+        1:   37:    this->RG = RG;
+        1:   38:}
+        -:   39:
+        1:   40:string User::getRG() {
+        1:   41:    return this->RG;
+        -:   42:}
+        -:   43:
+        1:   44:void User::setAge(string age) {
+        1:   45:    this->age = age;
+        1:   46:}
+        -:   47:
+    #####:   48:string User::getAge() {
+    #####:   49:    return this->age;
+        -:   50:}
+        -:   51:
+        1:   52:void User::setPhoneNumber(string phoneNumber) {
+        1:   53:    this->phoneNumber = phoneNumber;
+        1:   54:}
+        -:   55:
+    #####:   56:string User::getPhoneNumber() {
+    #####:   57:    return this->phoneNumber;
+        -:   58:}
+        -:   59:
+        -:   60://Access
+        1:   61:void User::setUsername(string username) {
+        1:   62:    this->username = username;
+        1:   63:}
+        -:   64:
+        2:   65:string User::getUsername() {
+        2:   66:    return this->username;
+        -:   67:}
+        -:   68:
+        1:   69:void User::setPassword(string password) {
+        1:   70:    this->password = password;
+        1:   71:}
+        -:   72:
+    #####:   73:string User::getPassword() {
+    #####:   74:    return this->password;
+        -:   75:}
+        -:   76:
+        1:   77:void User::setEmail(string email){
+        1:   78:    this->email = email;
+        1:   79:}
+        -:   80:
+    #####:   81:string User::getEmail() {
+    #####:   82:    return this->email;
+        -:   83:}
+        -:   84:
+        1:   85:void User::setActivation(bool status){
+        1:   86:    this->activation = status;
+        1:   87:}
+        -:   88:
+    #####:   89:bool User::isActivated() {
+    #####:   90:    return this->activation;
+        -:   91:}
+        -:   92:
+        -:   93://Payment
+        -:   94:
+        1:   95:void User::registerCard(bool status) {
+        1:   96:    this->hasCard = status;
+        1:   97:}
+        -:   98:
+    #####:   99:bool User::cardRegistered() {
+    #####:  100:    return this->hasCard;
+        -:  101:}
+        -:  102:
+        1:  103:void User::setCardType(string cardCode) {
+        1:  104:    this->type = cardCode;
+        1:  105:}
+        -:  106:
+    #####:  107:string User::getCardType() {
+    #####:  108:    return this->type;
+        -:  109:}
+        -:  110:
+        1:  111:void User::setCardOperator(string operatorCode) {
+        1:  112:    this->cardOperator = operatorCode;
+        1:  113:}
+        -:  114:
+    #####:  115:string User::getCardOperator() {
+    #####:  116:    return this->cardOperator;
+        -:  117:}
+        -:  118:
+        1:  119:void User::setCardNumber(string cardNumber) {
+        1:  120:    this->cardNumber = cardNumber;
+        1:  121:}
+        -:  122:
+    #####:  123:string User::getCardNumber() {
+    #####:  124:    return this->cardNumber;
+        -:  125:}
+        -:  126:
+        1:  127:void User::setCardName(string name){
+        1:  128:    this->cardName = name;
+        1:  129:}
+        -:  130:
+    #####:  131:string User::getCardName(){
+    #####:  132:    return this->cardName;
+        -:  133:}
+        -:  134:
+        1:  135:void User::setSecurityCode(string securityCode){
+        1:  136:    this->securityCode = securityCode;
+        1:  137:}
+        -:  138:
+    #####:  139:string User::getSecurityCode() {
+    #####:  140:    return this->securityCode;
+        -:  141:}
+        -:  142:
+        1:  143:void User::setExpirationDate(string date) {
+        1:  144:    this->expirationDate = date;
+        1:  145:}
+        -:  146:
+    #####:  147:string User::getExpirationDate() {
+    #####:  148:    return this->expirationDate;
+        -:  149:}
+        -:  150:
+        -:  151://Financial
+        -:  152:
+        1:  153:void User::registerAccount(bool status) {
+        1:  154:    this->hasAccount = status;
+        1:  155:}
+        -:  156:
+    #####:  157:bool User::accountRegistered() {
+    #####:  158:    return this->hasAccount;
+        -:  159:}
+        -:  160:
+        1:  161:void User::setBank(string bankCode) {
+        1:  162:    this->bank = bankCode;
+        1:  163:}
+        -:  164:
+    #####:  165:string User::getBank() {
+    #####:  166:    return this->bank;
+        -:  167:}
+        -:  168:
+        1:  169:void User::setAccountNumber(string accountNumber) {
+        1:  170:    this->accountNumber = accountNumber;
+        1:  171:}
+        -:  172:
+    #####:  173:string User::getAccountNumber() {
+    #####:  174:    return this->accountNumber;
+        -:  175:}
+        -:  176:
+        1:  177:void User::setAgency(string agency){
+        1:  178:    this->agency = agency;
+        1:  179:}
+        -:  180:
+    #####:  181:string User::getAgency() {
+    #####:  182:    return this->agency;
+        -:  183:}
+        -:  184:
+        -:  185://Billing
+        -:  186:
+        1:  187:void User::setAddress(string address) {
+        1:  188:    this->address = address;
+        1:  189:}
+        -:  190:
+    #####:  191:string User::getAddress() {
+    #####:  192:    return this->address;
+        -:  193:}
+        -:  194:
+        1:  195:void User::setZipCode(string zipCode){
+        1:  196:    this->zipCode =zipCode;
+        1:  197:}
+        -:  198:
+    #####:  199:string User::getZipCode() {
+    #####:  200:    return this->zipCode;
+        -:  201:}
+        -:  202:
+        1:  203:void User::setState(string stateAbbv) {
+        1:  204:    this->state = stateAbbv;
+        1:  205:}
+        -:  206:
+    #####:  207:string User::getState() {
+    #####:  208:    return this->state;
+        -:  209:}
+        -:  210:
+        1:  211:void User::setCity(string city) {
+        1:  212:    this->city = city;
+        1:  213:}
+        -:  214:
+    #####:  215:string User::getCity() {
+    #####:  216:    return this->city;
+        -:  217:}
+        -:  218:
+        -:  219://App balance
+        1:  220:void User::setBalance(double balance) {
+        1:  221:    this->balance = balance;
+        1:  222:}
+        -:  223:
+    #####:  224:double User::getBalance() {
+    #####:  225:    return this->balance;
+        -:  226:}
+        -:  227:
+        -:  228://----------------------------------Methods for manipulating SQLite-------------------------------
+        -:  229:
+        -:  230://Database Setup Operations
+        -:  231:
+    #####:  232:void User::createTable(sqlite3 *connection) {
+        -:  233:    int result;
+    #####:  234:    char *errMsg = 0;
+        -:  235:    string SQL = "CREATE TABLE IF NOT EXISTS USERS ("\
+        -:  236:            "  `id`             INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"\
+        -:  237:            "  `firstName`      VARCHAR(20)                       NOT NULL,"\
+        -:  238:            "  `lastName`       VARCHAR(20)                       NOT NULL,"\
+        -:  239:            "  `CPF`            VARCHAR(11) UNIQUE                NOT NULL,"\
+        -:  240:            "  `RG`             VARCHAR(11) UNIQUE                NOT NULL,"\
+        -:  241:            "  `age`            VARCHAR(3)                        NOT NULL,"\
+        -:  242:            "  `phoneNumber`    VARCHAR(15)                       NOT NULL,"\
+        -:  243:            "  `username`       VARCHAR(20) UNIQUE                NOT NULL,"\
+        -:  244:            "  `password`       VARCHAR(30)                       NOT NULL,"\
+        -:  245:            "  `email`          VARCHAR(45) UNIQUE                NOT NULL,"\
+        -:  246:            "  `activation`     UNSIGNED INT(1)                   NOT NULL,"\
+        -:  247:            "  `hasCard`        UNSIGNED ZEROFILL INT(1)          NOT NULL,"\
+        -:  248:            "  `type`           VARCHAR(10)                       NOT NULL,"\
+        -:  249:            "  `cardOperator`   VARCHAR(20)                       NOT NULL,"\
+        -:  250:            "  `cardNumber`     VARCHAR(20)                       NOT NULL,"\
+        -:  251:            "  `cardName`       VARCHAR(30)                       NOT NULL,"\
+        -:  252:            "  `securityCode`   VARCHAR(5)                        NOT NULL,"\
+        -:  253:            "  `expirationDate` VARCHAR(10)                       NOT NULL,"\
+        -:  254:            "  `hasAccount`     UNSIGNED ZEROFILL INT(1)          NOT NULL,"\
+        -:  255:            "  `bank`           VARCHAR(30)                       NOT NULL,"\
+        -:  256:            "  `accountNumber`  VARCHAR(20)                       NOT NULL,"\
+        -:  257:            "  `agency`         VARCHAR(10)                       NOT NULL,"\
+        -:  258:            "  `balance`        VARCHAR(15)                       NOT NULL,"\
+        -:  259:            "  `address`        VARCHAR(100)                      NOT NULL,"\
+        -:  260:            "  `zipCode`        VARCHAR(10)                       NOT NULL,"\
+        -:  261:            "  `state`          VARCHAR(2)                        NOT NULL,"\
+    #####:  262:            "  `city`           VARCHAR(20)                       NOT NULL);";
+    #####:  263:    result = sqlite3_exec(connection, SQL.c_str(), Callbacks::userCallback, 0, &errMsg);
+    #####:  264:    if(result != SQLITE_OK)
+    #####:  265:        throw errMsg;
+    #####:  266:}
+        -:  267:
+    #####:  268:void User::deleteTable(sqlite3 *connection){
+        -:  269:    int result;
+    #####:  270:    char *errMsg = 0;
+    #####:  271:    string SQL = "DROP TABLE IF EXISTS USERS";
+    #####:  272:    result = sqlite3_exec(connection, SQL.c_str(), Callbacks::userCallback, 0, &errMsg);
+    #####:  273:    if(result != SQLITE_OK)
+    #####:  274:        throw errMsg;
+    #####:  275:}
+        -:  276:
+    #####:  277:void User::cleanTable() {
+        -:  278:    sqlite3 *connection;
+    #####:  279:    int flag = sqlite3_open(DATABASE, &connection);
+    #####:  280:    if(flag!= SQLITE_OK)
+    #####:  281:        throw (char *) CONNECTION_ERROR;
+    #####:  282:    this->deleteTable(connection);
+    #####:  283:    this->createTable(connection);
+    #####:  284:    flag = sqlite3_close(connection);
+    #####:  285:    if(flag != SQLITE_OK)
+    #####:  286:        throw (char *) CONNECTION_ERROR;
+    #####:  287:}
+        -:  288:
+        -:  289://Database CRUD Operations
+        -:  290:
+    #####:  291:void User::insertOperation(sqlite3 *connection, User *user) {
+        -:  292:    int result;
+    #####:  293:    char *errMsg = 0;
+        -:  294:    char SQL[1500];
+    #####:  295:    sprintf(SQL, "INSERT INTO USERS ("\
+        -:  296:    "firstName, lastName, CPF, RG, age, phoneNumber, username, password, email, activation,"\
+        -:  297:    "hasCard, type, cardOperator, cardNumber, cardName, securityCode, expirationDate,"\
+        -:  298:    "hasAccount, bank, accountNumber, agency, balance, address, zipCode, state, city)"\
+        -:  299:    " VALUES('%s','%s','%s','%s','%s','%s','%s','%s','%s',%d,%d,'%s','%s','%s','%s','%s','%s',%d,"\
+        -:  300:    "'%s','%s','%s','%lf','%s','%s','%s','%s');",\
+    #####:  301:     user->getFirstName().c_str(), user->getLastName().c_str(), user->getCPF().c_str(),\
+    #####:  302:     user->getRG().c_str(), user->getAge().c_str(), user->getPhoneNumber().c_str(), user->getUsername().c_str(),\
+    #####:  303:     user->getPassword().c_str(), user->getEmail().c_str(), user->isActivated(),\
+    #####:  304:     user->cardRegistered(), user->getCardType().c_str(), user->getCardOperator().c_str(),user->getCardNumber().c_str(),user->getCardName().c_str(),\
+    #####:  305:     user->getSecurityCode().c_str(), user->getExpirationDate().c_str(), user->accountRegistered(),\
+    #####:  306:     user->getBank().c_str(), user->getAccountNumber().c_str(), user->getAgency().c_str(),user->getBalance(),\
+    #####:  307:     user->getAddress().c_str(), user->getZipCode().c_str(), user->getState().c_str(), user->getCity().c_str());
+    #####:  308:    result = sqlite3_exec(connection, SQL, Callbacks::userCallback, 0, &errMsg);
+    #####:  309:    if(result != SQLITE_OK)
+    #####:  310:        throw errMsg;
+    #####:  311:}
+        -:  312:
+    #####:  313:void User::updateOperation(sqlite3 *connection, User *user) {
+        -:  314:    int result;
+    #####:  315:    char *errMsg = 0;
+        -:  316:    char SQL[1500];
+    #####:  317:    sprintf(SQL, "UPDATE USERS set firstName='%s', lastName='%s', CPF='%s', RG='%s', age='%s', phoneNumber='%s',"\
+        -:  318:    "username='%s', password='%s', email='%s', activation=%d, hasCard=%d, type='%s', cardOperator='%s',"\
+        -:  319:    "cardNumber='%s', cardName='%s', securityCode='%s', expirationDate='%s', hasAccount=%d, bank='%s', accountNumber='%s',"\
+    #####:  320:    "agency='%s', balance='%lf', address='%s', zipCode='%s', state='%s', city='%s' WHERE id=%d;", user->getFirstName().c_str(), user->getLastName().c_str(), user->getCPF().c_str(),\
+    #####:  321:     user->getRG().c_str(), user->getAge().c_str(), user->getPhoneNumber().c_str(), user->getUsername().c_str(),\
+    #####:  322:     user->getPassword().c_str(), user->getEmail().c_str(), user->isActivated(),\
+    #####:  323:     user->cardRegistered(), user->getCardType().c_str(), user->getCardOperator().c_str(),user->getCardNumber().c_str(),user->getCardName().c_str(),\
+    #####:  324:     user->getSecurityCode().c_str(), user->getExpirationDate().c_str(), user->accountRegistered(),\
+    #####:  325:     user->getBank().c_str(), user->getAccountNumber().c_str(), user->getAgency().c_str(),user->getBalance(),\
+    #####:  326:     user->getAddress().c_str(), user->getZipCode().c_str(), user->getState().c_str(), user->getCity().c_str(), user->getId());
+    #####:  327:    result = sqlite3_exec(connection, SQL, Callbacks::userCallback, 0, &errMsg);
+    #####:  328:    if(result != SQLITE_OK)
+    #####:  329:        throw errMsg;
+    #####:  330:}
+        -:  331:
+    #####:  332:void User::deleteOperation(sqlite3 *connection, User *user) {
+        -:  333:    int result;
+    #####:  334:    char *errMsg = 0;
+        -:  335:    char SQL[100];
+    #####:  336:    sprintf(SQL, "DELETE FROM USERS WHERE id=%d", user->getId());
+        -:  337:
+    #####:  338:    result = sqlite3_exec(connection, SQL, Callbacks::userCallback, 0, &errMsg);
+    #####:  339:    if(result != SQLITE_OK)
+    #####:  340:        throw errMsg;
+        3:  341:}
