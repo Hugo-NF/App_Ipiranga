@@ -54,6 +54,7 @@ public:
     QLineEdit *lineRG;
     QSpinBox *spinAge;
     QLineEdit *linePhone;
+    QLabel *Private_1;
     QGroupBox *Adress;
     QLabel *labelAdress;
     QLabel *labelZIP;
@@ -63,6 +64,7 @@ public:
     QLineEdit *lineZIP;
     QLineEdit *lineState;
     QLineEdit *lineCity;
+    QLabel *Private_3;
     QGroupBox *Payment;
     QLabel *labelExpiration;
     QLabel *labelNumber;
@@ -83,6 +85,7 @@ public:
     QLabel *labelConfirm;
     QLineEdit *lineConfirm;
     QLineEdit *lineEmail;
+    QLabel *Private_2;
     QPushButton *pushButton_Cancel;
     QPushButton *pushButton_Register;
     QGroupBox *BankAccount;
@@ -94,6 +97,7 @@ public:
     QLineEdit *lineAgency;
     QLineEdit *lineAccount;
     QComboBox *comboBox_Bank;
+    QLabel *label;
     QFrame *right;
 
     void setupUi(QDialog *FormRegister)
@@ -190,7 +194,6 @@ public:
         lineCPF->setObjectName(QStringLiteral("lineCPF"));
         lineCPF->setGeometry(QRect(160, 80, 171, 20));
         lineCPF->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
-        lineCPF->setInputMethodHints(Qt::ImhFormattedNumbersOnly);
         lineCPF->setMaxLength(11);
         lineRG = new QLineEdit(Personal);
         lineRG->setObjectName(QStringLiteral("lineRG"));
@@ -208,6 +211,9 @@ public:
         linePhone->setGeometry(QRect(160, 170, 101, 20));
         linePhone->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
         linePhone->setMaxLength(15);
+        Private_1 = new QLabel(Personal);
+        Private_1->setObjectName(QStringLiteral("Private_1"));
+        Private_1->setGeometry(QRect(10, -10, 21, 41));
         Adress = new QGroupBox(form);
         Adress->setObjectName(QStringLiteral("Adress"));
         Adress->setEnabled(true);
@@ -215,7 +221,7 @@ public:
         Adress->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
         labelAdress = new QLabel(Adress);
         labelAdress->setObjectName(QStringLiteral("labelAdress"));
-        labelAdress->setGeometry(QRect(70, 20, 51, 16));
+        labelAdress->setGeometry(QRect(70, 20, 91, 16));
         labelAdress->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
         labelZIP = new QLabel(Adress);
         labelZIP->setObjectName(QStringLiteral("labelZIP"));
@@ -249,6 +255,9 @@ public:
         lineCity->setGeometry(QRect(160, 110, 113, 20));
         lineCity->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
         lineCity->setMaxLength(20);
+        Private_3 = new QLabel(Adress);
+        Private_3->setObjectName(QStringLiteral("Private_3"));
+        Private_3->setGeometry(QRect(10, -10, 21, 41));
         Payment = new QGroupBox(form);
         Payment->setObjectName(QStringLiteral("Payment"));
         Payment->setEnabled(true);
@@ -341,6 +350,9 @@ public:
         lineEmail->setGeometry(QRect(160, 110, 211, 20));
         lineEmail->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
         lineEmail->setMaxLength(45);
+        Private_2 = new QLabel(Acess);
+        Private_2->setObjectName(QStringLiteral("Private_2"));
+        Private_2->setGeometry(QRect(10, -10, 21, 41));
         pushButton_Cancel = new QPushButton(form);
         pushButton_Cancel->setObjectName(QStringLiteral("pushButton_Cancel"));
         pushButton_Cancel->setGeometry(QRect(60, 940, 101, 31));
@@ -388,6 +400,9 @@ public:
         comboBox_Bank->setObjectName(QStringLiteral("comboBox_Bank"));
         comboBox_Bank->setGeometry(QRect(160, 60, 161, 22));
         comboBox_Bank->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
+        label = new QLabel(form);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(10, 910, 251, 20));
 
         horizontalLayout->addWidget(form);
 
@@ -442,13 +457,33 @@ public:
     {
         FormRegister->setWindowTitle(QApplication::translate("FormRegister", "Register Now", 0));
         TitleRegister->setText(QApplication::translate("FormRegister", "<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; font-weight:600; text-decoration: underline; color:#087add;\">Register Now</span></p></body></html>", 0));
-        Personal->setTitle(QApplication::translate("FormRegister", "Personal Information", 0));
+        Personal->setTitle(QApplication::translate("FormRegister", "   Personal Information ", 0));
         labelFirstName->setText(QApplication::translate("FormRegister", "First Name", 0));
         labelLastName->setText(QApplication::translate("FormRegister", "Last Name", 0));
         labelCPF->setText(QApplication::translate("FormRegister", "CPF", 0));
         labelRG->setText(QApplication::translate("FormRegister", "RG", 0));
         labelAge->setText(QApplication::translate("FormRegister", "Age", 0));
         labelPhone->setText(QApplication::translate("FormRegister", "Phone", 0));
+<<<<<<< HEAD
+        lineLastName->setText(QString());
+        lineCPF->setText(QString());
+        lineRG->setText(QString());
+        linePhone->setText(QString());
+        Private_1->setText(QApplication::translate("FormRegister", "<html><head/><body><p><span style=\" color:#a40000;\">*</span></p></body></html>", 0));
+        Adress->setTitle(QApplication::translate("FormRegister", "   Address", 0));
+        labelAdress->setText(QApplication::translate("FormRegister", "Address", 0));
+        labelZIP->setText(QApplication::translate("FormRegister", "Zip Code", 0));
+        labelState->setText(QApplication::translate("FormRegister", "State", 0));
+        labelCity->setText(QApplication::translate("FormRegister", "City", 0));
+        lineAdress->setText(QString());
+        lineZIP->setInputMask(QApplication::translate("FormRegister", "9999999999", 0));
+        lineZIP->setText(QString());
+        lineState->setInputMask(QApplication::translate("FormRegister", ">AA", 0));
+        lineState->setText(QString());
+        lineCity->setInputMask(QApplication::translate("FormRegister", "NNNNNNNNNNNNNNNNNNNN", 0));
+        lineCity->setText(QString());
+        Private_3->setText(QApplication::translate("FormRegister", "<html><head/><body><p><span style=\" color:#a40000;\">*</span></p></body></html>", 0));
+=======
         lineFirstName->setText(QApplication::translate("FormRegister", "Jose Luiz", 0));
         lineLastName->setText(QApplication::translate("FormRegister", "Gomes Nogueira", 0));
         lineCPF->setText(QApplication::translate("FormRegister", "70317311190", 0));
@@ -463,27 +498,44 @@ public:
         lineZIP->setText(QApplication::translate("FormRegister", "70636015", 0));
         lineState->setText(QApplication::translate("FormRegister", "DF", 0));
         lineCity->setText(QApplication::translate("FormRegister", "Brasilia", 0));
+>>>>>>> origin/master
         Payment->setTitle(QApplication::translate("FormRegister", "Payment", 0));
         labelExpiration->setText(QApplication::translate("FormRegister", "Expiration", 0));
         labelNumber->setText(QApplication::translate("FormRegister", "Number", 0));
         labelName->setText(QApplication::translate("FormRegister", "Name", 0));
         labelSecurity->setText(QApplication::translate("FormRegister", "N\302\272 Security", 0));
+<<<<<<< HEAD
+        lineNamePayment->setText(QString());
+        lineNumber->setText(QString());
+        lineSecurity->setText(QString());
+=======
         lineNamePayment->setText(QApplication::translate("FormRegister", "meu pai", 0));
         lineNumber->setText(QApplication::translate("FormRegister", "00000000000000000000", 0));
         lineSecurity->setText(QApplication::translate("FormRegister", "9999", 0));
+>>>>>>> origin/master
         dateExpiration->setDisplayFormat(QApplication::translate("FormRegister", "yyyy/MMM", 0));
         radioButton_Credit->setText(QApplication::translate("FormRegister", "Credit", 0));
         radioButton_Debit->setText(QApplication::translate("FormRegister", "Debit", 0));
-        Acess->setTitle(QApplication::translate("FormRegister", "Access", 0));
+        Acess->setTitle(QApplication::translate("FormRegister", "   Access", 0));
         labelLogin->setText(QApplication::translate("FormRegister", "Login", 0));
         labelPass->setText(QApplication::translate("FormRegister", "Password", 0));
         labelEmail->setText(QApplication::translate("FormRegister", "E-mail", 0));
+<<<<<<< HEAD
+        lineLogin->setText(QString());
+        linePass->setText(QString());
+        labelConfirm->setText(QApplication::translate("FormRegister", "Confirm", 0));
+        lineConfirm->setText(QString());
+        lineEmail->setText(QString());
+        Private_2->setText(QApplication::translate("FormRegister", "<html><head/><body><p><span style=\" color:#a40000;\">*</span></p></body></html>", 0));
+=======
         lineLogin->setText(QApplication::translate("FormRegister", "Luiz", 0));
         linePass->setText(QApplication::translate("FormRegister", "12345678", 0));
         labelConfirm->setText(QApplication::translate("FormRegister", "Confirm", 0));
         lineConfirm->setText(QApplication::translate("FormRegister", "12345678", 0));
         lineEmail->setText(QApplication::translate("FormRegister", "joseluizgnogueira@hotmail.com", 0));
+>>>>>>> origin/master
         pushButton_Cancel->setText(QApplication::translate("FormRegister", "Cancel", 0));
+        pushButton_Cancel->setShortcut(QApplication::translate("FormRegister", "Esc", 0));
         pushButton_Register->setText(QApplication::translate("FormRegister", "Register", 0));
         BankAccount->setTitle(QApplication::translate("FormRegister", "Bank Account", 0));
         labelName_2->setText(QApplication::translate("FormRegister", "Name", 0));
@@ -491,8 +543,13 @@ public:
         labelAgency->setText(QApplication::translate("FormRegister", "Agency", 0));
         labelAccount->setText(QApplication::translate("FormRegister", "Account", 0));
         lineNameBank->setText(QString());
+<<<<<<< HEAD
+        lineAgency->setText(QString());
+        lineAccount->setText(QString());
+=======
         lineAgency->setText(QApplication::translate("FormRegister", "1234567890", 0));
         lineAccount->setText(QApplication::translate("FormRegister", "99999999999999999", 0));
+>>>>>>> origin/master
         comboBox_Bank->clear();
         comboBox_Bank->insertItems(0, QStringList()
          << QApplication::translate("FormRegister", "Banco do Brasil", 0)
@@ -501,6 +558,7 @@ public:
          << QApplication::translate("FormRegister", "Ita\303\272", 0)
          << QApplication::translate("FormRegister", "Santander", 0)
         );
+        label->setText(QApplication::translate("FormRegister", "<html><head/><body><p><span style=\" font-size:8pt;\">Sections that contain </span><span style=\" font-size:8pt; color:#a40000;\">*</span><span style=\" font-size:8pt;\"> are required</span></p></body></html>", 0));
     } // retranslateUi
 
 };

@@ -98,9 +98,11 @@ public:
         Login->setTitle(QString());
         label_user->setText(QApplication::translate("LoginUser", "User Name", 0));
         label_password->setText(QApplication::translate("LoginUser", "Password", 0));
+        linePass->setText(QApplication::translate("LoginUser", "12345678", 0));
 #ifndef QT_NO_ACCESSIBILITY
         lineName->setAccessibleName(QString());
 #endif // QT_NO_ACCESSIBILITY
+        lineName->setText(QApplication::translate("LoginUser", "Eumemo", 0));
         pushLogin->setText(QApplication::translate("LoginUser", "Login", 0));
         pushLogin->setShortcut(QApplication::translate("LoginUser", "Return", 0));
         pushRegister->setText(QApplication::translate("LoginUser", "Register", 0));

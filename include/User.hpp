@@ -85,6 +85,10 @@ public: //Public Methods
     User(unsigned int id){
         this->id = id;
     }
+<<<<<<< HEAD
+    User(){}
+=======
+>>>>>>> origin/master
     ~User(){}
     //Get/Set Operations
     //Personal
