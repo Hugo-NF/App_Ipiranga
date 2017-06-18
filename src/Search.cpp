@@ -87,11 +87,13 @@ void Search::enableFriendsofFriendsSearch(bool toggle) {
 bool Search::friendsOfFriendsSearchEnabled() {
     return this->toggleFriendsofFriends;
 }
-/*
+
 vector<User *> Search::userSearch(Search *parameters) {
     int i, flag;
-    char query[100];
-    char SQL[5000];
+    string SQL;
+    string textQuery;
+    string filtersQuery;
+    string
     vector<User *> result;
     char *errMsg = 0;
     sqlite3 *connection;
@@ -129,4 +131,3 @@ vector<User *> Search::userSearch(Search *parameters) {
 
     return result;
 }
-*/

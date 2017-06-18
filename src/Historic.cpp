@@ -123,3 +123,74 @@ void Historic::insertOperation(sqlite3 *connection, Historic *newEntry) {
     if(result != SQLITE_OK)
         throw errMsg;
 }
+
+void Historic::evaluate(Historic *entry, unsigned int rating) {
+    sqlite3 *connection;
+    int flag;
+    double newAverage;
+    char *errMsg = 0;
+    char SQL[300];
+    ostringstream streamRating;
+
+    flag = sqlite3_open(DATABASE, &connection);
+    if(flag!= SQLITE_OK)
+        throw (char *) CONNECTION_ERROR;
+
+    sprintf(SQL, "UPDATE HISTORIC set rating = %u WHERE id = %u AND adId = %u;", rating, entry->getId(), entry->getAdId());
+    flag = sqlite3_exec(connection, SQL, Callbacks::historicCallback, 0, &errMsg);
+    if(flag != SQLITE_OK)
+        throw (char *) CONNECTION_ERROR;
+
+    sprintf(SQL, "SELECT AVG(rating) FROM HISTORIC WHERE sellerId = %u AND NOT rating = 0;", entry->getSellerId());
+    flag = sqlite3_exec(connection, SQL, Callbacks::averageCallback, &newAverage, &errMsg);
+    if(flag != SQLITE_OK)
+        throw (char *) CONNECTION_ERROR;
+
+    streamRating<<newAverage;
+    string s_rating = streamRating.str();
+
+    sprintf(SQL, "UPDATE USERS set rating = rating+%s WHERE id = %u AND username = '%s';", s_rating.c_str(), entry->getSellerId(), entry->getSellerUsername().c_str());
+    flag = sqlite3_exec(connection, SQL, Callbacks::userCallback, 0, &errMsg);
+    if(flag != SQLITE_OK)
+        throw (char *) CONNECTION_ERROR;
+
+    sprintf(SQL, "UPDATE ADS set sellerRating = %s WHERE id = %u AND sellerUsername = '%s';", s_rating.c_str(), entry->getAdId(), entry->getSellerUsername());
+    flag = sqlite3_exec(connection, SQL, Callbacks::adsCallback, 0, &errMsg);
+    if(flag != SQLITE_OK)
+        throw (char *) CONNECTION_ERROR;
+
+    flag = sqlite3_close(connection);
+    if(flag!= SQLITE_OK)
+        throw (char *) CONNECTION_ERROR;
+}
+
+vector<Historic *> Historic::retrieveHistoric(unsigned int userId, bool asSeller, bool asBuyer) {
+    sqlite3 *connection;
+    int flag;
+    char *errMsg = 0;
+    char SQL[300];
+    vector <Historic *> results;
+
+    flag = sqlite3_open(DATABASE, &connection);
+    if(flag!= SQLITE_OK)
+        throw (char *) CONNECTION_ERROR;
+
+    if(asBuyer && asSeller){
+        sprintf(SQL, "SELECT * FROM HISTORIC WHERE sellerId = %u OR buyerID = %u;", userId, userId);
+    } else if (asBuyer){
+        sprintf(SQL, "SELECT * FROM HISTORIC WHERE buyerId = %u;", userId);
+    } else {
+        sprintf(SQL, "SELECT * FROM HISTORIC WHERE sellerId = %u;", userId);
+    }
+
+    flag = sqlite3_exec(connection, SQL, Callbacks::historicCallback, &results, &errMsg);
+    if(flag != SQLITE_OK)
+        throw errMsg;
+
+    flag = sqlite3_close(connection);
+    if(flag!= SQLITE_OK)
+        throw (char *) CONNECTION_ERROR;
+
+    return results;
+}
+

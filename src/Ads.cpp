@@ -98,7 +98,7 @@ void Ads::createTable(sqlite3 *connection) {
 void Ads::deleteTable(sqlite3 *connection) {
     int result;
     char *errMsg = 0;
-    string SQL = "DROP TABLE IF EXISTS ADS";
+    string SQL = "DROP TABLE IF EXISTS ADS;";
     result = sqlite3_exec(connection, SQL.c_str(), Callbacks::adsCallback, 0, &errMsg);
     if(result != SQLITE_OK)
         throw errMsg;

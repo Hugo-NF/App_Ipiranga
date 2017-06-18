@@ -60,5 +60,6 @@ public:
 
     static vector<User *> userSearch(Search *parameters);
     static vector<Ads *> adsSearch(Search *parameters);
+
 };
 #endif //APP_IPIRANGA_SEARCH_HPP

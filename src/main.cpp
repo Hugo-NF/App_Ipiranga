@@ -254,7 +254,7 @@ TEST(Payments, Buying_something){
         cout<<error<<endl;
     }
 }
-*/
+
 TEST(Payments, Withdraw_test){
     User *usuario_logado = Account::login("Big_Moas15", "123456789GO");
     ASSERT_EQ("Big Moai", usuario_logado->getFirstName());
@@ -266,7 +266,7 @@ TEST(Payments, Withdraw_test){
     }
 
 }
-
+*/
 
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
