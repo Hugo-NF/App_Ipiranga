@@ -2,6 +2,7 @@
 #include "ui_editprofile.h"
 #include <QMessageBox>
 #include "../include/Account.hpp"
+#include "../userapp.h"
 
 EditProfile::EditProfile(QWidget *parent) :
     QWidget(parent),
@@ -195,7 +196,7 @@ void EditProfile::on_pushButton_Delete_clicked()
             try{
                 Account::deleteAccount(CurrentUser.getId());
                 QMessageBox::information(this,tr("Delete Account"),tr("Your account was deleted with sucess!"));
-                this->close();
+                system("killall Ipiranga");
             }catch(char* err){
                 QMessageBox::warning(this,tr("Delete Account"),tr(err));
             }
@@ -214,6 +215,7 @@ void EditProfile::on_pushButton_Inactive_clicked()
             Account::activateAccount(CurrentUser.getId(),false);
             QMessageBox::information(this,tr("Inactive Profile"),tr("Your account was desactivated with sucess!\n"
                                                                     "When you login again, it will be reactivated!"));
+            system("killall Ipiranga");
         }catch(char* err){
             QMessageBox::warning(this,tr("Inactive Account"),tr(err));
         }

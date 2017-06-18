@@ -104,7 +104,7 @@ void UserApp::on_Button_advertise_clicked()
 void UserApp::on_Button_logout_clicked()
 {
     this->hide();
-    system("./Ipiranga");
+    system("./Ipiranga&");
     this->close();
 }
 //---------------------------------------------

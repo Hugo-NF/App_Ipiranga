@@ -1,15 +1,6 @@
 - Campos:
 	Podem receber qualquer caracter;
 	Todos os campos podem receber espaço (Login, senha, e-mail, cartão);
-
-- Logoff:
-    Reabrir página de Login
-
-- Paginas do programa
-    Passar CurrentUser para todas elas ou herdar o campo já preenchido?
-
--Delete Account e Inactiv
-    Deslogar usuario apos
     
     
 #------------ADICIONAR---------------
