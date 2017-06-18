@@ -1,4 +1,3 @@
-#include <sqlite3.h>
 #include "../include/Friendship.hpp"
 
 void Friendship::setUser1Id(unsigned int id) {
@@ -171,9 +170,12 @@ vector<unsigned int> Friendship::getFriendsofFriendsIds(sqlite3 *connection, uns
     string SQL;
     string friendsQuery;
     char *errMsg = 0;
-    vector<unsigned int> results;
+    vector<unsigned int> fOfFriendsIds;
     vector<unsigned int> friendsIds;
+    vector<unsigned int>::iterator it;
+    vector<unsigned int> results;
     vector<Friendship *> friendshipNodes;
+
 
     friendsIds = Friendship::getFriendsIds(connection, currentUserId);
 
@@ -188,8 +190,18 @@ vector<unsigned int> Friendship::getFriendsofFriendsIds(sqlite3 *connection, uns
         flag = sqlite3_exec(connection, SQL.c_str(), Callbacks::friendshipCallback, &friendshipNodes, &errMsg);
         if(flag!= SQLITE_OK)
             throw (char *) CONNECTION_ERROR;
-        ...
+        for (i=0; i<friendshipNodes.size(); i++){
+            if (friendshipNodes[i]->getUser1Id() == currentUserId)
+                fOfFriendsIds.push_back(friendshipNodes[i]->getUser2Id());
+            else
+                fOfFriendsIds.push_back(friendshipNodes[i]->getUser1Id());
+        }
+        it = std::set_difference(friendsIds.begin(), friendsIds.end(), fOfFriendsIds.begin(), fOfFriendsIds.end(), results.begin());
+        results.resize(it-results.begin());
 
     }
+    return results;
 
 }
+
+
