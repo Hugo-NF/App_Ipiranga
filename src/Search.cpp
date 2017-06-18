@@ -88,6 +88,48 @@ bool Search::friendsOfFriendsSearchEnabled() {
     return this->toggleFriendsofFriends;
 }
 
+unsigned int currentUserID;
+string table;
+bool toggleText;
+string textSearch;
+bool toggleFilters;
+vector<string> criterias;
+vector<string> keywords;
+bool toggleOrdernation;
+string orderBy;
+bool orderSequence; //true - ASC : false - DESC
+bool toggleBandFilter;
+string bandFilterCriteria;
+double bandFilterMin;
+double bandFilterMax;
+bool toggleFriends;
+bool toggleFriendsofFriends;
+
+unsigned int getCurrentUserID();
+bool textSearchEnabled();
+string getText();
+bool filtersEnabled();
+vector<string> getCriterias();
+vector<string> getKeywords();
+bool ordenationEnabled();
+string getOrderBy();
+bool getOrderingSequence();
+bool bandFilterEnabled();
+string getBandFilterCriteria();
+double getMinValue();
+double getMaxValue();
+bool friendsSearchEnabled();
+bool friendsOfFriendsSearchEnabled();
+/*
+vector<User *> Search::userSearch(Search *parameters) {
+    int i, flag;
+    string SQL;
+    if(parameters->)
+
+
+}
+
+/*
 vector<User *> Search::userSearch(Search *parameters) {
     int i, flag;
     string SQL;
@@ -131,3 +173,4 @@ vector<User *> Search::userSearch(Search *parameters) {
 
     return result;
 }
+*/

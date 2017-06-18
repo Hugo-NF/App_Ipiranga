@@ -1,6 +1,7 @@
 
 #ifndef APP_IPIRANGA_FRIENDSHIP_HPP
 #define APP_IPIRANGA_FRIENDSHIP_HPP
+#define FRIEND_REPEATED "You have already added this user as a friend"
 
 #include "User.hpp"
 

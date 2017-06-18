@@ -52,6 +52,7 @@ void Friendship::cleanTable() {
 void Friendship::addAsFriend(unsigned int currentUserId, unsigned int newFriendId) {
     int flag;
     char *errMsg = 0;
+    unsigned int result = 0;
     sqlite3 *connection;
     string SQL;
 
@@ -59,15 +60,25 @@ void Friendship::addAsFriend(unsigned int currentUserId, unsigned int newFriendI
     if(flag!= SQLITE_OK)
         throw (char *) CONNECTION_ERROR;
 
-    sprintf(SQL, "INSERT INTO FRIENDS (idUser1, idUser2) VALUES(%u, %u);", currentUserId, newFriendId);
-
-    flag = sqlite3_exec(connection, SQL.c_str(), Callbacks::friendshipCallback, 0, &errMsg);
+    sprintf(SQL, "SELECT COUNT(id) FROM FRIENDS WHERE idUser1 = %u OR idUser2 = %u AND idUser1 = %u OR idUser2 = %u;", currentUserId, newFriendId, newFriendId, currentUserId);
+    flag = sqlite3_exec(connection, SQL.c_str(), Callbacks::countCallback, &result, &errMsg);
     if(flag != SQLITE_OK)
         throw CONNECTION_ERROR;
 
-    flag = sqlite3_close(connection);
-    if(flag!= SQLITE_OK)
-        throw (char *) CONNECTION_ERROR;
+    if(result != SQLITE_OK){
+        sprintf(SQL, "INSERT INTO FRIENDS (idUser1, idUser2) VALUES(%u, %u);", currentUserId, newFriendId);
+
+        flag = sqlite3_exec(connection, SQL.c_str(), Callbacks::friendshipCallback, 0, &errMsg);
+        if(flag != SQLITE_OK)
+            throw CONNECTION_ERROR;
+
+        flag = sqlite3_close(connection);
+        if(flag!= SQLITE_OK)
+            throw (char *) CONNECTION_ERROR;
+    }
+    else {
+        throw (char *) FRIEND_REPEATED;
+    }
 
 }
 

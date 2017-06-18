@@ -5,16 +5,16 @@ CC=g++
 EXT = cpp
 CFLAGS=-Wall -g -fprofile-arcs -ftest-coverage -I $(IDIR) 
 
-GCOVDIR=gcov_files
+GCOVDIR = gcov_files
 ODIR=obj
 LDIR =../lib
 
 LIBS=-lm ../lib/libgtest.a ../lib/libsqlite3.a -lgtest -lpthread -ldl -l sqlite3
 
-_DEPS = User.hpp Account.hpp Callbacks.hpp Search.hpp Security.hpp Ads.hpp Deals.hpp Historic.hpp Payment.hpp
+_DEPS = User.hpp Account.hpp Callbacks.hpp Search.hpp Security.hpp Ads.hpp Deals.hpp Historic.hpp Payment.hpp Friendship.hpp
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = $(PRINCIPAL).o User.o Account.o Callbacks.o Search.o Security.o Ads.o Deals.o Historic.o Payment.o
+_OBJ = $(PRINCIPAL).o User.o Account.o Callbacks.o Search.o Security.o Ads.o Deals.o Historic.o Payment.o Friendship.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 
@@ -48,6 +48,7 @@ gcov:
 	cp Deals.cpp $(GCOVDIR)
 	cp Historic.cpp $(GCOVDIR)
 	cp Payment.cpp $(GCOVDIR)
+	cp Friendship.cpp $(GCOVDIR)
 
 .PHONY: cppcheck
 cppcheck:
