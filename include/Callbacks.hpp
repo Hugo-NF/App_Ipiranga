@@ -5,6 +5,7 @@
 #include "User.hpp"
 #include "Ads.hpp"
 #include "Historic.hpp"
+#include <ctime>
 
 using namespace std;
 

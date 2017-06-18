@@ -1,7 +1,7 @@
 
-#include "../include/Advertise.hpp"
+#include "../include/Deals.hpp"
 
-void Advertise::createAd(User *currentUser, vector<string> fields, double price, unsigned int amount) {
+void Deals::createAd(User *currentUser, vector<string> fields, double price, unsigned int amount) {
     Ads newAd(0);
     sqlite3 *connection;
     int flag;
@@ -16,6 +16,7 @@ void Advertise::createAd(User *currentUser, vector<string> fields, double price,
     newAd.setDescription(fields[2]);
     newAd.setPrice(price);
     newAd.setAmount(amount);
+    Security::filter(&newAd);
 
     flag = sqlite3_open(DATABASE, &connection);
     if(flag!=SQLITE_OK)
@@ -28,13 +29,13 @@ void Advertise::createAd(User *currentUser, vector<string> fields, double price,
         throw (char *) REGISTER_AD_ERROR;
 }
 
-void Advertise::deleteAd(unsigned int id) {
+void Deals::deleteAd(unsigned int id) {
     int result, flag;
     char *errMsg = 0;
     char SQL[50];
     sqlite3 *connection;
 
-    sprintf(SQL, "DELETE FROM ADS WHERE id=%d", id);
+    sprintf(SQL, "DELETE FROM ADS WHERE id=%u", id);
 
     flag = sqlite3_open(DATABASE, &connection);
     if(flag!=SQLITE_OK)
@@ -49,7 +50,7 @@ void Advertise::deleteAd(unsigned int id) {
         throw (char *) DELETE_AD_ERROR;
 }
 
-void Advertise::editAd(unsigned int id, vector<string> fields, double price, unsigned int amount){
+void Deals::editAd(unsigned int id, vector<string> fields, double price, unsigned int amount){
     sqlite3 *connection;
     int flag;
     Ads currentAd(id);

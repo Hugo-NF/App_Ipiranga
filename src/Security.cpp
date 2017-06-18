@@ -45,3 +45,40 @@ void Security::verifyCard(User *aut) {
         throw (char *) CARD_INFO_MISMATCH;
 }
 
+void Security::filter(Ads *attempt) {
+    string title = attempt->getTitle();
+    string description = attempt->getDescription();
+    size_t found;
+    vector<string> blockedWords(11);
+    int i;
+
+    for(i=0; i<title.size(); i++){
+        title[i] = tolower(title[i]);
+    }
+    for(i=0; i<description.size(); i++){
+        description[i] = tolower(description[i]);
+    }
+
+    blockedWords[0] = "maconha";
+    blockedWords[1] = "drogas";
+    blockedWords[2] = "armas";
+    blockedWords[3] = "cocaína";
+    blockedWords[4] = "escama de peixe";
+    blockedWords[5] = "calibre";
+    blockedWords[6] = "puta";
+    blockedWords[7] = "sexo";
+    blockedWords[8] = "orgia";
+    blockedWords[9] = "orgaos";
+    blockedWords[10] = "contrabando";
+
+
+
+    for(i = 0; i<blockedWords.size(); i++){
+        found = title.find(blockedWords[i]);
+        if (found != string::npos)
+            throw (char *) PROFANITY_FILTER;
+        found = description.find(blockedWords[i]);
+        if (found != string::npos)
+            throw (char *) PROFANITY_FILTER;
+    }
+}
