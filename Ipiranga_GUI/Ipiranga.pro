@@ -17,64 +17,75 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += \
-        main.cpp \
-        loginuser.cpp \
-        userapp.cpp \
-        formregister.cpp \
-        ../src/User.cpp \
-        UserPages/initialpage.cpp \
-        UserPages/editprofile.cpp \
+    formregister.cpp \
+    loginuser.cpp \
+    main.cpp \
+    userapp.cpp \
+    UserPages/advertise.cpp \
+    UserPages/editprofile.cpp \
     UserPages/friendspage.cpp \
+    UserPages/historicpage.cpp \
+    UserPages/initialpage.cpp \
     UserPages/searchresult.cpp \
-    layout/searchs.cpp \
-    layout/historiclayout.cpp \
+    layout/adslayout.cpp \
     layout/friendslayout.cpp \
+    layout/historiclayout.cpp \
     ../src/Account.cpp \
     ../src/Ads.cpp \
-    ../src/Deals.cpp \
     ../src/Callbacks.cpp \
+    ../src/Deals.cpp \
     ../src/Historic.cpp \
     ../src/Payment.cpp \
     ../src/Search.cpp \
     ../src/Security.cpp \
-    layout/adslayout.cpp \
-    UserPages/advertise.cpp
+    ../src/User.cpp \
+    layout/serachfriends.cpp \
+    layout/searchads.cpp
+
+
 
 HEADERS += \
-        loginuser.h \
-        userapp.h \
-        formregister.h \
-        ../include/User.hpp \
-        UserPages/initialpage.h \
-        UserPages/editprofile.h \
-    UserPages/friendspage.h \
+    formregister.h \
+    loginuser.h \
+    userapp.h \
     UserPages/advertise.h \
+    UserPages/editprofile.h \
+    UserPages/friendspage.h \
+    UserPages/historicpage.h \
+    UserPages/initialpage.h \
     UserPages/searchresult.h \
-    layout/searchs.h \
-    layout/historiclayout.h \
+    layout/adslayout.h \
     layout/friendslayout.h \
+    layout/historiclayout.h \
     ../include/Account.hpp \
     ../include/Ads.hpp \
-    ../include/Deals.hpp \
     ../include/Callbacks.hpp \
+    ../include/Deals.hpp \
     ../include/Historic.hpp \
     ../include/Payment.hpp \
     ../include/Search.hpp \
     ../include/Security.hpp \
-    layout/adslayout.h
+    ../include/User.hpp \
+    layout/serachfriends.h \
+    layout/searchads.h
+
+
 
 FORMS += \
-        loginuser.ui \
-        userapp.ui \
-        formregister.ui \
-        UserPages/initialpage.ui \
-        UserPages/editprofile.ui \
-    UserPages/friendspage.ui \
+    formregister.ui \
+    loginuser.ui \
+    userapp.ui \
     UserPages/advertise.ui \
+    UserPages/editprofile.ui \
+    UserPages/friendspage.ui \
+    UserPages/historicpage.ui \
+    UserPages/initialpage.ui \
     UserPages/searchresult.ui \
-    layout/searchs.ui \
-    layout/historiclayout.ui \
+    layout/adslayout.ui \
     layout/friendslayout.ui \
-    layout/adslayout.ui
+    layout/historiclayout.ui \
+    layout/serachfriends.ui \
+    layout/searchads.ui
+
 RESOURCES += \
     resources.qrc

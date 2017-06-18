@@ -8,7 +8,7 @@
 #include "UserPages/initialpage.h"
 #include "UserPages/editprofile.h"
 #include "UserPages/friendspage.h"
-//#include "UserPages/historic.h"
+#include "UserPages/historicpage.h"
 #include "UserPages/advertise.h"
 #include "UserPages/searchresult.h"
 
@@ -52,7 +52,7 @@ private:
     InitialPage PageZero;
     EditProfile PageOne;
     FriendsPage PageTwo;
-    //Historic PageThree;
+    HistoricPage PageThree;
     Advertise PageFour;
     SearchResult PageResult;
 

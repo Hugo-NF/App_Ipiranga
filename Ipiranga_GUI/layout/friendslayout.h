@@ -15,8 +15,22 @@ public:
     explicit FriendsLayout(QWidget *parent = 0);
     ~FriendsLayout();
 
+    //Sets and Get Methods
+    void setName(QString);
+    void setPhone(QString);
+    void setEmail(QString);
+    void setRating(QString);
+    void setID(int);
+    int getID();
+    QString getEmail();
+
+
+private slots:
+    void on_Button_delete_clicked();
+
 private:
     Ui::FriendsLayout *ui;
+    int ID; //id friends
 };
 
 #endif // FRIENDSLAYOUT_H

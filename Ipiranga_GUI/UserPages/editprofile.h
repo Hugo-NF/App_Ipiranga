@@ -16,6 +16,7 @@ class EditProfile : public QWidget
 public:
     explicit EditProfile(QWidget *parent = 0);
     ~EditProfile();
+
     void SetCurrentUser(User);  //Set the User Active
 
 private slots:

@@ -2,8 +2,8 @@
  <author/>
  <comment/>
  <exportmacro/>
- <class>Searchs</class>
- <widget name="Searchs" class="QWidget">
+ <class>SearchAds</class>
+ <widget class="QWidget" name="SearchAds">
   <property name="geometry">
    <rect>
     <x>0</x>

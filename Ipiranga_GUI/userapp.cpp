@@ -42,9 +42,11 @@ UserApp::UserApp(QWidget *parent, User* _CurrentUser) :
 
     // Page 2 - FriendsPage
     ui->Pages->insertWidget(2,&PageTwo);
+    PageTwo.SetCurrentUser(CurrentUser);
 
-    // Page 3 - Historic
-    //ui->Pages->insertWidget(3,&PageThree);
+    //Page 3 - Historic
+    ui->Pages->insertWidget(3,&PageThree);
+    PageThree.SetCurrentUser(CurrentUser);
 
     // Page 4 - Advertise
     ui->Pages->insertWidget(4,&PageFour);
@@ -52,6 +54,7 @@ UserApp::UserApp(QWidget *parent, User* _CurrentUser) :
 
     // Page Result - Search
     ui->Pages->insertWidget(5,&PageResult);
+    PageResult.SetCurrentUser(CurrentUser);
 
     //Set witch is the first page
     ui->Pages->setCurrentIndex(0);

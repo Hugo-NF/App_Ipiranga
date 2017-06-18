@@ -28,6 +28,7 @@ private:
 
     User CurrentUser; //User Active
 
+    //Sets Methods
     void set_ActivesAds();
 };
 

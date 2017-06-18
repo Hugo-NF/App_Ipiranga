@@ -10,3 +10,19 @@
 
 -Delete Account e Inactiv
     Deslogar usuario apos
+    
+    
+#------------ADICIONAR---------------
+-Formulario
+    Campo de aceitar compromisso
+    
+-Busca (search and historic)
+    Botões de Order by
+    
+-Layouts
+    Adicionar botão de mudar de Paginas
+
+-Pages
+    Deletar e criar ao clicar
+    
+-Como reiniciar Historico/ Lista de amigos/ .. apos deletar algo;

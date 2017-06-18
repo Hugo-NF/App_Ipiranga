@@ -26,19 +26,32 @@ void AdsLayout::setDescription(QString text)
 {
     ui->text_description->setText(text);
 }
+
 void AdsLayout::setTitle(QString title)
 {
     ui->Box_Ads->setTitle(title);
 }
+
 void AdsLayout::setPrice(QString price)
 {
     ui->line_price->setText(price);
 }
+
 void AdsLayout::setDate(QString date)
 {
     ui->line_date->setText(date);
 }
+
 void AdsLayout::setQuantity(QString quantity)
 {
     ui->line_quantity->setText(quantity);
+}
+
+void AdsLayout::setID(int id)
+{
+    ID = id;
+}
+
+int AdsLayout::getID(){
+    return ID;
 }
