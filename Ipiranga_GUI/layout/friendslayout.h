@@ -26,7 +26,7 @@ public:
 
 
 private slots:
-    void on_Button_delete_clicked();
+    void on_Button_delete_clicked();    //delete friends
 
 private:
     Ui::FriendsLayout *ui;

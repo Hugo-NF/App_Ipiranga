@@ -17,6 +17,7 @@ FormRegister::~FormRegister()
     delete ui;
 }
 
+//------------------------BUTTONS CLICKED-----------------------------
 void FormRegister::on_pushButton_Cancel_clicked()
 {
     if(QMessageBox::question(this,tr("Cancel Form"),tr("Are you sure that want to leave?"))
@@ -80,6 +81,7 @@ void FormRegister::on_pushButton_Register_clicked()
         QMessageBox::warning(this,tr("Register"),tr("Some field is empty \n\nFill in all required Fields!"));
 }
 
+//------------------------CHECK FIELDS-----------------------------
 bool FormRegister::checkFields()
 {
     bool check=true;              //Set to true check fields

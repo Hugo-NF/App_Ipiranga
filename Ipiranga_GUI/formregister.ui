@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>500</width>
-    <height>460</height>
+    <height>585</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -57,7 +57,7 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>-389</y>
+        <y>-399</y>
         <width>485</width>
         <height>980</height>
        </rect>
@@ -89,12 +89,6 @@
          <property name="locale">
           <locale language="English" country="UnitedStates"/>
          </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
         </widget>
        </item>
        <item>
@@ -110,12 +104,6 @@
          </property>
          <property name="locale">
           <locale language="English" country="UnitedStates"/>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
          </property>
          <widget class="QLabel" name="TitleRegister">
           <property name="geometry">
@@ -1173,12 +1161,6 @@
          </property>
          <property name="locale">
           <locale language="English" country="UnitedStates"/>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
          </property>
         </widget>
        </item>

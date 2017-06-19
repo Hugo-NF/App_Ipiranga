@@ -18,15 +18,15 @@ public:
     void SetCurrentUser(User);  //Set the User Active
 
 private slots:
-    void on_text_description_textChanged();
-    void on_pushButton_create_clicked();
-    void on_pushButton_reset_clicked();
+    void on_text_description_textChanged(); // count characters on the box
+    void on_pushButton_create_clicked();    // create a ads
+    void on_pushButton_reset_clicked();     // reset the fields
 
 private:
     Ui::Advertise *ui;
-    QString Description;
 
-    User CurrentUser; //User Active
+    QString Description;    // field description
+    User CurrentUser;   // User Active
 
     //Sets Methods
     void set_ActivesAds();

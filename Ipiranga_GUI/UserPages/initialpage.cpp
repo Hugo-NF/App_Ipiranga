@@ -13,12 +13,14 @@ InitialPage::~InitialPage()
     delete ui;
 }
 
+//---------------------SET CURRENT USER--------------------------
 void InitialPage::SetCurrentUser(User _CurrentUser){
     CurrentUser = _CurrentUser;
 
     SetFields();
 }
 
+//------------------------SET FIELDS-----------------------------
 void InitialPage::SetFields()
 {
     string name;

@@ -49,12 +49,6 @@
    </property>
    <item row="2" column="0">
     <widget class="QFrame" name="rating">
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
      <layout class="QHBoxLayout" name="horizontalLayout">
       <property name="spacing">
        <number>0</number>
@@ -175,7 +169,8 @@
       <string/>
      </property>
      <property name="icon">
-      <iconset theme="x"/>
+      <iconset theme="x">
+       <normaloff>.</normaloff>.</iconset>
      </property>
      <property name="flat">
       <bool>true</bool>

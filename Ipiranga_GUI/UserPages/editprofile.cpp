@@ -25,6 +25,7 @@ void EditProfile::SetCurrentUser(User _CurrentUser){
     SetUserFields();
 }
 
+//--------------------------------SET FIELDS------------------------------------
 void EditProfile::SetUserFields(){
     QDate ExpirationDate;
 
@@ -67,6 +68,7 @@ void EditProfile::SetUserFields(){
     }
 }
 
+//------------------------------BUTTONS CLICKED------------------------------------
 void EditProfile::on_pushButton_Undo_clicked()
 {
     SetUserFields(); // Undo fields
@@ -125,6 +127,45 @@ void EditProfile::on_pushButton_Save_clicked()
         QMessageBox::warning(this,tr("Register"),tr("Some field is empty \n\nFill in all required Fields!"));
 }
 
+void EditProfile::on_pushButton_Delete_clicked()
+{
+    if(QMessageBox::question(this,tr("Delete Account"),tr("Are you sure that want to DELETE your account?"))
+            == QMessageBox::Yes)
+    {
+        if(QMessageBox::question(this,tr("Delete Account"),tr("Are you REALLY sure that want to DELETE your account?"))
+                == QMessageBox::Yes)
+        {
+            QMessageBox::information(this, tr("Delete Account"),tr("OK, Ok, ok, you win\n We will DELETE you account\n Good Bye :'["));
+            try{
+                Account::deleteAccount(CurrentUser.getId());
+                QMessageBox::information(this,tr("Delete Account"),tr("Your account was deleted with sucess!"));
+                system("killall Ipiranga");
+            }catch(char* err){
+                QMessageBox::warning(this,tr("Delete Account"),tr(err));
+            }
+        }
+
+    }
+
+}
+
+void EditProfile::on_pushButton_Inactive_clicked()
+{
+    if(QMessageBox::question(this,tr("Inactive Account"),tr("Are You sure that want to DESABLE your account?"))
+            == QMessageBox::Yes)
+    {
+        try{
+            Account::activateAccount(CurrentUser.getId(),false);
+            QMessageBox::information(this,tr("Inactive Profile"),tr("Your account was desactivated with sucess!\n"
+                                                                    "When you login again, it will be reactivated!"));
+            system("killall Ipiranga");
+        }catch(char* err){
+            QMessageBox::warning(this,tr("Inactive Account"),tr(err));
+        }
+    }
+}
+
+//------------------------------CHECK FIELDS------------------------------------
 bool EditProfile::checkFields()
 {
     bool check=true;              //Set to true check fields
@@ -182,42 +223,4 @@ bool EditProfile::checkFields()
     }
 
     return check;
-}
-
-void EditProfile::on_pushButton_Delete_clicked()
-{
-    if(QMessageBox::question(this,tr("Delete Account"),tr("Are you sure that want to DELETE your account?"))
-            == QMessageBox::Yes)
-    {
-        if(QMessageBox::question(this,tr("Delete Account"),tr("Are you REALLY sure that want to DELETE your account?"))
-                == QMessageBox::Yes)
-        {
-            QMessageBox::information(this, tr("Delete Account"),tr("OK, Ok, ok, you win\n We will DELETE you account\n Good Bye :'["));
-            try{
-                Account::deleteAccount(CurrentUser.getId());
-                QMessageBox::information(this,tr("Delete Account"),tr("Your account was deleted with sucess!"));
-                system("killall Ipiranga");
-            }catch(char* err){
-                QMessageBox::warning(this,tr("Delete Account"),tr(err));
-            }
-        }
-
-    }
-
-}
-
-void EditProfile::on_pushButton_Inactive_clicked()
-{
-    if(QMessageBox::question(this,tr("Inactive Account"),tr("Are You sure that want to DESABLE your account?"))
-            == QMessageBox::Yes)
-    {
-        try{
-            Account::activateAccount(CurrentUser.getId(),false);
-            QMessageBox::information(this,tr("Inactive Profile"),tr("Your account was desactivated with sucess!\n"
-                                                                    "When you login again, it will be reactivated!"));
-            system("killall Ipiranga");
-        }catch(char* err){
-            QMessageBox::warning(this,tr("Inactive Account"),tr(err));
-        }
-    }
 }

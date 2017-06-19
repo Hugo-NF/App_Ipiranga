@@ -15,6 +15,7 @@ FriendsPage::~FriendsPage()
     delete ui;
 }
 
+//---------------------SET FUNCTIONS--------------------------
 void FriendsPage::SetCurrentUser(User _CurrentUser){
     CurrentUser = _CurrentUser;
 }

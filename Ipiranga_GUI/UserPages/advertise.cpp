@@ -27,6 +27,7 @@ void Advertise::SetCurrentUser(User _CurrentUser){
     CurrentUser = _CurrentUser;
 }
 
+//-----------------SET FUNCTIONS---------------------
 void Advertise::set_ActivesAds()
 {
     for(int i=0; i<5; i++){
@@ -37,6 +38,7 @@ void Advertise::set_ActivesAds()
     }
 }
 
+//------------------SENSITIVE TEXT------------------
 void Advertise::on_text_description_textChanged() //Count of Characters
 {
     if(ui->text_description->toPlainText().size() <= 500){
@@ -48,6 +50,7 @@ void Advertise::on_text_description_textChanged() //Count of Characters
     }
 }
 
+//------------------BUTTONS CLICKED------------------
 void Advertise::on_pushButton_create_clicked()
 {
     vector <string> Fields(3);

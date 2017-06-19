@@ -14,6 +14,7 @@ FriendsLayout::~FriendsLayout()
     delete ui;
 }
 
+//------------------BUTTONS CLICKED------------------
 void FriendsLayout::on_Button_delete_clicked()
 {
     if(QMessageBox::question(this,tr("Delete Friend"),tr("Are you sure that want to delete this friend?"))
@@ -22,6 +23,7 @@ void FriendsLayout::on_Button_delete_clicked()
     }
 }
 
+//-----------------SET FUNCTIONS---------------------
 void FriendsLayout::setName(QString name){
     ui->label_name->setText(name);
 }
@@ -38,14 +40,15 @@ void FriendsLayout::setRating(QString rating){
     ui->label_rating->setText(rating);
 }
 
-QString FriendsLayout::getEmail(){
-    return ui->label_email->text();
-}
-
 void FriendsLayout::setID(int id){
     ID = id;
 }
 
+//------------------GET FUNTIONS---------------------
 int FriendsLayout::getID(){
     return ID;
+}
+
+QString FriendsLayout::getEmail(){
+    return ui->label_email->text();
 }

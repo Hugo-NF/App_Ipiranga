@@ -51,12 +51,6 @@
       <property name="styleSheet">
        <string notr="true"/>
       </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <property name="spacing">
         <number>0</number>
@@ -74,14 +68,7 @@
         <number>0</number>
        </property>
        <item>
-        <widget class="QFrame" name="left">
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-        </widget>
+        <widget class="QFrame" name="left"/>
        </item>
        <item>
         <widget class="QPushButton" name="Button_search_advertise">
@@ -156,12 +143,6 @@
            <width>460</width>
            <height>30</height>
           </size>
-         </property>
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
          </property>
          <widget class="QLineEdit" name="line_search">
           <property name="geometry">
@@ -277,14 +258,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QFrame" name="right">
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-        </widget>
+        <widget class="QFrame" name="right"/>
        </item>
       </layout>
      </widget>
@@ -299,12 +273,6 @@
       </property>
       <property name="styleSheet">
        <string notr="true">background:rgb(8, 122, 221)</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
       </property>
       <layout class="QGridLayout" name="gridLayout_7">
        <item row="0" column="1">
@@ -426,7 +394,7 @@
          </property>
          <item>
           <property name="text">
-           <string>  </string>
+           <string/>
           </property>
          </item>
          <item>
@@ -826,12 +794,6 @@ Friends</string>
       <property name="styleSheet">
        <string notr="true">background:rgb(8, 122, 221)</string>
       </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
       <layout class="QGridLayout" name="gridLayout">
        <item row="0" column="7" rowspan="6">
         <widget class="QGroupBox" name="Order_by_2">
@@ -1085,12 +1047,6 @@ Friends</string>
           </property>
           <property name="styleSheet">
            <string notr="true"/>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::StyledPanel</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Raised</enum>
           </property>
           <widget class="QLabel" name="User_img">
            <property name="geometry">
@@ -1437,12 +1393,6 @@ Friends</string>
             <height>0</height>
            </size>
           </property>
-          <property name="frameShape">
-           <enum>QFrame::StyledPanel</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Raised</enum>
-          </property>
          </widget>
         </item>
        </layout>
@@ -1463,12 +1413,6 @@ Friends</string>
             <width>0</width>
             <height>0</height>
            </size>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::StyledPanel</enum>
-          </property>
-          <property name="frameShadow">
-           <enum>QFrame::Raised</enum>
           </property>
          </widget>
         </item>

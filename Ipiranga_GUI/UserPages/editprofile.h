@@ -20,10 +20,10 @@ public:
     void SetCurrentUser(User);  //Set the User Active
 
 private slots:
-    void on_pushButton_Undo_clicked();
-    void on_pushButton_Save_clicked();
-    void on_pushButton_Delete_clicked();
-    void on_pushButton_Inactive_clicked();
+    void on_pushButton_Undo_clicked();      // reset de fields
+    void on_pushButton_Save_clicked();      // save the modifications
+    void on_pushButton_Delete_clicked();    // delete account
+    void on_pushButton_Inactive_clicked();  // inactive account
 
 private:
     Ui::EditProfile *ui;

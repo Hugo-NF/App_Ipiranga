@@ -28,19 +28,19 @@ public:
 private slots:
 
     //Menu Buttons Actions
-    void on_Button_edit_clicked();
-    void on_Button_home_clicked();
-    void on_Button_friends_clicked();
-    void on_Button_historic_clicked();
-    void on_Button_advertise_clicked();
-    void on_Button_logout_clicked();
+    void on_Button_edit_clicked();          // Editprofile
+    void on_Button_home_clicked();          // Home Page
+    void on_Button_friends_clicked();       // Friends
+    void on_Button_historic_clicked();      // Historic
+    void on_Button_advertise_clicked();     // Advertise
+    void on_Button_logout_clicked();        // Logout
 
     //Search Buttons Actions
-    void on_line_search_returnPressed();
-    void on_Button_search_clicked();
-    void on_Button_search_friends_clicked();
-    void on_Button_search_advertise_clicked();
-    void on_Button_adjust_clicked();
+    void on_line_search_returnPressed();        // Return pressed in the search line
+    void on_Button_search_clicked();            // Search button was clicked
+    void on_Button_search_friends_clicked();    // Search friends filter
+    void on_Button_search_advertise_clicked();  // Search Ads filter
+    void on_Button_adjust_clicked();            // Button ajust (filters -> Ads/friends)
 
 private:
     Ui::UserApp *ui;
@@ -54,7 +54,7 @@ private:
     FriendsPage PageTwo;
     HistoricPage PageThree;
     Advertise PageFour;
-    SearchResult PageResult;
+    SearchResult *PageResult;
 
     //King of search
     bool SearchType; // 1 to Friends - o to Advertise

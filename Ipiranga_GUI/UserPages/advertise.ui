@@ -60,14 +60,7 @@
         <number>0</number>
        </property>
        <item>
-        <widget class="QFrame" name="left">
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-        </widget>
+        <widget class="QFrame" name="left"/>
        </item>
        <item>
         <layout class="QVBoxLayout" name="Center">
@@ -77,14 +70,7 @@
          <item>
           <layout class="QHBoxLayout" name="Banalce_advertise">
            <item>
-            <widget class="QFrame" name="left_2">
-             <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
-             </property>
-            </widget>
+            <widget class="QFrame" name="left_2"/>
            </item>
            <item>
             <layout class="QVBoxLayout" name="Banalce_advertise_2">
@@ -554,14 +540,7 @@ p, li { white-space: pre-wrap; }
             </layout>
            </item>
            <item>
-            <widget class="QFrame" name="right_2">
-             <property name="frameShape">
-              <enum>QFrame::StyledPanel</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
-             </property>
-            </widget>
+            <widget class="QFrame" name="right_2"/>
            </item>
           </layout>
          </item>
@@ -581,12 +560,6 @@ p, li { white-space: pre-wrap; }
            </property>
            <property name="styleSheet">
             <string notr="true"/>
-           </property>
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_3">
             <property name="spacing">
@@ -652,14 +625,7 @@ p, li { white-space: pre-wrap; }
         </layout>
        </item>
        <item>
-        <widget class="QFrame" name="right">
-         <property name="frameShape">
-          <enum>QFrame::StyledPanel</enum>
-         </property>
-         <property name="frameShadow">
-          <enum>QFrame::Raised</enum>
-         </property>
-        </widget>
+        <widget class="QFrame" name="right"/>
        </item>
       </layout>
      </widget>

@@ -14,10 +14,12 @@ HistoricPage::~HistoricPage()
     delete ui;
 }
 
+//-------------------SET CURRENT USER----------------------
 void HistoricPage::SetCurrentUser(User _CurrentUser){
     CurrentUser = _CurrentUser;
 }
 
+//----------------ADD HISTORICS (OBJECTS)------------------
 void HistoricPage::addHistorics(){
     //Fazer a busca pelo historico
     //Adicionar a variavel historic[]
@@ -44,6 +46,7 @@ void HistoricPage::addHistorics(){
     }
 }
 
+//------------------------SET FIELDS-----------------------------
 void HistoricPage::setHistoric(int id_hist, QString *fields, HistoricLayout *hist){
    hist->setSeller(fields[0]);
    hist->setBuyer(fields[1]);
@@ -62,6 +65,7 @@ void HistoricPage::deleteHistorics(HistoricLayout* hist){
     hist->~HistoricLayout();
 }
 
+//------------------------BUTTONS CLICKED-----------------------------
 void HistoricPage::on_Button_all_clicked()
 {
     if(Number_historics!=0){

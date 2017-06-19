@@ -13,6 +13,7 @@ SearchResult::~SearchResult()
     delete ui;
 }
 
+//-----------------SET FUNCTIONS---------------------
 void SearchResult::SetCurrentUser(User _CurrentUser){
     CurrentUser = _CurrentUser;
 }

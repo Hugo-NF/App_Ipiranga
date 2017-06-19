@@ -53,8 +53,9 @@ UserApp::UserApp(QWidget *parent, User* _CurrentUser) :
     PageFour.SetCurrentUser(CurrentUser);
 
     // Page Result - Search
-    ui->Pages->insertWidget(5,&PageResult);
-    PageResult.SetCurrentUser(CurrentUser);
+    PageResult = new SearchResult;
+    ui->Pages->insertWidget(5,PageResult);
+    PageResult->SetCurrentUser(CurrentUser);
 
     //Set witch is the first page
     ui->Pages->setCurrentIndex(0);
@@ -142,9 +143,16 @@ void UserApp::on_Button_search_clicked()
 }
 
 void UserApp::on_line_search_returnPressed()
-{
+{   
+    PageResult->~SearchResult();
+
     cout<<"Fazer Busca"<<endl;
-    ui->Pages->setCurrentWidget(&PageResult);
+
+    PageResult = new SearchResult;
+    ui->Pages->insertWidget(5,PageResult);
+    PageResult->SetCurrentUser(CurrentUser);
+
+    ui->Pages->setCurrentWidget(PageResult);
 }
 //---------------------------------------------
 

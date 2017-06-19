@@ -14,6 +14,7 @@ AdsLayout::~AdsLayout()
     delete ui;
 }
 
+//------------------BUTTONS CLICKED------------------
 void AdsLayout::on_Button_delete_clicked()
 {
     if(QMessageBox::question(this,tr("Delete AdsLayout"),tr("Are you sure that want to DELETE this Ads?"))
@@ -22,6 +23,7 @@ void AdsLayout::on_Button_delete_clicked()
     }
 }
 
+//-----------------SET FUNCTIONS----------------------
 void AdsLayout::setDescription(QString text)
 {
     ui->text_description->setText(text);
@@ -52,6 +54,7 @@ void AdsLayout::setID(int id)
     ID = id;
 }
 
+//------------------GET FUNTIONS---------------------
 int AdsLayout::getID(){
     return ID;
 }
