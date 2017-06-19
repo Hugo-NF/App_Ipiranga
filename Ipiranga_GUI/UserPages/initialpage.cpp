@@ -34,4 +34,5 @@ void InitialPage::SetFields()
     ui->CPF->setText(QString::fromStdString(CurrentUser.getCPF()));
     ui->Email->setText(QString::fromStdString(CurrentUser.getEmail()));
     ui->Balance->setText(QString::number(CurrentUser.getBalance()));
+    ui->Rating->setText(QString::number(CurrentUser.getRating()));
 }

@@ -15,6 +15,22 @@ HistoricLayout::~HistoricLayout()
 }
 
 //-----------------SET FUNCTIONS---------------------
+
+void HistoricLayout::setHist_Address(Historic* hist){
+    HistAdress = hist;
+    setFields();
+}
+
+void HistoricLayout::setFields(){
+    this->setSeller(QString::fromStdString(HistAdress->getSellerUsername()));
+    this->setBuyer(QString::fromStdString(HistAdress->getBuyerUsername()));
+    this->setCategory("Ainda por vir");
+    this->setDate(QString::fromStdString(HistAdress->getDate()));
+    this->setPrice(QString::number(HistAdress->getPrice()));
+    this->setQuantity(QString::number(HistAdress->getQuantity()));
+    this->setTitle(QString::fromStdString(HistAdress->getAdTitle()));
+}
+
 void HistoricLayout::setSeller(QString seller){
     ui->line_seller->setText(seller);
 }
@@ -74,19 +90,6 @@ void HistoricLayout::setRating(int vote){
 
 void HistoricLayout::setID_user(int id_user){
     ID_CurrentUser = id_user;
-}
-
-void HistoricLayout::setID(int id){
-    ID=id;
-}
-
-//------------------GET FUNTIONS---------------------
-int HistoricLayout::getId(){
-    return ID;
-}
-
-int HistoricLayout::getId_user(){
-    return ID_CurrentUser;
 }
 
 //------------------------------------VOTE CLICK----------------------------------------

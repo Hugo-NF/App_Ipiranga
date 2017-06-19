@@ -74,6 +74,17 @@ int Callbacks::historicCallback(void *ptr, int argc, char **argv, char **colName
     return 0;
 }
 
+int Callbacks::friendshipCallback(void *ptr, int argc, char **argv, char **colNames) {
+    vector<Friendship *>* result = (vector<Friendship *>*) ptr;
+    Friendship *currentFriend = new Friendship(atoi(argv[0]));
+    currentFriend->setUser1Id(atoi(argv[1]));
+    currentFriend->setUser2Id(atoi(argv[2]));
+
+    result->push_back(currentFriend);
+
+    return 0;
+}
+
 int Callbacks::averageCallback(void *ptr, int argc, char **argv, char **colNames) {
     double *result = (double *) ptr;
     if(argv[0] != NULL)

@@ -114,7 +114,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidget = new QWidget();
         scrollAreaWidget->setObjectName(QStringLiteral("scrollAreaWidget"));
-        scrollAreaWidget->setGeometry(QRect(0, -586, 484, 980));
+        scrollAreaWidget->setGeometry(QRect(0, -15, 484, 980));
         horizontalLayout = new QHBoxLayout(scrollAreaWidget);
         horizontalLayout->setSpacing(0);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
@@ -123,8 +123,6 @@ public:
         left->setObjectName(QStringLiteral("left"));
         left->setMinimumSize(QSize(0, 0));
         left->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
-        left->setFrameShape(QFrame::StyledPanel);
-        left->setFrameShadow(QFrame::Raised);
 
         horizontalLayout->addWidget(left);
 
@@ -133,8 +131,6 @@ public:
         form->setEnabled(true);
         form->setMinimumSize(QSize(400, 980));
         form->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
-        form->setFrameShape(QFrame::StyledPanel);
-        form->setFrameShadow(QFrame::Raised);
         TitleRegister = new QLabel(form);
         TitleRegister->setObjectName(QStringLiteral("TitleRegister"));
         TitleRegister->setGeometry(QRect(120, 10, 191, 41));
@@ -182,6 +178,7 @@ public:
         lineLastName->setMaxLength(20);
         lineCPF = new QLineEdit(Personal);
         lineCPF->setObjectName(QStringLiteral("lineCPF"));
+        lineCPF->setEnabled(false);
         lineCPF->setGeometry(QRect(160, 80, 171, 20));
         lineCPF->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
         lineCPF->setInputMethodHints(Qt::ImhFormattedNumbersOnly);
@@ -317,6 +314,7 @@ public:
         labelEmail->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
         lineLogin = new QLineEdit(Acess);
         lineLogin->setObjectName(QStringLiteral("lineLogin"));
+        lineLogin->setEnabled(false);
         lineLogin->setGeometry(QRect(160, 20, 113, 20));
         lineLogin->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
         lineLogin->setMaxLength(20);
@@ -447,8 +445,6 @@ public:
         right->setObjectName(QStringLiteral("right"));
         right->setMinimumSize(QSize(0, 0));
         right->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
-        right->setFrameShape(QFrame::StyledPanel);
-        right->setFrameShadow(QFrame::Raised);
 
         horizontalLayout->addWidget(right);
 

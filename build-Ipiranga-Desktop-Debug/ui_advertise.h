@@ -92,8 +92,6 @@ public:
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
         left = new QFrame(scrollAreaWidgetContents);
         left->setObjectName(QStringLiteral("left"));
-        left->setFrameShape(QFrame::StyledPanel);
-        left->setFrameShadow(QFrame::Raised);
 
         horizontalLayout->addWidget(left);
 
@@ -104,8 +102,6 @@ public:
         Banalce_advertise->setObjectName(QStringLiteral("Banalce_advertise"));
         left_2 = new QFrame(scrollAreaWidgetContents);
         left_2->setObjectName(QStringLiteral("left_2"));
-        left_2->setFrameShape(QFrame::StyledPanel);
-        left_2->setFrameShadow(QFrame::Raised);
 
         Banalce_advertise->addWidget(left_2);
 
@@ -118,7 +114,7 @@ public:
         line_balance = new QLineEdit(Balance);
         line_balance->setObjectName(QStringLiteral("line_balance"));
         line_balance->setGeometry(QRect(40, 60, 111, 20));
-        line_balance->setMaxLength(11);
+        line_balance->setMaxLength(32767);
         line_balance->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         line_transfer = new QLineEdit(Balance);
         line_transfer->setObjectName(QStringLiteral("line_transfer"));
@@ -209,8 +205,6 @@ public:
 
         right_2 = new QFrame(scrollAreaWidgetContents);
         right_2->setObjectName(QStringLiteral("right_2"));
-        right_2->setFrameShape(QFrame::StyledPanel);
-        right_2->setFrameShadow(QFrame::Raised);
 
         Banalce_advertise->addWidget(right_2);
 
@@ -226,8 +220,6 @@ public:
         Active_ads->setSizePolicy(sizePolicy1);
         Active_ads->setMaximumSize(QSize(800, 16777215));
         Active_ads->setStyleSheet(QStringLiteral(""));
-        Active_ads->setFrameShape(QFrame::StyledPanel);
-        Active_ads->setFrameShadow(QFrame::Raised);
         verticalLayout_3 = new QVBoxLayout(Active_ads);
         verticalLayout_3->setSpacing(15);
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
@@ -263,8 +255,6 @@ public:
 
         right = new QFrame(scrollAreaWidgetContents);
         right->setObjectName(QStringLiteral("right"));
-        right->setFrameShape(QFrame::StyledPanel);
-        right->setFrameShadow(QFrame::Raised);
 
         horizontalLayout->addWidget(right);
 
@@ -282,8 +272,6 @@ public:
     {
         Advertise->setWindowTitle(QApplication::translate("Advertise", "Form", 0));
         Balance->setTitle(QApplication::translate("Advertise", "Balance", 0));
-        line_balance->setInputMask(QApplication::translate("Advertise", "99999999.00", 0));
-        line_balance->setText(QApplication::translate("Advertise", ".", 0));
         line_transfer->setInputMask(QApplication::translate("Advertise", "99999999.\\0\\0", 0));
         line_transfer->setText(QApplication::translate("Advertise", ".00", 0));
         pushButton_transfer->setText(QApplication::translate("Advertise", "Transfer", 0));

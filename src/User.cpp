@@ -344,3 +344,48 @@ void User::updateOperation(sqlite3 *connection, User *user) {
         throw errMsg;
 }
 
+vector<User *> User::listFriends(unsigned int currentUserId, bool toggleOrdenation, string OrderBy, bool toggleOrdenationSequence) {
+    int flag;
+    unsigned int i;
+    char *errMsg = 0;
+    sqlite3 *connection;
+    char SQL[5000];
+    char friendsQuery[300];
+    vector<User *> results;
+    vector<unsigned int> friendsIds;
+
+    flag = sqlite3_open(DATABASE, &connection);
+    if(flag!= SQLITE_OK)
+        throw (char *) CONNECTION_ERROR;
+
+    friendsIds = Friendship::getFriendsIds(connection, currentUserId);
+    if(!friendsIds.empty()){
+        sprintf(SQL, "SELECT * FROM USERS WHERE id = ");
+        for(i=0; i<friendsIds.size()-1; i++){
+            sprintf(friendsQuery, "%u OR id = ", friendsIds[i]);
+            strcat(SQL,friendsQuery);
+        }
+        if (toggleOrdenation){
+            if(toggleOrdenationSequence){
+                sprintf(friendsQuery, "%u ORDER BY %s ASC;", friendsIds[i], OrderBy.c_str());
+                strcat(SQL,friendsQuery);
+            }
+            else{
+                sprintf(friendsQuery, "%u ORDER BY %s DESC;", friendsIds[i], OrderBy.c_str());
+                strcat(SQL,friendsQuery);
+            }
+        }
+        else {
+            sprintf(friendsQuery, "%u;", friendsIds[i]);
+            strcat(SQL,friendsQuery);
+        }
+        flag = sqlite3_exec(connection, SQL, Callbacks::userCallback, &results, &errMsg);
+        if(flag!= SQLITE_OK)
+            throw (char *) CONNECTION_ERROR;
+    }
+    flag = sqlite3_close(connection);
+    if(flag!= SQLITE_OK)
+        throw (char *) CONNECTION_ERROR;
+
+    return results;
+}

@@ -16,6 +16,8 @@ void Deals::createAd(User *currentUser, vector<string> fields, double price, uns
     newAd.setDescription(fields[2]);
     newAd.setPrice(price);
     newAd.setAmount(amount);
+    Security::filter(&newAd);
+
     flag = sqlite3_open(DATABASE, &connection);
     if(flag!=SQLITE_OK)
         throw (char *) REGISTER_AD_ERROR;
@@ -33,7 +35,7 @@ void Deals::deleteAd(unsigned int id) {
     char SQL[50];
     sqlite3 *connection;
 
-    sprintf(SQL, "DELETE FROM ADS WHERE id=%d", id);
+    sprintf(SQL, "DELETE FROM ADS WHERE id=%u", id);
 
     flag = sqlite3_open(DATABASE, &connection);
     if(flag!=SQLITE_OK)

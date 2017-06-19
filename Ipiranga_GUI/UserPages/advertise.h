@@ -22,6 +22,8 @@ private slots:
     void on_pushButton_create_clicked();    // create a ads
     void on_pushButton_reset_clicked();     // reset the fields
 
+    void on_pushButton_transfer_clicked();
+
 private:
     Ui::Advertise *ui;
 

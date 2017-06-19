@@ -4,6 +4,7 @@
 #include "layout/adslayout.h"
 #include "../include/Deals.hpp"
 #include <QMessageBox>
+#include "../include/Payment.hpp"
 
 using namespace std;
 
@@ -25,6 +26,9 @@ Advertise::~Advertise()
 
 void Advertise::SetCurrentUser(User _CurrentUser){
     CurrentUser = _CurrentUser;
+
+    //Set the unique fields existent (balance)
+    ui->line_balance->setText(QString::number(CurrentUser.getBalance()));
 }
 
 //-----------------SET FUNCTIONS---------------------
@@ -64,10 +68,13 @@ void Advertise::on_pushButton_create_clicked()
     price = stod(ui->line_price->text().toStdString());
     quantity = ui->spinBox_quantity->value();
 
-    Deals::createAd(&CurrentUser,Fields,price,quantity);
-
-    QMessageBox::information(this,tr("Create Advertisement"),tr("Create with sucess!"));
-    on_pushButton_reset_clicked();
+    try{
+        Deals::createAd(&CurrentUser,Fields,price,quantity);
+        QMessageBox::information(this,tr("Create Advertisement"),tr("Create with sucess!"));
+        on_pushButton_reset_clicked();
+    }catch(char *err){
+        QMessageBox::warning(this,tr("Create Advertisement"),tr(err));
+    }
 }
 
 void Advertise::on_pushButton_reset_clicked()
@@ -77,4 +84,34 @@ void Advertise::on_pushButton_reset_clicked()
     ui->line_price->setText("");
     ui->spinBox_quantity->setValue(1);
     ui->text_description->setText("");
+}
+
+void Advertise::on_pushButton_transfer_clicked()
+{
+    char box[1000];
+
+    if(CurrentUser.accountRegistered()){
+
+        sprintf(box, "Do you confirm the transference to the following account?"
+                     "\nBank: %s"
+                     "\nAccount No: %s"
+                     "\nAgency: %s "
+                     "\nTo change this account, please, edit on your profile\n",
+                CurrentUser.getBank().c_str(), CurrentUser.getAccountNumber().c_str(), CurrentUser.getAgency().c_str());
+    }else{
+        QMessageBox::warning(this,tr("Transference"),tr("You don't have any account registered!\n"
+                                                        "Please register someone in Profile Edit"));
+        return;
+    }
+
+
+    if(ui->line_transfer->text() != ".00" &&
+            QMessageBox::question(this,tr("Transference"),tr(box)) == QMessageBox::Yes){
+        try{
+            Payment::withdrawBalance(&CurrentUser,stod(ui->line_transfer->text().toStdString()));
+            QMessageBox::information(this,tr("Transference"),tr("Completed with sucess!\n The tax of 0,38%, were already debited!"));
+        }catch(char *err){
+            QMessageBox::warning(this,tr("Transference"),tr(err));
+        }
+    }
 }

@@ -1,6 +1,0 @@
-Valgrind:
-	--leak-check=full ./exec
-Cppcheck:
-	cppcheck--enable=warning
-Gcov:
-	gcov filename (depois de rodar o prog)

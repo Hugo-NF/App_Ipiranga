@@ -56,9 +56,8 @@ public:
     static void cleanTable();
     void insertOperation(sqlite3 *, Historic *);
 
-    static void evaluate();
-    static void deleteHistoricEntry();
-    static void deleteHistoric();
+    static void evaluate(Historic *, unsigned int);
+    static vector<Historic *> retrieveHistoric(unsigned int, bool, bool);
 
 };
 

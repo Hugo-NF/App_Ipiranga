@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "../include/User.hpp"
+#include "layout/friendslayout.h"
 
 namespace Ui {
 class FriendsPage;
@@ -25,7 +26,7 @@ private:
 
     //Methods
     void setFriends();
-    void setFields(User user);
+    void setFields(FriendsLayout* , User*);
 };
 
 #endif // FRIENDSPAGE_H

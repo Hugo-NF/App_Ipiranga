@@ -25,6 +25,8 @@ public:
     explicit UserApp(QWidget *parent = 0, User* _CurrentUser=0);
     ~UserApp();
 
+    void logoff();
+
 private slots:
 
     //Menu Buttons Actions
@@ -58,11 +60,46 @@ private:
 
     //King of search
     bool SearchType; // 1 to Friends - o to Advertise
-    bool ToolActive; // Filters Active or Not Active
+    bool ToolActive; // Filters tools Active or Not Active
 
+    //---------------Variables of searchs----------------
+    string SearchText;
+
+    //-----------Ads Search
+    string A_category;  // search fo category
+    string A_state;     // for state
+    int A_rating;       // for rating
+    int A_min_price;    // from min price
+    int A_max_price;    // until max price
+    bool A_all;         // for all people
+    bool A_friends;     // only friends
+    bool A_friends_of;  // only friends of friends
+    bool A_title;       // order by title
+    bool A_category;    // order by category
+    bool A_price;       // order by price
+    bool A_rating;      // order by rating
+    bool A_city;        // order by city
+    bool A_quantity;    // order by quantity
+    bool A_by_Asc;      // order in ascendet
+    bool A_by_Desc;     // order in descendet
+
+    //---------Friends Search
+    string F_state;     // search for state
+    int F_rating;       // for rating
+    bool F_all;         // for all people
+    bool F_friends;      // only friends
+    bool F_friends_of;   // only friends of friends
+    bool F_byRating;    // order by rating
+    bool F_byName;      // order by name
+    bool F_byCity;      // order by city
+    bool F_by_Asc;      // order in ascendent
+    bool F_by_Desc;     // order in descendent
+    //------------------------------------------------------
 
     //Methods
     void SetPropertyUserCurrent();  //Set the property of the actual user
+    void getFields_Search_Friends();    // get the fields of search for Friends
+    void getFields_Search_Ads();        // get the fields of search for Ads
 };
 
 #endif // USERAPP_H

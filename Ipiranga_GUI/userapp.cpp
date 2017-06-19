@@ -37,8 +37,10 @@ UserApp::UserApp(QWidget *parent, User* _CurrentUser) :
     PageZero.SetCurrentUser(CurrentUser);
 
     // Page 1 - Profile Edit
+
     ui->Pages->insertWidget(1,&PageOne);
     PageOne.SetCurrentUser(CurrentUser);
+    PageOne.SetFather(this);
 
     // Page 2 - FriendsPage
     ui->Pages->insertWidget(2,&PageTwo);
@@ -69,6 +71,10 @@ UserApp::UserApp(QWidget *parent, User* _CurrentUser) :
 UserApp::~UserApp()
 {
     delete ui;
+}
+
+void UserApp::logoff(){
+    this->on_Button_logout_clicked();
 }
 
 void UserApp::SetPropertyUserCurrent(){
@@ -152,10 +158,17 @@ void UserApp::on_line_search_returnPressed()
     ui->Pages->insertWidget(5,PageResult);
     PageResult->SetCurrentUser(CurrentUser);
 
+    if(SearchType){
+        getFields_Search_Friends();
+    }else{
+        getFields_Search_Friends();
+    }
+
     ui->Pages->setCurrentWidget(PageResult);
 }
 //---------------------------------------------
 
+//---------------ADJUST BUTTON----------------
 void UserApp::on_Button_adjust_clicked()
 {
     if(ToolActive){
@@ -176,3 +189,25 @@ void UserApp::on_Button_adjust_clicked()
         }
     }
 }
+
+//---------------GET FIELDS OF SEARCH-----------------
+void UserApp::getFields_Search_Ads(){
+    A_state = ui->line_state->text().toStdString();
+    A_rating = ui->comboBox_rating->currentIndex() + 1;
+    A_min_price = ui->line_min->text();
+    A_max_price = ui->line_max->text();
+    A_all = ui->radio_all->isChecked();
+    A_friends = ui->radio_friends->isChecked();
+    A_friends_of = ui->radio_friends_of->isChecked();
+}
+
+void UserApp::getFields_Search_Friends(){
+    F_state = ui->line_state_2->text().toStdString();
+    F_rating = ui->comboBox_rating_2->currentIndex() + 1;
+    F_all = ui->radio_all_2->isChecked();
+    F_friends = ui->radio_friends_2->isChecked();
+    F_friends_of = ui->radio_friends_of_2->isChecked();
+}
+//-----------------------------------------------------
+
+//----------------ORDER BY - SETTINGS------------------

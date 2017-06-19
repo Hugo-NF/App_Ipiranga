@@ -48,63 +48,85 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../Ipiranga_GUI/main.cpp \
+SOURCES       = ../Ipiranga_GUI/formregister.cpp \
 		../Ipiranga_GUI/loginuser.cpp \
+		../Ipiranga_GUI/main.cpp \
 		../Ipiranga_GUI/userapp.cpp \
-		../Ipiranga_GUI/formregister.cpp \
-		../src/User.cpp \
-		../Ipiranga_GUI/UserPages/initialpage.cpp \
-		../Ipiranga_GUI/UserPages/editprofile.cpp \
-		../Ipiranga_GUI/UserPages/historic.cpp \
-		../Ipiranga_GUI/UserPages/friendspage.cpp \
 		../Ipiranga_GUI/UserPages/advertise.cpp \
+		../Ipiranga_GUI/UserPages/editprofile.cpp \
+		../Ipiranga_GUI/UserPages/friendspage.cpp \
+		../Ipiranga_GUI/UserPages/historicpage.cpp \
+		../Ipiranga_GUI/UserPages/initialpage.cpp \
 		../Ipiranga_GUI/UserPages/searchresult.cpp \
-		../Ipiranga_GUI/layout/ads.cpp \
-		../Ipiranga_GUI/layout/searchs.cpp \
+		../Ipiranga_GUI/layout/adslayout.cpp \
+		../Ipiranga_GUI/layout/friendslayout.cpp \
 		../Ipiranga_GUI/layout/historiclayout.cpp \
-		../Ipiranga_GUI/layout/friendslayout.cpp qrc_resources.cpp \
+		../Ipiranga_GUI/layout/searchads.cpp \
+		../Ipiranga_GUI/layout/serachfriends.cpp \
+		../src/Account.cpp \
+		../src/Ads.cpp \
+		../src/Callbacks.cpp \
+		../src/Deals.cpp \
+		../src/Friendship.cpp \
+		../src/Historic.cpp \
+		../src/Payment.cpp \
+		../src/Search.cpp \
+		../src/Security.cpp \
+		../src/User.cpp qrc_resources.cpp \
+		moc_formregister.cpp \
 		moc_loginuser.cpp \
 		moc_userapp.cpp \
-		moc_formregister.cpp \
-		moc_initialpage.cpp \
-		moc_editprofile.cpp \
-		moc_historic.cpp \
-		moc_friendspage.cpp \
 		moc_advertise.cpp \
+		moc_editprofile.cpp \
+		moc_friendspage.cpp \
+		moc_historicpage.cpp \
+		moc_initialpage.cpp \
 		moc_searchresult.cpp \
-		moc_ads.cpp \
-		moc_searchs.cpp \
+		moc_adslayout.cpp \
+		moc_friendslayout.cpp \
 		moc_historiclayout.cpp \
-		moc_friendslayout.cpp
-OBJECTS       = main.o \
+		moc_searchads.cpp \
+		moc_serachfriends.cpp
+OBJECTS       = formregister.o \
 		loginuser.o \
+		main.o \
 		userapp.o \
-		formregister.o \
-		User.o \
-		initialpage.o \
-		editprofile.o \
-		historic.o \
-		friendspage.o \
 		advertise.o \
+		editprofile.o \
+		friendspage.o \
+		historicpage.o \
+		initialpage.o \
 		searchresult.o \
-		ads.o \
-		searchs.o \
-		historiclayout.o \
+		adslayout.o \
 		friendslayout.o \
+		historiclayout.o \
+		searchads.o \
+		serachfriends.o \
+		Account.o \
+		Ads.o \
+		Callbacks.o \
+		Deals.o \
+		Friendship.o \
+		Historic.o \
+		Payment.o \
+		Search.o \
+		Security.o \
+		User.o \
 		qrc_resources.o \
+		moc_formregister.o \
 		moc_loginuser.o \
 		moc_userapp.o \
-		moc_formregister.o \
-		moc_initialpage.o \
-		moc_editprofile.o \
-		moc_historic.o \
-		moc_friendspage.o \
 		moc_advertise.o \
+		moc_editprofile.o \
+		moc_friendspage.o \
+		moc_historicpage.o \
+		moc_initialpage.o \
 		moc_searchresult.o \
-		moc_ads.o \
-		moc_searchs.o \
+		moc_adslayout.o \
+		moc_friendslayout.o \
 		moc_historiclayout.o \
-		moc_friendslayout.o
+		moc_searchads.o \
+		moc_serachfriends.o
 DIST          = /usr/lib64/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib64/qt5/mkspecs/common/unix.conf \
 		/usr/lib64/qt5/mkspecs/common/linux.conf \
@@ -163,34 +185,54 @@ DIST          = /usr/lib64/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib64/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib64/qt5/mkspecs/features/yacc.prf \
 		/usr/lib64/qt5/mkspecs/features/lex.prf \
-		../Ipiranga_GUI/Ipiranga.pro ../Ipiranga_GUI/loginuser.h \
+		../Ipiranga_GUI/Ipiranga.pro ../Ipiranga_GUI/formregister.h \
+		../Ipiranga_GUI/loginuser.h \
 		../Ipiranga_GUI/userapp.h \
-		../Ipiranga_GUI/formregister.h \
-		../include/User.hpp \
-		../Ipiranga_GUI/UserPages/initialpage.h \
-		../Ipiranga_GUI/UserPages/editprofile.h \
-		../Ipiranga_GUI/UserPages/historic.h \
-		../Ipiranga_GUI/UserPages/friendspage.h \
 		../Ipiranga_GUI/UserPages/advertise.h \
+		../Ipiranga_GUI/UserPages/editprofile.h \
+		../Ipiranga_GUI/UserPages/friendspage.h \
+		../Ipiranga_GUI/UserPages/historicpage.h \
+		../Ipiranga_GUI/UserPages/initialpage.h \
 		../Ipiranga_GUI/UserPages/searchresult.h \
-		../Ipiranga_GUI/layout/ads.h \
-		../Ipiranga_GUI/layout/searchs.h \
+		../Ipiranga_GUI/layout/adslayout.h \
+		../Ipiranga_GUI/layout/friendslayout.h \
 		../Ipiranga_GUI/layout/historiclayout.h \
-		../Ipiranga_GUI/layout/friendslayout.h ../Ipiranga_GUI/main.cpp \
+		../Ipiranga_GUI/layout/searchads.h \
+		../Ipiranga_GUI/layout/serachfriends.h \
+		../include/Account.hpp \
+		../include/Ads.hpp \
+		../include/Callbacks.hpp \
+		../include/Deals.hpp \
+		../include/Friendship.hpp \
+		../include/Historic.hpp \
+		../include/Payment.hpp \
+		../include/Search.hpp \
+		../include/Security.hpp \
+		../include/User.hpp ../Ipiranga_GUI/formregister.cpp \
 		../Ipiranga_GUI/loginuser.cpp \
+		../Ipiranga_GUI/main.cpp \
 		../Ipiranga_GUI/userapp.cpp \
-		../Ipiranga_GUI/formregister.cpp \
-		../src/User.cpp \
-		../Ipiranga_GUI/UserPages/initialpage.cpp \
-		../Ipiranga_GUI/UserPages/editprofile.cpp \
-		../Ipiranga_GUI/UserPages/historic.cpp \
-		../Ipiranga_GUI/UserPages/friendspage.cpp \
 		../Ipiranga_GUI/UserPages/advertise.cpp \
+		../Ipiranga_GUI/UserPages/editprofile.cpp \
+		../Ipiranga_GUI/UserPages/friendspage.cpp \
+		../Ipiranga_GUI/UserPages/historicpage.cpp \
+		../Ipiranga_GUI/UserPages/initialpage.cpp \
 		../Ipiranga_GUI/UserPages/searchresult.cpp \
-		../Ipiranga_GUI/layout/ads.cpp \
-		../Ipiranga_GUI/layout/searchs.cpp \
+		../Ipiranga_GUI/layout/adslayout.cpp \
+		../Ipiranga_GUI/layout/friendslayout.cpp \
 		../Ipiranga_GUI/layout/historiclayout.cpp \
-		../Ipiranga_GUI/layout/friendslayout.cpp
+		../Ipiranga_GUI/layout/searchads.cpp \
+		../Ipiranga_GUI/layout/serachfriends.cpp \
+		../src/Account.cpp \
+		../src/Ads.cpp \
+		../src/Callbacks.cpp \
+		../src/Deals.cpp \
+		../src/Friendship.cpp \
+		../src/Historic.cpp \
+		../src/Payment.cpp \
+		../src/Search.cpp \
+		../src/Security.cpp \
+		../src/User.cpp
 QMAKE_TARGET  = Ipiranga
 DESTDIR       = 
 TARGET        = Ipiranga
@@ -199,7 +241,7 @@ TARGET        = Ipiranga
 first: all
 ####### Build rules
 
-$(TARGET): ui_loginuser.h ui_userapp.h ui_formregister.h ui_initialpage.h ui_editprofile.h ui_historic.h ui_friendspage.h ui_advertise.h ui_searchresult.h ui_ads.h ui_searchs.h ui_historiclayout.h ui_friendslayout.h $(OBJECTS)  
+$(TARGET): ui_formregister.h ui_loginuser.h ui_userapp.h ui_advertise.h ui_editprofile.h ui_friendspage.h ui_historicpage.h ui_initialpage.h ui_searchresult.h ui_adslayout.h ui_friendslayout.h ui_historiclayout.h ui_searchads.h ui_serachfriends.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../Ipiranga_GUI/Ipiranga.pro /usr/lib64/qt5/mkspecs/linux-g++/qmake.conf /usr/lib64/qt5/mkspecs/features/spec_pre.prf \
@@ -345,9 +387,9 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../Ipiranga_GUI/resources.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib64/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Ipiranga_GUI/loginuser.h ../Ipiranga_GUI/userapp.h ../Ipiranga_GUI/formregister.h ../include/User.hpp ../Ipiranga_GUI/UserPages/initialpage.h ../Ipiranga_GUI/UserPages/editprofile.h ../Ipiranga_GUI/UserPages/historic.h ../Ipiranga_GUI/UserPages/friendspage.h ../Ipiranga_GUI/UserPages/advertise.h ../Ipiranga_GUI/UserPages/searchresult.h ../Ipiranga_GUI/layout/ads.h ../Ipiranga_GUI/layout/searchs.h ../Ipiranga_GUI/layout/historiclayout.h ../Ipiranga_GUI/layout/friendslayout.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Ipiranga_GUI/main.cpp ../Ipiranga_GUI/loginuser.cpp ../Ipiranga_GUI/userapp.cpp ../Ipiranga_GUI/formregister.cpp ../src/User.cpp ../Ipiranga_GUI/UserPages/initialpage.cpp ../Ipiranga_GUI/UserPages/editprofile.cpp ../Ipiranga_GUI/UserPages/historic.cpp ../Ipiranga_GUI/UserPages/friendspage.cpp ../Ipiranga_GUI/UserPages/advertise.cpp ../Ipiranga_GUI/UserPages/searchresult.cpp ../Ipiranga_GUI/layout/ads.cpp ../Ipiranga_GUI/layout/searchs.cpp ../Ipiranga_GUI/layout/historiclayout.cpp ../Ipiranga_GUI/layout/friendslayout.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Ipiranga_GUI/loginuser.ui ../Ipiranga_GUI/userapp.ui ../Ipiranga_GUI/formregister.ui ../Ipiranga_GUI/UserPages/initialpage.ui ../Ipiranga_GUI/UserPages/editprofile.ui ../Ipiranga_GUI/UserPages/historic.ui ../Ipiranga_GUI/UserPages/friendspage.ui ../Ipiranga_GUI/UserPages/advertise.ui ../Ipiranga_GUI/UserPages/searchresult.ui ../Ipiranga_GUI/layout/ads.ui ../Ipiranga_GUI/layout/searchs.ui ../Ipiranga_GUI/layout/historiclayout.ui ../Ipiranga_GUI/layout/friendslayout.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../Ipiranga_GUI/formregister.h ../Ipiranga_GUI/loginuser.h ../Ipiranga_GUI/userapp.h ../Ipiranga_GUI/UserPages/advertise.h ../Ipiranga_GUI/UserPages/editprofile.h ../Ipiranga_GUI/UserPages/friendspage.h ../Ipiranga_GUI/UserPages/historicpage.h ../Ipiranga_GUI/UserPages/initialpage.h ../Ipiranga_GUI/UserPages/searchresult.h ../Ipiranga_GUI/layout/adslayout.h ../Ipiranga_GUI/layout/friendslayout.h ../Ipiranga_GUI/layout/historiclayout.h ../Ipiranga_GUI/layout/searchads.h ../Ipiranga_GUI/layout/serachfriends.h ../include/Account.hpp ../include/Ads.hpp ../include/Callbacks.hpp ../include/Deals.hpp ../include/Friendship.hpp ../include/Historic.hpp ../include/Payment.hpp ../include/Search.hpp ../include/Security.hpp ../include/User.hpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Ipiranga_GUI/formregister.cpp ../Ipiranga_GUI/loginuser.cpp ../Ipiranga_GUI/main.cpp ../Ipiranga_GUI/userapp.cpp ../Ipiranga_GUI/UserPages/advertise.cpp ../Ipiranga_GUI/UserPages/editprofile.cpp ../Ipiranga_GUI/UserPages/friendspage.cpp ../Ipiranga_GUI/UserPages/historicpage.cpp ../Ipiranga_GUI/UserPages/initialpage.cpp ../Ipiranga_GUI/UserPages/searchresult.cpp ../Ipiranga_GUI/layout/adslayout.cpp ../Ipiranga_GUI/layout/friendslayout.cpp ../Ipiranga_GUI/layout/historiclayout.cpp ../Ipiranga_GUI/layout/searchads.cpp ../Ipiranga_GUI/layout/serachfriends.cpp ../src/Account.cpp ../src/Ads.cpp ../src/Callbacks.cpp ../src/Deals.cpp ../src/Friendship.cpp ../src/Historic.cpp ../src/Payment.cpp ../src/Search.cpp ../src/Security.cpp ../src/User.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Ipiranga_GUI/formregister.ui ../Ipiranga_GUI/loginuser.ui ../Ipiranga_GUI/userapp.ui ../Ipiranga_GUI/UserPages/advertise.ui ../Ipiranga_GUI/UserPages/editprofile.ui ../Ipiranga_GUI/UserPages/friendspage.ui ../Ipiranga_GUI/UserPages/historicpage.ui ../Ipiranga_GUI/UserPages/initialpage.ui ../Ipiranga_GUI/UserPages/searchresult.ui ../Ipiranga_GUI/layout/adslayout.ui ../Ipiranga_GUI/layout/friendslayout.ui ../Ipiranga_GUI/layout/historiclayout.ui ../Ipiranga_GUI/layout/searchads.ui ../Ipiranga_GUI/layout/serachfriends.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -387,7 +429,8 @@ qrc_resources.cpp: ../Ipiranga_GUI/resources.qrc \
 		../Ipiranga_GUI/images/Icon.png \
 		../Ipiranga_GUI/images/announcement-icon_inactive.png \
 		../Ipiranga_GUI/images/friends_icon_inactive.png \
-		../Ipiranga_GUI/images/search_icon.png
+		../Ipiranga_GUI/images/search_icon.png \
+		../Ipiranga_GUI/images/stars.png
 	/usr/lib64/qt5/bin/rcc -name resources ../Ipiranga_GUI/resources.qrc -o qrc_resources.cpp
 
 compiler_moc_predefs_make_all: moc_predefs.h
@@ -396,123 +439,193 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib64/qt5/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -Wall -W -dM -E -o moc_predefs.h /usr/lib64/qt5/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_loginuser.cpp moc_userapp.cpp moc_formregister.cpp moc_initialpage.cpp moc_editprofile.cpp moc_historic.cpp moc_friendspage.cpp moc_advertise.cpp moc_searchresult.cpp moc_ads.cpp moc_searchs.cpp moc_historiclayout.cpp moc_friendslayout.cpp
+compiler_moc_header_make_all: moc_formregister.cpp moc_loginuser.cpp moc_userapp.cpp moc_advertise.cpp moc_editprofile.cpp moc_friendspage.cpp moc_historicpage.cpp moc_initialpage.cpp moc_searchresult.cpp moc_adslayout.cpp moc_friendslayout.cpp moc_historiclayout.cpp moc_searchads.cpp moc_serachfriends.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_loginuser.cpp moc_userapp.cpp moc_formregister.cpp moc_initialpage.cpp moc_editprofile.cpp moc_historic.cpp moc_friendspage.cpp moc_advertise.cpp moc_searchresult.cpp moc_ads.cpp moc_searchs.cpp moc_historiclayout.cpp moc_friendslayout.cpp
+	-$(DEL_FILE) moc_formregister.cpp moc_loginuser.cpp moc_userapp.cpp moc_advertise.cpp moc_editprofile.cpp moc_friendspage.cpp moc_historicpage.cpp moc_initialpage.cpp moc_searchresult.cpp moc_adslayout.cpp moc_friendslayout.cpp moc_historiclayout.cpp moc_searchads.cpp moc_serachfriends.cpp
+moc_formregister.cpp: ../include/Account.hpp \
+		../include/User.hpp \
+		../include/Callbacks.hpp \
+		../include/Ads.hpp \
+		../include/Historic.hpp \
+		../include/Friendship.hpp \
+		../Ipiranga_GUI/formregister.h \
+		moc_predefs.h
+	/usr/lib64/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/luiz/Documentos/App_Ipiranga/Ipiranga_GUI -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I/usr/include/c++/6.3.1 -I/usr/include/c++/6.3.1/x86_64-redhat-linux -I/usr/include/c++/6.3.1/backward -I/usr/lib/gcc/x86_64-redhat-linux/6.3.1/include -I/usr/local/include -I/usr/include ../Ipiranga_GUI/formregister.h -o moc_formregister.cpp
+
 moc_loginuser.cpp: ../Ipiranga_GUI/userapp.h \
 		../include/User.hpp \
+		../include/Callbacks.hpp \
+		../include/Ads.hpp \
+		../include/Historic.hpp \
+		../include/Friendship.hpp \
 		../Ipiranga_GUI/UserPages/initialpage.h \
 		../Ipiranga_GUI/UserPages/editprofile.h \
 		../Ipiranga_GUI/UserPages/friendspage.h \
-		../Ipiranga_GUI/UserPages/historic.h \
+		../Ipiranga_GUI/layout/friendslayout.h \
+		../Ipiranga_GUI/UserPages/historicpage.h \
+		../Ipiranga_GUI/layout/historiclayout.h \
 		../Ipiranga_GUI/UserPages/advertise.h \
 		../Ipiranga_GUI/UserPages/searchresult.h \
 		../Ipiranga_GUI/formregister.h \
+		../include/Account.hpp \
 		../Ipiranga_GUI/loginuser.h \
 		moc_predefs.h
 	/usr/lib64/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/luiz/Documentos/App_Ipiranga/Ipiranga_GUI -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I/usr/include/c++/6.3.1 -I/usr/include/c++/6.3.1/x86_64-redhat-linux -I/usr/include/c++/6.3.1/backward -I/usr/lib/gcc/x86_64-redhat-linux/6.3.1/include -I/usr/local/include -I/usr/include ../Ipiranga_GUI/loginuser.h -o moc_loginuser.cpp
 
 moc_userapp.cpp: ../include/User.hpp \
+		../include/Callbacks.hpp \
+		../include/Ads.hpp \
+		../include/Historic.hpp \
+		../include/Friendship.hpp \
 		../Ipiranga_GUI/UserPages/initialpage.h \
 		../Ipiranga_GUI/UserPages/editprofile.h \
 		../Ipiranga_GUI/UserPages/friendspage.h \
-		../Ipiranga_GUI/UserPages/historic.h \
+		../Ipiranga_GUI/layout/friendslayout.h \
+		../Ipiranga_GUI/UserPages/historicpage.h \
+		../Ipiranga_GUI/layout/historiclayout.h \
 		../Ipiranga_GUI/UserPages/advertise.h \
 		../Ipiranga_GUI/UserPages/searchresult.h \
 		../Ipiranga_GUI/userapp.h \
 		moc_predefs.h
 	/usr/lib64/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/luiz/Documentos/App_Ipiranga/Ipiranga_GUI -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I/usr/include/c++/6.3.1 -I/usr/include/c++/6.3.1/x86_64-redhat-linux -I/usr/include/c++/6.3.1/backward -I/usr/lib/gcc/x86_64-redhat-linux/6.3.1/include -I/usr/local/include -I/usr/include ../Ipiranga_GUI/userapp.h -o moc_userapp.cpp
 
-moc_formregister.cpp: ../include/User.hpp \
-		../Ipiranga_GUI/formregister.h \
+moc_advertise.cpp: ../include/User.hpp \
+		../include/Callbacks.hpp \
+		../include/Ads.hpp \
+		../include/Historic.hpp \
+		../include/Friendship.hpp \
+		../Ipiranga_GUI/UserPages/advertise.h \
 		moc_predefs.h
-	/usr/lib64/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/luiz/Documentos/App_Ipiranga/Ipiranga_GUI -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I/usr/include/c++/6.3.1 -I/usr/include/c++/6.3.1/x86_64-redhat-linux -I/usr/include/c++/6.3.1/backward -I/usr/lib/gcc/x86_64-redhat-linux/6.3.1/include -I/usr/local/include -I/usr/include ../Ipiranga_GUI/formregister.h -o moc_formregister.cpp
-
-moc_initialpage.cpp: ../include/User.hpp \
-		../Ipiranga_GUI/UserPages/initialpage.h \
-		moc_predefs.h
-	/usr/lib64/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/luiz/Documentos/App_Ipiranga/Ipiranga_GUI -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I/usr/include/c++/6.3.1 -I/usr/include/c++/6.3.1/x86_64-redhat-linux -I/usr/include/c++/6.3.1/backward -I/usr/lib/gcc/x86_64-redhat-linux/6.3.1/include -I/usr/local/include -I/usr/include ../Ipiranga_GUI/UserPages/initialpage.h -o moc_initialpage.cpp
+	/usr/lib64/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/luiz/Documentos/App_Ipiranga/Ipiranga_GUI -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I/usr/include/c++/6.3.1 -I/usr/include/c++/6.3.1/x86_64-redhat-linux -I/usr/include/c++/6.3.1/backward -I/usr/lib/gcc/x86_64-redhat-linux/6.3.1/include -I/usr/local/include -I/usr/include ../Ipiranga_GUI/UserPages/advertise.h -o moc_advertise.cpp
 
 moc_editprofile.cpp: ../include/User.hpp \
+		../include/Callbacks.hpp \
+		../include/Ads.hpp \
+		../include/Historic.hpp \
+		../include/Friendship.hpp \
 		../Ipiranga_GUI/UserPages/editprofile.h \
 		moc_predefs.h
 	/usr/lib64/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/luiz/Documentos/App_Ipiranga/Ipiranga_GUI -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I/usr/include/c++/6.3.1 -I/usr/include/c++/6.3.1/x86_64-redhat-linux -I/usr/include/c++/6.3.1/backward -I/usr/lib/gcc/x86_64-redhat-linux/6.3.1/include -I/usr/local/include -I/usr/include ../Ipiranga_GUI/UserPages/editprofile.h -o moc_editprofile.cpp
 
-moc_historic.cpp: ../Ipiranga_GUI/UserPages/historic.h \
-		moc_predefs.h
-	/usr/lib64/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/luiz/Documentos/App_Ipiranga/Ipiranga_GUI -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I/usr/include/c++/6.3.1 -I/usr/include/c++/6.3.1/x86_64-redhat-linux -I/usr/include/c++/6.3.1/backward -I/usr/lib/gcc/x86_64-redhat-linux/6.3.1/include -I/usr/local/include -I/usr/include ../Ipiranga_GUI/UserPages/historic.h -o moc_historic.cpp
-
-moc_friendspage.cpp: ../Ipiranga_GUI/UserPages/friendspage.h \
+moc_friendspage.cpp: ../include/User.hpp \
+		../include/Callbacks.hpp \
+		../include/Ads.hpp \
+		../include/Historic.hpp \
+		../include/Friendship.hpp \
+		../Ipiranga_GUI/layout/friendslayout.h \
+		../Ipiranga_GUI/UserPages/friendspage.h \
 		moc_predefs.h
 	/usr/lib64/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/luiz/Documentos/App_Ipiranga/Ipiranga_GUI -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I/usr/include/c++/6.3.1 -I/usr/include/c++/6.3.1/x86_64-redhat-linux -I/usr/include/c++/6.3.1/backward -I/usr/lib/gcc/x86_64-redhat-linux/6.3.1/include -I/usr/local/include -I/usr/include ../Ipiranga_GUI/UserPages/friendspage.h -o moc_friendspage.cpp
 
-moc_advertise.cpp: ../Ipiranga_GUI/UserPages/advertise.h \
+moc_historicpage.cpp: ../include/User.hpp \
+		../include/Callbacks.hpp \
+		../include/Ads.hpp \
+		../include/Historic.hpp \
+		../include/Friendship.hpp \
+		../Ipiranga_GUI/layout/historiclayout.h \
+		../Ipiranga_GUI/UserPages/historicpage.h \
 		moc_predefs.h
-	/usr/lib64/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/luiz/Documentos/App_Ipiranga/Ipiranga_GUI -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I/usr/include/c++/6.3.1 -I/usr/include/c++/6.3.1/x86_64-redhat-linux -I/usr/include/c++/6.3.1/backward -I/usr/lib/gcc/x86_64-redhat-linux/6.3.1/include -I/usr/local/include -I/usr/include ../Ipiranga_GUI/UserPages/advertise.h -o moc_advertise.cpp
+	/usr/lib64/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/luiz/Documentos/App_Ipiranga/Ipiranga_GUI -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I/usr/include/c++/6.3.1 -I/usr/include/c++/6.3.1/x86_64-redhat-linux -I/usr/include/c++/6.3.1/backward -I/usr/lib/gcc/x86_64-redhat-linux/6.3.1/include -I/usr/local/include -I/usr/include ../Ipiranga_GUI/UserPages/historicpage.h -o moc_historicpage.cpp
 
-moc_searchresult.cpp: ../Ipiranga_GUI/UserPages/searchresult.h \
+moc_initialpage.cpp: ../include/User.hpp \
+		../include/Callbacks.hpp \
+		../include/Ads.hpp \
+		../include/Historic.hpp \
+		../include/Friendship.hpp \
+		../Ipiranga_GUI/UserPages/initialpage.h \
+		moc_predefs.h
+	/usr/lib64/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/luiz/Documentos/App_Ipiranga/Ipiranga_GUI -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I/usr/include/c++/6.3.1 -I/usr/include/c++/6.3.1/x86_64-redhat-linux -I/usr/include/c++/6.3.1/backward -I/usr/lib/gcc/x86_64-redhat-linux/6.3.1/include -I/usr/local/include -I/usr/include ../Ipiranga_GUI/UserPages/initialpage.h -o moc_initialpage.cpp
+
+moc_searchresult.cpp: ../include/User.hpp \
+		../include/Callbacks.hpp \
+		../include/Ads.hpp \
+		../include/Historic.hpp \
+		../include/Friendship.hpp \
+		../Ipiranga_GUI/UserPages/searchresult.h \
 		moc_predefs.h
 	/usr/lib64/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/luiz/Documentos/App_Ipiranga/Ipiranga_GUI -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I/usr/include/c++/6.3.1 -I/usr/include/c++/6.3.1/x86_64-redhat-linux -I/usr/include/c++/6.3.1/backward -I/usr/lib/gcc/x86_64-redhat-linux/6.3.1/include -I/usr/local/include -I/usr/include ../Ipiranga_GUI/UserPages/searchresult.h -o moc_searchresult.cpp
 
-moc_ads.cpp: ../Ipiranga_GUI/layout/ads.h \
+moc_adslayout.cpp: ../Ipiranga_GUI/layout/adslayout.h \
 		moc_predefs.h
-	/usr/lib64/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/luiz/Documentos/App_Ipiranga/Ipiranga_GUI -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I/usr/include/c++/6.3.1 -I/usr/include/c++/6.3.1/x86_64-redhat-linux -I/usr/include/c++/6.3.1/backward -I/usr/lib/gcc/x86_64-redhat-linux/6.3.1/include -I/usr/local/include -I/usr/include ../Ipiranga_GUI/layout/ads.h -o moc_ads.cpp
-
-moc_searchs.cpp: ../Ipiranga_GUI/layout/searchs.h \
-		moc_predefs.h
-	/usr/lib64/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/luiz/Documentos/App_Ipiranga/Ipiranga_GUI -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I/usr/include/c++/6.3.1 -I/usr/include/c++/6.3.1/x86_64-redhat-linux -I/usr/include/c++/6.3.1/backward -I/usr/lib/gcc/x86_64-redhat-linux/6.3.1/include -I/usr/local/include -I/usr/include ../Ipiranga_GUI/layout/searchs.h -o moc_searchs.cpp
-
-moc_historiclayout.cpp: ../Ipiranga_GUI/layout/historiclayout.h \
-		moc_predefs.h
-	/usr/lib64/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/luiz/Documentos/App_Ipiranga/Ipiranga_GUI -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I/usr/include/c++/6.3.1 -I/usr/include/c++/6.3.1/x86_64-redhat-linux -I/usr/include/c++/6.3.1/backward -I/usr/lib/gcc/x86_64-redhat-linux/6.3.1/include -I/usr/local/include -I/usr/include ../Ipiranga_GUI/layout/historiclayout.h -o moc_historiclayout.cpp
+	/usr/lib64/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/luiz/Documentos/App_Ipiranga/Ipiranga_GUI -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I/usr/include/c++/6.3.1 -I/usr/include/c++/6.3.1/x86_64-redhat-linux -I/usr/include/c++/6.3.1/backward -I/usr/lib/gcc/x86_64-redhat-linux/6.3.1/include -I/usr/local/include -I/usr/include ../Ipiranga_GUI/layout/adslayout.h -o moc_adslayout.cpp
 
 moc_friendslayout.cpp: ../Ipiranga_GUI/layout/friendslayout.h \
 		moc_predefs.h
 	/usr/lib64/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/luiz/Documentos/App_Ipiranga/Ipiranga_GUI -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I/usr/include/c++/6.3.1 -I/usr/include/c++/6.3.1/x86_64-redhat-linux -I/usr/include/c++/6.3.1/backward -I/usr/lib/gcc/x86_64-redhat-linux/6.3.1/include -I/usr/local/include -I/usr/include ../Ipiranga_GUI/layout/friendslayout.h -o moc_friendslayout.cpp
 
+moc_historiclayout.cpp: ../include/User.hpp \
+		../include/Callbacks.hpp \
+		../include/Ads.hpp \
+		../include/Historic.hpp \
+		../include/Friendship.hpp \
+		../Ipiranga_GUI/layout/historiclayout.h \
+		moc_predefs.h
+	/usr/lib64/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/luiz/Documentos/App_Ipiranga/Ipiranga_GUI -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I/usr/include/c++/6.3.1 -I/usr/include/c++/6.3.1/x86_64-redhat-linux -I/usr/include/c++/6.3.1/backward -I/usr/lib/gcc/x86_64-redhat-linux/6.3.1/include -I/usr/local/include -I/usr/include ../Ipiranga_GUI/layout/historiclayout.h -o moc_historiclayout.cpp
+
+moc_searchads.cpp: ../include/User.hpp \
+		../include/Callbacks.hpp \
+		../include/Ads.hpp \
+		../include/Historic.hpp \
+		../include/Friendship.hpp \
+		../Ipiranga_GUI/layout/searchads.h \
+		moc_predefs.h
+	/usr/lib64/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/luiz/Documentos/App_Ipiranga/Ipiranga_GUI -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I/usr/include/c++/6.3.1 -I/usr/include/c++/6.3.1/x86_64-redhat-linux -I/usr/include/c++/6.3.1/backward -I/usr/lib/gcc/x86_64-redhat-linux/6.3.1/include -I/usr/local/include -I/usr/include ../Ipiranga_GUI/layout/searchads.h -o moc_searchads.cpp
+
+moc_serachfriends.cpp: ../include/User.hpp \
+		../include/Callbacks.hpp \
+		../include/Ads.hpp \
+		../include/Historic.hpp \
+		../include/Friendship.hpp \
+		../Ipiranga_GUI/layout/serachfriends.h \
+		moc_predefs.h
+	/usr/lib64/qt5/bin/moc $(DEFINES) --include ./moc_predefs.h -I/usr/lib64/qt5/mkspecs/linux-g++ -I/home/luiz/Documentos/App_Ipiranga/Ipiranga_GUI -I/usr/include/qt5 -I/usr/include/qt5/QtWidgets -I/usr/include/qt5/QtGui -I/usr/include/qt5/QtCore -I. -I/usr/include/c++/6.3.1 -I/usr/include/c++/6.3.1/x86_64-redhat-linux -I/usr/include/c++/6.3.1/backward -I/usr/lib/gcc/x86_64-redhat-linux/6.3.1/include -I/usr/local/include -I/usr/include ../Ipiranga_GUI/layout/serachfriends.h -o moc_serachfriends.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_loginuser.h ui_userapp.h ui_formregister.h ui_initialpage.h ui_editprofile.h ui_historic.h ui_friendspage.h ui_advertise.h ui_searchresult.h ui_ads.h ui_searchs.h ui_historiclayout.h ui_friendslayout.h
+compiler_uic_make_all: ui_formregister.h ui_loginuser.h ui_userapp.h ui_advertise.h ui_editprofile.h ui_friendspage.h ui_historicpage.h ui_initialpage.h ui_searchresult.h ui_adslayout.h ui_friendslayout.h ui_historiclayout.h ui_searchads.h ui_serachfriends.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_loginuser.h ui_userapp.h ui_formregister.h ui_initialpage.h ui_editprofile.h ui_historic.h ui_friendspage.h ui_advertise.h ui_searchresult.h ui_ads.h ui_searchs.h ui_historiclayout.h ui_friendslayout.h
+	-$(DEL_FILE) ui_formregister.h ui_loginuser.h ui_userapp.h ui_advertise.h ui_editprofile.h ui_friendspage.h ui_historicpage.h ui_initialpage.h ui_searchresult.h ui_adslayout.h ui_friendslayout.h ui_historiclayout.h ui_searchads.h ui_serachfriends.h
+ui_formregister.h: ../Ipiranga_GUI/formregister.ui
+	/usr/lib64/qt5/bin/uic ../Ipiranga_GUI/formregister.ui -o ui_formregister.h
+
 ui_loginuser.h: ../Ipiranga_GUI/loginuser.ui
 	/usr/lib64/qt5/bin/uic ../Ipiranga_GUI/loginuser.ui -o ui_loginuser.h
 
 ui_userapp.h: ../Ipiranga_GUI/userapp.ui
 	/usr/lib64/qt5/bin/uic ../Ipiranga_GUI/userapp.ui -o ui_userapp.h
 
-ui_formregister.h: ../Ipiranga_GUI/formregister.ui
-	/usr/lib64/qt5/bin/uic ../Ipiranga_GUI/formregister.ui -o ui_formregister.h
-
-ui_initialpage.h: ../Ipiranga_GUI/UserPages/initialpage.ui
-	/usr/lib64/qt5/bin/uic ../Ipiranga_GUI/UserPages/initialpage.ui -o ui_initialpage.h
+ui_advertise.h: ../Ipiranga_GUI/UserPages/advertise.ui
+	/usr/lib64/qt5/bin/uic ../Ipiranga_GUI/UserPages/advertise.ui -o ui_advertise.h
 
 ui_editprofile.h: ../Ipiranga_GUI/UserPages/editprofile.ui
 	/usr/lib64/qt5/bin/uic ../Ipiranga_GUI/UserPages/editprofile.ui -o ui_editprofile.h
 
-ui_historic.h: ../Ipiranga_GUI/UserPages/historic.ui
-	/usr/lib64/qt5/bin/uic ../Ipiranga_GUI/UserPages/historic.ui -o ui_historic.h
-
 ui_friendspage.h: ../Ipiranga_GUI/UserPages/friendspage.ui
 	/usr/lib64/qt5/bin/uic ../Ipiranga_GUI/UserPages/friendspage.ui -o ui_friendspage.h
 
-ui_advertise.h: ../Ipiranga_GUI/UserPages/advertise.ui
-	/usr/lib64/qt5/bin/uic ../Ipiranga_GUI/UserPages/advertise.ui -o ui_advertise.h
+ui_historicpage.h: ../Ipiranga_GUI/UserPages/historicpage.ui
+	/usr/lib64/qt5/bin/uic ../Ipiranga_GUI/UserPages/historicpage.ui -o ui_historicpage.h
+
+ui_initialpage.h: ../Ipiranga_GUI/UserPages/initialpage.ui
+	/usr/lib64/qt5/bin/uic ../Ipiranga_GUI/UserPages/initialpage.ui -o ui_initialpage.h
 
 ui_searchresult.h: ../Ipiranga_GUI/UserPages/searchresult.ui
 	/usr/lib64/qt5/bin/uic ../Ipiranga_GUI/UserPages/searchresult.ui -o ui_searchresult.h
 
-ui_ads.h: ../Ipiranga_GUI/layout/ads.ui
-	/usr/lib64/qt5/bin/uic ../Ipiranga_GUI/layout/ads.ui -o ui_ads.h
+ui_adslayout.h: ../Ipiranga_GUI/layout/adslayout.ui
+	/usr/lib64/qt5/bin/uic ../Ipiranga_GUI/layout/adslayout.ui -o ui_adslayout.h
 
-ui_searchs.h: ../Ipiranga_GUI/layout/searchs.ui
-	/usr/lib64/qt5/bin/uic ../Ipiranga_GUI/layout/searchs.ui -o ui_searchs.h
+ui_friendslayout.h: ../Ipiranga_GUI/layout/friendslayout.ui
+	/usr/lib64/qt5/bin/uic ../Ipiranga_GUI/layout/friendslayout.ui -o ui_friendslayout.h
 
 ui_historiclayout.h: ../Ipiranga_GUI/layout/historiclayout.ui
 	/usr/lib64/qt5/bin/uic ../Ipiranga_GUI/layout/historiclayout.ui -o ui_historiclayout.h
 
-ui_friendslayout.h: ../Ipiranga_GUI/layout/friendslayout.ui
-	/usr/lib64/qt5/bin/uic ../Ipiranga_GUI/layout/friendslayout.ui -o ui_friendslayout.h
+ui_searchads.h: ../Ipiranga_GUI/layout/searchads.ui
+	/usr/lib64/qt5/bin/uic ../Ipiranga_GUI/layout/searchads.ui -o ui_searchads.h
+
+ui_serachfriends.h: ../Ipiranga_GUI/layout/serachfriends.ui
+	/usr/lib64/qt5/bin/uic ../Ipiranga_GUI/layout/serachfriends.ui -o ui_serachfriends.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -524,97 +637,265 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 
 ####### Compile
 
-main.o: ../Ipiranga_GUI/main.cpp ../Ipiranga_GUI/loginuser.h \
-		../Ipiranga_GUI/userapp.h \
+formregister.o: ../Ipiranga_GUI/formregister.cpp ../Ipiranga_GUI/formregister.h \
+		../include/Account.hpp \
 		../include/User.hpp \
-		../Ipiranga_GUI/UserPages/initialpage.h \
-		../Ipiranga_GUI/UserPages/editprofile.h \
-		../Ipiranga_GUI/UserPages/friendspage.h \
-		../Ipiranga_GUI/UserPages/historic.h \
-		../Ipiranga_GUI/UserPages/advertise.h \
-		../Ipiranga_GUI/UserPages/searchresult.h \
-		../Ipiranga_GUI/formregister.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Ipiranga_GUI/main.cpp
+		../include/Callbacks.hpp \
+		../include/Ads.hpp \
+		../include/Historic.hpp \
+		../include/Friendship.hpp \
+		ui_formregister.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o formregister.o ../Ipiranga_GUI/formregister.cpp
 
 loginuser.o: ../Ipiranga_GUI/loginuser.cpp ../Ipiranga_GUI/loginuser.h \
 		../Ipiranga_GUI/userapp.h \
 		../include/User.hpp \
+		../include/Callbacks.hpp \
+		../include/Ads.hpp \
+		../include/Historic.hpp \
+		../include/Friendship.hpp \
 		../Ipiranga_GUI/UserPages/initialpage.h \
 		../Ipiranga_GUI/UserPages/editprofile.h \
 		../Ipiranga_GUI/UserPages/friendspage.h \
-		../Ipiranga_GUI/UserPages/historic.h \
+		../Ipiranga_GUI/layout/friendslayout.h \
+		../Ipiranga_GUI/UserPages/historicpage.h \
+		../Ipiranga_GUI/layout/historiclayout.h \
 		../Ipiranga_GUI/UserPages/advertise.h \
 		../Ipiranga_GUI/UserPages/searchresult.h \
 		../Ipiranga_GUI/formregister.h \
+		../include/Account.hpp \
 		ui_loginuser.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o loginuser.o ../Ipiranga_GUI/loginuser.cpp
 
-userapp.o: ../Ipiranga_GUI/userapp.cpp ../Ipiranga_GUI/userapp.h \
+main.o: ../Ipiranga_GUI/main.cpp ../Ipiranga_GUI/loginuser.h \
+		../Ipiranga_GUI/userapp.h \
 		../include/User.hpp \
+		../include/Callbacks.hpp \
+		../include/Ads.hpp \
+		../include/Historic.hpp \
+		../include/Friendship.hpp \
 		../Ipiranga_GUI/UserPages/initialpage.h \
 		../Ipiranga_GUI/UserPages/editprofile.h \
 		../Ipiranga_GUI/UserPages/friendspage.h \
-		../Ipiranga_GUI/UserPages/historic.h \
+		../Ipiranga_GUI/layout/friendslayout.h \
+		../Ipiranga_GUI/UserPages/historicpage.h \
+		../Ipiranga_GUI/layout/historiclayout.h \
+		../Ipiranga_GUI/UserPages/advertise.h \
+		../Ipiranga_GUI/UserPages/searchresult.h \
+		../Ipiranga_GUI/formregister.h \
+		../include/Account.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Ipiranga_GUI/main.cpp
+
+userapp.o: ../Ipiranga_GUI/userapp.cpp ../Ipiranga_GUI/userapp.h \
+		../include/User.hpp \
+		../include/Callbacks.hpp \
+		../include/Ads.hpp \
+		../include/Historic.hpp \
+		../include/Friendship.hpp \
+		../Ipiranga_GUI/UserPages/initialpage.h \
+		../Ipiranga_GUI/UserPages/editprofile.h \
+		../Ipiranga_GUI/UserPages/friendspage.h \
+		../Ipiranga_GUI/layout/friendslayout.h \
+		../Ipiranga_GUI/UserPages/historicpage.h \
+		../Ipiranga_GUI/layout/historiclayout.h \
 		../Ipiranga_GUI/UserPages/advertise.h \
 		../Ipiranga_GUI/UserPages/searchresult.h \
 		ui_userapp.h \
 		../Ipiranga_GUI/loginuser.h \
-		../Ipiranga_GUI/formregister.h
+		../Ipiranga_GUI/formregister.h \
+		../include/Account.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o userapp.o ../Ipiranga_GUI/userapp.cpp
 
-formregister.o: ../Ipiranga_GUI/formregister.cpp ../Ipiranga_GUI/formregister.h \
+advertise.o: ../Ipiranga_GUI/UserPages/advertise.cpp ../Ipiranga_GUI/UserPages/advertise.h \
 		../include/User.hpp \
-		ui_formregister.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o formregister.o ../Ipiranga_GUI/formregister.cpp
-
-User.o: ../src/User.cpp ../include/User.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o User.o ../src/User.cpp
-
-initialpage.o: ../Ipiranga_GUI/UserPages/initialpage.cpp ../Ipiranga_GUI/UserPages/initialpage.h \
-		../include/User.hpp \
-		ui_initialpage.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o initialpage.o ../Ipiranga_GUI/UserPages/initialpage.cpp
+		../include/Callbacks.hpp \
+		../include/Ads.hpp \
+		../include/Historic.hpp \
+		../include/Friendship.hpp \
+		ui_advertise.h \
+		../Ipiranga_GUI/layout/adslayout.h \
+		../include/Deals.hpp \
+		../include/Security.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o advertise.o ../Ipiranga_GUI/UserPages/advertise.cpp
 
 editprofile.o: ../Ipiranga_GUI/UserPages/editprofile.cpp ../Ipiranga_GUI/UserPages/editprofile.h \
 		../include/User.hpp \
-		ui_editprofile.h
+		../include/Callbacks.hpp \
+		../include/Ads.hpp \
+		../include/Historic.hpp \
+		../include/Friendship.hpp \
+		ui_editprofile.h \
+		../include/Account.hpp \
+		../Ipiranga_GUI/userapp.h \
+		../Ipiranga_GUI/UserPages/initialpage.h \
+		../Ipiranga_GUI/UserPages/friendspage.h \
+		../Ipiranga_GUI/layout/friendslayout.h \
+		../Ipiranga_GUI/UserPages/historicpage.h \
+		../Ipiranga_GUI/layout/historiclayout.h \
+		../Ipiranga_GUI/UserPages/advertise.h \
+		../Ipiranga_GUI/UserPages/searchresult.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o editprofile.o ../Ipiranga_GUI/UserPages/editprofile.cpp
 
-historic.o: ../Ipiranga_GUI/UserPages/historic.cpp ../Ipiranga_GUI/UserPages/historic.h \
-		ui_historic.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o historic.o ../Ipiranga_GUI/UserPages/historic.cpp
-
 friendspage.o: ../Ipiranga_GUI/UserPages/friendspage.cpp ../Ipiranga_GUI/UserPages/friendspage.h \
+		../include/User.hpp \
+		../include/Callbacks.hpp \
+		../include/Ads.hpp \
+		../include/Historic.hpp \
+		../include/Friendship.hpp \
+		../Ipiranga_GUI/layout/friendslayout.h \
 		ui_friendspage.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o friendspage.o ../Ipiranga_GUI/UserPages/friendspage.cpp
 
-advertise.o: ../Ipiranga_GUI/UserPages/advertise.cpp ../Ipiranga_GUI/UserPages/advertise.h \
-		ui_advertise.h \
-		../Ipiranga_GUI/layout/ads.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o advertise.o ../Ipiranga_GUI/UserPages/advertise.cpp
+historicpage.o: ../Ipiranga_GUI/UserPages/historicpage.cpp ../Ipiranga_GUI/UserPages/historicpage.h \
+		../include/User.hpp \
+		../include/Callbacks.hpp \
+		../include/Ads.hpp \
+		../include/Historic.hpp \
+		../include/Friendship.hpp \
+		../Ipiranga_GUI/layout/historiclayout.h \
+		ui_historicpage.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o historicpage.o ../Ipiranga_GUI/UserPages/historicpage.cpp
+
+initialpage.o: ../Ipiranga_GUI/UserPages/initialpage.cpp ../Ipiranga_GUI/UserPages/initialpage.h \
+		../include/User.hpp \
+		../include/Callbacks.hpp \
+		../include/Ads.hpp \
+		../include/Historic.hpp \
+		../include/Friendship.hpp \
+		ui_initialpage.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o initialpage.o ../Ipiranga_GUI/UserPages/initialpage.cpp
 
 searchresult.o: ../Ipiranga_GUI/UserPages/searchresult.cpp ../Ipiranga_GUI/UserPages/searchresult.h \
+		../include/User.hpp \
+		../include/Callbacks.hpp \
+		../include/Ads.hpp \
+		../include/Historic.hpp \
+		../include/Friendship.hpp \
 		ui_searchresult.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o searchresult.o ../Ipiranga_GUI/UserPages/searchresult.cpp
 
-ads.o: ../Ipiranga_GUI/layout/ads.cpp ../Ipiranga_GUI/layout/ads.h \
-		ui_ads.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ads.o ../Ipiranga_GUI/layout/ads.cpp
+adslayout.o: ../Ipiranga_GUI/layout/adslayout.cpp ../Ipiranga_GUI/layout/adslayout.h \
+		ui_adslayout.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o adslayout.o ../Ipiranga_GUI/layout/adslayout.cpp
 
-searchs.o: ../Ipiranga_GUI/layout/searchs.cpp ../Ipiranga_GUI/layout/searchs.h \
-		ui_searchs.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o searchs.o ../Ipiranga_GUI/layout/searchs.cpp
+friendslayout.o: ../Ipiranga_GUI/layout/friendslayout.cpp ../Ipiranga_GUI/layout/friendslayout.h \
+		ui_friendslayout.h \
+		../include/Friendship.hpp \
+		../include/User.hpp \
+		../include/Callbacks.hpp \
+		../include/Ads.hpp \
+		../include/Historic.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o friendslayout.o ../Ipiranga_GUI/layout/friendslayout.cpp
 
 historiclayout.o: ../Ipiranga_GUI/layout/historiclayout.cpp ../Ipiranga_GUI/layout/historiclayout.h \
+		../include/User.hpp \
+		../include/Callbacks.hpp \
+		../include/Ads.hpp \
+		../include/Historic.hpp \
+		../include/Friendship.hpp \
 		ui_historiclayout.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o historiclayout.o ../Ipiranga_GUI/layout/historiclayout.cpp
 
-friendslayout.o: ../Ipiranga_GUI/layout/friendslayout.cpp ../Ipiranga_GUI/layout/friendslayout.h \
-		ui_friendslayout.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o friendslayout.o ../Ipiranga_GUI/layout/friendslayout.cpp
+searchads.o: ../Ipiranga_GUI/layout/searchads.cpp ../Ipiranga_GUI/layout/searchads.h \
+		../include/User.hpp \
+		../include/Callbacks.hpp \
+		../include/Ads.hpp \
+		../include/Historic.hpp \
+		../include/Friendship.hpp \
+		ui_searchads.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o searchads.o ../Ipiranga_GUI/layout/searchads.cpp
+
+serachfriends.o: ../Ipiranga_GUI/layout/serachfriends.cpp ../Ipiranga_GUI/layout/serachfriends.h \
+		../include/User.hpp \
+		../include/Callbacks.hpp \
+		../include/Ads.hpp \
+		../include/Historic.hpp \
+		../include/Friendship.hpp \
+		ui_serachfriends.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o serachfriends.o ../Ipiranga_GUI/layout/serachfriends.cpp
+
+Account.o: ../src/Account.cpp ../include/Account.hpp \
+		../include/User.hpp \
+		../include/Callbacks.hpp \
+		../include/Ads.hpp \
+		../include/Historic.hpp \
+		../include/Friendship.hpp \
+		../include/Security.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Account.o ../src/Account.cpp
+
+Ads.o: ../src/Ads.cpp ../include/Ads.hpp \
+		../include/User.hpp \
+		../include/Callbacks.hpp \
+		../include/Historic.hpp \
+		../include/Friendship.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Ads.o ../src/Ads.cpp
+
+Callbacks.o: ../src/Callbacks.cpp ../include/Callbacks.hpp \
+		../include/User.hpp \
+		../include/Ads.hpp \
+		../include/Historic.hpp \
+		../include/Friendship.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Callbacks.o ../src/Callbacks.cpp
+
+Deals.o: ../src/Deals.cpp ../include/Deals.hpp \
+		../include/Ads.hpp \
+		../include/User.hpp \
+		../include/Callbacks.hpp \
+		../include/Historic.hpp \
+		../include/Friendship.hpp \
+		../include/Security.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Deals.o ../src/Deals.cpp
+
+Friendship.o: ../src/Friendship.cpp ../include/Friendship.hpp \
+		../include/User.hpp \
+		../include/Callbacks.hpp \
+		../include/Ads.hpp \
+		../include/Historic.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Friendship.o ../src/Friendship.cpp
+
+Historic.o: ../src/Historic.cpp ../include/Historic.hpp \
+		../include/User.hpp \
+		../include/Callbacks.hpp \
+		../include/Ads.hpp \
+		../include/Friendship.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Historic.o ../src/Historic.cpp
+
+Payment.o: ../src/Payment.cpp ../include/Payment.hpp \
+		../include/Ads.hpp \
+		../include/User.hpp \
+		../include/Callbacks.hpp \
+		../include/Historic.hpp \
+		../include/Friendship.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Payment.o ../src/Payment.cpp
+
+Search.o: ../src/Search.cpp ../include/Search.hpp \
+		../include/User.hpp \
+		../include/Callbacks.hpp \
+		../include/Ads.hpp \
+		../include/Historic.hpp \
+		../include/Friendship.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Search.o ../src/Search.cpp
+
+Security.o: ../src/Security.cpp ../include/Security.hpp \
+		../include/User.hpp \
+		../include/Callbacks.hpp \
+		../include/Ads.hpp \
+		../include/Historic.hpp \
+		../include/Friendship.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Security.o ../src/Security.cpp
+
+User.o: ../src/User.cpp ../include/User.hpp \
+		../include/Callbacks.hpp \
+		../include/Ads.hpp \
+		../include/Historic.hpp \
+		../include/Friendship.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o User.o ../src/User.cpp
 
 qrc_resources.o: qrc_resources.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_resources.o qrc_resources.cpp
+
+moc_formregister.o: moc_formregister.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_formregister.o moc_formregister.cpp
 
 moc_loginuser.o: moc_loginuser.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_loginuser.o moc_loginuser.cpp
@@ -622,38 +903,38 @@ moc_loginuser.o: moc_loginuser.cpp
 moc_userapp.o: moc_userapp.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_userapp.o moc_userapp.cpp
 
-moc_formregister.o: moc_formregister.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_formregister.o moc_formregister.cpp
-
-moc_initialpage.o: moc_initialpage.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_initialpage.o moc_initialpage.cpp
+moc_advertise.o: moc_advertise.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_advertise.o moc_advertise.cpp
 
 moc_editprofile.o: moc_editprofile.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_editprofile.o moc_editprofile.cpp
 
-moc_historic.o: moc_historic.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_historic.o moc_historic.cpp
-
 moc_friendspage.o: moc_friendspage.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_friendspage.o moc_friendspage.cpp
 
-moc_advertise.o: moc_advertise.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_advertise.o moc_advertise.cpp
+moc_historicpage.o: moc_historicpage.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_historicpage.o moc_historicpage.cpp
+
+moc_initialpage.o: moc_initialpage.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_initialpage.o moc_initialpage.cpp
 
 moc_searchresult.o: moc_searchresult.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_searchresult.o moc_searchresult.cpp
 
-moc_ads.o: moc_ads.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_ads.o moc_ads.cpp
+moc_adslayout.o: moc_adslayout.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_adslayout.o moc_adslayout.cpp
 
-moc_searchs.o: moc_searchs.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_searchs.o moc_searchs.cpp
+moc_friendslayout.o: moc_friendslayout.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_friendslayout.o moc_friendslayout.cpp
 
 moc_historiclayout.o: moc_historiclayout.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_historiclayout.o moc_historiclayout.cpp
 
-moc_friendslayout.o: moc_friendslayout.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_friendslayout.o moc_friendslayout.cpp
+moc_searchads.o: moc_searchads.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_searchads.o moc_searchads.cpp
+
+moc_serachfriends.o: moc_serachfriends.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_serachfriends.o moc_serachfriends.cpp
 
 ####### Install
 

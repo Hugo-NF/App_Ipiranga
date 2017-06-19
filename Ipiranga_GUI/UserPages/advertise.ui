@@ -100,14 +100,8 @@
                   <height>20</height>
                  </rect>
                 </property>
-                <property name="inputMask">
-                 <string>99999999.00</string>
-                </property>
-                <property name="text">
-                 <string>.</string>
-                </property>
                 <property name="maxLength">
-                 <number>11</number>
+                 <number>32767</number>
                 </property>
                 <property name="alignment">
                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>

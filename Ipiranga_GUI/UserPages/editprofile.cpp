@@ -2,7 +2,6 @@
 #include "ui_editprofile.h"
 #include <QMessageBox>
 #include "../include/Account.hpp"
-#include "../userapp.h"
 
 EditProfile::EditProfile(QWidget *parent) :
     QWidget(parent),
@@ -10,9 +9,7 @@ EditProfile::EditProfile(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    // Unenable Fields
-    ui->lineLogin->setEnabled(false);
-    ui->lineCPF->setEnabled(false);
+    Father = parent;
 }
 
 EditProfile::~EditProfile()
@@ -23,6 +20,10 @@ EditProfile::~EditProfile()
 void EditProfile::SetCurrentUser(User _CurrentUser){
     CurrentUser = _CurrentUser;
     SetUserFields();
+}
+
+void EditProfile::SetFather(QWidget *_father){
+    Father = _father;
 }
 
 //--------------------------------SET FIELDS------------------------------------
@@ -61,7 +62,7 @@ void EditProfile::SetUserFields(){
     }
 
     if(CurrentUser.accountRegistered()){
-        ui->lineNameBank->setText(QString::fromStdString(CurrentUser.getAccountNumber()));
+        ui->lineNameBank->setText(QString::fromStdString(CurrentUser.getCardName()));
         ui->comboBox_Bank->setCurrentText(QString::fromStdString(CurrentUser.getBank()));
         ui->lineAgency->setText(QString::fromStdString(CurrentUser.getAgency()));
         ui->lineAccount->setText(QString::fromStdString(CurrentUser.getAccountNumber()));
@@ -139,7 +140,8 @@ void EditProfile::on_pushButton_Delete_clicked()
             try{
                 Account::deleteAccount(CurrentUser.getId());
                 QMessageBox::information(this,tr("Delete Account"),tr("Your account was deleted with sucess!"));
-                system("killall Ipiranga");
+                system("./Ipiranga&");
+                Father->close();
             }catch(char* err){
                 QMessageBox::warning(this,tr("Delete Account"),tr(err));
             }
@@ -158,7 +160,8 @@ void EditProfile::on_pushButton_Inactive_clicked()
             Account::activateAccount(CurrentUser.getId(),false);
             QMessageBox::information(this,tr("Inactive Profile"),tr("Your account was desactivated with sucess!\n"
                                                                     "When you login again, it will be reactivated!"));
-            system("killall Ipiranga");
+            system("./Ipiranga&");
+            Father->close();
         }catch(char* err){
             QMessageBox::warning(this,tr("Inactive Account"),tr(err));
         }

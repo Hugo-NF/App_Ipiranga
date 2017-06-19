@@ -1,6 +1,7 @@
 #include "friendslayout.h"
 #include "ui_friendslayout.h"
 #include <QMessageBox>
+#include "../include/Friendship.hpp"
 
 FriendsLayout::FriendsLayout(QWidget *parent) :
     QWidget(parent),
@@ -19,6 +20,7 @@ void FriendsLayout::on_Button_delete_clicked()
 {
     if(QMessageBox::question(this,tr("Delete Friend"),tr("Are you sure that want to delete this friend?"))
             == QMessageBox::Yes){
+        Friendship::removeFriend(ID_User,ID);
         this->~FriendsLayout();
     }
 }
@@ -44,11 +46,6 @@ void FriendsLayout::setID(int id){
     ID = id;
 }
 
-//------------------GET FUNTIONS---------------------
-int FriendsLayout::getID(){
-    return ID;
-}
-
-QString FriendsLayout::getEmail(){
-    return ui->label_email->text();
+void FriendsLayout::setID_User(int id_user){
+    ID_User = id_user;
 }

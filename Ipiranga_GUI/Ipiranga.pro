@@ -30,18 +30,18 @@ SOURCES += \
     layout/adslayout.cpp \
     layout/friendslayout.cpp \
     layout/historiclayout.cpp \
+    layout/searchads.cpp \
+    layout/serachfriends.cpp \
     ../src/Account.cpp \
     ../src/Ads.cpp \
     ../src/Callbacks.cpp \
     ../src/Deals.cpp \
+    ../src/Friendship.cpp \
     ../src/Historic.cpp \
     ../src/Payment.cpp \
     ../src/Search.cpp \
     ../src/Security.cpp \
-    ../src/User.cpp \
-    layout/serachfriends.cpp \
-    layout/searchads.cpp
-
+    ../src/User.cpp
 
 
 HEADERS += \
@@ -57,18 +57,18 @@ HEADERS += \
     layout/adslayout.h \
     layout/friendslayout.h \
     layout/historiclayout.h \
+    layout/searchads.h \
+    layout/serachfriends.h \
     ../include/Account.hpp \
     ../include/Ads.hpp \
     ../include/Callbacks.hpp \
     ../include/Deals.hpp \
+    ../include/Friendship.hpp \
     ../include/Historic.hpp \
     ../include/Payment.hpp \
     ../include/Search.hpp \
     ../include/Security.hpp \
-    ../include/User.hpp \
-    layout/serachfriends.h \
-    layout/searchads.h
-
+    ../include/User.hpp
 
 
 FORMS += \
@@ -84,8 +84,9 @@ FORMS += \
     layout/adslayout.ui \
     layout/friendslayout.ui \
     layout/historiclayout.ui \
-    layout/serachfriends.ui \
-    layout/searchads.ui
+    layout/searchads.ui \
+    layout/serachfriends.ui
+
 
 RESOURCES += \
     resources.qrc

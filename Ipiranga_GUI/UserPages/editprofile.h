@@ -18,6 +18,7 @@ public:
     ~EditProfile();
 
     void SetCurrentUser(User);  //Set the User Active
+    void SetFather(QWidget *);
 
 private slots:
     void on_pushButton_Undo_clicked();      // reset de fields
@@ -27,6 +28,8 @@ private slots:
 
 private:
     Ui::EditProfile *ui;
+
+    QWidget *Father;    //Adress of parent object
 
     User CurrentUser; //User Active
 

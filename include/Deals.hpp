@@ -3,7 +3,8 @@
 #define APP_IPIRANGA_DEALS_HPP
 
 #include "Ads.hpp"
-#include <ctime>
+#include "Security.hpp"
+
 
 #define DELETE_AD_ERROR "Sorry, we could not delete your ad right now, please try again later"
 #define REGISTER_AD_ERROR "Sorry, we could not publish your ad right now, please try again later"

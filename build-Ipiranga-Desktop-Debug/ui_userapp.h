@@ -138,16 +138,12 @@ public:
         Frame_Search->setSizePolicy(sizePolicy);
         Frame_Search->setMinimumSize(QSize(0, 40));
         Frame_Search->setStyleSheet(QStringLiteral(""));
-        Frame_Search->setFrameShape(QFrame::StyledPanel);
-        Frame_Search->setFrameShadow(QFrame::Raised);
         horizontalLayout_2 = new QHBoxLayout(Frame_Search);
         horizontalLayout_2->setSpacing(0);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
         horizontalLayout_2->setContentsMargins(0, 0, 0, 0);
         left = new QFrame(Frame_Search);
         left->setObjectName(QStringLiteral("left"));
-        left->setFrameShape(QFrame::StyledPanel);
-        left->setFrameShadow(QFrame::Raised);
 
         horizontalLayout_2->addWidget(left);
 
@@ -184,8 +180,6 @@ public:
         content->setSizePolicy(sizePolicy1);
         content->setMinimumSize(QSize(485, 30));
         content->setMaximumSize(QSize(460, 30));
-        content->setFrameShape(QFrame::StyledPanel);
-        content->setFrameShadow(QFrame::Raised);
         line_search = new QLineEdit(content);
         line_search->setObjectName(QStringLiteral("line_search"));
         line_search->setGeometry(QRect(0, 0, 460, 30));
@@ -228,8 +222,6 @@ public:
 
         right = new QFrame(Frame_Search);
         right->setObjectName(QStringLiteral("right"));
-        right->setFrameShape(QFrame::StyledPanel);
-        right->setFrameShadow(QFrame::Raised);
 
         horizontalLayout_2->addWidget(right);
 
@@ -240,8 +232,6 @@ public:
         Adjust_ads->setObjectName(QStringLiteral("Adjust_ads"));
         Adjust_ads->setMinimumSize(QSize(0, 200));
         Adjust_ads->setStyleSheet(QStringLiteral("background:rgb(8, 122, 221)"));
-        Adjust_ads->setFrameShape(QFrame::StyledPanel);
-        Adjust_ads->setFrameShadow(QFrame::Raised);
         gridLayout_7 = new QGridLayout(Adjust_ads);
         gridLayout_7->setObjectName(QStringLiteral("gridLayout_7"));
         label_category = new QLabel(Adjust_ads);
@@ -420,8 +410,6 @@ public:
         Adjust_friends->setObjectName(QStringLiteral("Adjust_friends"));
         Adjust_friends->setMinimumSize(QSize(0, 100));
         Adjust_friends->setStyleSheet(QStringLiteral("background:rgb(8, 122, 221)"));
-        Adjust_friends->setFrameShape(QFrame::StyledPanel);
-        Adjust_friends->setFrameShadow(QFrame::Raised);
         gridLayout = new QGridLayout(Adjust_friends);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         Order_by_2 = new QGroupBox(Adjust_friends);
@@ -528,8 +516,6 @@ public:
         Menu->setSizePolicy(sizePolicy2);
         Menu->setMinimumSize(QSize(160, 400));
         Menu->setStyleSheet(QStringLiteral(""));
-        Menu->setFrameShape(QFrame::StyledPanel);
-        Menu->setFrameShadow(QFrame::Raised);
         User_img = new QLabel(Menu);
         User_img->setObjectName(QStringLiteral("User_img"));
         User_img->setGeometry(QRect(10, 20, 50, 50));
@@ -623,8 +609,6 @@ public:
         sizePolicy3.setHeightForWidth(Anuncio_Menu->sizePolicy().hasHeightForWidth());
         Anuncio_Menu->setSizePolicy(sizePolicy3);
         Anuncio_Menu->setMinimumSize(QSize(160, 0));
-        Anuncio_Menu->setFrameShape(QFrame::StyledPanel);
-        Anuncio_Menu->setFrameShadow(QFrame::Raised);
 
         Box_Menu->addWidget(Anuncio_Menu);
 
@@ -642,8 +626,6 @@ public:
         frame = new QFrame(centralwidget);
         frame->setObjectName(QStringLiteral("frame"));
         frame->setMinimumSize(QSize(0, 0));
-        frame->setFrameShape(QFrame::StyledPanel);
-        frame->setFrameShadow(QFrame::Raised);
 
         Box_anuncio->addWidget(frame);
 

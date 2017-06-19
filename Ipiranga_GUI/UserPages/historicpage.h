@@ -4,6 +4,7 @@
 #include <QWidget>
 #include "../include/User.hpp"
 #include "layout/historiclayout.h"
+#include "../include/Historic.hpp"
 #include <vector>
 
 namespace Ui {
@@ -23,6 +24,10 @@ public:
 private slots:
     void on_Button_all_clicked();   // ordenation by all
 
+    void on_Button_sales_clicked();
+
+    void on_Button_shopping_clicked();
+
 private:
     Ui::HistoricPage *ui;
 
@@ -32,8 +37,8 @@ private:
     int Number_historics;       //Number of objects on the screen
 
     //Methods
-    void addHistorics();
-    void setHistoric(int, QString*, HistoricLayout*);
+    void addHistorics(bool, bool);
+    void setHistoric(Historic*, HistoricLayout*);
     void deleteHistorics(HistoricLayout*);
 };
 

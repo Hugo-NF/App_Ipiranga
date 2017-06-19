@@ -2,15 +2,16 @@
 #define APP_IPIRANGA_PAYMENT_HPP
 
 #include "User.hpp"
+#include <cctype>
 #define CARD_INFO_MISMATCH "Inconsistent credit card information"
 #define INVALID_CPF "Invalid CPF number"
+#define PROFANITY_FILTER "Your advertisement is in disagreement with our terms of use"
 
-class Security{ //Tasks for this class: check consistency of the banking data provided by the user and make payments
+class Security{
 public:
     static void verifyCPF(const char *);
     static void verifyCard(User *);
-    static void verifyBankAccount(User *);
-    static void checkout();
+    static void filter(Ads *);
 };
 
 #endif //APP_IPIRANGA_PAYMENT_HPP

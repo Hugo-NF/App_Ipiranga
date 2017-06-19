@@ -6,7 +6,7 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
-#include <list>
+#include <algorithm>
 #include <string>
 #include <string.h>
 #include <stdlib.h>
@@ -73,6 +73,7 @@ public:
     static void cleanTable();
     void insertOperation(sqlite3 *, User *);
     void updateOperation(sqlite3 *, User *);
+    static vector<User *> listFriends(unsigned int, bool, string, bool);
 
 public: //Public Methods
     User(unsigned int id){

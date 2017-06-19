@@ -87,8 +87,6 @@ public:
         sizePolicy1.setHeightForWidth(frame->sizePolicy().hasHeightForWidth());
         frame->setSizePolicy(sizePolicy1);
         frame->setStyleSheet(QStringLiteral(""));
-        frame->setFrameShape(QFrame::StyledPanel);
-        frame->setFrameShadow(QFrame::Raised);
         horizontalLayout = new QHBoxLayout(frame);
         horizontalLayout->setSpacing(0);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
@@ -137,8 +135,6 @@ public:
         sizePolicy2.setHeightForWidth(frame_2->sizePolicy().hasHeightForWidth());
         frame_2->setSizePolicy(sizePolicy2);
         frame_2->setMinimumSize(QSize(500, 30));
-        frame_2->setFrameShape(QFrame::StyledPanel);
-        frame_2->setFrameShadow(QFrame::Raised);
         horizontalLayout_2 = new QHBoxLayout(frame_2);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
         horizontalSpacer_3 = new QSpacerItem(139, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);

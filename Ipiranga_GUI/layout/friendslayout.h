@@ -21,8 +21,7 @@ public:
     void setEmail(QString);
     void setRating(QString);
     void setID(int);
-    int getID();
-    QString getEmail();
+    void setID_User(int);
 
 
 private slots:
@@ -31,6 +30,7 @@ private slots:
 private:
     Ui::FriendsLayout *ui;
     int ID; //id friends
+    int ID_User;
 };
 
 #endif // FRIENDSLAYOUT_H
