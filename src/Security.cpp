@@ -50,7 +50,7 @@ void Security::filter(Ads *attempt) {
     string description = attempt->getDescription();
     size_t found;
     vector<string> blockedWords(11);
-    int i;
+    unsigned int i;
 
     for(i=0; i<title.size(); i++){
         title[i] = tolower(title[i]);

@@ -14,10 +14,12 @@ private:
     string sellerUsername;
     unsigned int buyerId;
     string buyerUsername;
-    unsigned int rating;
+    unsigned int selleRating;
+    unsigned int buyeRating;
     unsigned int adId;
     string adTitle;
     unsigned int quantity;
+    string category;
     double price;
     string date;
 
@@ -40,8 +42,10 @@ public:
     unsigned int getBuyerId();
     void setBuyerUsername(string);
     string getBuyerUsername();
-    void setRating(unsigned int);
-    unsigned int getRating();
+    void setSellerRating(unsigned int);
+    unsigned int getSellerRating();
+    void setBuyerRating(unsigned int);
+    unsigned int getBuyerRating();
     void setAdId(unsigned int);
     unsigned int getAdId();
     void setAdTitle(string);
@@ -52,6 +56,9 @@ public:
     double getPrice();
     void setDate(string);
     string getDate();
+    unsigned int getUserRating(unsigned int);
+    string getCategory();
+    void setCategory();
 
     static void cleanTable();
     void insertOperation(sqlite3 *, Historic *);

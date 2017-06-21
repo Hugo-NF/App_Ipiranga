@@ -54,21 +54,21 @@ void Friendship::addAsFriend(unsigned int currentUserId, unsigned int newFriendI
     char *errMsg = 0;
     unsigned int result = 0;
     sqlite3 *connection;
-    string SQL;
+    char SQL[5000];
 
     flag = sqlite3_open(DATABASE, &connection);
     if(flag!= SQLITE_OK)
         throw (char *) CONNECTION_ERROR;
 
     sprintf(SQL, "SELECT COUNT(id) FROM FRIENDS WHERE idUser1 = %u OR idUser2 = %u AND idUser1 = %u OR idUser2 = %u;", currentUserId, newFriendId, newFriendId, currentUserId);
-    flag = sqlite3_exec(connection, SQL.c_str(), Callbacks::countCallback, &result, &errMsg);
+    flag = sqlite3_exec(connection, SQL, Callbacks::countCallback, &result, &errMsg);
     if(flag != SQLITE_OK)
         throw CONNECTION_ERROR;
 
     if(result != SQLITE_OK){
         sprintf(SQL, "INSERT INTO FRIENDS (idUser1, idUser2) VALUES(%u, %u);", currentUserId, newFriendId);
 
-        flag = sqlite3_exec(connection, SQL.c_str(), Callbacks::friendshipCallback, 0, &errMsg);
+        flag = sqlite3_exec(connection, SQL, Callbacks::friendshipCallback, 0, &errMsg);
         if(flag != SQLITE_OK)
             throw CONNECTION_ERROR;
 
@@ -86,7 +86,7 @@ void Friendship::removeFriend(unsigned int currentUserId, unsigned int rmFriendI
     int flag;
     char *errMsg = 0;
     sqlite3 *connection;
-    string SQL;
+    char SQL[5000];
 
     flag = sqlite3_open(DATABASE, &connection);
     if(flag!= SQLITE_OK)
@@ -94,7 +94,7 @@ void Friendship::removeFriend(unsigned int currentUserId, unsigned int rmFriendI
 
     sprintf(SQL, "DELETE FROM FRIENDS WHERE idUser1 = %u AND idUser2 = %u OR idUser1 = %u AND idUser2 = %u;", currentUserId, rmFriendId, rmFriendId, currentUserId);
 
-    flag = sqlite3_exec(connection, SQL.c_str(), Callbacks::friendshipCallback, 0, &errMsg);
+    flag = sqlite3_exec(connection, SQL, Callbacks::friendshipCallback, 0, &errMsg);
     if(flag != SQLITE_OK)
         throw CONNECTION_ERROR;
 
@@ -103,68 +103,20 @@ void Friendship::removeFriend(unsigned int currentUserId, unsigned int rmFriendI
         throw (char *) CONNECTION_ERROR;
 }
 
-vector<User *> Friendship::listFriends(unsigned int currentUserId, bool toggleOrdenation, string OrderBy, bool toggleOrdenationSequence) {
-    int flag;
-    unsigned int i;
-    char *errMsg = 0;
-    sqlite3 *connection;
-    string SQL;
-    string friendsQuery;
-    vector<User *> results;
-    vector<unsigned int> friendsIds;
-
-    flag = sqlite3_open(DATABASE, &connection);
-    if(flag!= SQLITE_OK)
-        throw (char *) CONNECTION_ERROR;
-
-    friendsIds = Friendship::getFriendsIds(connection, currentUserId);
-
-    if(!friendsIds.empty()){
-        sprintf(SQL, "SELECT * FROM USERS WHERE id = ");
-        for(i=0; i<friendsIds.size()-1; i++){
-            sprintf(friendsQuery, "%u OR id = ", friendsIds[i]);
-            SQL.append(friendsQuery);
-        }
-        if (toggleOrdenation){
-            if(toggleOrdenationSequence){
-                sprintf(friendsQuery, "%u ORDER BY %s ASC;", friendsIds[i], OrderBy);
-                SQL.append(friendsQuery);
-            }
-            else{
-                sprintf(friendsQuery, "%u ORDER BY %s DESC;", friendsIds[i], OrderBy);
-                SQL.append(friendsQuery);
-            }
-        }
-        else {
-            sprintf(friendsQuery, "%u;", friendsIds[i]);
-            SQL.append(friendsQuery);
-        }
-        flag = sqlite3_exec(connection, SQL.c_str(), Callbacks::userCallback, &results, &errMsg);
-        if(flag!= SQLITE_OK)
-            throw (char *) CONNECTION_ERROR;
-    }
-    flag = sqlite3_close(connection);
-    if(flag!= SQLITE_OK)
-        throw (char *) CONNECTION_ERROR;
-
-    return results;
-}
-
 vector<unsigned int> Friendship::getFriendsIds(sqlite3 *connection, unsigned int currentUserId) {
     unsigned int i;
     int flag;
-    string SQL;
+    char SQL[300];
     char *errMsg = 0;
     vector<unsigned int> results;
     vector<Friendship *> friendshipNodes;
 
 
     sprintf(SQL, "SELECT * FROM FRIENDS WHERE idUser1 = %u OR idUser2 = %u;", currentUserId, currentUserId);
-    flag = sqlite3_exec(connection, SQL.c_str(), Callbacks::friendshipCallback, &friendshipNodes, &errMsg);
+    flag = sqlite3_exec(connection, SQL, Callbacks::friendshipCallback, &friendshipNodes, &errMsg);
+
     if(flag!= SQLITE_OK)
         throw (char *) CONNECTION_ERROR;
-
-
     for (i = 0; i < friendshipNodes.size(); i++) {
         if(friendshipNodes[i]->getUser1Id() == currentUserId)
             results.push_back(friendshipNodes[i]->getUser2Id());
@@ -178,8 +130,8 @@ vector<unsigned int> Friendship::getFriendsIds(sqlite3 *connection, unsigned int
 vector<unsigned int> Friendship::getFriendsofFriendsIds(sqlite3 *connection, unsigned int currentUserId) {
     unsigned int i;
     int flag;
-    string SQL;
-    string friendsQuery;
+    char SQL[5000];
+    char friendsQuery[300];
     char *errMsg = 0;
     vector<unsigned int> fOfFriendsIds;
     vector<unsigned int> friendsIds;
@@ -194,11 +146,11 @@ vector<unsigned int> Friendship::getFriendsofFriendsIds(sqlite3 *connection, uns
         sprintf(SQL, "SELECT * FROM FRIENDS WHERE idUser1 = ");
         for(i=0; i<friendsIds.size()-1; i++){
             sprintf(friendsQuery, "%u OR idUser2 = %u AND idUser1 =", friendsIds[i], friendsIds[i]);
-            SQL.append(friendsQuery);
+            strcat(SQL,friendsQuery);
         }
         sprintf(friendsQuery, "%u OR idUser2 = %u;", friendsIds[i], friendsIds[i]);
-        SQL.append(friendsQuery);
-        flag = sqlite3_exec(connection, SQL.c_str(), Callbacks::friendshipCallback, &friendshipNodes, &errMsg);
+        strcat(SQL,friendsQuery);
+        flag = sqlite3_exec(connection, SQL, Callbacks::friendshipCallback, &friendshipNodes, &errMsg);
         if(flag!= SQLITE_OK)
             throw (char *) CONNECTION_ERROR;
         for (i=0; i<friendshipNodes.size(); i++){
@@ -207,6 +159,8 @@ vector<unsigned int> Friendship::getFriendsofFriendsIds(sqlite3 *connection, uns
             else
                 fOfFriendsIds.push_back(friendshipNodes[i]->getUser1Id());
         }
+        sort(friendsIds.begin(), friendsIds.end());
+        sort(fOfFriendsIds.begin(), fOfFriendsIds.end());
         it = std::set_difference(friendsIds.begin(), friendsIds.end(), fOfFriendsIds.begin(), fOfFriendsIds.end(), results.begin());
         results.resize(it-results.begin());
 

@@ -31,7 +31,6 @@ public:
 
     static void addAsFriend(unsigned int, unsigned int);
     static void removeFriend(unsigned int, unsigned int);
-    static vector<User *> listFriends(unsigned int, bool, string, bool);
     static vector<unsigned int> getFriendsIds(sqlite3 *, unsigned int);
     static vector<unsigned int> getFriendsofFriendsIds(sqlite3 *, unsigned int);
 

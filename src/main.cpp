@@ -3,8 +3,7 @@
 #include "../include/User.hpp"
 #include "../include/Account.hpp"
 #include "../include/Security.hpp"
-#include "../include/Deals.hpp"
-#include "../include/Payment.hpp"
+#include "../include/Advertise.hpp"
 
 using namespace std;
 /*
@@ -181,30 +180,39 @@ TEST(Account_Manipulation, Updating_Profile){
 
 }
 
-TEST(AdsClass, CreateAd) {
-    //User::cleanTable();
-    //Ads::cleanTable();
-    //Historic::cleanTable();
+TEST(AdsClass, CreateAd){
+    sqlite3 *connection;
+    int flag;
+    char *errMsg=0;
+    vector<Ads *> result;
+    flag = sqlite3_open(DATABASE, &connection);
+    if(flag!=SQLITE_OK)
+        throw (char *) REGISTER_AD_ERROR;
 
     vector<string> campos(3);
-    User *usuario_logado;
-    campos[0] = "Carros";
-    campos[1] = "queropeixequeopariu";
-    campos[2] = "Só faltou ser tração traseira";
 
+    campos[0] = "Carros";
+    campos[1] = "Honda Type R";
+    campos[2] = "Só faltou ser tração traseira";
     try{
-        usuario_logado = Account::login("Big_Moas15", "123456789GO");
-        ASSERT_EQ("Big Moai", usuario_logado->getFirstName());
+        Advertise::editAd(4, campos, 129000, 2);
     }
-    catch(char *error){
+    catch (char *error){
         cout<<error<<endl;
     }
-    try {
-        Deals::createAd(usuario_logado, campos, 129000, 2);
+    flag = sqlite3_exec(connection, "SELECT * from ADS", Callbacks::adsCallback, &result, &errMsg);
+    if(flag!=SQLITE_OK)
+        throw (char *) REGISTER_AD_ERROR;
+
+    for (int i = 0; i<result.size(); i++){
+        ASSERT_EQ("Carros", result[i]->getCategory());
+        cout<<result[i]->getDate()<<endl;
+        cout<<result[i]->getTitle()<<endl;
     }
-    catch (char *error) {
-        cout << error << endl;
-    }
+
+    flag = sqlite3_close(connection);
+    if(flag!=SQLITE_OK)
+        throw (char *) REGISTER_AD_ERROR;
 }
 
 TEST(AdsClass, GetAds){
@@ -229,44 +237,9 @@ TEST(AdsClass, GetAds){
     flag = sqlite3_close(connection);
     if(flag!=SQLITE_OK)
         throw (char *) REGISTER_AD_ERROR;
-}
-TEST(Payments, Buying_something){
-    Ads teste(1);
-    teste.setTitle("queropeixequeopariu");
-    teste.setCategory("Carros");
-    teste.setDate("Sat, Jun 17 2017 - 17:56");
-    teste.setSellerUsername("Big_Moas15");
-    teste.setAmount(2);
-    teste.setDescription("Só faltou ser tração traseira");
-    teste.setCity("Brasília");
-    teste.setState("DF");
-    teste.setPrice(129000);
-    teste.setSellerRating(0);
-    teste.setSellerId(2);
+}*/
 
-    User *usuario_logado = Account::login("Big_Moas22", "123456789GO");
-    ASSERT_EQ("Big Moai", usuario_logado->getFirstName());
 
-    try{
-        Payment::makePayment(&teste, usuario_logado, 2);
-    }
-    catch (char *error){
-        cout<<error<<endl;
-    }
-}
-
-TEST(Payments, Withdraw_test){
-    User *usuario_logado = Account::login("Big_Moas15", "123456789GO");
-    ASSERT_EQ("Big Moai", usuario_logado->getFirstName());
-    try{
-        Payment::withdrawBalance(usuario_logado, 300000);
-    }
-    catch (char *err){
-        cout<<err<<endl;
-    }
-
-}
-*/
 
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);

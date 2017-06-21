@@ -73,6 +73,7 @@ public:
     static void cleanTable();
     void insertOperation(sqlite3 *, User *);
     void updateOperation(sqlite3 *, User *);
+    static vector<User *> listFriends(unsigned int, bool, string, bool);
 
 public: //Public Methods
     User(unsigned int id){

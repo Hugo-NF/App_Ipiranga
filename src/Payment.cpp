@@ -36,7 +36,9 @@ void Payment::makePayment(Ads *ad, User *buyer, unsigned int quantity) {
     entry.setSellerUsername(ad->getSellerUsername());
     entry.setBuyerId(buyer->getId());
     entry.setBuyerUsername(buyer->getUsername());
-    entry.setRating(0);
+    entry.setCategory(ad->getCategory());
+    entry.setBuyerRating(0);
+    entry.setSellerRating(0);
     entry.setAdId(ad->getId());
     entry.setAdTitle(ad->getTitle());
     entry.setQuantity(quantity);

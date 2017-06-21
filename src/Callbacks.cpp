@@ -63,12 +63,14 @@ int Callbacks::historicCallback(void *ptr, int argc, char **argv, char **colName
     currentReg->setSellerUsername(argv[2]);
     currentReg->setBuyerId(atoi(argv[3]));
     currentReg->setBuyerUsername(argv[4]);
-    currentReg->setRating(atoi(argv[5]));
-    currentReg->setAdId(atoi(argv[6]));
-    currentReg->setQuantity(atoi(argv[7]));
-    currentReg->setAdTitle(argv[8]);
-    currentReg->setPrice(atof(argv[9]));
-    currentReg->setDate(argv[10]);
+    currentReg->setSellerRating(atoi(argv[5]));
+    currentReg->setBuyerRating(atoi(argv[6]));
+    currentReg->setRating(atoi(argv[7]));
+    currentReg->setAdId(atoi(argv[8]));
+    currentReg->setQuantity(atoi(argv[9]));
+    currentReg->setAdTitle(argv[10]);
+    currentReg->setPrice(atof(argv[11]));
+    currentReg->setDate(argv[12]);
 
     result->push_back(currentReg);
     return 0;
@@ -79,6 +81,10 @@ int Callbacks::friendshipCallback(void *ptr, int argc, char **argv, char **colNa
     Friendship *currentFriend = new Friendship(atoi(argv[0]));
     currentFriend->setUser1Id(atoi(argv[1]));
     currentFriend->setUser2Id(atoi(argv[2]));
+
+    result->push_back(currentFriend);
+
+    return 0;
 }
 
 int Callbacks::averageCallback(void *ptr, int argc, char **argv, char **colNames) {
