@@ -91,7 +91,7 @@ void Account::registerUser(vector<string> fields, bool Card, bool Bank){
     }
 }
 
-void Account::activateAccount(int id, bool activation){
+void Account::activateAccount(unsigned int id, bool activation){
     int result;
     char *errMsg = 0;
     char SQL[100];
@@ -105,6 +105,12 @@ void Account::activateAccount(int id, bool activation){
     result = sqlite3_exec(connection, SQL, Callbacks::userCallback, 0, &errMsg);
     if(result != SQLITE_OK)
         throw (char *) ACTIVATION_ERROR;
+    if(!activation){
+        sprintf(SQL, "DELETE FROM ADS WHERE sellerId = %u;", id);
+        result = sqlite3_exec(connection, SQL, Callbacks::adsCallback, 0, &errMsg);
+        if(result != SQLITE_OK)
+            throw (char *) ACTIVATION_ERROR;
+    }
 
     flag = sqlite3_close(connection);
     if(flag!=SQLITE_OK)

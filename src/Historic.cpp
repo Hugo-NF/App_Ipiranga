@@ -183,7 +183,7 @@ void Historic::evaluate(Historic *entry, unsigned int id, unsigned int rating) {
         if(flag != SQLITE_OK)
             throw (char *) CONNECTION_ERROR;
 
-    } else {
+    } else if (id == entry->getBuyerId()){
         sprintf(SQL, "UPDATE HISTORIC set selleRating = %u WHERE id = %u AND adId = %u;", rating, entry->getId(), entry->getAdId());
         flag = sqlite3_exec(connection, SQL, Callbacks::historicCallback, 0, &errMsg);
         if(flag != SQLITE_OK)

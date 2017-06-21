@@ -9,9 +9,32 @@
 #define UNAVAIABLE_PRODUCT "Sorry, but we don't have enough stock to meet your request"
 #define NOT_ENOUGH_MONEY "You don't have enough balance for this operation"
 
+/**
+ * Class Payment
+ * Classe responsável por definir métodos estaticos para realização das transações
+ * @Assertivas_estruturais: Todas os metodos dessa classe realizam operações atômicas, consistentes, isoladas e duráveis(ACID).Propriedade herdada do sqlite.
+ * Define a interface para pagamentos com a camada View
+ */
+
 class Payment{
 public:
+    /**
+     * void makePayment(Ads *, User*, unsigned int);
+     * Realiza a compra de um anuncio
+     * @Assertivas_entrada: Ads* e User* definem objetos com atributos definidos
+     * @Argumento1: Ponteiro para o objeto que define o anuncio da ser comprado
+     * @Argumento2: Ponteiro para o objeto que define o usuario comprador
+     * @Argumento3: Inteiro definindo a quantidade de itens a serem comprados
+     * @throws: @InvalidPayment: Metodo pode lançar mensagens de compra inválida, por exemplo compras dos próprios anuncios ou indisponibilidade de estoque
+     */
     static void makePayment(Ads *, User*, unsigned int);
+    /**
+     * void withdrawBalance(User *, double);
+     * Permite ao usuário retirar o dinheiro da sua conta Ipiranga(TM)
+     * @Argumento1: Ponteiro para o usuário atual, que realizará o saque
+     * @Argumento2: double definindo o valor a ser retirado
+     * @throws: @InvalidWithdraw: Metodo pode lancar mensagem de saldo indisponivel
+     */
     static void withdrawBalance(User *, double);
 };
 
