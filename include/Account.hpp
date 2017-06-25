@@ -44,7 +44,7 @@ public:
      * @Argumento1: um inteiro correspondente ao id da conta que será ativada/desativada
      * @Argumento2: um booleano indicando qual será o novo estado da conta
      */
-    static void activateAccount(int, bool);
+    static void activateAccount(unsigned int, bool);
     /**
      * void deleteAccount(int);
      * Deleta permanentemente a conta de um usuario
