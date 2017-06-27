@@ -53,7 +53,7 @@ void Advertise::set_ActivesAds()
         AdsLayout *ads_active = new AdsLayout;
         ads_active->setID(fields[i]->getId());
         ads_active->setTitle(QString::fromStdString(fields[i]->getTitle()));
-        //ads_active->setCategory(QString::fromStdString(fields[i]->getCategory())); ?????????
+        ads_active->setCategory(QString::fromStdString(fields[i]->getCategory()));
         ads_active->setPrice(QString::number(fields[i]->getPrice()));
         ads_active->setDate(QString::fromStdString(fields[i]->getDate()));
         ads_active->setQuantity(QString::number(fields[i]->getAmount()));
@@ -90,7 +90,8 @@ void Advertise::on_pushButton_create_clicked()
 
     try{
         Deals::createAd(&CurrentUser,Fields,price,quantity);
-        QMessageBox::information(this,tr("Create Advertisement"),tr("Create with sucess!"));
+        QMessageBox::information(this,tr("Create Advertisement"),
+                                 tr("Created with sucess!\nplease login again to see the modification"));
         on_pushButton_reset_clicked();
     }catch(char *err){
         QMessageBox::warning(this,tr("Create Advertisement"),tr(err));

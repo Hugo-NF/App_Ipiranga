@@ -46,7 +46,6 @@ void Payment::makePayment(Ads *ad, User *buyer, unsigned int quantity) {
     entry.setDate(Callbacks::getCurrentDate());
 
     entry.insertOperation(connection, &entry);
-
     flag = sqlite3_close(connection);
     if(flag != SQLITE_OK)
         throw (char *) CONNECTION_ERROR;

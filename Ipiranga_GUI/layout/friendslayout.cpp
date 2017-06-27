@@ -18,7 +18,7 @@ FriendsLayout::~FriendsLayout()
 //------------------BUTTONS CLICKED------------------
 void FriendsLayout::on_Button_delete_clicked()
 {
-    if(QMessageBox::question(this,tr("Delete Friend"),tr("Are you sure that want to delete this friend?"))
+    if(QMessageBox::question(this,tr("Delete Friend"),tr("Are you sure that want to DELETE this friend?"))
             == QMessageBox::Yes){
         Friendship::removeFriend(ID_User,ID);
         this->~FriendsLayout();

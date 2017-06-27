@@ -68,8 +68,9 @@ int Callbacks::historicCallback(void *ptr, int argc, char **argv, char **colName
     currentReg->setAdId(atoi(argv[7]));
     currentReg->setQuantity(atoi(argv[8]));
     currentReg->setAdTitle(argv[9]);
-    currentReg->setPrice(atof(argv[10]));
-    currentReg->setDate(argv[11]);
+    currentReg->setCategory(argv[10]);
+    currentReg->setPrice(atof(argv[11]));
+    currentReg->setDate(argv[12]);
 
     result->push_back(currentReg);
     return 0;

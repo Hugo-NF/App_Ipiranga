@@ -24,11 +24,12 @@ void HistoricLayout::setHist_Address(Historic* hist){
 void HistoricLayout::setFields(){
     this->setSeller(QString::fromStdString(HistAdress->getSellerUsername()));
     this->setBuyer(QString::fromStdString(HistAdress->getBuyerUsername()));
-    this->setCategory("Ainda por vir");
+    this->setCategory(QString::fromStdString(HistAdress->getCategory()));
     this->setDate(QString::fromStdString(HistAdress->getDate()));
     this->setPrice(QString::number(HistAdress->getPrice()));
     this->setQuantity(QString::number(HistAdress->getQuantity()));
     this->setTitle(QString::fromStdString(HistAdress->getAdTitle()));
+    this->setRating((int)HistAdress->getUserRating(ID_CurrentUser));
 }
 
 void HistoricLayout::setSeller(QString seller){
@@ -95,25 +96,30 @@ void HistoricLayout::setID_user(int id_user){
 //------------------------------------VOTE CLICK----------------------------------------
 void HistoricLayout::on_radio_1_clicked()
 {
+    HistAdress->evaluate(HistAdress, ID_CurrentUser, 1);
     QMessageBox::information(this,tr("Vote"),tr("You rated this transation with note 1"));
 }
 
 void HistoricLayout::on_radio_2_clicked()
 {
+    HistAdress->evaluate(HistAdress, ID_CurrentUser, 2);
     QMessageBox::information(this,tr("Vote"),tr("You rated this transation with note 2"));
 }
 
 void HistoricLayout::on_radio_3_clicked()
 {
+    HistAdress->evaluate(HistAdress, ID_CurrentUser, 3);
     QMessageBox::information(this,tr("Vote"),tr("You rated this transation with note 3"));
 }
 
 void HistoricLayout::on_radio_4_clicked()
 {
+    HistAdress->evaluate(HistAdress, ID_CurrentUser, 4);
     QMessageBox::information(this,tr("Vote"),tr("You rated this transation with note 4"));
 }
 
 void HistoricLayout::on_radio_5_clicked()
 {
+    HistAdress->evaluate(HistAdress, ID_CurrentUser, 5);
     QMessageBox::information(this,tr("Vote"),tr("You rated this transation with note 5"));
 }

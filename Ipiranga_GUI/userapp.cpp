@@ -118,9 +118,12 @@ void UserApp::on_Button_advertise_clicked()
 
 void UserApp::on_Button_logout_clicked()
 {
-    this->hide();
-    system("./Ipiranga&");
-    this->close();
+    if(QMessageBox::question(this,tr("Logout"),tr("Do you really want to leave?"))
+                == QMessageBox::Yes){
+        this->hide();
+        system("./Ipiranga&");
+        this->close();
+    }
 }
 //---------------------------------------------
 
@@ -164,7 +167,7 @@ void UserApp::on_line_search_returnPressed()
     //mudar na classe searchresult
 
     if(SearchType && getFields_Search_Friends()){
-
+        //search_result = Search::userSearch(&parameters);
     }else if(!SearchType && getFields_Search_Ads()){
 
         //-----------Set id do usuario---------------
@@ -235,8 +238,6 @@ void UserApp::on_line_search_returnPressed()
         criterias.~vector();
         keywords.~vector();
 
-        //search_result = Search::userSearch(&parameters);
-
     }else{
         return;
     }
@@ -244,10 +245,12 @@ void UserApp::on_line_search_returnPressed()
     PageResult->~SearchResult();
 
     PageResult = new SearchResult;
-    ui->Pages->insertWidget(5,PageResult);
+
     PageResult->SetCurrentUser(CurrentUser);
     PageResult->setSearchType(SearchType);
-    //PageResult->setResults(search_result);
+    PageResult->setResults(search_result);
+
+    ui->Pages->insertWidget(5,PageResult);
 
     ui->Pages->setCurrentWidget(PageResult);
 }
@@ -317,7 +320,7 @@ bool UserApp::getFields_Search_Friends(){
 //----------------ADS-------------------
 void UserApp::on_command_title_clicked()
 {
-    if(A_title){
+    if(A_title && A_by_){
         A_by_ = false;
         //ALTERNAR ICONE
     }
@@ -338,7 +341,7 @@ void UserApp::on_command_title_clicked()
 
 void UserApp::on_command_category_clicked()
 {
-    if(A_category){
+    if(A_category && A_by_){
         A_by_ = false;
         //ALTERNAR ICONE
     }
@@ -359,7 +362,7 @@ void UserApp::on_command_category_clicked()
 
 void UserApp::on_command_price_clicked()
 {
-    if(A_price){
+    if(A_price && A_by_){
         A_by_ = false;
         //ALTERNAR ICONE
     }
@@ -380,7 +383,7 @@ void UserApp::on_command_price_clicked()
 
 void UserApp::on_command_rating_clicked()
 {
-    if(A_rating){
+    if(A_rating && A_by_){
         A_by_ = false;
         //ALTERNAR ICONE
     }
@@ -401,7 +404,7 @@ void UserApp::on_command_rating_clicked()
 
 void UserApp::on_command_city_clicked()
 {
-    if(A_city){
+    if(A_city && A_by_){
         A_by_ = false;
         //ALTERNAR ICONE
     }
@@ -422,7 +425,7 @@ void UserApp::on_command_city_clicked()
 
 void UserApp::on_command_quantity_clicked()
 {
-    if(A_quantity){
+    if(A_quantity && A_by_){
         A_by_ = false;
         //ALTERNAR ICONE
     }
@@ -444,7 +447,7 @@ void UserApp::on_command_quantity_clicked()
 //------------FRIENDS---------------------
 void UserApp::on_command_rating_2_clicked()
 {
-    if(F_byRating){
+    if(F_byRating && F_by_){
         F_by_ = false;
         //ALTERNAR ICONE
     }
@@ -462,7 +465,7 @@ void UserApp::on_command_rating_2_clicked()
 
 void UserApp::on_command_name_clicked()
 {
-    if(F_byName){
+    if(F_byName && F_by_){
         F_by_ = false;
         //ALTERNAR ICONE
     }
@@ -480,7 +483,7 @@ void UserApp::on_command_name_clicked()
 
 void UserApp::on_command_city_2_clicked()
 {
-    if(F_byCity){
+    if(F_byCity && F_by_){
         F_by_ = false;
         //ALTERNAR ICONE
     }

@@ -135,13 +135,15 @@ void Historic::insertOperation(sqlite3 *connection, Historic *newEntry) {
     streamPrice << newEntry->getPrice();
     string price = streamPrice.str();
     char *errMsg = 0;
-    char SQL[1500];
+    char SQL[5000];
     sprintf(SQL, "INSERT INTO HISTORIC ("\
     "sellerId, sellerUsername, buyerId, buyerUsername, selleRating, buyeRating, adId, quantity, adTitle, category, price, date)"\
-    " VALUES(%d,'%s',%d,'%s',%d,%d,%d,'%s',%s,'%s');",
+    " VALUES(%d,'%s',%d,'%s',%d,%d,%d,%d,'%s','%s',%s,'%s');",
      newEntry->getSellerId(), newEntry->getSellerUsername().c_str(), newEntry->getBuyerId(),\
-     newEntry->getBuyerUsername().c_str(), newEntry->getSellerRating(), newEntry->getBuyerRating(), newEntry->getAdId(), newEntry->getQuantity(),newEntry->getAdTitle().c_str(),\
+     newEntry->getBuyerUsername().c_str(), newEntry->getSellerRating(), newEntry->getBuyerRating(),\
+     newEntry->getAdId(), newEntry->getQuantity(),newEntry->getAdTitle().c_str(),\
      newEntry->getCategory(), price.c_str(), newEntry->getDate().c_str());
+    cout<<SQL<<endl;
     result = sqlite3_exec(connection, SQL, Callbacks::historicCallback, 0, &errMsg);
     if(result != SQLITE_OK)
         throw errMsg;

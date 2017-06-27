@@ -1,5 +1,7 @@
 #include "searchresult.h"
 #include "ui_searchresult.h"
+#include "../include/Ads.hpp"
+#include "layout/searchads.h"
 
 SearchResult::SearchResult(QWidget *parent) :
     QWidget(parent),
@@ -22,13 +24,28 @@ void SearchResult::setSearchType(bool type){
     SearchType = type;
 }
 
-void SearchResult::setResults(/*vector <tipoai *> results*/){
+void SearchResult::setResults(vector <Ads*> results){
 
-    /*int size;
+    int size;
 
+    //Number of results returned
     size = results.size();
 
-    for(int i=0; i<size; i++){
-        //set os filds de acordo com o retorno dentro de um for;
-    }*/
+    //Set the quantity of returns on the screen
+    ui->n_results->setText(QString::number(size));
+
+    if(!SearchType){//----Search for Ads-----
+
+        for(int i=0; i<size; i++){
+            SearchAds *result_ads = new SearchAds(this,&CurrentUser);
+            result_ads->setMyaddress(results[i]);
+            ui->box_search_result->addWidget(result_ads);
+        }
+
+    }else{//----Search for friends-----
+
+        for(int i=0; i<size; i++){
+        }
+
+    }
 }

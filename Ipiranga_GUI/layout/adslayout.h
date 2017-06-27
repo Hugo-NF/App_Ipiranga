@@ -21,6 +21,7 @@ public:
     void setPrice(QString);
     void setDate(QString);
     void setQuantity(QString);
+    void setCategory(QString);
     void setID(int);
     int getID();
 

@@ -37,6 +37,7 @@ void HistoricPage::addHistorics(bool asSaler, bool asBuyer){
 
 //------------------------SET FIELDS-----------------------------
 void HistoricPage::setHistoric(Historic* log, HistoricLayout *hist){
+   hist->setID_user(CurrentUser.getId());
    hist->setHist_Address(log);
    ui->box_historic->addWidget(hist);
 }
@@ -53,8 +54,7 @@ void HistoricPage::on_Button_all_clicked()
             this->deleteHistorics(historic[i]);
         }
         Number_historics=0;
-        this->addHistorics(true,true);
-    }
+    }this->addHistorics(true,true);
 }
 
 
@@ -65,8 +65,7 @@ void HistoricPage::on_Button_sales_clicked()
             this->deleteHistorics(historic[i]);
         }
         Number_historics=0;
-        this->addHistorics(true,false);
-    }
+    }this->addHistorics(true,false);
 }
 
 void HistoricPage::on_Button_shopping_clicked()
@@ -76,6 +75,5 @@ void HistoricPage::on_Button_shopping_clicked()
             this->deleteHistorics(historic[i]);
         }
         Number_historics=0;
-        this->addHistorics(false,true);
-    }
+    }this->addHistorics(false,true);
 }

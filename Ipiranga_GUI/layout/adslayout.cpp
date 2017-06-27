@@ -1,6 +1,7 @@
 #include "adslayout.h"
 #include "ui_adslayout.h"
 #include <QMessageBox>
+#include "../include/Deals.hpp"
 
 AdsLayout::AdsLayout(QWidget *parent) :
     QWidget(parent),
@@ -19,6 +20,7 @@ void AdsLayout::on_Button_delete_clicked()
 {
     if(QMessageBox::question(this,tr("Delete AdsLayout"),tr("Are you sure that want to DELETE this Ads?"))
             == QMessageBox::Yes){
+        Deals::deleteAd(ID);
         this->~AdsLayout();
     }
 }
@@ -47,6 +49,9 @@ void AdsLayout::setDate(QString date)
 void AdsLayout::setQuantity(QString quantity)
 {
     ui->line_quantity->setText(quantity);
+}
+void AdsLayout::setCategory(QString category){
+    ui->line_category->setText(category);
 }
 
 void AdsLayout::setID(int id)

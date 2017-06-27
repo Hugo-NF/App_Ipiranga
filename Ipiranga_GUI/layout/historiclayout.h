@@ -19,6 +19,7 @@ public:
 
     //Methods
     void setHist_Address(Historic*);
+    void setID_user(int);
 
 private slots:
     void on_radio_1_clicked();
@@ -42,7 +43,6 @@ private:
     void setQuantity(QString);
     void setTitle(QString);
     void setRating(int);
-    void setID_user(int);
 };
 
 #endif // HISTORICLAYOUT_H
