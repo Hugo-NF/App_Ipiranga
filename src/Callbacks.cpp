@@ -116,3 +116,9 @@ string Callbacks::getCurrentDate(){
     returningDate = date;
     return returningDate;
 }
+
+void Callbacks::deleteVector(vector<class T> currentVector) {
+    for(unsigned int i = 0; i<currentVector.size(); i++){
+        delete (currentVector[i]);
+    }
+}
