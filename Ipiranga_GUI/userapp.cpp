@@ -2,6 +2,7 @@
 #include "ui_userapp.h"
 #include "loginuser.h"
 #include <QMessageBox>
+#include "../include/Search.hpp"
 
 UserApp::UserApp(QWidget *parent, User* _CurrentUser) :
     QMainWindow(parent),
@@ -27,37 +28,44 @@ UserApp::UserApp(QWidget *parent, User* _CurrentUser) :
     ui->Button_search_advertise->setEnabled(false); // the search is for that kind
     SearchType = false;                             // Set the search to Advertise
 
+    //--Ads search--
+    A_title=false;                  //set the order by title to initial value
+    on_command_title_clicked();     //set the order by title to true, like a default
+
+    //--Friends search--
+    F_byName=false;                 //set the order by name to initial value
+    on_command_name_clicked();      //set the order by name to true, like a defaut
+
     //------------------------------------------------------
 
 
     //ISERTING PAGES IN THE FRAME OF USER APP
 
     // Page 0 - Home
-    ui->Pages->insertWidget(0,&PageZero);
     PageZero.SetCurrentUser(CurrentUser);
+    ui->Pages->insertWidget(0,&PageZero);
 
     // Page 1 - Profile Edit
-
-    ui->Pages->insertWidget(1,&PageOne);
     PageOne.SetCurrentUser(CurrentUser);
     PageOne.SetFather(this);
+    ui->Pages->insertWidget(1,&PageOne);
 
     // Page 2 - FriendsPage
-    ui->Pages->insertWidget(2,&PageTwo);
     PageTwo.SetCurrentUser(CurrentUser);
+    ui->Pages->insertWidget(2,&PageTwo);
 
     //Page 3 - Historic
-    ui->Pages->insertWidget(3,&PageThree);
     PageThree.SetCurrentUser(CurrentUser);
+    ui->Pages->insertWidget(3,&PageThree);
 
     // Page 4 - Advertise
-    ui->Pages->insertWidget(4,&PageFour);
     PageFour.SetCurrentUser(CurrentUser);
+    ui->Pages->insertWidget(4,&PageFour);
 
     // Page Result - Search
     PageResult = new SearchResult;
-    ui->Pages->insertWidget(5,PageResult);
     PageResult->SetCurrentUser(CurrentUser);
+    ui->Pages->insertWidget(5,PageResult);
 
     //Set witch is the first page
     ui->Pages->setCurrentIndex(0);
@@ -150,19 +158,96 @@ void UserApp::on_Button_search_clicked()
 
 void UserApp::on_line_search_returnPressed()
 {   
-    PageResult->~SearchResult();
+    vector <Ads*> search_result;
+    vector <string> criterias;
+    vector <string> keywords;
+    //mudar na classe searchresult
 
-    cout<<"Fazer Busca"<<endl;
+    if(SearchType && getFields_Search_Friends()){
+
+    }else if(!SearchType && getFields_Search_Ads()){
+
+        //-----------Set id do usuario---------------
+        Search parameters(CurrentUser.getId());
+
+        //-----------Set o texto de busca---------------
+        parameters.enableTextSearch(true);
+        parameters.setText(SearchText); //caixa da busca
+
+        //-----------Set os valores de rating----------
+        if(A_rating_value!=0){
+            parameters.enablebandFilter(true); //filtros por valor e rank
+            parameters.setBandFilterCriteria("ranking");//ranking ou price
+            parameters.setMinValue((double)A_rating_value);//valor min price ou rating
+            parameters.setMaxValue(5.0);//valor max price or rating
+        }else{
+            parameters.enablebandFilter(false);
+        }
+
+        //--------Set amigos ou amigos de amigos------
+        if(A_friends){
+            parameters.enableFriendsSearch(true); //busca por amigos
+            parameters.enableFriendsofFriendsSearch(false); //busca amigos de
+        }else if(A_friends_of){
+            parameters.enableFriendsSearch(false); //busca por amigos
+            parameters.enableFriendsofFriendsSearch(true); //busca amigos de
+        }else{
+            parameters.enableFriendsSearch(false); //busca por amigos
+            parameters.enableFriendsofFriendsSearch(false); //busca amigos de
+        }
+
+        //-------set criterios de busca (categoria e estado)------------
+        parameters.enableFilters(false); //filtros de categoria
+        if(!A_category_text.empty()){
+            parameters.enableFilters(true); //filtros de categoria
+            criterias.push_back("category");
+            keywords.push_back(A_category_text);
+        }
+        if(!A_state_text.empty()){
+            parameters.enableFilters(true); //filtros de categoria
+            criterias.push_back("state");
+            keywords.push_back(A_state_text);
+        }
+        parameters.setCriterias(criterias); //vector strings criterios Ex: category...
+        parameters.setKeywords(keywords);// vector string chaves Ex: carro, brasilia
+
+        //--------set ordenacao por------------
+        parameters.enableOrdenation(true); // ordernar ou n
+        if(A_title){
+            parameters.setOrderBy("title");//parametro de ordenação
+        }else if(A_category){
+            parameters.setOrderBy("category");//parametro de ordenação
+        }else if(A_price){
+            parameters.setOrderBy("price");//parametro de ordenação
+        }else if(A_rating){
+            parameters.setOrderBy("rating");//parametro de ordenação
+        }else if(A_city){
+            parameters.setOrderBy("city");//parametro de ordenação
+        }else if(A_quantity){
+            parameters.setOrderBy("quantity");//parametro de ordenação
+        }
+        parameters.setOrderingSequence(A_by_); // 1^ 0|
+
+        try{
+            search_result = Search::adsSearch(&parameters);
+        }catch(...){}
+
+        criterias.~vector();
+        keywords.~vector();
+
+        //search_result = Search::userSearch(&parameters);
+
+    }else{
+        return;
+    }
+
+    PageResult->~SearchResult();
 
     PageResult = new SearchResult;
     ui->Pages->insertWidget(5,PageResult);
     PageResult->SetCurrentUser(CurrentUser);
-
-    if(SearchType){
-        getFields_Search_Friends();
-    }else{
-        getFields_Search_Friends();
-    }
+    PageResult->setSearchType(SearchType);
+    //PageResult->setResults(search_result);
 
     ui->Pages->setCurrentWidget(PageResult);
 }
@@ -191,23 +276,224 @@ void UserApp::on_Button_adjust_clicked()
 }
 
 //---------------GET FIELDS OF SEARCH-----------------
-void UserApp::getFields_Search_Ads(){
-    A_state = ui->line_state->text().toStdString();
-    A_rating = ui->comboBox_rating->currentIndex() + 1;
-    A_min_price = ui->line_min->text();
-    A_max_price = ui->line_max->text();
-    A_all = ui->radio_all->isChecked();
-    A_friends = ui->radio_friends->isChecked();
-    A_friends_of = ui->radio_friends_of->isChecked();
+bool UserApp::getFields_Search_Ads(){
+    if(!(ui->line_search->text().isEmpty())){
+
+        SearchText = ui->line_search->text().toStdString();
+        A_category_text = ui->comboBox_category->currentText().toStdString();
+        A_state_text = ui->line_state->text().toStdString();
+        A_rating_value = ui->comboBox_rating->currentIndex();
+        A_min_price = stoi(ui->line_min->text().toStdString());
+        A_max_price = stoi(ui->line_max->text().toStdString());
+        A_all = ui->radio_all->isChecked();
+        A_friends = ui->radio_friends->isChecked();
+        A_friends_of = ui->radio_friends_of->isChecked();
+
+        return true;    //searche text field is not empty
+    }else{
+        return false;  //search text field is empty
+    }
 }
 
-void UserApp::getFields_Search_Friends(){
-    F_state = ui->line_state_2->text().toStdString();
-    F_rating = ui->comboBox_rating_2->currentIndex() + 1;
-    F_all = ui->radio_all_2->isChecked();
-    F_friends = ui->radio_friends_2->isChecked();
-    F_friends_of = ui->radio_friends_of_2->isChecked();
+bool UserApp::getFields_Search_Friends(){
+    if(!(ui->line_search->text().isEmpty())){
+
+        SearchText = ui->line_search->text().toStdString();
+        F_state = ui->line_state_2->text().toStdString();
+        F_rating = ui->comboBox_rating_2->currentIndex();
+        F_all = ui->radio_all_2->isChecked();
+        F_friends = ui->radio_friends_2->isChecked();
+        F_friends_of = ui->radio_friends_of_2->isChecked();
+
+        return true; //searche text field is not empty
+    }else{
+        return false; //searche text field is empty
+    }
 }
 //-----------------------------------------------------
 
 //----------------ORDER BY - SETTINGS------------------
+
+//----------------ADS-------------------
+void UserApp::on_command_title_clicked()
+{
+    if(A_title){
+        A_by_ = false;
+        //ALTERNAR ICONE
+    }
+    else{
+        A_by_ = true;
+        //ALTERNAR ICONE
+    }
+
+    A_title = true;
+    A_category = false;
+    A_price = false;
+    A_rating = false;
+    A_city = false;
+    A_quantity = false;
+    //DESATIVAR ICONE DOS OUTROS
+    on_line_search_returnPressed();
+}
+
+void UserApp::on_command_category_clicked()
+{
+    if(A_category){
+        A_by_ = false;
+        //ALTERNAR ICONE
+    }
+    else{
+        A_by_ = true;
+        //ALTERNAR ICONE
+    }
+
+    A_category = true;
+    A_title = false;
+    A_price = false;
+    A_rating = false;
+    A_city = false;
+    A_quantity = false;
+    //DESATIVAR ICONE DOS OUTROS
+    on_line_search_returnPressed();
+}
+
+void UserApp::on_command_price_clicked()
+{
+    if(A_price){
+        A_by_ = false;
+        //ALTERNAR ICONE
+    }
+    else{
+        A_by_ = true;
+        //ALTERNAR ICONE
+    }
+
+    A_price = true;
+    A_title = false;
+    A_category = false;
+    A_rating = false;
+    A_city = false;
+    A_quantity = false;
+    //DESATIVAR ICONE DOS OUTROS
+    on_line_search_returnPressed();
+}
+
+void UserApp::on_command_rating_clicked()
+{
+    if(A_rating){
+        A_by_ = false;
+        //ALTERNAR ICONE
+    }
+    else{
+        A_by_ = true;
+        //ALTERNAR ICONE
+    }
+
+    A_rating = true;
+    A_title = false;
+    A_category = false;
+    A_price = false;
+    A_city = false;
+    A_quantity = false;
+    //DESATIVAR ICONE DOS OUTROS
+    on_line_search_returnPressed();
+}
+
+void UserApp::on_command_city_clicked()
+{
+    if(A_city){
+        A_by_ = false;
+        //ALTERNAR ICONE
+    }
+    else{
+        A_by_ = true;
+        //ALTERNAR ICONE
+    }
+
+    A_city = true;
+    A_title = false;
+    A_category = false;
+    A_price = false;
+    A_rating = false;
+    A_quantity = false;
+    //DESATIVAR ICONE DOS OUTROS
+    on_line_search_returnPressed();
+}
+
+void UserApp::on_command_quantity_clicked()
+{
+    if(A_quantity){
+        A_by_ = false;
+        //ALTERNAR ICONE
+    }
+    else{
+        A_by_ = true;
+        //ALTERNAR ICONE
+    }
+
+    A_quantity = true;
+    A_title = false;
+    A_category = false;
+    A_price = false;
+    A_rating = false;
+    A_city = false;
+    //DESATIVAR ICONE DOS OUTROS
+    on_line_search_returnPressed();
+}
+
+//------------FRIENDS---------------------
+void UserApp::on_command_rating_2_clicked()
+{
+    if(F_byRating){
+        F_by_ = false;
+        //ALTERNAR ICONE
+    }
+    else{
+        F_by_ = true;
+        //ALTERNAR ICONE
+    }
+
+    F_byCity = false;
+    F_byName = false;
+    F_byRating = true;
+    //DESATIVAR ICONE DOS OUTROS
+    on_line_search_returnPressed();
+}
+
+void UserApp::on_command_name_clicked()
+{
+    if(F_byName){
+        F_by_ = false;
+        //ALTERNAR ICONE
+    }
+    else{
+        F_by_ = true;
+        //ALTERNAR ICONE
+    }
+
+    F_byCity = false;
+    F_byName = true;
+    F_byRating = false;
+    //DESATIVAR ICONE DOS OUTROS
+    on_line_search_returnPressed();
+}
+
+void UserApp::on_command_city_2_clicked()
+{
+    if(F_byCity){
+        F_by_ = false;
+        //ALTERNAR ICONE
+    }
+    else{
+        F_by_ = true;
+        //ALTERNAR ICONE
+    }
+
+    F_byCity = true;
+    F_byName = false;
+    F_byRating = false;
+    //DESATIVAR ICONE DOS OUTROS
+    on_line_search_returnPressed();
+}
+//------------------END ORDER BY---------------------
+

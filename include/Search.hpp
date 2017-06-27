@@ -4,6 +4,13 @@
 #include "User.hpp"
 #define QUERY_INVALID "Invalid search parameters"
 
+/**
+ * Class Search
+ * Responsável por definir a interface de buscas entre a view e a DB.
+ * Define atributos que serão parametros de busca, bem como os metodos de busca.
+ * @Assertivas_estruturais: Todas os metodos dessa classe realizam operações atômicas, consistentes, isoladas e duráveis(ACID).Propriedade herdada do sqlite.
+ */
+
 class Search {
 private:
     unsigned int currentUserID;
@@ -26,6 +33,14 @@ public:
     Search(){}
     Search(unsigned int userID){
         this->currentUserID = userID;
+        this->toggleText = false;
+        this->toggleFilters = false;
+        this->toggleOrdernation = true;
+        this->orderBy = "id";
+        this->toggleBandFilter = false;
+        this->orderSequence = false;
+        this->toggleFriends = false;
+        this->toggleFriendsofFriends = false;
     }
     ~Search(){}
     unsigned int getCurrentUserID();
@@ -58,8 +73,22 @@ public:
     void enableFriendsofFriendsSearch(bool);
     bool friendsOfFriendsSearchEnabled();
 
-    static vector<User *> userSearch(Search *parameters);
-    static vector<Ads *> adsSearch(Search *parameters);
+    /**
+     * vector<User *> userSearch(Search *);
+     * Metodo para a realização de buscas por usuário
+     * @Assertivas_entrada: O objeto da classe Search terá ao menos os atributos booleanos definidos
+     * @Argumento1: Objeto Search com os parametros da busca a ser realizada
+     * @Retorno: conteiner vector da classe User com os usuários retornados da busca
+     */
+    static vector<User *> userSearch(Search *);
+    /**
+     * vector<User *> adsSearch(Search *);
+     * Metodo para a realização de buscas por anúncios
+     * @Assertivas_entrada: O objeto da classe Search terá ao menos os atributos booleanos definidos
+     * @Argumento1: Objeto Search com os parametros da busca a ser realizada
+     * @Retorno: conteiner vector da classe Ads com os Anúncios retornados da busca
+     */
+    static vector<Ads *> adsSearch(Search *);
 
 };
 #endif //APP_IPIRANGA_SEARCH_HPP

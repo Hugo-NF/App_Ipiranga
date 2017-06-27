@@ -168,6 +168,16 @@
         </property>
        </widget>
       </item>
+      <item>
+       <widget class="QPushButton" name="Button_buy">
+        <property name="text">
+         <string>Buy</string>
+        </property>
+        <property name="icon">
+         <iconset theme="buy"/>
+        </property>
+       </widget>
+      </item>
      </layout>
     </widget>
    </item>

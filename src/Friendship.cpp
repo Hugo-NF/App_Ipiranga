@@ -159,6 +159,8 @@ vector<unsigned int> Friendship::getFriendsofFriendsIds(sqlite3 *connection, uns
             else
                 fOfFriendsIds.push_back(friendshipNodes[i]->getUser1Id());
         }
+        sort(friendsIds.begin(), friendsIds.end());
+        sort(fOfFriendsIds.begin(), fOfFriendsIds.end());
         it = std::set_difference(friendsIds.begin(), friendsIds.end(), fOfFriendsIds.begin(), fOfFriendsIds.end(), results.begin());
         results.resize(it-results.begin());
 

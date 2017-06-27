@@ -44,6 +44,17 @@ private slots:
     void on_Button_search_advertise_clicked();  // Search Ads filter
     void on_Button_adjust_clicked();            // Button ajust (filters -> Ads/friends)
 
+    void on_command_title_clicked();
+    void on_command_category_clicked();
+    void on_command_price_clicked();
+    void on_command_rating_clicked();
+    void on_command_city_clicked();
+    void on_command_quantity_clicked();
+
+    void on_command_rating_2_clicked();
+    void on_command_name_clicked();
+    void on_command_city_2_clicked();
+
 private:
     Ui::UserApp *ui;
 
@@ -59,16 +70,16 @@ private:
     SearchResult *PageResult;
 
     //King of search
-    bool SearchType; // 1 to Friends - o to Advertise
+    bool SearchType; // 1 to Friends - 0 to Advertise
     bool ToolActive; // Filters tools Active or Not Active
 
     //---------------Variables of searchs----------------
     string SearchText;
 
     //-----------Ads Search
-    string A_category;  // search fo category
-    string A_state;     // for state
-    int A_rating;       // for rating
+    string A_category_text;  // search for category
+    string A_state_text;     // for state
+    int A_rating_value;       // for rating
     int A_min_price;    // from min price
     int A_max_price;    // until max price
     bool A_all;         // for all people
@@ -80,8 +91,7 @@ private:
     bool A_rating;      // order by rating
     bool A_city;        // order by city
     bool A_quantity;    // order by quantity
-    bool A_by_Asc;      // order in ascendet
-    bool A_by_Desc;     // order in descendet
+    bool A_by_;         // order in ascendet = 1 or descendet=0
 
     //---------Friends Search
     string F_state;     // search for state
@@ -92,14 +102,14 @@ private:
     bool F_byRating;    // order by rating
     bool F_byName;      // order by name
     bool F_byCity;      // order by city
-    bool F_by_Asc;      // order in ascendent
-    bool F_by_Desc;     // order in descendent
+    bool F_by_;         // order in ascendet = 1 or descendet=0
     //------------------------------------------------------
 
     //Methods
     void SetPropertyUserCurrent();  //Set the property of the actual user
-    void getFields_Search_Friends();    // get the fields of search for Friends
-    void getFields_Search_Ads();        // get the fields of search for Ads
+    bool getFields_Search_Friends();    // get the fields of search for Friends
+    bool getFields_Search_Ads();        // get the fields of search for Ads
+    //Return true if search text is not empty
 };
 
 #endif // USERAPP_H

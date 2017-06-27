@@ -5,6 +5,7 @@
 #include "../include/Deals.hpp"
 #include <QMessageBox>
 #include "../include/Payment.hpp"
+#include "../include/Search.hpp"
 
 using namespace std;
 
@@ -14,9 +15,6 @@ Advertise::Advertise(QWidget *parent) :
 {
     ui->setupUi(this);
     Description ="";    //There is nothing in the initial description
-
-    set_ActivesAds();   //Set the Ads Actives on the screen
-
 }
 
 Advertise::~Advertise()
@@ -29,15 +27,37 @@ void Advertise::SetCurrentUser(User _CurrentUser){
 
     //Set the unique fields existent (balance)
     ui->line_balance->setText(QString::number(CurrentUser.getBalance()));
+
+    set_ActivesAds();   //Set the Ads Actives on the screen
 }
 
-//-----------------SET FUNCTIONS---------------------
+//-----------------SET ADS---------------------
 void Advertise::set_ActivesAds()
 {
-    for(int i=0; i<5; i++){
+    vector <Ads*> fields;
+    vector <string> criteria(1);
+    vector <string> keyword(1);
+    Search parameters(CurrentUser.getId());
+    int size;
+
+    parameters.enableFilters(true);
+    criteria[0] = "seller";
+    keyword[0] = CurrentUser.getUsername();
+    parameters.setCriterias(criteria);
+    parameters.setKeywords(keyword);
+    fields = Search::adsSearch(&parameters);
+
+    size = fields.size();
+
+    for(int i=0; i<size; i++){
         AdsLayout *ads_active = new AdsLayout;
-        ads_active->setTitle(QString::number(i));
-        ads_active->setPrice("12000.00");
+        ads_active->setID(fields[i]->getId());
+        ads_active->setTitle(QString::fromStdString(fields[i]->getTitle()));
+        //ads_active->setCategory(QString::fromStdString(fields[i]->getCategory())); ?????????
+        ads_active->setPrice(QString::number(fields[i]->getPrice()));
+        ads_active->setDate(QString::fromStdString(fields[i]->getDate()));
+        ads_active->setQuantity(QString::number(fields[i]->getAmount()));
+        ads_active->setDescription(QString::fromStdString(fields[i]->getDescription()));
         ui->Ads->addWidget(ads_active);
     }
 }

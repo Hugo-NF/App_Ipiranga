@@ -22,6 +22,7 @@ void Payment::makePayment(Ads *ad, User *buyer, unsigned int quantity) {
         throw (char *) CONNECTION_ERROR;
 
     sprintf(SQL, "UPDATE USERS set balance = balance+%s WHERE id = %d AND username = '%s';", price.c_str(), ad->getSellerId(), ad->getSellerUsername().c_str());
+
     flag = sqlite3_exec(connection, SQL, Callbacks::historicCallback, 0, &errMsg);
     if(flag!= SQLITE_OK)
         throw (char *) PAYMENT_ERROR;
@@ -35,7 +36,9 @@ void Payment::makePayment(Ads *ad, User *buyer, unsigned int quantity) {
     entry.setSellerUsername(ad->getSellerUsername());
     entry.setBuyerId(buyer->getId());
     entry.setBuyerUsername(buyer->getUsername());
-    entry.setRating(0);
+    entry.setCategory(ad->getCategory());
+    entry.setBuyerRating(0);
+    entry.setSellerRating(0);
     entry.setAdId(ad->getId());
     entry.setAdTitle(ad->getTitle());
     entry.setQuantity(quantity);
@@ -63,7 +66,7 @@ void Payment::withdrawBalance(User *currentUser, double userAmount) {
     string taxes = streamTax.str();
     char SQL[300];
 
-    if(currentUser->getBalance() <= userAmount)
+    if(currentUser->getBalance() < userAmount)
         throw (char *) NOT_ENOUGH_MONEY;
 
     flag = sqlite3_open(DATABASE, &connection);

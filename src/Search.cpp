@@ -88,88 +88,233 @@ bool Search::friendsOfFriendsSearchEnabled() {
     return this->toggleFriendsofFriends;
 }
 
-unsigned int currentUserID;
-string table;
-bool toggleText;
-string textSearch;
-bool toggleFilters;
-vector<string> criterias;
-vector<string> keywords;
-bool toggleOrdernation;
-string orderBy;
-bool orderSequence; //true - ASC : false - DESC
-bool toggleBandFilter;
-string bandFilterCriteria;
-double bandFilterMin;
-double bandFilterMax;
-bool toggleFriends;
-bool toggleFriendsofFriends;
-
-unsigned int getCurrentUserID();
-bool textSearchEnabled();
-string getText();
-bool filtersEnabled();
-vector<string> getCriterias();
-vector<string> getKeywords();
-bool ordenationEnabled();
-string getOrderBy();
-bool getOrderingSequence();
-bool bandFilterEnabled();
-string getBandFilterCriteria();
-double getMinValue();
-double getMaxValue();
-bool friendsSearchEnabled();
-bool friendsOfFriendsSearchEnabled();
-/*
 vector<User *> Search::userSearch(Search *parameters) {
-    int i, flag;
-    string SQL;
-    if(parameters->)
-
-
-}
-
-vector<User *> Search::userSearch(Search *parameters) {
-    int i, flag;
-    string SQL;
-    string textQuery;
-    string filtersQuery;
-    string
-    vector<User *> result;
+    int i, j, flag;
     char *errMsg = 0;
+    string SQL = "SELECT * FROM USERS WHERE ";
+    string textQuery;
+    string ordenationQuery;
+    string filtersQuery = " ";
+    string bandFilterQuery;
+    ostringstream streamValue;
+    string value;
+    vector<string> criterias;
+    vector<string> keywords;
+    vector<unsigned int> friends;
+    vector<unsigned int> friendsOf;
+    string friendsQuery = " ";
     sqlite3 *connection;
-
-    if(criteria[0].compare("ALL") == SQLITE_OK || keywords[0].compare("ALL") == SQLITE_OK){
-        sprintf(SQL, "SELECT * FROM USERS");
-    }
-    else if (criteria.size() != keywords.size() || criteria.empty() || keywords.empty()){
-        throw (char *) QUERY_INVALID;
-    }
-    else{
-        sprintf(SQL, "SELECT * FROM USERS WHERE");
-        for (i = 0; i <criteria.size()- 1; i++) {
-            sprintf(query, "%s = '%s' AND ", criteria[i].c_str(), keywords[i].c_str());
-            strcat(SQL, query);
-            memset(query, 0, 100);
-        }
-        sprintf(query, "%s = '%s';", criteria[i].c_str(), keywords[i].c_str());
-        strcat(SQL, query);
-        memset(query, 0, 100);
-    }
+    vector<User *> queryResult;
 
     flag = sqlite3_open(DATABASE, &connection);
     if (flag != SQLITE_OK)
         throw (char *) CONNECTION_ERROR;
 
-    flag = sqlite3_exec(connection, SQL, Callbacks::userCallback, &result, &errMsg);
+    if(parameters->textSearchEnabled()){
+        textQuery = "username LIKE '%";
+        textQuery.append(parameters->getText());
+        textQuery.append("%' OR firstName LIKE '%");
+        textQuery.append(parameters->getText());
+        textQuery.append("%' ");
+        SQL.append(textQuery);
 
+    }
+    if(parameters->filtersEnabled()){
+        criterias = parameters->getCriterias();
+        keywords = parameters->getKeywords();
+        //filtersQuery = "WHERE ";
+        for(i=0; i<criterias.size()-1; i++){
+            filtersQuery.append(criterias[i]);
+            filtersQuery.append(" = ");
+            filtersQuery.append("'");
+            filtersQuery.append(keywords[i]);
+            filtersQuery.append("'");
+            filtersQuery.append(" AND ");
+        }
+        filtersQuery.append(criterias[i]);
+        filtersQuery.append(" = ");
+        filtersQuery.append("'");
+        filtersQuery.append(keywords[i]);
+        filtersQuery.append("'");
+        if(parameters->textSearchEnabled())
+            SQL.append("AND ");
+        SQL.append(filtersQuery);
+    }
+    if(parameters->bandFilterEnabled()){
+        streamValue << parameters->getMinValue();
+        value = streamValue.str();
+        bandFilterQuery = parameters->getBandFilterCriteria();
+        bandFilterQuery.append(" BETWEEN ");
+        bandFilterQuery.append(value);
+        bandFilterQuery.append(" AND ");
+        streamValue << parameters->getMaxValue();
+        value = streamValue.str();
+        bandFilterQuery.append(value);
+        if(parameters->textSearchEnabled() || parameters->filtersEnabled())
+            SQL.append(" AND ");
+        SQL.append(bandFilterQuery);
+    }
+    if(parameters->friendsSearchEnabled()){
+        friends = Friendship::getFriendsIds(connection, parameters->getCurrentUserID());
+        for(i=0; i<friends.size()-1; i++){
+            friendsQuery.append("id = ");
+            friendsQuery.append(to_string(friends[i]));
+            friendsQuery.append(" OR ");
+        }
+        friendsQuery.append("id = ");
+        friendsQuery.append(to_string(friends[i]));
+        if(parameters->textSearchEnabled() || parameters->filtersEnabled() || parameters->bandFilterEnabled())
+            SQL.append(" AND ");
+        SQL.append(friendsQuery);
+    }
+    else if(parameters->friendsOfFriendsSearchEnabled()){
+        friendsOf = Friendship::getFriendsofFriendsIds(connection, parameters->getCurrentUserID());
+        for(i=0; i<friends.size()-1; i++){
+            friendsQuery.append("id = ");
+            friendsQuery.append(to_string(friends[i]));
+            friendsQuery.append(" OR ");
+        }
+        friendsQuery.append("id = ");
+        friendsQuery.append(to_string(friends[i]));
+        if(parameters->textSearchEnabled() || parameters->filtersEnabled() || parameters->bandFilterEnabled())
+            SQL.append(" AND ");
+        SQL.append(friendsQuery);
+
+    }
+    if(parameters->ordenationEnabled()){
+        ordenationQuery = " ORDER BY ";
+        ordenationQuery.append(parameters->getOrderBy());
+        if(parameters->getOrderingSequence()){
+            ordenationQuery.append(" ASC");
+        }
+        else
+            ordenationQuery.append(" DESC");
+        SQL.append(ordenationQuery);
+    }
+    SQL.append(";");
+    flag = sqlite3_exec(connection, SQL.c_str(), Callbacks::userCallback, &queryResult, &errMsg);
     if (flag != SQLITE_OK)
-        throw errMsg;
+        throw (char *) CONNECTION_ERROR;
 
     flag = sqlite3_close(connection);
     if (flag != SQLITE_OK)
         throw (char *) CONNECTION_ERROR;
 
-    return result;
+    return queryResult;
 }
-*/
+
+vector<Ads *> Search::adsSearch(Search *parameters) {
+    int i, j, flag;
+    char *errMsg = 0;
+    string SQL = "SELECT * FROM ADS WHERE ";
+    string textQuery;
+    string ordenationQuery;
+    string filtersQuery = " ";
+    string bandFilterQuery;
+    ostringstream streamValue;
+    string value;
+    vector<string> criterias;
+    vector<string> keywords;
+    vector<unsigned int> friends;
+    vector<unsigned int> friendsOf;
+    string friendsQuery = " ";
+    sqlite3 *connection;
+    vector<Ads *> queryResult;
+
+    flag = sqlite3_open(DATABASE, &connection);
+    if (flag != SQLITE_OK)
+        throw (char *) CONNECTION_ERROR;
+
+    if(parameters->textSearchEnabled()){
+        textQuery = "title LIKE '%";
+        textQuery.append(parameters->getText());
+        textQuery.append("%' OR description LIKE '%");
+        textQuery.append(parameters->getText());
+        textQuery.append("%' ");
+        SQL.append(textQuery);
+
+    }
+    if(parameters->filtersEnabled()){
+        criterias = parameters->getCriterias();
+        keywords = parameters->getKeywords();
+        //filtersQuery = "WHERE ";
+        for(i=0; i<criterias.size()-1; i++){
+            filtersQuery.append(criterias[i]);
+            filtersQuery.append(" = ");
+            filtersQuery.append("'");
+            filtersQuery.append(keywords[i]);
+            filtersQuery.append("'");
+            filtersQuery.append(" AND ");
+        }
+        filtersQuery.append(criterias[i]);
+        filtersQuery.append(" = ");
+        filtersQuery.append("'");
+        filtersQuery.append(keywords[i]);
+        filtersQuery.append("'");
+        if(parameters->textSearchEnabled())
+            SQL.append("AND ");
+        SQL.append(filtersQuery);
+    }
+    if(parameters->bandFilterEnabled()){
+        streamValue << parameters->getMinValue();
+        value = streamValue.str();
+        bandFilterQuery = parameters->getBandFilterCriteria();
+        bandFilterQuery.append(" BETWEEN ");
+        bandFilterQuery.append(value);
+        bandFilterQuery.append(" AND ");
+        streamValue << parameters->getMaxValue();
+        value = streamValue.str();
+        bandFilterQuery.append(value);
+        if(parameters->textSearchEnabled() || parameters->filtersEnabled())
+            SQL.append(" AND ");
+        SQL.append(bandFilterQuery);
+    }
+    if(parameters->friendsSearchEnabled()){
+        friends = Friendship::getFriendsIds(connection, parameters->getCurrentUserID());
+        for(i=0; i<friends.size()-1; i++){
+            friendsQuery.append("id = ");
+            friendsQuery.append(to_string(friends[i]));
+            friendsQuery.append(" OR ");
+        }
+        friendsQuery.append("id = ");
+        friendsQuery.append(to_string(friends[i]));
+        if(parameters->textSearchEnabled() || parameters->filtersEnabled() || parameters->bandFilterEnabled())
+            SQL.append(" AND ");
+        SQL.append(friendsQuery);
+    }
+    else if(parameters->friendsOfFriendsSearchEnabled()){
+        friendsOf = Friendship::getFriendsofFriendsIds(connection, parameters->getCurrentUserID());
+        for(i=0; i<friends.size()-1; i++){
+            friendsQuery.append("id = ");
+            friendsQuery.append(to_string(friends[i]));
+            friendsQuery.append(" OR ");
+        }
+        friendsQuery.append("id = ");
+        friendsQuery.append(to_string(friends[i]));
+        if(parameters->textSearchEnabled() || parameters->filtersEnabled() || parameters->bandFilterEnabled())
+            SQL.append(" AND ");
+        SQL.append(friendsQuery);
+
+    }
+    if(parameters->ordenationEnabled()){
+        ordenationQuery = " ORDER BY ";
+        ordenationQuery.append(parameters->getOrderBy());
+        if(parameters->getOrderingSequence()){
+            ordenationQuery.append(" ASC");
+        }
+        else
+            ordenationQuery.append(" DESC");
+        SQL.append(ordenationQuery);
+    }
+    SQL.append(";");
+    flag = sqlite3_exec(connection, SQL.c_str(), Callbacks::adsCallback, &queryResult, &errMsg);
+    cout<<SQL<<endl;
+    if (flag != SQLITE_OK)
+        throw (char *) CONNECTION_ERROR;
+
+    flag = sqlite3_close(connection);
+    if (flag != SQLITE_OK)
+        throw (char *) CONNECTION_ERROR;
+
+    return queryResult;
+}
