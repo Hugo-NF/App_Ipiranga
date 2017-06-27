@@ -93,6 +93,7 @@ public:
      * @Retorno: String contendo a data atual formatada
      */
     static string getCurrentDate();
+
     static void deleteVector(vector<class T>);
 };
 

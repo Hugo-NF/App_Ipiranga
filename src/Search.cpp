@@ -156,29 +156,33 @@ vector<User *> Search::userSearch(Search *parameters) {
     }
     if(parameters->friendsSearchEnabled()){
         friends = Friendship::getFriendsIds(connection, parameters->getCurrentUserID());
-        for(i=0; i<friends.size()-1; i++){
+        if(!friends.empty()){
+            for(i=0; i<friends.size()-1; i++){
+                friendsQuery.append("id = ");
+                friendsQuery.append(to_string(friends[i]));
+                friendsQuery.append(" OR ");
+            }
             friendsQuery.append("id = ");
             friendsQuery.append(to_string(friends[i]));
-            friendsQuery.append(" OR ");
+            if(parameters->textSearchEnabled() || parameters->filtersEnabled() || parameters->bandFilterEnabled())
+                SQL.append(" AND ");
+            SQL.append(friendsQuery);
         }
-        friendsQuery.append("id = ");
-        friendsQuery.append(to_string(friends[i]));
-        if(parameters->textSearchEnabled() || parameters->filtersEnabled() || parameters->bandFilterEnabled())
-            SQL.append(" AND ");
-        SQL.append(friendsQuery);
     }
     else if(parameters->friendsOfFriendsSearchEnabled()){
         friendsOf = Friendship::getFriendsofFriendsIds(connection, parameters->getCurrentUserID());
-        for(i=0; i<friends.size()-1; i++){
+        if(!friendsOf.empty()){
+            for(i=0; i<friends.size()-1; i++){
+                friendsQuery.append("id = ");
+                friendsQuery.append(to_string(friends[i]));
+                friendsQuery.append(" OR ");
+            }
             friendsQuery.append("id = ");
             friendsQuery.append(to_string(friends[i]));
-            friendsQuery.append(" OR ");
+            if(parameters->textSearchEnabled() || parameters->filtersEnabled() || parameters->bandFilterEnabled())
+                SQL.append(" AND ");
+            SQL.append(friendsQuery);
         }
-        friendsQuery.append("id = ");
-        friendsQuery.append(to_string(friends[i]));
-        if(parameters->textSearchEnabled() || parameters->filtersEnabled() || parameters->bandFilterEnabled())
-            SQL.append(" AND ");
-        SQL.append(friendsQuery);
 
     }
     if(parameters->ordenationEnabled()){
@@ -271,29 +275,33 @@ vector<Ads *> Search::adsSearch(Search *parameters) {
     }
     if(parameters->friendsSearchEnabled()){
         friends = Friendship::getFriendsIds(connection, parameters->getCurrentUserID());
-        for(i=0; i<friends.size()-1; i++){
+        if(!friends.empty()) {
+            for (i = 0; i < friends.size() - 1; i++) {
+                friendsQuery.append("id = ");
+                friendsQuery.append(to_string(friends[i]));
+                friendsQuery.append(" OR ");
+            }
             friendsQuery.append("id = ");
             friendsQuery.append(to_string(friends[i]));
-            friendsQuery.append(" OR ");
+            if (parameters->textSearchEnabled() || parameters->filtersEnabled() || parameters->bandFilterEnabled())
+                SQL.append(" AND ");
+            SQL.append(friendsQuery);
         }
-        friendsQuery.append("id = ");
-        friendsQuery.append(to_string(friends[i]));
-        if(parameters->textSearchEnabled() || parameters->filtersEnabled() || parameters->bandFilterEnabled())
-            SQL.append(" AND ");
-        SQL.append(friendsQuery);
     }
     else if(parameters->friendsOfFriendsSearchEnabled()){
         friendsOf = Friendship::getFriendsofFriendsIds(connection, parameters->getCurrentUserID());
-        for(i=0; i<friends.size()-1; i++){
+        if(!friendsOf.empty) {
+            for (i = 0; i < friends.size() - 1; i++) {
+                friendsQuery.append("id = ");
+                friendsQuery.append(to_string(friends[i]));
+                friendsQuery.append(" OR ");
+            }
             friendsQuery.append("id = ");
             friendsQuery.append(to_string(friends[i]));
-            friendsQuery.append(" OR ");
+            if (parameters->textSearchEnabled() || parameters->filtersEnabled() || parameters->bandFilterEnabled())
+                SQL.append(" AND ");
+            SQL.append(friendsQuery);
         }
-        friendsQuery.append("id = ");
-        friendsQuery.append(to_string(friends[i]));
-        if(parameters->textSearchEnabled() || parameters->filtersEnabled() || parameters->bandFilterEnabled())
-            SQL.append(" AND ");
-        SQL.append(friendsQuery);
 
     }
     if(parameters->ordenationEnabled()){
