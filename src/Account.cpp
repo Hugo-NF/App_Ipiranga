@@ -123,13 +123,22 @@ void Account::deleteAccount(int id) {
     char SQL[50];
     sqlite3 *connection;
 
-    sprintf(SQL, "DELETE FROM USERS WHERE id=%d", id);
-
     flag = sqlite3_open(DATABASE, &connection);
     if(flag!=SQLITE_OK)
         throw (char *) CONNECTION_ERROR;
 
+    sprintf(SQL, "DELETE FROM USERS WHERE id=%d", id);
     result = sqlite3_exec(connection, SQL, Callbacks::userCallback, 0, &errMsg);
+    if(result != SQLITE_OK)
+        throw (char *) DELETE_ERROR;
+
+    sprintf(SQL, "DELETE FROM ADS WHERE sellerId=%d", id);
+    result = sqlite3_exec(connection, SQL, Callbacks::adsCallback, 0, &errMsg);
+    if(result != SQLITE_OK)
+        throw (char *) DELETE_ERROR;
+
+    sprintf(SQL, "DELETE FROM FRIENDS WHERE idUser1 = %d OR idUser2 = %d", id, id);
+    result = sqlite3_exec(connection, SQL, Callbacks::friendshipCallback, 0, &errMsg);
     if(result != SQLITE_OK)
         throw (char *) DELETE_ERROR;
 

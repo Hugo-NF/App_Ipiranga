@@ -79,10 +79,10 @@ string Historic::getDate(){
 }
 unsigned int Historic::getUserRating(unsigned int id){
     if(id == this->getBuyerId()){
-        return this->getBuyerRating();
+        return this->getSellerRating();
     }
     else {
-        return this->getSellerRating();
+        return this->getBuyerRating();
     }
 }
 

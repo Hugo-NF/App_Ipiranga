@@ -72,7 +72,7 @@ public:
     string getDate();
     unsigned int getUserRating(unsigned int);
     string getCategory();
-    void setCategory();
+    void setCategory(string);
 
     /**
      * void cleanTable();
@@ -94,7 +94,7 @@ public:
      * @Argumento2: inteiro com o id do usuário avaliador
      * @Assetivas_saida: O rating do usuário avaliado será atualizado em todos os seus registros
      */
-    static void evaluate(Historic *, unsigned int);
+    static void evaluate(Historic *, unsigned int, unsigned int);
     /**
      * vector<Historic *> retrieveHistoric(unsigned int, bool, bool);
      * Metodo para a recuperação do historico de um usuario

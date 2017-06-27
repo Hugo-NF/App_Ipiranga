@@ -94,7 +94,7 @@ vector<User *> Search::userSearch(Search *parameters) {
     string SQL = "SELECT * FROM USERS WHERE ";
     string textQuery;
     string ordenationQuery;
-    string filtersQuery;
+    string filtersQuery = " ";
     string bandFilterQuery;
     ostringstream streamValue;
     string value;
@@ -105,7 +105,6 @@ vector<User *> Search::userSearch(Search *parameters) {
     string friendsQuery = " ";
     sqlite3 *connection;
     vector<User *> queryResult;
-
 
     flag = sqlite3_open(DATABASE, &connection);
     if (flag != SQLITE_OK)
@@ -127,16 +126,19 @@ vector<User *> Search::userSearch(Search *parameters) {
         for(i=0; i<criterias.size()-1; i++){
             filtersQuery.append(criterias[i]);
             filtersQuery.append(" = ");
+            filtersQuery.append("'");
             filtersQuery.append(keywords[i]);
+            filtersQuery.append("'");
             filtersQuery.append(" AND ");
         }
         filtersQuery.append(criterias[i]);
         filtersQuery.append(" = ");
+        filtersQuery.append("'");
         filtersQuery.append(keywords[i]);
-        if(parameters->textSearchEnabled()){
+        filtersQuery.append("'");
+        if(parameters->textSearchEnabled())
             SQL.append("AND ");
-            SQL.append(filtersQuery);
-        }
+        SQL.append(filtersQuery);
     }
     if(parameters->bandFilterEnabled()){
         streamValue << parameters->getMinValue();
@@ -156,11 +158,11 @@ vector<User *> Search::userSearch(Search *parameters) {
         friends = Friendship::getFriendsIds(connection, parameters->getCurrentUserID());
         for(i=0; i<friends.size()-1; i++){
             friendsQuery.append("id = ");
-            friendsQuery.append(friends[i]);
+            friendsQuery.append(to_string(friends[i]));
             friendsQuery.append(" OR ");
         }
         friendsQuery.append("id = ");
-        friendsQuery.append(friends[i]);
+        friendsQuery.append(to_string(friends[i]));
         if(parameters->textSearchEnabled() || parameters->filtersEnabled() || parameters->bandFilterEnabled())
             SQL.append(" AND ");
         SQL.append(friendsQuery);
@@ -169,26 +171,24 @@ vector<User *> Search::userSearch(Search *parameters) {
         friendsOf = Friendship::getFriendsofFriendsIds(connection, parameters->getCurrentUserID());
         for(i=0; i<friends.size()-1; i++){
             friendsQuery.append("id = ");
-            friendsQuery.append(friends[i]);
+            friendsQuery.append(to_string(friends[i]));
             friendsQuery.append(" OR ");
         }
         friendsQuery.append("id = ");
-        friendsQuery.append(friends[i]);
+        friendsQuery.append(to_string(friends[i]));
         if(parameters->textSearchEnabled() || parameters->filtersEnabled() || parameters->bandFilterEnabled())
             SQL.append(" AND ");
         SQL.append(friendsQuery);
 
     }
     if(parameters->ordenationEnabled()){
-        ordenationQuery = "ORDER BY ";
+        ordenationQuery = " ORDER BY ";
         ordenationQuery.append(parameters->getOrderBy());
         if(parameters->getOrderingSequence()){
             ordenationQuery.append(" ASC");
         }
         else
             ordenationQuery.append(" DESC");
-        if(parameters->textSearchEnabled() || parameters->filtersEnabled() || parameters->bandFilterEnabled())
-            SQL.append(" AND ");
         SQL.append(ordenationQuery);
     }
     SQL.append(";");
@@ -209,7 +209,7 @@ vector<Ads *> Search::adsSearch(Search *parameters) {
     string SQL = "SELECT * FROM ADS WHERE ";
     string textQuery;
     string ordenationQuery;
-    string filtersQuery;
+    string filtersQuery = " ";
     string bandFilterQuery;
     ostringstream streamValue;
     string value;
@@ -241,16 +241,19 @@ vector<Ads *> Search::adsSearch(Search *parameters) {
         for(i=0; i<criterias.size()-1; i++){
             filtersQuery.append(criterias[i]);
             filtersQuery.append(" = ");
+            filtersQuery.append("'");
             filtersQuery.append(keywords[i]);
+            filtersQuery.append("'");
             filtersQuery.append(" AND ");
         }
         filtersQuery.append(criterias[i]);
         filtersQuery.append(" = ");
+        filtersQuery.append("'");
         filtersQuery.append(keywords[i]);
-        if(parameters->textSearchEnabled()){
+        filtersQuery.append("'");
+        if(parameters->textSearchEnabled())
             SQL.append("AND ");
-            SQL.append(filtersQuery);
-        }
+        SQL.append(filtersQuery);
     }
     if(parameters->bandFilterEnabled()){
         streamValue << parameters->getMinValue();
@@ -270,11 +273,11 @@ vector<Ads *> Search::adsSearch(Search *parameters) {
         friends = Friendship::getFriendsIds(connection, parameters->getCurrentUserID());
         for(i=0; i<friends.size()-1; i++){
             friendsQuery.append("id = ");
-            friendsQuery.append(friends[i]);
+            friendsQuery.append(to_string(friends[i]));
             friendsQuery.append(" OR ");
         }
         friendsQuery.append("id = ");
-        friendsQuery.append(friends[i]);
+        friendsQuery.append(to_string(friends[i]));
         if(parameters->textSearchEnabled() || parameters->filtersEnabled() || parameters->bandFilterEnabled())
             SQL.append(" AND ");
         SQL.append(friendsQuery);
@@ -283,26 +286,24 @@ vector<Ads *> Search::adsSearch(Search *parameters) {
         friendsOf = Friendship::getFriendsofFriendsIds(connection, parameters->getCurrentUserID());
         for(i=0; i<friends.size()-1; i++){
             friendsQuery.append("id = ");
-            friendsQuery.append(friends[i]);
+            friendsQuery.append(to_string(friends[i]));
             friendsQuery.append(" OR ");
         }
         friendsQuery.append("id = ");
-        friendsQuery.append(friends[i]);
+        friendsQuery.append(to_string(friends[i]));
         if(parameters->textSearchEnabled() || parameters->filtersEnabled() || parameters->bandFilterEnabled())
             SQL.append(" AND ");
         SQL.append(friendsQuery);
 
     }
     if(parameters->ordenationEnabled()){
-        ordenationQuery = "ORDER BY ";
+        ordenationQuery = " ORDER BY ";
         ordenationQuery.append(parameters->getOrderBy());
         if(parameters->getOrderingSequence()){
             ordenationQuery.append(" ASC");
         }
         else
             ordenationQuery.append(" DESC");
-        if(parameters->textSearchEnabled() || parameters->filtersEnabled() || parameters->bandFilterEnabled())
-            SQL.append(" AND ");
         SQL.append(ordenationQuery);
     }
     SQL.append(";");

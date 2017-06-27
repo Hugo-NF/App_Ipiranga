@@ -33,6 +33,14 @@ public:
     Search(){}
     Search(unsigned int userID){
         this->currentUserID = userID;
+        this->toggleText = false;
+        this->toggleFilters = false;
+        this->toggleOrdernation = true;
+        this->orderBy = "id";
+        this->toggleBandFilter = false;
+        this->orderSequence = false;
+        this->toggleFriends = false;
+        this->toggleFriendsofFriends = false;
     }
     ~Search(){}
     unsigned int getCurrentUserID();
