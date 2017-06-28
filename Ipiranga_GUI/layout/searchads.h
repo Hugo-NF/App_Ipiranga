@@ -36,7 +36,7 @@ private:
     void setTitle(QString);
     void setPrice(QString);
     void setSeller(QString);
-    void setQuantity(QString);
+    void setQuantity(int);
     void setCategory(QString);
     void setRating(double);
 };

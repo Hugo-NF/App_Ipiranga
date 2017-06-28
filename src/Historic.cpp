@@ -77,12 +77,13 @@ string Historic::getCategory(){
 string Historic::getDate(){
     return this->date;
 }
+
 unsigned int Historic::getUserRating(unsigned int id){
     if(id == this->getBuyerId()){
-        return this->getBuyerRating();
+        return this->getSellerRating();
     }
     else {
-        return this->getSellerRating();
+        return this->getBuyerRating();
     }
 }
 
@@ -138,11 +139,10 @@ void Historic::insertOperation(sqlite3 *connection, Historic *newEntry) {
     char SQL[5000];
     sprintf(SQL, "INSERT INTO HISTORIC ("\
     "sellerId, sellerUsername, buyerId, buyerUsername, selleRating, buyeRating, adId, quantity, adTitle, category, price, date)"\
-    " VALUES(%d,'%s',%d,'%s',%d,%d,%d,%d,'%s','%s',%s,'%s');",
-     newEntry->getSellerId(), newEntry->getSellerUsername().c_str(), newEntry->getBuyerId(),\
+    " VALUES(%d,'%s',%d,'%s',%d,%d,%d,%d,'%s','%s',%s,'%s');", newEntry->getSellerId(), newEntry->getSellerUsername().c_str(), newEntry->getBuyerId(),\
      newEntry->getBuyerUsername().c_str(), newEntry->getSellerRating(), newEntry->getBuyerRating(),\
      newEntry->getAdId(), newEntry->getQuantity(),newEntry->getAdTitle().c_str(),\
-     newEntry->getCategory(), price.c_str(), newEntry->getDate().c_str());
+     newEntry->getCategory().c_str(), price.c_str(), newEntry->getDate().c_str());
     cout<<SQL<<endl;
     result = sqlite3_exec(connection, SQL, Callbacks::historicCallback, 0, &errMsg);
     if(result != SQLITE_OK)
@@ -166,11 +166,11 @@ void Historic::evaluate(Historic *entry, unsigned int id, unsigned int rating) {
         flag = sqlite3_exec(connection, SQL, Callbacks::historicCallback, 0, &errMsg);
         if(flag != SQLITE_OK)
             throw (char *) CONNECTION_ERROR;
-        sprintf(SQL, "SELECT AVG(buyeRating) FROM HISTORIC WHERE buyerId = %u AND NOT rating = 0;", entry->getBuyerId());
+        sprintf(SQL, "SELECT AVG(buyeRating) FROM HISTORIC WHERE buyerId = %u AND NOT buyeRating = 0;", entry->getBuyerId());
         flag = sqlite3_exec(connection, SQL, Callbacks::averageCallback, &newAverage1, &errMsg);
         if(flag != SQLITE_OK)
             throw (char *) CONNECTION_ERROR;
-        sprintf(SQL, "SELECT AVG(selleRating) FROM HISTORIC WHERE sellerId = %u AND NOT rating = 0;", entry->getBuyerId());
+        sprintf(SQL, "SELECT AVG(selleRating) FROM HISTORIC WHERE sellerId = %u AND NOT selleRating = 0;", entry->getBuyerId());
         flag = sqlite3_exec(connection, SQL, Callbacks::averageCallback, &newAverage2, &errMsg);
         if(flag != SQLITE_OK)
             throw (char *) CONNECTION_ERROR;
@@ -190,21 +190,21 @@ void Historic::evaluate(Historic *entry, unsigned int id, unsigned int rating) {
         flag = sqlite3_exec(connection, SQL, Callbacks::historicCallback, 0, &errMsg);
         if(flag != SQLITE_OK)
             throw (char *) CONNECTION_ERROR;
-        sprintf(SQL, "SELECT AVG(selleRating) FROM HISTORIC WHERE sellerId = %u AND NOT rating = 0;", entry->getSellerId());
+        sprintf(SQL, "SELECT AVG(selleRating) FROM HISTORIC WHERE sellerId = %u AND NOT selleRating = 0;", entry->getSellerId());
         flag = sqlite3_exec(connection, SQL, Callbacks::averageCallback, &newAverage1, &errMsg);
         if(flag != SQLITE_OK)
             throw (char *) CONNECTION_ERROR;
-        sprintf(SQL, "SELECT AVG(buyeRating) FROM HISTORIC WHERE buyerId = %u AND NOT rating = 0;", entry->getSellerId());
+        sprintf(SQL, "SELECT AVG(buyeRating) FROM HISTORIC WHERE buyerId = %u AND NOT buyeRating = 0;", entry->getSellerId());
         flag = sqlite3_exec(connection, SQL, Callbacks::averageCallback, &newAverage2, &errMsg);
         if(flag != SQLITE_OK)
             throw (char *) CONNECTION_ERROR;
-        streamRating<<((newAverage1+newAverage2)/2);
+        streamRating<<((newAverage1+newAverage2)*0.5);
         string s_rating = streamRating.str();
         sprintf(SQL, "UPDATE USERS set rating = %s WHERE id = %u AND username = '%s';", s_rating.c_str(), entry->getSellerId(), entry->getSellerUsername().c_str());
         flag = sqlite3_exec(connection, SQL, Callbacks::userCallback, 0, &errMsg);
         if(flag != SQLITE_OK)
             throw (char *) CONNECTION_ERROR;
-        sprintf(SQL, "UPDATE ADS set sellerRating = %s WHERE id = %u AND sellerUsername = '%s';", s_rating.c_str(), entry->getAdId(), entry->getSellerUsername().c_str());
+        sprintf(SQL, "UPDATE ADS set sellerRating = %s WHERE id = %u AND seller = '%s';", s_rating.c_str(), entry->getAdId(), entry->getSellerUsername().c_str());
         flag = sqlite3_exec(connection, SQL, Callbacks::adsCallback, 0, &errMsg);
         if(flag != SQLITE_OK)
             throw (char *) CONNECTION_ERROR;

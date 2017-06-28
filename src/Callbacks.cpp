@@ -1,7 +1,5 @@
 #include "../include/Callbacks.hpp"
 
-
-
 int Callbacks::userCallback(void *ptr, int argc, char **argv, char **colNames) {
     vector<User *>* result = (vector<User *>*) ptr;
     User *currentUser = new User((atoi(argv[0])));
@@ -116,4 +114,10 @@ string Callbacks::getCurrentDate(){
     strftime (date, 30,"%a, %b %e %Y - %R", timeinfo);
     returningDate = date;
     return returningDate;
+}
+
+void Callbacks::deleteVector(vector<class T> currentVector) {
+   /* for(unsigned int i = 0; i<currentVector.size(); i++){
+        delete (currentVector[i]);
+    }*/
 }

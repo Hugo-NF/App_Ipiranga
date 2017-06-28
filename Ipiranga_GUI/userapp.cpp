@@ -73,7 +73,6 @@ UserApp::UserApp(QWidget *parent, User* _CurrentUser) :
     ui->Adjust_friends->hide();
     ui->Adjust_ads->hide();
     ToolActive = false;
-
 }
 
 UserApp::~UserApp()

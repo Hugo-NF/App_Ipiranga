@@ -18,7 +18,7 @@ HistoricLayout::~HistoricLayout()
 
 void HistoricLayout::setHist_Address(Historic* hist){
     HistAdress = hist;
-    setFields();
+    this->setFields();
 }
 
 void HistoricLayout::setFields(){
@@ -98,28 +98,33 @@ void HistoricLayout::on_radio_1_clicked()
 {
     HistAdress->evaluate(HistAdress, ID_CurrentUser, 1);
     QMessageBox::information(this,tr("Vote"),tr("You rated this transation with note 1"));
+    setRating(1);
 }
 
 void HistoricLayout::on_radio_2_clicked()
 {
     HistAdress->evaluate(HistAdress, ID_CurrentUser, 2);
     QMessageBox::information(this,tr("Vote"),tr("You rated this transation with note 2"));
+    setRating(2);
 }
 
 void HistoricLayout::on_radio_3_clicked()
 {
     HistAdress->evaluate(HistAdress, ID_CurrentUser, 3);
     QMessageBox::information(this,tr("Vote"),tr("You rated this transation with note 3"));
+    setRating(3);
 }
 
 void HistoricLayout::on_radio_4_clicked()
 {
     HistAdress->evaluate(HistAdress, ID_CurrentUser, 4);
     QMessageBox::information(this,tr("Vote"),tr("You rated this transation with note 4"));
+    setRating(4);
 }
 
 void HistoricLayout::on_radio_5_clicked()
 {
     HistAdress->evaluate(HistAdress, ID_CurrentUser, 5);
     QMessageBox::information(this,tr("Vote"),tr("You rated this transation with note 5"));
+    setRating(5);
 }

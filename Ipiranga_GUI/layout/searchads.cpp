@@ -25,7 +25,7 @@ void SearchAds::setFields(){
     this->setTitle(QString::fromStdString(MyAdsAddress->getTitle()));
     this->setPrice(QString::number(MyAdsAddress->getPrice()));
     this->setSeller(QString::fromStdString(MyAdsAddress->getSellerUsername()));
-    this->setQuantity(QString::number(MyAdsAddress->getAmount()));
+    this->setQuantity(MyAdsAddress->getAmount());
     this->setCategory(QString::fromStdString(MyAdsAddress->getCategory()));
     this->setRating(MyAdsAddress->getSellerRating());
 }
@@ -50,8 +50,9 @@ void SearchAds::setSeller(QString seller){
     ui->line_seller->setText(seller);
 }
 
-void SearchAds::setQuantity(QString quantity){
-    ui->line_quantity->setText(quantity);
+void SearchAds::setQuantity(int quantity){
+    ui->spin_quantity->setValue(1);
+    ui->spin_quantity->setMaximum(quantity);
 }
 
 void SearchAds::setCategory(QString category){
@@ -62,8 +63,9 @@ void SearchAds::on_Button_buy_clicked()
 {
     if(CurrentUser->cardRegistered()){
         try{
-            Payment::makePayment(MyAdsAddress,CurrentUser,1);
+            Payment::makePayment(MyAdsAddress,CurrentUser,ui->spin_quantity->value());
             QMessageBox::information(this,tr("Shopping"),tr("Sucess!"));
+            this->setQuantity(MyAdsAddress->getAmount());
         }catch(char* err){
             QMessageBox::warning(this,tr("Payment"),tr(err));
         }

@@ -5,7 +5,7 @@
     
 #------------ADICIONAR---------------
 -Formulario
-    Campo de aceitar compromisso
+    Campo de aceitar compromisso (question box)
     
 -Busca (search and historic)
     Botões de Order by
@@ -17,3 +17,9 @@
     Deletar e criar ao clicar
     
 -Como reiniciar Historico/ Lista de amigos/ .. apos deletar algo;
+
+-Ads
+    ordem de tab incorreta
+    
+-Formularios (Ads, Ads_search)
+    Todos os campos obrigatorios
