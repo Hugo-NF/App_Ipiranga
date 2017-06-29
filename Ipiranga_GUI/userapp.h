@@ -63,10 +63,10 @@ private:
     User CurrentUser;
 
     //Pages Widget
-    InitialPage PageZero;
+    InitialPage *PageZero;
     EditProfile PageOne;
-    FriendsPage PageTwo;
-    HistoricPage PageThree;
+    FriendsPage *PageTwo;
+    HistoricPage *PageThree;
     Advertise PageFour;
     SearchResult *PageResult;
 

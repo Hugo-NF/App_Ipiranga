@@ -14,7 +14,7 @@ FriendsPage::~FriendsPage()
 }
 
 //---------------------SET FUNCTIONS--------------------------
-void FriendsPage::SetCurrentUser(User _CurrentUser){
+void FriendsPage::SetCurrentUser(User* _CurrentUser){
     CurrentUser = _CurrentUser;
     setFriends();
 }
@@ -23,7 +23,7 @@ void FriendsPage::setFriends(){
     vector <User *> Friends;
     int size_v_friends; //size vector friends
 
-    Friends = User::listFriends(CurrentUser.getId(),true,"username",true);
+    Friends = User::listFriends(CurrentUser->getId(),true,"username",true);
     size_v_friends = Friends.size();
 
     for(int i=0; i<size_v_friends; i++){
@@ -43,5 +43,5 @@ void FriendsPage::setFields(FriendsLayout* friends_object, User* user){
    friends_object->setEmail(QString::fromStdString(user->getEmail()));
    friends_object->setRating(QString::number(user->getRating()));
    friends_object->setID(user->getId());
-   friends_object->setID_User(CurrentUser.getId());
+   friends_object->setID_User(CurrentUser->getId());
 }

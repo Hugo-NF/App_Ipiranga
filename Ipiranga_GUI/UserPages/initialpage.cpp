@@ -14,7 +14,7 @@ InitialPage::~InitialPage()
 }
 
 //---------------------SET CURRENT USER--------------------------
-void InitialPage::SetCurrentUser(User _CurrentUser){
+void InitialPage::SetCurrentUser(User* _CurrentUser){
     CurrentUser = _CurrentUser;
 
     SetFields();
@@ -26,13 +26,13 @@ void InitialPage::SetFields()
     string name;
 
     // Make the append twice and convert to QString: (first ++ "" ++ last)-> To QString
-    name = CurrentUser.getFirstName();
+    name = CurrentUser->getFirstName();
     name += " ";
-    name += CurrentUser.getLastName();
+    name += CurrentUser->getLastName();
 
     ui->Name->setText(QString::fromStdString(name));
-    ui->CPF->setText(QString::fromStdString(CurrentUser.getCPF()));
-    ui->Email->setText(QString::fromStdString(CurrentUser.getEmail()));
-    ui->Balance->setText(QString::number(CurrentUser.getBalance()));
-    ui->Rating->setText(QString::number(CurrentUser.getRating()));
+    ui->CPF->setText(QString::fromStdString(CurrentUser->getCPF()));
+    ui->Email->setText(QString::fromStdString(CurrentUser->getEmail()));
+    ui->Balance->setText(QString::number(CurrentUser->getBalance()));
+    ui->Rating->setText(QString::number(CurrentUser->getRating()));
 }

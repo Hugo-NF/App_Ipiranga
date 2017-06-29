@@ -15,7 +15,7 @@ class Advertise : public QWidget
 public:
     explicit Advertise(QWidget *parent = 0);
     ~Advertise();
-    void SetCurrentUser(User);  //Set the User Active
+    void SetCurrentUser(User*);  //Set the User Active
 
 private slots:
     void on_text_description_textChanged(); // count characters on the box
@@ -28,7 +28,7 @@ private:
     Ui::Advertise *ui;
 
     QString Description;    // field description
-    User CurrentUser;   // User Active
+    User *CurrentUser;   // User Active
 
     //Sets Methods
     void set_ActivesAds();

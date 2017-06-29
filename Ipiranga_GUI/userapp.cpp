@@ -36,43 +36,41 @@ UserApp::UserApp(QWidget *parent, User* _CurrentUser) :
     F_byName=false;                 //set the order by name to initial value
     on_command_name_clicked();      //set the order by name to true, like a defaut
 
+    ui->Adjust_friends->hide();
+    ui->Adjust_ads->hide();
+    ToolActive = false;
     //------------------------------------------------------
 
 
     //ISERTING PAGES IN THE FRAME OF USER APP
 
     // Page 0 - Home
-    PageZero.SetCurrentUser(CurrentUser);
-    ui->Pages->insertWidget(0,&PageZero);
+    PageZero = new InitialPage;
+    PageZero->SetCurrentUser(&CurrentUser);
+    ui->Pages->insertWidget(0,PageZero);
 
     // Page 1 - Profile Edit
-    PageOne.SetCurrentUser(CurrentUser);
+    PageOne.SetCurrentUser(&CurrentUser);
     PageOne.SetFather(this);
     ui->Pages->insertWidget(1,&PageOne);
 
     // Page 2 - FriendsPage
-    PageTwo.SetCurrentUser(CurrentUser);
-    ui->Pages->insertWidget(2,&PageTwo);
+    PageTwo = new FriendsPage;
 
     //Page 3 - Historic
-    PageThree.SetCurrentUser(CurrentUser);
-    ui->Pages->insertWidget(3,&PageThree);
+    PageThree = new HistoricPage;
 
     // Page 4 - Advertise
-    PageFour.SetCurrentUser(CurrentUser);
+    PageFour.SetCurrentUser(&CurrentUser);
     ui->Pages->insertWidget(4,&PageFour);
 
     // Page Result - Search
     PageResult = new SearchResult;
-    PageResult->SetCurrentUser(CurrentUser);
+    PageResult->SetCurrentUser(&CurrentUser);
     ui->Pages->insertWidget(5,PageResult);
 
     //Set witch is the first page
     ui->Pages->setCurrentIndex(0);
-
-    ui->Adjust_friends->hide();
-    ui->Adjust_ads->hide();
-    ToolActive = false;
 }
 
 UserApp::~UserApp()
@@ -91,6 +89,10 @@ void UserApp::SetPropertyUserCurrent(){
 //---------------MENU BUTTONS-----------------
 void UserApp::on_Button_home_clicked()
 {
+    PageZero->~InitialPage();
+    PageZero = new InitialPage;
+    PageZero->SetCurrentUser(&CurrentUser);
+    ui->Pages->insertWidget(0,PageZero);
     ui->Pages->setCurrentIndex(0);
 }
 
@@ -101,11 +103,19 @@ void UserApp::on_Button_edit_clicked()
 
 void UserApp::on_Button_friends_clicked()
 {
+    PageTwo->~FriendsPage();
+    PageTwo = new FriendsPage;
+    PageTwo->SetCurrentUser(&CurrentUser);
+    ui->Pages->insertWidget(2,PageTwo);
     ui->Pages->setCurrentIndex(2);
 }
 
 void UserApp::on_Button_historic_clicked()
 {
+    PageThree->~HistoricPage();
+    PageThree = new HistoricPage;
+    PageThree->SetCurrentUser(&CurrentUser);
+    ui->Pages->insertWidget(3,PageThree);
     ui->Pages->setCurrentIndex(3);
 }
 
@@ -155,7 +165,7 @@ void UserApp::on_Button_search_advertise_clicked()
 //---------------SEARCH BUTTONS----------------
 void UserApp::on_Button_search_clicked()
 {
-    this->on_line_search_returnPressed();
+    ui->Pages->setCurrentIndex(5);
 }
 
 void UserApp::on_line_search_textChanged()
@@ -233,7 +243,7 @@ void UserApp::on_line_search_returnPressed()
 
         PageResult = new SearchResult;
 
-        PageResult->SetCurrentUser(CurrentUser);
+        PageResult->SetCurrentUser(&CurrentUser);
         PageResult->setSearchType(SearchType);
         PageResult->set_F_Results(search_result_friend);
 
@@ -316,7 +326,7 @@ void UserApp::on_line_search_returnPressed()
 
         PageResult = new SearchResult;
 
-        PageResult->SetCurrentUser(CurrentUser);
+        PageResult->SetCurrentUser(&CurrentUser);
         PageResult->setSearchType(SearchType);
         PageResult->set_A_Results(search_result_ads);
 

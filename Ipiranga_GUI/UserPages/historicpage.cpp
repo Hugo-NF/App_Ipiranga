@@ -14,7 +14,7 @@ HistoricPage::~HistoricPage()
 }
 
 //-------------------SET CURRENT USER----------------------
-void HistoricPage::SetCurrentUser(User _CurrentUser){
+void HistoricPage::SetCurrentUser(User* _CurrentUser){
     CurrentUser = _CurrentUser;
     this->addHistorics(true,true);
 }
@@ -23,7 +23,7 @@ void HistoricPage::SetCurrentUser(User _CurrentUser){
 void HistoricPage::addHistorics(bool asSaler, bool asBuyer){
     vector <Historic *> registers; //Historic of this User
 
-    registers = Historic::retrieveHistoric(CurrentUser.getId(),asSaler,asBuyer);
+    registers = Historic::retrieveHistoric(CurrentUser->getId(),asSaler,asBuyer);
 
     Number_historics = registers.size();
 
@@ -37,7 +37,7 @@ void HistoricPage::addHistorics(bool asSaler, bool asBuyer){
 
 //------------------------SET FIELDS-----------------------------
 void HistoricPage::setHistoric(Historic* log, HistoricLayout *hist){
-   hist->setID_user(CurrentUser.getId());
+   hist->setID_user(CurrentUser->getId());
    hist->setHist_Address(log);
    ui->box_historic->addWidget(hist);
 }

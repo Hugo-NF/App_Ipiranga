@@ -19,7 +19,7 @@ public:
     explicit HistoricPage(QWidget *parent = 0);
     ~HistoricPage();
 
-    void SetCurrentUser(User);  //Set the User Active
+    void SetCurrentUser(User*);  //Set the User Active
 
 private slots:
     void on_Button_all_clicked();   // ordenation by all
@@ -31,7 +31,7 @@ private slots:
 private:
     Ui::HistoricPage *ui;
 
-    User CurrentUser; //User Active
+    User *CurrentUser; //User Active
 
     vector <HistoricLayout *> historic;  //historic objects
     int Number_historics;       //Number of objects on the screen

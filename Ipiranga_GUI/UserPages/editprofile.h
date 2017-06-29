@@ -17,7 +17,7 @@ public:
     explicit EditProfile(QWidget *parent = 0);
     ~EditProfile();
 
-    void SetCurrentUser(User);  //Set the User Active
+    void SetCurrentUser(User*);  //Set the User Active
     void SetFather(QWidget *);
 
 private slots:
@@ -31,7 +31,7 @@ private:
 
     QWidget *Father;    //Adress of parent object
 
-    User CurrentUser; //User Active
+    User *CurrentUser; //User Active
 
     vector <string> UserDate; //User informations
 
