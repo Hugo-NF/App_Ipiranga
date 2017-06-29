@@ -1,1 +1,0 @@
-/usr/bin/c++   -g   CMakeFiles/App_Ipiranga.dir/src/main.cpp.o CMakeFiles/App_Ipiranga.dir/src/User.cpp.o  -o App_Ipiranga 
