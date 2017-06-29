@@ -39,6 +39,7 @@ private slots:
 
     //Search Buttons Actions
     void on_line_search_returnPressed();        // Return pressed in the search line
+    void on_line_search_textChanged();          // Return the search in real time
     void on_Button_search_clicked();            // Search button was clicked
     void on_Button_search_friends_clicked();    // Search friends filter
     void on_Button_search_advertise_clicked();  // Search Ads filter

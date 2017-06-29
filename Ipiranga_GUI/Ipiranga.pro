@@ -27,6 +27,7 @@ SOURCES += \
     UserPages/historicpage.cpp \
     UserPages/initialpage.cpp \
     UserPages/searchresult.cpp \
+    UserPages/adminpage.cpp \
     layout/adslayout.cpp \
     layout/friendslayout.cpp \
     layout/historiclayout.cpp \
@@ -54,6 +55,7 @@ HEADERS += \
     UserPages/historicpage.h \
     UserPages/initialpage.h \
     UserPages/searchresult.h \
+    UserPages/adminpage.h \
     layout/adslayout.h \
     layout/friendslayout.h \
     layout/historiclayout.h \
@@ -81,6 +83,7 @@ FORMS += \
     UserPages/historicpage.ui \
     UserPages/initialpage.ui \
     UserPages/searchresult.ui \
+    UserPages/adminpage.ui \
     layout/adslayout.ui \
     layout/friendslayout.ui \
     layout/historiclayout.ui \

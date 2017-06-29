@@ -158,15 +158,90 @@ void UserApp::on_Button_search_clicked()
     this->on_line_search_returnPressed();
 }
 
+void UserApp::on_line_search_textChanged()
+{
+    this->on_line_search_returnPressed();
+}
+
 void UserApp::on_line_search_returnPressed()
 {   
-    vector <Ads*> search_result;
+    vector <Ads*> search_result_ads;
+    vector <User*> search_result_friend;
     vector <string> criterias;
     vector <string> keywords;
-    //mudar na classe searchresult
 
+    //-----------------SEARCH FRIENDS---------------
     if(SearchType && getFields_Search_Friends()){
-        //search_result = Search::userSearch(&parameters);
+        //-----------Set id do usuario---------------
+        Search parameters(CurrentUser.getId());
+
+        //-----------Set o texto de busca---------------
+        parameters.enableTextSearch(true);
+        parameters.setText(SearchText); //caixa da busca
+
+        //-----------Set os valores de rating----------
+        if(F_rating!=0){
+            parameters.enablebandFilter(true); //filtros por valor e rank
+            parameters.setBandFilterCriteria("ranking");//ranking ou price
+            parameters.setMinValue((double)F_rating);//valor min price ou rating
+            parameters.setMaxValue(5.0);//valor max price or rating
+        }else{
+            parameters.enablebandFilter(false);
+        }
+
+        //--------Set amigos ou amigos de amigos------
+        if(F_friends){
+            parameters.enableFriendsSearch(true); //busca por amigos
+            parameters.enableFriendsofFriendsSearch(false); //busca amigos de
+        }else if(F_friends_of){
+            parameters.enableFriendsSearch(false); //busca por amigos
+            parameters.enableFriendsofFriendsSearch(true); //busca amigos de
+        }else{
+            parameters.enableFriendsSearch(false); //busca por amigos
+            parameters.enableFriendsofFriendsSearch(false); //busca amigos de
+        }
+
+        //-------set criterios de busca (estado)------------
+        parameters.enableFilters(false); //filtros de categoria
+        if(!F_state.empty()){
+            parameters.enableFilters(true); //filtros de categoria
+            criterias.push_back("state");
+            keywords.push_back(F_state);
+        }
+        parameters.setCriterias(criterias); //vector strings criterios Ex: category...
+        parameters.setKeywords(keywords);// vector string chaves Ex: carro, brasilia
+
+        //--------set ordenacao por------------
+        parameters.enableOrdenation(true); // ordernar ou n
+        if(F_byName){
+            parameters.setOrderBy("name");//parametro de ordenação
+        }else if(F_byCity){
+            parameters.setOrderBy("city");//parametro de ordenação
+        }else if(F_byRating){
+            parameters.setOrderBy("rating");//parametro de ordenação
+        }
+        parameters.setOrderingSequence(F_by_); // 1^ 0|
+
+        try{
+            search_result_friend = Search::userSearch(&parameters);
+        }catch(...){}
+
+        criterias.~vector();
+        keywords.~vector();
+
+        PageResult->~SearchResult();
+
+        PageResult = new SearchResult;
+
+        PageResult->SetCurrentUser(CurrentUser);
+        PageResult->setSearchType(SearchType);
+        PageResult->set_F_Results(search_result_friend);
+
+        ui->Pages->insertWidget(5,PageResult);
+
+        ui->Pages->setCurrentWidget(PageResult);
+
+    //-----------------SEARCH ADS---------------
     }else if(!SearchType && getFields_Search_Ads()){
 
         //-----------Set id do usuario---------------
@@ -231,27 +306,28 @@ void UserApp::on_line_search_returnPressed()
         parameters.setOrderingSequence(A_by_); // 1^ 0|
 
         try{
-            search_result = Search::adsSearch(&parameters);
+            search_result_ads = Search::adsSearch(&parameters);
         }catch(...){}
 
         criterias.~vector();
         keywords.~vector();
 
+        PageResult->~SearchResult();
+
+        PageResult = new SearchResult;
+
+        PageResult->SetCurrentUser(CurrentUser);
+        PageResult->setSearchType(SearchType);
+        PageResult->set_A_Results(search_result_ads);
+
+        ui->Pages->insertWidget(5,PageResult);
+
+        ui->Pages->setCurrentWidget(PageResult);
+
     }else{
         return;
     }
 
-    PageResult->~SearchResult();
-
-    PageResult = new SearchResult;
-
-    PageResult->SetCurrentUser(CurrentUser);
-    PageResult->setSearchType(SearchType);
-    PageResult->setResults(search_result);
-
-    ui->Pages->insertWidget(5,PageResult);
-
-    ui->Pages->setCurrentWidget(PageResult);
 }
 //---------------------------------------------
 
@@ -498,4 +574,3 @@ void UserApp::on_command_city_2_clicked()
     on_line_search_returnPressed();
 }
 //------------------END ORDER BY---------------------
-

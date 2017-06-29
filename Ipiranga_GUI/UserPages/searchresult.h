@@ -16,7 +16,8 @@ public:
     explicit SearchResult(QWidget *parent = 0);
     ~SearchResult();
     void SetCurrentUser(User);  //Set the User Active
-    void setResults(vector <Ads*>); //vector that contain the results of search
+    void set_A_Results(vector <Ads*>); //vector that contain the results of search (Ads)
+    void set_F_Results(vector <User*>);//vector that contain the results of search (Friends)
     void setSearchType(bool);   // 1 to Friends - 0 to Advertise
 
 private:
