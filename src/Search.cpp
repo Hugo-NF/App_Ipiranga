@@ -196,7 +196,6 @@ vector<User *> Search::userSearch(Search *parameters) {
         SQL.append(ordenationQuery);
     }
     SQL.append(";");
-    cout<<SQL<<endl;
     flag = sqlite3_exec(connection, SQL.c_str(), Callbacks::userCallback, &queryResult, &errMsg);
     if (flag != SQLITE_OK)
         throw (char *) CONNECTION_ERROR;

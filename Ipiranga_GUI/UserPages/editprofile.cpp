@@ -17,7 +17,7 @@ EditProfile::~EditProfile()
     delete ui;
 }
 
-void EditProfile::SetCurrentUser(User _CurrentUser){
+void EditProfile::SetCurrentUser(User* _CurrentUser){
     CurrentUser = _CurrentUser;
     SetUserFields();
 }
@@ -30,42 +30,42 @@ void EditProfile::SetFather(QWidget *_father){
 void EditProfile::SetUserFields(){
     QDate ExpirationDate;
 
-    ui->lineFirstName->setText(QString::fromStdString(CurrentUser.getFirstName()));
-    ui->lineLastName->setText(QString::fromStdString(CurrentUser.getLastName()));
-    ui->lineCPF->setText(QString::fromStdString(CurrentUser.getCPF()));
-    ui->lineRG->setText(QString::fromStdString(CurrentUser.getRG()));
-    ui->spinAge->setValue(atoi(CurrentUser.getAge().c_str()));
-    ui->linePhone->setText(QString::fromStdString(CurrentUser.getPhoneNumber()));
+    ui->lineFirstName->setText(QString::fromStdString(CurrentUser->getFirstName()));
+    ui->lineLastName->setText(QString::fromStdString(CurrentUser->getLastName()));
+    ui->lineCPF->setText(QString::fromStdString(CurrentUser->getCPF()));
+    ui->lineRG->setText(QString::fromStdString(CurrentUser->getRG()));
+    ui->spinAge->setValue(atoi(CurrentUser->getAge().c_str()));
+    ui->linePhone->setText(QString::fromStdString(CurrentUser->getPhoneNumber()));
 
-    ui->lineLogin->setText(QString::fromStdString(CurrentUser.getUsername()));
-    ui->linePass->setText(QString::fromStdString(CurrentUser.getPassword()));
-    ui->lineEmail->setText(QString::fromStdString(CurrentUser.getEmail()));
+    ui->lineLogin->setText(QString::fromStdString(CurrentUser->getUsername()));
+    ui->linePass->setText(QString::fromStdString(CurrentUser->getPassword()));
+    ui->lineEmail->setText(QString::fromStdString(CurrentUser->getEmail()));
 
-    ui->lineAdress->setText(QString::fromStdString(CurrentUser.getAddress()));
-    ui->lineZIP->setText(QString::fromStdString(CurrentUser.getZipCode()));
-    ui->lineState->setText(QString::fromStdString(CurrentUser.getState()));
-    ui->lineCity->setText(QString::fromStdString(CurrentUser.getCity()));
+    ui->lineAdress->setText(QString::fromStdString(CurrentUser->getAddress()));
+    ui->lineZIP->setText(QString::fromStdString(CurrentUser->getZipCode()));
+    ui->lineState->setText(QString::fromStdString(CurrentUser->getState()));
+    ui->lineCity->setText(QString::fromStdString(CurrentUser->getCity()));
 
-    if(CurrentUser.cardRegistered()){
-        if(CurrentUser.getCardType()=="Credit")
+    if(CurrentUser->cardRegistered()){
+        if(CurrentUser->getCardType()=="Credit")
             ui->radioButton_Credit->setChecked(true);
         else
             ui->radioButton_Debit->setChecked(true);
 
-        ui->lineNamePayment->setText(QString::fromStdString(CurrentUser.getCardName()));
-        ui->lineNumber->setText(QString::fromStdString(CurrentUser.getCardNumber()));
-        ui->lineSecurity->setText(QString::fromStdString(CurrentUser.getSecurityCode()));
+        ui->lineNamePayment->setText(QString::fromStdString(CurrentUser->getCardName()));
+        ui->lineNumber->setText(QString::fromStdString(CurrentUser->getCardNumber()));
+        ui->lineSecurity->setText(QString::fromStdString(CurrentUser->getSecurityCode()));
 
-        ExpirationDate.setDate(stoi(CurrentUser.getExpirationDate().substr(0,4)), stoi(CurrentUser.getExpirationDate().substr(5)), 1);
+        ExpirationDate.setDate(stoi(CurrentUser->getExpirationDate().substr(0,4)), stoi(CurrentUser->getExpirationDate().substr(5)), 1);
 
         ui->dateExpiration->setDate(ExpirationDate);
     }
 
-    if(CurrentUser.accountRegistered()){
-        ui->lineNameBank->setText(QString::fromStdString(CurrentUser.getCardName()));
-        ui->comboBox_Bank->setCurrentText(QString::fromStdString(CurrentUser.getBank()));
-        ui->lineAgency->setText(QString::fromStdString(CurrentUser.getAgency()));
-        ui->lineAccount->setText(QString::fromStdString(CurrentUser.getAccountNumber()));
+    if(CurrentUser->accountRegistered()){
+        ui->lineNameBank->setText(QString::fromStdString(CurrentUser->getCardName()));
+        ui->comboBox_Bank->setCurrentText(QString::fromStdString(CurrentUser->getBank()));
+        ui->lineAgency->setText(QString::fromStdString(CurrentUser->getAgency()));
+        ui->lineAccount->setText(QString::fromStdString(CurrentUser->getAccountNumber()));
     }
 }
 
@@ -118,8 +118,11 @@ void EditProfile::on_pushButton_Save_clicked()
     if(this->checkFields()){        // Check the fields of the form
         try{
             // Register a new user on the BD
-            Account::updateProfile(this->UserDate,CurrentUser.getId(), this->Payment_active, this->Bank_active);
+            Account::updateProfile(this->UserDate,CurrentUser->getId(), this->Payment_active, this->Bank_active);
             QMessageBox::information(this,tr("Register"),tr("Updated with sucess!\n Your changes will take effect on your next login!"));
+
+            //-----------RENEW THE CURRENT USER---------
+            (*CurrentUser) = (* Account::login(UserDate[6],UserDate[7]));
         }
         catch (char *error){
             QMessageBox::information(this,tr("Register"),tr(error));
@@ -138,7 +141,7 @@ void EditProfile::on_pushButton_Delete_clicked()
         {
             QMessageBox::information(this, tr("Delete Account"),tr("OK, Ok, ok, you win\n We will DELETE you account\n Good Bye :'["));
             try{
-                Account::deleteAccount(CurrentUser.getId());
+                Account::deleteAccount(CurrentUser->getId());
                 QMessageBox::information(this,tr("Delete Account"),tr("Your account was deleted with sucess!"));
                 system("./Ipiranga&");
                 Father->close();
@@ -157,7 +160,7 @@ void EditProfile::on_pushButton_Inactive_clicked()
             == QMessageBox::Yes)
     {
         try{
-            Account::activateAccount(CurrentUser.getId(),false);
+            Account::activateAccount(CurrentUser->getId(),false);
             QMessageBox::information(this,tr("Inactive Profile"),tr("Your account was desactivated with sucess!\n"
                                                                     "When you login again, it will be reactivated!"));
             system("./Ipiranga&");

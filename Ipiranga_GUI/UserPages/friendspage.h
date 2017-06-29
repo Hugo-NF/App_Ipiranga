@@ -17,12 +17,12 @@ public:
     explicit FriendsPage(QWidget *parent = 0);
     ~FriendsPage();
 
-    void SetCurrentUser(User);  //Set the User Active
+    void SetCurrentUser(User*);  //Set the User Active
 
 private:
     Ui::FriendsPage *ui;
 
-    User CurrentUser; //User Active
+    User *CurrentUser; //User Active
 
     //Methods
     void setFriends();

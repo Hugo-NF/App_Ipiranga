@@ -17,7 +17,7 @@ SearchResult::~SearchResult()
 }
 
 //-----------------SET FUNCTIONS---------------------
-void SearchResult::SetCurrentUser(User _CurrentUser){
+void SearchResult::SetCurrentUser(User* _CurrentUser){
     CurrentUser = _CurrentUser;
 }
 
@@ -38,7 +38,7 @@ void SearchResult::set_A_Results(vector <Ads*> results){
     //----Set Ads-----
 
    for(int i=0; i<size; i++){
-       SearchAds *result_ads = new SearchAds(this,&CurrentUser);
+       SearchAds *result_ads = new SearchAds(this,CurrentUser);
        result_ads->setMyaddress(results[i]);
        ui->box_search_result->addWidget(result_ads);
    }
@@ -57,7 +57,7 @@ void SearchResult::set_F_Results(vector <User*> results){
     //----Set Ads-----
 
    for(int i=0; i<size; i++){
-       SerachFriends* result_ads = new SerachFriends(this,&CurrentUser);
+       SerachFriends* result_ads = new SerachFriends(this,CurrentUser);
        result_ads->setMyaddress(results[i]);
        ui->box_search_result->addWidget(result_ads);
    }
