@@ -4,6 +4,14 @@
     
     
 #------------ADICIONAR---------------
+-Passagem do usuario
+    Alterar todos para endereço
+    
+-Pages
+    Deletar e criar ao clicar
+    
+-Como reiniciar Historico/ Lista de amigos/ .. apos deletar algo;
+
 -Formulario
     Campo de aceitar compromisso (question box)
     
@@ -12,11 +20,6 @@
     
 -Layouts
     Adicionar botão de mudar de Paginas
-
--Pages
-    Deletar e criar ao clicar
-    
--Como reiniciar Historico/ Lista de amigos/ .. apos deletar algo;
 
 -Ads
     ordem de tab incorreta

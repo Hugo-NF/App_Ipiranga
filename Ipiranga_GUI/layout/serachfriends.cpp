@@ -1,5 +1,6 @@
 #include "serachfriends.h"
 #include "ui_serachfriends.h"
+#include <QMessageBox>
 
 SerachFriends::SerachFriends(QWidget *parent, User* _CurrentUser) :
     QWidget(parent),
@@ -45,5 +46,10 @@ void SerachFriends::setRating(QString rating){
 
 void SerachFriends::on_Button_add_clicked()
 {
-
+    try{
+        Friendship::addAsFriend(CurrentUser->getId(),MyUserAddress->getId());
+        QMessageBox::warning(this,tr("Add as Friend"),tr("Add with Success!"));
+    }catch(char* err){
+        QMessageBox::warning(this,tr("Add as Friend"),tr(err));
+    }
 }

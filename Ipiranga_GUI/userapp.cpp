@@ -214,7 +214,7 @@ void UserApp::on_line_search_returnPressed()
         //--------set ordenacao por------------
         parameters.enableOrdenation(true); // ordernar ou n
         if(F_byName){
-            parameters.setOrderBy("name");//parametro de ordenação
+            parameters.setOrderBy("username");//parametro de ordenação
         }else if(F_byCity){
             parameters.setOrderBy("city");//parametro de ordenação
         }else if(F_byRating){

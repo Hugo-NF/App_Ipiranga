@@ -52,7 +52,7 @@ void Friendship::cleanTable() {
 void Friendship::addAsFriend(unsigned int currentUserId, unsigned int newFriendId) {
     int flag;
     char *errMsg = 0;
-    unsigned int result = 0;
+    unsigned int result;
     sqlite3 *connection;
     char SQL[5000];
 
@@ -64,8 +64,7 @@ void Friendship::addAsFriend(unsigned int currentUserId, unsigned int newFriendI
     flag = sqlite3_exec(connection, SQL, Callbacks::countCallback, &result, &errMsg);
     if(flag != SQLITE_OK)
         throw CONNECTION_ERROR;
-
-    if(result != SQLITE_OK){
+    if(result == SQLITE_OK){
         sprintf(SQL, "INSERT INTO FRIENDS (idUser1, idUser2) VALUES(%u, %u);", currentUserId, newFriendId);
 
         flag = sqlite3_exec(connection, SQL, Callbacks::friendshipCallback, 0, &errMsg);
