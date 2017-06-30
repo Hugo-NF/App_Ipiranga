@@ -56,14 +56,14 @@
       <enum>QFrame::Raised</enum>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="1" column="2">
+      <item row="1" column="1">
        <widget class="QLabel" name="label_email">
         <property name="text">
          <string>myemail.com@model.com</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="3">
+      <item row="0" column="2">
        <widget class="QPushButton" name="Button_delete">
         <property name="maximumSize">
          <size>
@@ -75,14 +75,15 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset theme="remove"/>
+         <iconset theme="x">
+          <normaloff>.</normaloff>.</iconset>
         </property>
         <property name="flat">
          <bool>true</bool>
         </property>
        </widget>
       </item>
-      <item row="0" column="2">
+      <item row="0" column="1">
        <widget class="QLabel" name="label_name">
         <property name="font">
          <font>
@@ -96,7 +97,7 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="2">
+      <item row="2" column="1">
        <widget class="QLabel" name="label_number">
         <property name="text">
          <string>061-9999-9999</string>
@@ -134,22 +135,6 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Fixed</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>5</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
       <item row="2" column="0">
        <widget class="QFrame" name="rating">
         <layout class="QHBoxLayout" name="horizontalLayout">
@@ -185,7 +170,7 @@
         </layout>
        </widget>
       </item>
-      <item row="1" column="3">
+      <item row="1" column="2">
        <widget class="QPushButton" name="see_more">
         <property name="maximumSize">
          <size>
@@ -205,7 +190,7 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="3">
+      <item row="2" column="2">
        <widget class="QPushButton" name="Button_show_friends">
         <property name="maximumSize">
          <size>
@@ -228,13 +213,12 @@
      </layout>
      <zorder>rating</zorder>
      <zorder>label_number</zorder>
+     <zorder>Button_delete</zorder>
      <zorder>label_email</zorder>
-     <zorder>horizontalSpacer</zorder>
      <zorder>Friend_img</zorder>
      <zorder>label_name</zorder>
      <zorder>see_more</zorder>
      <zorder>Button_show_friends</zorder>
-     <zorder>Button_delete</zorder>
     </widget>
    </item>
   </layout>

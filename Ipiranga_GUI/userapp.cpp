@@ -192,14 +192,7 @@ void UserApp::on_line_search_returnPressed()
         parameters.setText(SearchText); //caixa da busca
 
         //-----------Set os valores de rating----------
-        if(F_rating!=0){
-            parameters.enablebandFilter(true); //filtros por valor e rank
-            parameters.setBandFilterCriteria("ranking");//ranking ou price
-            parameters.setMinValue((double)F_rating);//valor min price ou rating
-            parameters.setMaxValue(5.0);//valor max price or rating
-        }else{
-            parameters.enablebandFilter(false);
-        }
+        parameters.enablebandFilter(false);
 
         //--------Set amigos ou amigos de amigos------
         if(F_friends){
@@ -264,14 +257,7 @@ void UserApp::on_line_search_returnPressed()
         parameters.setText(SearchText); //caixa da busca
 
         //-----------Set os valores de rating----------
-        if(A_rating_value!=0){
-            parameters.enablebandFilter(true); //filtros por valor e rank
-            parameters.setBandFilterCriteria("ranking");//ranking ou price
-            parameters.setMinValue((double)A_rating_value);//valor min price ou rating
-            parameters.setMaxValue(5.0);//valor max price or rating
-        }else{
-            parameters.enablebandFilter(false);
-        }
+        parameters.enablebandFilter(false);
 
         //--------Set amigos ou amigos de amigos------
         if(A_friends){
@@ -372,9 +358,6 @@ bool UserApp::getFields_Search_Ads(){
         SearchText = ui->line_search->text().toStdString();
         A_category_text = ui->comboBox_category->currentText().toStdString();
         A_state_text = ui->line_state->text().toStdString();
-        A_rating_value = ui->comboBox_rating->currentIndex();
-        A_min_price = stoi(ui->line_min->text().toStdString());
-        A_max_price = stoi(ui->line_max->text().toStdString());
         A_all = ui->radio_all->isChecked();
         A_friends = ui->radio_friends->isChecked();
         A_friends_of = ui->radio_friends_of->isChecked();
@@ -390,7 +373,6 @@ bool UserApp::getFields_Search_Friends(){
 
         SearchText = ui->line_search->text().toStdString();
         F_state = ui->line_state_2->text().toStdString();
-        F_rating = ui->comboBox_rating_2->currentIndex();
         F_all = ui->radio_all_2->isChecked();
         F_friends = ui->radio_friends_2->isChecked();
         F_friends_of = ui->radio_friends_of_2->isChecked();

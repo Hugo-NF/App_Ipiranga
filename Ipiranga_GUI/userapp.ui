@@ -288,7 +288,7 @@
          </property>
         </widget>
        </item>
-       <item row="0" column="6" rowspan="6">
+       <item row="0" column="6" rowspan="5">
         <widget class="QGroupBox" name="Order_by">
          <property name="title">
           <string> Order by</string>
@@ -514,7 +514,23 @@
          </item>
         </widget>
        </item>
-       <item row="1" column="4" rowspan="5">
+       <item row="3" column="5">
+        <spacer name="horizontalSpacer_6">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>30</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="1" column="4" rowspan="4">
         <widget class="QGroupBox" name="Friendship">
          <property name="maximumSize">
           <size>
@@ -609,22 +625,6 @@ Friends</string>
          </property>
         </spacer>
        </item>
-       <item row="3" column="5">
-        <spacer name="horizontalSpacer_6">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Fixed</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>30</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
        <item row="3" column="7">
         <spacer name="horizontalSpacer_7">
          <property name="orientation">
@@ -637,159 +637,6 @@ Friends</string>
           </size>
          </property>
         </spacer>
-       </item>
-       <item row="4" column="1">
-        <widget class="QLabel" name="label_rating">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="text">
-          <string>Rating</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="2" rowspan="2">
-        <widget class="QGroupBox" name="price">
-         <property name="title">
-          <string>Price</string>
-         </property>
-         <layout class="QGridLayout" name="gridLayout_4">
-          <property name="leftMargin">
-           <number>3</number>
-          </property>
-          <property name="topMargin">
-           <number>0</number>
-          </property>
-          <property name="rightMargin">
-           <number>2</number>
-          </property>
-          <property name="bottomMargin">
-           <number>0</number>
-          </property>
-          <property name="horizontalSpacing">
-           <number>3</number>
-          </property>
-          <property name="verticalSpacing">
-           <number>0</number>
-          </property>
-          <item row="0" column="1">
-           <widget class="QLineEdit" name="line_min">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>51</width>
-              <height>21</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>0</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QLineEdit" name="line_max">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>51</width>
-              <height>21</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>0</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="0">
-           <widget class="QLabel" name="label_min">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="text">
-             <string>Min(R$)</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_max">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="text">
-             <string>Max(R$)</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item row="5" column="1">
-        <widget class="QComboBox" name="comboBox_rating">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>55</width>
-           <height>22</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background:white;</string>
-         </property>
-         <item>
-          <property name="text">
-           <string/>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5</string>
-          </property>
-         </item>
-        </widget>
        </item>
       </layout>
      </widget>
@@ -806,7 +653,7 @@ Friends</string>
        <string notr="true">background:rgb(8, 122, 221)</string>
       </property>
       <layout class="QGridLayout" name="gridLayout">
-       <item row="0" column="7" rowspan="6">
+       <item row="0" column="7" rowspan="4">
         <widget class="QGroupBox" name="Order_by_2">
          <property name="maximumSize">
           <size>
@@ -860,49 +707,6 @@ Friends</string>
          </layout>
         </widget>
        </item>
-       <item row="4" column="1">
-        <widget class="QComboBox" name="comboBox_rating_2">
-         <property name="maximumSize">
-          <size>
-           <width>55</width>
-           <height>22</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background:white;</string>
-         </property>
-         <item>
-          <property name="text">
-           <string/>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>1</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>2</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>3</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>4</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>5</string>
-          </property>
-         </item>
-        </widget>
-       </item>
        <item row="2" column="1">
         <widget class="QLineEdit" name="line_state_2">
          <property name="maximumSize">
@@ -935,7 +739,23 @@ Friends</string>
          </property>
         </spacer>
        </item>
-       <item row="0" column="3" rowspan="6">
+       <item row="2" column="4">
+        <spacer name="horizontalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>35</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="0" column="3" rowspan="4">
         <widget class="QGroupBox" name="Friendship_2">
          <property name="maximumSize">
           <size>
@@ -972,22 +792,6 @@ Friends</string>
          </layout>
         </widget>
        </item>
-       <item row="2" column="4">
-        <spacer name="horizontalSpacer_4">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Fixed</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>35</width>
-           <height>20</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
        <item row="2" column="8">
         <spacer name="horizontalSpacer_2">
          <property name="orientation">
@@ -1018,13 +822,6 @@ Friends</string>
         <widget class="QLabel" name="label_state_2">
          <property name="text">
           <string>State</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1" colspan="2">
-        <widget class="QLabel" name="label_rating_2">
-         <property name="text">
-          <string>Rating</string>
          </property>
         </widget>
        </item>
