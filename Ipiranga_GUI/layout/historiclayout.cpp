@@ -21,6 +21,18 @@ void HistoricLayout::setHist_Address(Historic* hist){
     this->setFields();
 }
 
+void HistoricLayout::setID_user(int id_user){
+    ID_CurrentUser = id_user;
+}
+
+void HistoricLayout::setAdminMode(){
+    ui->radio_1->setEnabled(false);
+    ui->radio_2->setEnabled(false);
+    ui->radio_3->setEnabled(false);
+    ui->radio_4->setEnabled(false);
+    ui->radio_5->setEnabled(false);
+}
+
 void HistoricLayout::setFields(){
     this->setSeller(QString::fromStdString(HistAdress->getSellerUsername()));
     this->setBuyer(QString::fromStdString(HistAdress->getBuyerUsername()));
@@ -87,10 +99,6 @@ void HistoricLayout::setRating(int vote){
             break;
         }
     }
-}
-
-void HistoricLayout::setID_user(int id_user){
-    ID_CurrentUser = id_user;
 }
 
 //------------------------------------VOTE CLICK----------------------------------------

@@ -56,9 +56,11 @@ UserApp::UserApp(QWidget *parent, User* _CurrentUser) :
 
     // Page 2 - FriendsPage
     PageTwo = new FriendsPage;
+    ui->Pages->insertWidget(2,PageTwo);
 
     //Page 3 - Historic
     PageThree = new HistoricPage;
+    ui->Pages->insertWidget(3,PageThree);
 
     // Page 4 - Advertise
     PageFour.SetCurrentUser(&CurrentUser);

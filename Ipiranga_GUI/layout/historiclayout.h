@@ -18,6 +18,7 @@ public:
     ~HistoricLayout();
 
     //Methods
+    void setAdminMode();
     void setHist_Address(Historic*);
     void setID_user(int);
 

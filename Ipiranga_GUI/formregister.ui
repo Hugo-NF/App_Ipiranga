@@ -57,7 +57,7 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>-394</y>
+        <y>-339</y>
         <width>485</width>
         <height>990</height>
        </rect>
@@ -251,7 +251,7 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
-            <string>Jośe Luiz</string>
+            <string>teste</string>
            </property>
            <property name="maxLength">
             <number>20</number>
@@ -273,7 +273,7 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
-            <string>Gomes Nogueira</string>
+            <string>teste</string>
            </property>
            <property name="maxLength">
             <number>20</number>
@@ -311,7 +311,7 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
-            <string>9964762</string>
+            <string>123456789</string>
            </property>
            <property name="maxLength">
             <number>11</number>
@@ -376,7 +376,7 @@
           <property name="geometry">
            <rect>
             <x>10</x>
-            <y>430</y>
+            <y>440</y>
             <width>381</width>
             <height>141</height>
            </rect>
@@ -464,7 +464,7 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
-            <string>Não me lembro</string>
+            <string>teste</string>
            </property>
            <property name="maxLength">
             <number>100</number>
@@ -486,7 +486,7 @@
             <string>9999999999</string>
            </property>
            <property name="text">
-            <string>70636015</string>
+            <string>123456781</string>
            </property>
            <property name="maxLength">
             <number>10</number>
@@ -530,7 +530,7 @@
             <string>NNNNNNNNNNNNNNNNNNNN</string>
            </property>
            <property name="text">
-            <string>acre</string>
+            <string>teste1</string>
            </property>
            <property name="maxLength">
             <number>20</number>
@@ -645,7 +645,7 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
-            <string/>
+            <string>teste</string>
            </property>
            <property name="maxLength">
             <number>30</number>
@@ -683,7 +683,7 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
-            <string/>
+            <string>12</string>
            </property>
            <property name="maxLength">
             <number>4</number>
@@ -827,7 +827,7 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
-            <string>Eumemo</string>
+            <string>teste</string>
            </property>
            <property name="maxLength">
             <number>20</number>
@@ -906,7 +906,7 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
-            <string>joseluiz@teste.com</string>
+            <string>teste@teste.com</string>
            </property>
            <property name="maxLength">
             <number>45</number>
@@ -1053,7 +1053,7 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
-            <string/>
+            <string>teste</string>
            </property>
            <property name="maxLength">
             <number>30</number>
@@ -1072,7 +1072,7 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
-            <string/>
+            <string>12345678</string>
            </property>
            <property name="maxLength">
             <number>10</number>
@@ -1091,7 +1091,7 @@
             <locale language="English" country="UnitedStates"/>
            </property>
            <property name="text">
-            <string/>
+            <string>123456789123456789</string>
            </property>
            <property name="maxLength">
             <number>20</number>
@@ -1175,7 +1175,6 @@
          <property name="locale">
           <locale language="English" country="UnitedStates"/>
          </property>
-         <zorder>label</zorder>
         </widget>
        </item>
       </layout>
