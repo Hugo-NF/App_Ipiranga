@@ -234,10 +234,9 @@ void UserApp::on_line_search_returnPressed()
 
         try{
             search_result_friend = Search::userSearch(&parameters);
-        }catch(...){}
-
-        criterias.~vector();
-        keywords.~vector();
+        }catch(char *err){
+            cout<<err<<endl;
+        }
 
         PageResult->~SearchResult();
 
@@ -317,10 +316,9 @@ void UserApp::on_line_search_returnPressed()
 
         try{
             search_result_ads = Search::adsSearch(&parameters);
-        }catch(...){}
-
-        criterias.~vector();
-        keywords.~vector();
+        }catch(char *err){
+            cout<<err<<endl;
+        }
 
         PageResult->~SearchResult();
 

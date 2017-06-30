@@ -89,7 +89,7 @@ bool Search::friendsOfFriendsSearchEnabled() {
 }
 
 vector<User *> Search::userSearch(Search *parameters) {
-    int i, j, flag;
+    unsigned int i, flag;
     char *errMsg = 0;
     string SQL = "SELECT * FROM USERS WHERE ";
     string textQuery;
@@ -122,7 +122,6 @@ vector<User *> Search::userSearch(Search *parameters) {
     if(parameters->filtersEnabled()){
         criterias = parameters->getCriterias();
         keywords = parameters->getKeywords();
-        //filtersQuery = "WHERE ";
         for(i=0; i<criterias.size()-1; i++){
             filtersQuery.append(criterias[i]);
             filtersQuery.append(" = ");
@@ -204,11 +203,13 @@ vector<User *> Search::userSearch(Search *parameters) {
     if (flag != SQLITE_OK)
         throw (char *) CONNECTION_ERROR;
 
+    cout<<SQL<<endl;
+
     return queryResult;
 }
 
 vector<Ads *> Search::adsSearch(Search *parameters) {
-    int i, j, flag;
+    unsigned int i, flag;
     char *errMsg = 0;
     string SQL = "SELECT * FROM ADS WHERE ";
     string textQuery;
@@ -241,7 +242,6 @@ vector<Ads *> Search::adsSearch(Search *parameters) {
     if(parameters->filtersEnabled()){
         criterias = parameters->getCriterias();
         keywords = parameters->getKeywords();
-        //filtersQuery = "WHERE ";
         for(i=0; i<criterias.size()-1; i++){
             filtersQuery.append(criterias[i]);
             filtersQuery.append(" = ");
@@ -322,6 +322,8 @@ vector<Ads *> Search::adsSearch(Search *parameters) {
     flag = sqlite3_close(connection);
     if (flag != SQLITE_OK)
         throw (char *) CONNECTION_ERROR;
+
+    cout<<SQL<<endl;
 
     return queryResult;
 }

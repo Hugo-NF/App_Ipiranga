@@ -157,6 +157,7 @@ void Historic::evaluate(Historic *entry, unsigned int id, unsigned int rating) {
     char *errMsg = 0;
     char SQL[300];
     ostringstream streamRating;
+    string s_rating;
 
     flag = sqlite3_open(DATABASE, &connection);
     if(flag!= SQLITE_OK)
@@ -174,8 +175,13 @@ void Historic::evaluate(Historic *entry, unsigned int id, unsigned int rating) {
         flag = sqlite3_exec(connection, SQL, Callbacks::averageCallback, &newAverage2, &errMsg);
         if(flag != SQLITE_OK)
             throw (char *) CONNECTION_ERROR;
-        streamRating<<((newAverage1+newAverage2)/2);
-        string s_rating = streamRating.str();
+
+        if(newAverage1==0 || newAverage2 == 0)
+            streamRating<<(newAverage1+newAverage2);
+        else
+            streamRating<<((newAverage1+newAverage2)*0.5);
+        s_rating = streamRating.str();
+
         sprintf(SQL, "UPDATE USERS set rating = %s WHERE id = %u AND username = '%s';", s_rating.c_str(), entry->getBuyerId(), entry->getBuyerUsername().c_str());
         flag = sqlite3_exec(connection, SQL, Callbacks::userCallback, 0, &errMsg);
         if(flag != SQLITE_OK)
@@ -198,8 +204,13 @@ void Historic::evaluate(Historic *entry, unsigned int id, unsigned int rating) {
         flag = sqlite3_exec(connection, SQL, Callbacks::averageCallback, &newAverage2, &errMsg);
         if(flag != SQLITE_OK)
             throw (char *) CONNECTION_ERROR;
-        streamRating<<((newAverage1+newAverage2)*0.5);
-        string s_rating = streamRating.str();
+
+        if(newAverage1==0 || newAverage2 == 0)
+            streamRating<<(newAverage1+newAverage2);
+        else
+            streamRating<<((newAverage1+newAverage2)*0.5);
+        s_rating = streamRating.str();
+
         sprintf(SQL, "UPDATE USERS set rating = %s WHERE id = %u AND username = '%s';", s_rating.c_str(), entry->getSellerId(), entry->getSellerUsername().c_str());
         flag = sqlite3_exec(connection, SQL, Callbacks::userCallback, 0, &errMsg);
         if(flag != SQLITE_OK)
