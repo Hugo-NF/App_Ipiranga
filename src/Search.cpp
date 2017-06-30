@@ -51,30 +51,6 @@ void Search::setOrderingSequence(bool order) {
 bool Search::getOrderingSequence() {
     return this->orderSequence;
 }
-void Search::enablebandFilter(bool toggle) {
-    this->toggleBandFilter = toggle;
-}
-bool Search::bandFilterEnabled() {
-    return this->toggleBandFilter;
-}
-void Search::setBandFilterCriteria(string criteria) {
-    this->bandFilterCriteria = criteria;
-}
-string Search::getBandFilterCriteria() {
-    return this->bandFilterCriteria;
-}
-void Search::setMinValue(double minValue) {
-    this->bandFilterMin = minValue;
-}
-double Search::getMinValue() {
-    return this->bandFilterMin;
-}
-void Search::setMaxValue(double maxValue) {
-    this->bandFilterMax = maxValue;
-}
-double Search::getMaxValue() {
-    return this->bandFilterMax;
-}
 void Search::enableFriendsSearch(bool toggle) {
     this->toggleFriends = toggle;
 }
@@ -95,9 +71,6 @@ vector<User *> Search::userSearch(Search *parameters) {
     string textQuery;
     string ordenationQuery;
     string filtersQuery = " ";
-    string bandFilterQuery;
-    ostringstream streamValue;
-    string value;
     vector<string> criterias;
     vector<string> keywords;
     vector<unsigned int> friends;
@@ -117,8 +90,6 @@ vector<User *> Search::userSearch(Search *parameters) {
         }
         else{
             textQuery = "username LIKE '%";
-            textQuery.append(parameters->getText());
-            textQuery.append("%' OR firstName LIKE '%");
             textQuery.append(parameters->getText());
             textQuery.append("%' ");
             SQL.append(textQuery);
@@ -144,20 +115,6 @@ vector<User *> Search::userSearch(Search *parameters) {
             SQL.append("AND ");
         SQL.append(filtersQuery);
     }
-    if(parameters->bandFilterEnabled()){
-        streamValue << parameters->getMinValue();
-        value = streamValue.str();
-        bandFilterQuery = parameters->getBandFilterCriteria();
-        bandFilterQuery.append(" BETWEEN ");
-        bandFilterQuery.append(value);
-        bandFilterQuery.append(" AND ");
-        streamValue << parameters->getMaxValue();
-        value = streamValue.str();
-        bandFilterQuery.append(value);
-        if(parameters->textSearchEnabled() || parameters->filtersEnabled())
-            SQL.append(" AND ");
-        SQL.append(bandFilterQuery);
-    }
     if(parameters->friendsSearchEnabled()){
         friends = Friendship::getFriendsIds(connection, parameters->getCurrentUserID());
         if(!friends.empty()){
@@ -168,7 +125,7 @@ vector<User *> Search::userSearch(Search *parameters) {
             }
             friendsQuery.append("id = ");
             friendsQuery.append(to_string(friends[i]));
-            if(parameters->textSearchEnabled() || parameters->filtersEnabled() || parameters->bandFilterEnabled())
+            if(parameters->textSearchEnabled() || parameters->filtersEnabled())
                 SQL.append(" AND ");
             SQL.append(friendsQuery);
         }
@@ -183,7 +140,7 @@ vector<User *> Search::userSearch(Search *parameters) {
             }
             friendsQuery.append("id = ");
             friendsQuery.append(to_string(friends[i]));
-            if(parameters->textSearchEnabled() || parameters->filtersEnabled() || parameters->bandFilterEnabled())
+            if(parameters->textSearchEnabled() || parameters->filtersEnabled())
                 SQL.append(" AND ");
             SQL.append(friendsQuery);
         }
@@ -220,9 +177,6 @@ vector<Ads *> Search::adsSearch(Search *parameters) {
     string textQuery;
     string ordenationQuery;
     string filtersQuery = " ";
-    string bandFilterQuery;
-    ostringstream streamValue;
-    string value;
     vector<string> criterias;
     vector<string> keywords;
     vector<unsigned int> friends;
@@ -242,8 +196,6 @@ vector<Ads *> Search::adsSearch(Search *parameters) {
         }
         else{
             textQuery = "title LIKE '%";
-            textQuery.append(parameters->getText());
-            textQuery.append("%' OR description LIKE '%");
             textQuery.append(parameters->getText());
             textQuery.append("%' ");
             SQL.append(textQuery);
@@ -269,31 +221,17 @@ vector<Ads *> Search::adsSearch(Search *parameters) {
             SQL.append("AND ");
         SQL.append(filtersQuery);
     }
-    if(parameters->bandFilterEnabled()){
-        streamValue << parameters->getMinValue();
-        value = streamValue.str();
-        bandFilterQuery = parameters->getBandFilterCriteria();
-        bandFilterQuery.append(" BETWEEN ");
-        bandFilterQuery.append(value);
-        bandFilterQuery.append(" AND ");
-        streamValue << parameters->getMaxValue();
-        value = streamValue.str();
-        bandFilterQuery.append(value);
-        if(parameters->textSearchEnabled() || parameters->filtersEnabled())
-            SQL.append(" AND ");
-        SQL.append(bandFilterQuery);
-    }
     if(parameters->friendsSearchEnabled()){
         friends = Friendship::getFriendsIds(connection, parameters->getCurrentUserID());
         if(!friends.empty()) {
             for (i = 0; i < friends.size() - 1; i++) {
-                friendsQuery.append("id = ");
+                friendsQuery.append("sellerId = ");
                 friendsQuery.append(to_string(friends[i]));
                 friendsQuery.append(" OR ");
             }
-            friendsQuery.append("id = ");
+            friendsQuery.append("sellerId = ");
             friendsQuery.append(to_string(friends[i]));
-            if (parameters->textSearchEnabled() || parameters->filtersEnabled() || parameters->bandFilterEnabled())
+            if (parameters->textSearchEnabled() || parameters->filtersEnabled())
                 SQL.append(" AND ");
             SQL.append(friendsQuery);
         }
@@ -302,13 +240,14 @@ vector<Ads *> Search::adsSearch(Search *parameters) {
         friendsOf = Friendship::getFriendsofFriendsIds(connection, parameters->getCurrentUserID());
         if(!friendsOf.empty()) {
             for (i = 0; i < friends.size() - 1; i++) {
-                friendsQuery.append("id = ");
-                friendsQuery.append(to_string(friends[i]));
+                friendsQuery.append("sellerId = ");
+                cout<<friendsOf[i]<<endl;
+                friendsQuery.append(to_string(friendsOf[i]));
                 friendsQuery.append(" OR ");
             }
-            friendsQuery.append("id = ");
-            friendsQuery.append(to_string(friends[i]));
-            if (parameters->textSearchEnabled() || parameters->filtersEnabled() || parameters->bandFilterEnabled())
+            friendsQuery.append("sellerId = ");
+            friendsQuery.append(to_string(friendsOf[i]));
+            if (parameters->textSearchEnabled() || parameters->filtersEnabled())
                 SQL.append(" AND ");
             SQL.append(friendsQuery);
         }

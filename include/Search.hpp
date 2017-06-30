@@ -23,10 +23,6 @@ private:
     bool toggleOrdernation;
     string orderBy;
     bool orderSequence; //true - ASC : false - DESC
-    bool toggleBandFilter;
-    string bandFilterCriteria;
-    double bandFilterMin;
-    double bandFilterMax;
     bool toggleFriends;
     bool toggleFriendsofFriends;
 public:
@@ -37,7 +33,6 @@ public:
         this->toggleFilters = false;
         this->toggleOrdernation = true;
         this->orderBy = "id";
-        this->toggleBandFilter = false;
         this->orderSequence = false;
         this->toggleFriends = false;
         this->toggleFriendsofFriends = false;
@@ -60,14 +55,6 @@ public:
     string getOrderBy();
     void setOrderingSequence(bool);
     bool getOrderingSequence();
-    void enablebandFilter(bool);
-    bool bandFilterEnabled();
-    void setBandFilterCriteria(string);
-    string getBandFilterCriteria();
-    void setMinValue(double);
-    void setMaxValue(double);
-    double getMinValue();
-    double getMaxValue();
     void enableFriendsSearch(bool);
     bool friendsSearchEnabled();
     void enableFriendsofFriendsSearch(bool);

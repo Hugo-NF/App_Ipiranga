@@ -191,9 +191,6 @@ void UserApp::on_line_search_returnPressed()
         parameters.enableTextSearch(true);
         parameters.setText(SearchText); //caixa da busca
 
-        //-----------Set os valores de rating----------
-        parameters.enablebandFilter(false);
-
         //--------Set amigos ou amigos de amigos------
         if(F_friends){
             parameters.enableFriendsSearch(true); //busca por amigos
@@ -227,12 +224,7 @@ void UserApp::on_line_search_returnPressed()
         }
         parameters.setOrderingSequence(F_by_); // 1^ 0|
 
-        try{
-            search_result_friend = Search::userSearch(&parameters);
-        }catch(...){}
-
-        criterias.~vector();
-        keywords.~vector();
+        search_result_friend = Search::userSearch(&parameters);
 
         PageResult->~SearchResult();
 
@@ -255,9 +247,6 @@ void UserApp::on_line_search_returnPressed()
         //-----------Set o texto de busca---------------
         parameters.enableTextSearch(true);
         parameters.setText(SearchText); //caixa da busca
-
-        //-----------Set os valores de rating----------
-        parameters.enablebandFilter(false);
 
         //--------Set amigos ou amigos de amigos------
         if(A_friends){
@@ -295,7 +284,7 @@ void UserApp::on_line_search_returnPressed()
         }else if(A_price){
             parameters.setOrderBy("price");//parametro de ordenação
         }else if(A_rating){
-            parameters.setOrderBy("rating");//parametro de ordenação
+            parameters.setOrderBy("sellerRating");//parametro de ordenação
         }else if(A_city){
             parameters.setOrderBy("city");//parametro de ordenação
         }else if(A_quantity){
@@ -303,12 +292,7 @@ void UserApp::on_line_search_returnPressed()
         }
         parameters.setOrderingSequence(A_by_); // 1^ 0|
 
-        try{
-            search_result_ads = Search::adsSearch(&parameters);
-        }catch(...){}
-
-        criterias.~vector();
-        keywords.~vector();
+        search_result_ads = Search::adsSearch(&parameters);
 
         PageResult->~SearchResult();
 
