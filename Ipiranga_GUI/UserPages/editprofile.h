@@ -17,6 +17,7 @@ public:
     explicit EditProfile(QWidget *parent = 0);
     ~EditProfile();
 
+    void setAdminMode();         //Set fields to admin
     void SetCurrentUser(User*);  //Set the User Active
     void SetFather(QWidget *);
 

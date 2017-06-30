@@ -40,7 +40,7 @@ void SearchResult::set_A_Results(vector <Ads*> results){
    for(int i=0; i<size; i++){
        SearchAds *result_ads = new SearchAds(this,CurrentUser);
        result_ads->setMyaddress(results[i]);
-       ui->box_search_result->addWidget(result_ads);
+       ui->box_search_result_ads->addWidget(result_ads);
    }
 }
 
@@ -59,6 +59,6 @@ void SearchResult::set_F_Results(vector <User*> results){
    for(int i=0; i<size; i++){
        SerachFriends* result_ads = new SerachFriends(this,CurrentUser);
        result_ads->setMyaddress(results[i]);
-       ui->box_search_result->addWidget(result_ads);
+       ui->box_search_result_friends->addWidget(result_ads);
    }
 }

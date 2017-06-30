@@ -25,7 +25,41 @@ void EditProfile::SetCurrentUser(User* _CurrentUser){
 void EditProfile::SetFather(QWidget *_father){
     Father = _father;
 }
+//------------------------------SET ADMIN MODE-------------------------
+void EditProfile::setAdminMode()
+{
+    //--------Unable fields---------
+    ui->lineFirstName->setEnabled(false);
+    ui->lineLastName->setEnabled(false);
+    ui->lineRG->setEnabled(false);
+    ui->spinAge->setEnabled(false);
+    ui->linePhone->setEnabled(false);
+    ui->linePass->setEnabled(false);
+    ui->lineEmail->setEnabled(false);
+    ui->lineAdress->setEnabled(false);
+    ui->lineZIP->setEnabled(false);
+    ui->lineState->setEnabled(false);
+    ui->lineCity->setEnabled(false);
+    ui->radioButton_Credit->setEnabled(false);
+    ui->radioButton_Debit->setEnabled(false);
+    ui->lineNamePayment->setEnabled(false);
+    ui->lineNumber->setEnabled(false);
+    ui->lineSecurity->setEnabled(false);
+    ui->dateExpiration->setEnabled(false);
+    ui->lineNameBank->setEnabled(false);
+    ui->comboBox_Bank->setEnabled(false);
+    ui->lineAgency->setEnabled(false);
+    ui->lineAccount->setEnabled(false);
 
+    //--------Hide fields----------
+    ui->labelConfirm->hide();
+    ui->lineConfirm->hide();
+    ui->lineNumber->setEchoMode(QLineEdit::Password);
+    ui->lineSecurity->setEchoMode(QLineEdit::Password);
+    ui->label->hide();
+    ui->pushButton_Save->hide();
+    ui->pushButton_Undo->hide();
+}
 //--------------------------------SET FIELDS------------------------------------
 void EditProfile::SetUserFields(){
     QDate ExpirationDate;
@@ -133,16 +167,16 @@ void EditProfile::on_pushButton_Save_clicked()
 
 void EditProfile::on_pushButton_Delete_clicked()
 {
-    if(QMessageBox::question(this,tr("Delete Account"),tr("Are you sure that want to DELETE your account?"))
+    if(QMessageBox::question(this,tr("Delete Account"),tr("Are you sure that want to DELETE this account?"))
             == QMessageBox::Yes)
     {
-        if(QMessageBox::question(this,tr("Delete Account"),tr("Are you REALLY sure that want to DELETE your account?"))
+        if(QMessageBox::question(this,tr("Delete Account"),tr("Are you REALLY sure that want to DELETE this account?"))
                 == QMessageBox::Yes)
         {
             QMessageBox::information(this, tr("Delete Account"),tr("OK, Ok, ok, you win\n We will DELETE you account\n Good Bye :'["));
             try{
                 Account::deleteAccount(CurrentUser->getId());
-                QMessageBox::information(this,tr("Delete Account"),tr("Your account was deleted with sucess!"));
+                QMessageBox::information(this,tr("Delete Account"),tr("Account was deleted with sucess!"));
                 system("./Ipiranga&");
                 Father->close();
             }catch(char* err){
@@ -156,12 +190,12 @@ void EditProfile::on_pushButton_Delete_clicked()
 
 void EditProfile::on_pushButton_Inactive_clicked()
 {
-    if(QMessageBox::question(this,tr("Inactive Account"),tr("Are You sure that want to DESABLE your account?"))
+    if(QMessageBox::question(this,tr("Inactive Account"),tr("Are You sure that want to DESABLE this account?"))
             == QMessageBox::Yes)
     {
         try{
             Account::activateAccount(CurrentUser->getId(),false);
-            QMessageBox::information(this,tr("Inactive Profile"),tr("Your account was desactivated with sucess!\n"
+            QMessageBox::information(this,tr("Inactive Profile"),tr("Account was desactivated with sucess!\n"
                                                                     "When you login again, it will be reactivated!"));
             system("./Ipiranga&");
             Father->close();

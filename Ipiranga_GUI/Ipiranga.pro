@@ -21,13 +21,13 @@ SOURCES += \
     loginuser.cpp \
     main.cpp \
     userapp.cpp \
+    adminpage.cpp \
     UserPages/advertise.cpp \
     UserPages/editprofile.cpp \
     UserPages/friendspage.cpp \
     UserPages/historicpage.cpp \
     UserPages/initialpage.cpp \
     UserPages/searchresult.cpp \
-    UserPages/adminpage.cpp \
     layout/adslayout.cpp \
     layout/friendslayout.cpp \
     layout/historiclayout.cpp \
@@ -49,13 +49,13 @@ HEADERS += \
     formregister.h \
     loginuser.h \
     userapp.h \
+    adminpage.h \
     UserPages/advertise.h \
     UserPages/editprofile.h \
     UserPages/friendspage.h \
     UserPages/historicpage.h \
     UserPages/initialpage.h \
     UserPages/searchresult.h \
-    UserPages/adminpage.h \
     layout/adslayout.h \
     layout/friendslayout.h \
     layout/historiclayout.h \
@@ -77,13 +77,13 @@ FORMS += \
     formregister.ui \
     loginuser.ui \
     userapp.ui \
+    adminpage.ui \
     UserPages/advertise.ui \
     UserPages/editprofile.ui \
     UserPages/friendspage.ui \
     UserPages/historicpage.ui \
     UserPages/initialpage.ui \
     UserPages/searchresult.ui \
-    UserPages/adminpage.ui \
     layout/adslayout.ui \
     layout/friendslayout.ui \
     layout/historiclayout.ui \

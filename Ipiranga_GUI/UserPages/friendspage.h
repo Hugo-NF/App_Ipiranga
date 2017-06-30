@@ -18,15 +18,16 @@ public:
     ~FriendsPage();
 
     void SetCurrentUser(User*);  //Set the User Active
+    void setAdminMode();         //Set the admin mode
 
 private:
     Ui::FriendsPage *ui;
 
     User *CurrentUser; //User Active
+    bool AdminMode;
 
     //Methods
     void setFriends();
-    void setFields(FriendsLayout* , User*);
 };
 
 #endif // FRIENDSPAGE_H

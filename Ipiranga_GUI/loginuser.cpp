@@ -26,6 +26,13 @@ void LoginUser::on_pushLogin_clicked()
     string username = ui->lineName->text().toStdString();   //Login field
     string password = ui->linePass->text().toStdString();   //Pass field
 
+    if(username=="admin" && password=="admin"){
+        adminpage = new AdminPage;
+        adminpage->showMaximized();
+        this->hide();
+        return;
+    }
+
     try{
         //Catch the user on te BD
         CurrentUser = Account::login(username,password);

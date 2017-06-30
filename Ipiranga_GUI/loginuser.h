@@ -4,6 +4,7 @@
 #include "userapp.h"
 #include "formregister.h"
 #include <QMainWindow>
+#include "adminpage.h"
 
 
 namespace Ui {
@@ -26,6 +27,7 @@ private:
     Ui::LoginUser *ui;
 
     UserApp *userapp;               // Widget Home
+    AdminPage *adminpage;           // Window Admin page
     FormRegister *formregister;     // Widget Register
 };
 
