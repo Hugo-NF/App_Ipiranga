@@ -60,7 +60,7 @@ void Friendship::addAsFriend(unsigned int currentUserId, unsigned int newFriendI
     if(flag!= SQLITE_OK)
         throw (char *) CONNECTION_ERROR;
 
-    sprintf(SQL, "SELECT COUNT(id) FROM FRIENDS WHERE idUser1 = %u OR idUser2 = %u AND idUser1 = %u OR idUser2 = %u;", currentUserId, newFriendId, newFriendId, currentUserId);
+    sprintf(SQL, "SELECT COUNT(id) FROM FRIENDS WHERE idUser1 = %u AND idUser2 = %u OR idUser1 = %u AND idUser2 = %u;", currentUserId, newFriendId, newFriendId, currentUserId);
     flag = sqlite3_exec(connection, SQL, Callbacks::countCallback, &result, &errMsg);
     if(flag != SQLITE_OK)
         throw CONNECTION_ERROR;
@@ -138,9 +138,7 @@ vector<unsigned int> Friendship::getFriendsofFriendsIds(sqlite3 *connection, uns
     vector<unsigned int> results;
     vector<Friendship *> friendshipNodes;
 
-
     friendsIds = Friendship::getFriendsIds(connection, currentUserId);
-
     if(!friendsIds.empty()){
         sprintf(SQL, "SELECT * FROM FRIENDS WHERE idUser1 = ");
         for(i=0; i<friendsIds.size()-1; i++){
@@ -158,9 +156,15 @@ vector<unsigned int> Friendship::getFriendsofFriendsIds(sqlite3 *connection, uns
             else
                 fOfFriendsIds.push_back(friendshipNodes[i]->getUser1Id());
         }
+        if(friendsIds.size() > fOfFriendsIds.size())
+            results.resize(friendsIds.size());
+        else
+            results.resize(fOfFriendsIds.size());
+
         sort(friendsIds.begin(), friendsIds.end());
         sort(fOfFriendsIds.begin(), fOfFriendsIds.end());
         it = std::set_difference(friendsIds.begin(), friendsIds.end(), fOfFriendsIds.begin(), fOfFriendsIds.end(), results.begin());
+
         results.resize(it-results.begin());
 
     }

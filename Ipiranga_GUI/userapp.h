@@ -80,9 +80,6 @@ private:
     //-----------Ads Search
     string A_category_text;  // search for category
     string A_state_text;     // for state
-    int A_rating_value;       // for rating
-    int A_min_price;    // from min price
-    int A_max_price;    // until max price
     bool A_all;         // for all people
     bool A_friends;     // only friends
     bool A_friends_of;  // only friends of friends
@@ -96,7 +93,6 @@ private:
 
     //---------Friends Search
     string F_state;     // search for state
-    int F_rating;       // for rating
     bool F_all;         // for all people
     bool F_friends;      // only friends
     bool F_friends_of;   // only friends of friends

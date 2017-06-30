@@ -2,13 +2,13 @@
 Titulo: Friends e Friends of Friends
 Mudar: Retornar nada
 
-Titulo: Compra
+Titulo: Compra //OK
 Mudar: atualizar
 
-Titulo: Busca por categoria e estado
+Titulo: Busca por categoria e estado //OK
 Erro: Quebra ao buscar por alguma categoria ou estado
 Condições: Normais
 
-Titulo: Ranting
+Titulo: Rantings
 Erro: retornando inteiro.
 Condições: ninguem possui avaliação ainda.

@@ -105,8 +105,8 @@ void FriendsLayout::on_Button_show_friends_clicked()
 {
     FriendsPage* friends = new FriendsPage;
     friends->setWindowFlags(Qt::SubWindow);
-    friends->SetCurrentUser(My_F_Address);
     friends->setAdminMode();
+    friends->SetCurrentUser(My_F_Address);
     friends->setGeometry(100,100,900,700);
     friends->show();
 }

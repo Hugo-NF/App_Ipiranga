@@ -38,8 +38,18 @@ private slots:
     void on_Button_delete_transations_clicked();
     void on_Button_delete_historic_clicked();
 
+    void on_line_search_users_textChanged();
+    void on_line_search_transation_textChanged();
+    void on_line_search_historics_textChanged();
+
 private:
     Ui::AdminPage *ui;
+
+    int users_size;
+    int historics_size;
+    int transations_size;
+
+    vector <FriendsLayout*> user_object;
 
     //---SET METHODS----
     void setHomePage();
@@ -52,6 +62,9 @@ private:
 
     void setHistoric_default();
     void setHistoric(vector <Historic*>);
+
+    //-----delete-----
+    void deleteUsersObject();
 };
 
 #endif // ADMINPAGE_H

@@ -14,8 +14,9 @@ void Payment::makePayment(Ads *ad, User *buyer, unsigned int quantity) {
 
     if (ad->getSellerId() == buyer->getId())
         throw (char *) OWN_AD;
-    if (ad->getAmount() < quantity)
+    if (ad->getAmount() < quantity || ad->getAmount() == 0)
         throw (char *) UNAVAIABLE_PRODUCT;
+    ad->setAmount(ad->getAmount()-quantity);
 
     flag = sqlite3_open(DATABASE, &connection);
     if(flag!= SQLITE_OK)

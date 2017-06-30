@@ -49,6 +49,16 @@ void AdminPage::on_Button_delete_historic_clicked()
     }
 }
 
+//---------------DELETE OBJECTS-----------------
+
+//--USERS---------------------------------------
+void AdminPage::deleteUsersObject()
+{
+    for(int i=0; i<users_size; i++){
+        user_object[i]->~FriendsLayout();
+    }
+}
+
 //---------------SET METHODS--------------------
 void AdminPage::setHomePage()
 {
@@ -59,23 +69,29 @@ void AdminPage::setHomePage()
 void AdminPage::setUsers_default()
 {
     vector <User*> users;
+    Search parameters(0);
+
+    parameters.enableTextSearch(true);
+    parameters.setText("");
+
+    users = Search::userSearch(&parameters);
 
     this->setUsers(users);
 }
 
 void AdminPage::setUsers(vector <User*> users)
 {
-    int size;
+    users_size = users.size();
 
-    size = users.size();
+    user_object.resize(users_size);
 
-    for(int i=0; i<size; i++){
-        FriendsLayout* user_object = new FriendsLayout;
+    for(int i=0; i<users_size; i++){
+        user_object[i] = new FriendsLayout;
 
-        user_object->setAdminMode();
-        user_object->setMy_F_Address(users[i]);
+        user_object[i]->setAdminMode();
+        user_object[i]->setMy_F_Address(users[i]);
 
-        ui->box_users->addWidget(user_object);
+        ui->box_users->addWidget(user_object[i]);
     }
 }
 
@@ -83,6 +99,12 @@ void AdminPage::setUsers(vector <User*> users)
 void AdminPage::setTransations_default()
 {
     vector <Ads*> ads;
+    Search parameters(0);
+
+    parameters.enableTextSearch(true);
+    parameters.setText("");
+
+    ads = Search::adsSearch(&parameters);
 
     this->setTransations(ads);
 }
@@ -107,6 +129,8 @@ void AdminPage::setHistoric_default()
 {
     vector <Historic*> historic;
 
+    historic = Historic::retrieveHistoric(0,false,false);
+
     this->setHistoric(historic);
 }
 
@@ -122,7 +146,7 @@ void AdminPage::setHistoric(vector <Historic*> historic)
         historic_object->setHist_Address(historic[i]);
         historic_object->setAdminMode();
 
-        ui->box_transation->addWidget(historic_object);
+        ui->box_historics->addWidget(historic_object);
     }
 }
 
@@ -134,12 +158,24 @@ void AdminPage::on_Button_search_users_clicked()
     this->on_line_search_users_returnPressed();
 }
 
+void AdminPage::on_line_search_users_textChanged()
+{
+    this->on_line_search_users_returnPressed();
+}
+
 void AdminPage::on_line_search_users_returnPressed()
 {
     vector <User*> search_result;
-    Search parameters();
+    Search parameters(0);
 
     if(!ui->line_search_users->text().isEmpty()){   //if is not empty
+
+        this->deleteUsersObject();
+
+        parameters.enableTextSearch(true);
+        parameters.setText(ui->line_search_users->text().toStdString());
+
+        search_result = Search::userSearch(&parameters);
 
         this->setUsers(search_result);
     }
@@ -151,10 +187,16 @@ void AdminPage::on_Button_search_transation_clicked()
     this->on_line_search_transation_returnPressed();
 }
 
+void AdminPage::on_line_search_transation_textChanged()
+{
+    this->on_line_search_transation_returnPressed();
+}
+
 void AdminPage::on_line_search_transation_returnPressed()
 {
     vector <Ads*> search_result;
-    Search parameters();
+    Search parameters(0);
+
 
     if(!ui->line_search_transation->text().isEmpty()){   //if is not empty
 
@@ -164,6 +206,11 @@ void AdminPage::on_line_search_transation_returnPressed()
 
 //--HISTORICS------------------------------------
 void AdminPage::on_Button_search_historics_clicked()
+{
+    this->on_line_search_historics_returnPressed();
+}
+
+void AdminPage::on_line_search_historics_textChanged()
 {
     this->on_line_search_historics_returnPressed();
 }

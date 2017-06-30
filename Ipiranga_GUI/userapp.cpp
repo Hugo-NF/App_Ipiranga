@@ -191,16 +191,6 @@ void UserApp::on_line_search_returnPressed()
         parameters.enableTextSearch(true);
         parameters.setText(SearchText); //caixa da busca
 
-        //-----------Set os valores de rating----------
-        if(F_rating!=0){
-            parameters.enablebandFilter(true); //filtros por valor e rank
-            parameters.setBandFilterCriteria("ranking");//ranking ou price
-            parameters.setMinValue((double)F_rating);//valor min price ou rating
-            parameters.setMaxValue(5.0);//valor max price or rating
-        }else{
-            parameters.enablebandFilter(false);
-        }
-
         //--------Set amigos ou amigos de amigos------
         if(F_friends){
             parameters.enableFriendsSearch(true); //busca por amigos
@@ -234,12 +224,7 @@ void UserApp::on_line_search_returnPressed()
         }
         parameters.setOrderingSequence(F_by_); // 1^ 0|
 
-        try{
-            search_result_friend = Search::userSearch(&parameters);
-        }catch(...){}
-
-        criterias.~vector();
-        keywords.~vector();
+        search_result_friend = Search::userSearch(&parameters);
 
         PageResult->~SearchResult();
 
@@ -262,16 +247,6 @@ void UserApp::on_line_search_returnPressed()
         //-----------Set o texto de busca---------------
         parameters.enableTextSearch(true);
         parameters.setText(SearchText); //caixa da busca
-
-        //-----------Set os valores de rating----------
-        if(A_rating_value!=0){
-            parameters.enablebandFilter(true); //filtros por valor e rank
-            parameters.setBandFilterCriteria("ranking");//ranking ou price
-            parameters.setMinValue((double)A_rating_value);//valor min price ou rating
-            parameters.setMaxValue(5.0);//valor max price or rating
-        }else{
-            parameters.enablebandFilter(false);
-        }
 
         //--------Set amigos ou amigos de amigos------
         if(A_friends){
@@ -309,7 +284,7 @@ void UserApp::on_line_search_returnPressed()
         }else if(A_price){
             parameters.setOrderBy("price");//parametro de ordenação
         }else if(A_rating){
-            parameters.setOrderBy("rating");//parametro de ordenação
+            parameters.setOrderBy("sellerRating");//parametro de ordenação
         }else if(A_city){
             parameters.setOrderBy("city");//parametro de ordenação
         }else if(A_quantity){
@@ -317,12 +292,7 @@ void UserApp::on_line_search_returnPressed()
         }
         parameters.setOrderingSequence(A_by_); // 1^ 0|
 
-        try{
-            search_result_ads = Search::adsSearch(&parameters);
-        }catch(...){}
-
-        criterias.~vector();
-        keywords.~vector();
+        search_result_ads = Search::adsSearch(&parameters);
 
         PageResult->~SearchResult();
 
@@ -372,9 +342,6 @@ bool UserApp::getFields_Search_Ads(){
         SearchText = ui->line_search->text().toStdString();
         A_category_text = ui->comboBox_category->currentText().toStdString();
         A_state_text = ui->line_state->text().toStdString();
-        A_rating_value = ui->comboBox_rating->currentIndex();
-        A_min_price = stoi(ui->line_min->text().toStdString());
-        A_max_price = stoi(ui->line_max->text().toStdString());
         A_all = ui->radio_all->isChecked();
         A_friends = ui->radio_friends->isChecked();
         A_friends_of = ui->radio_friends_of->isChecked();
@@ -390,7 +357,6 @@ bool UserApp::getFields_Search_Friends(){
 
         SearchText = ui->line_search->text().toStdString();
         F_state = ui->line_state_2->text().toStdString();
-        F_rating = ui->comboBox_rating_2->currentIndex();
         F_all = ui->radio_all_2->isChecked();
         F_friends = ui->radio_friends_2->isChecked();
         F_friends_of = ui->radio_friends_of_2->isChecked();
