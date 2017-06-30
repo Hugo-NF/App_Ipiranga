@@ -75,8 +75,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset theme="x">
-          <normaloff>.</normaloff>.</iconset>
+         <iconset theme="remove"/>
         </property>
         <property name="flat">
          <bool>true</bool>
@@ -229,13 +228,13 @@
      </layout>
      <zorder>rating</zorder>
      <zorder>label_number</zorder>
-     <zorder>Button_delete</zorder>
      <zorder>label_email</zorder>
      <zorder>horizontalSpacer</zorder>
      <zorder>Friend_img</zorder>
      <zorder>label_name</zorder>
      <zorder>see_more</zorder>
      <zorder>Button_show_friends</zorder>
+     <zorder>Button_delete</zorder>
     </widget>
    </item>
   </layout>

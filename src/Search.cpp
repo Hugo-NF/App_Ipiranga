@@ -111,13 +111,18 @@ vector<User *> Search::userSearch(Search *parameters) {
         throw (char *) CONNECTION_ERROR;
 
     if(parameters->textSearchEnabled()){
-        textQuery = "username LIKE '%";
-        textQuery.append(parameters->getText());
-        textQuery.append("%' OR firstName LIKE '%");
-        textQuery.append(parameters->getText());
-        textQuery.append("%' ");
-        SQL.append(textQuery);
-
+        if(parameters->getText().empty()){
+            textQuery = "username LIKE '%%' ";
+            SQL.append(textQuery);
+        }
+        else{
+            textQuery = "username LIKE '%";
+            textQuery.append(parameters->getText());
+            textQuery.append("%' OR firstName LIKE '%");
+            textQuery.append(parameters->getText());
+            textQuery.append("%' ");
+            SQL.append(textQuery);
+        }
     }
     if(parameters->filtersEnabled()){
         criterias = parameters->getCriterias();
@@ -231,13 +236,18 @@ vector<Ads *> Search::adsSearch(Search *parameters) {
         throw (char *) CONNECTION_ERROR;
 
     if(parameters->textSearchEnabled()){
-        textQuery = "title LIKE '%";
-        textQuery.append(parameters->getText());
-        textQuery.append("%' OR description LIKE '%");
-        textQuery.append(parameters->getText());
-        textQuery.append("%' ");
-        SQL.append(textQuery);
-
+        if(parameters->getText().empty()){
+            textQuery = "title LIKE '%%'";
+            SQL.append(textQuery);
+        }
+        else{
+            textQuery = "title LIKE '%";
+            textQuery.append(parameters->getText());
+            textQuery.append("%' OR description LIKE '%");
+            textQuery.append(parameters->getText());
+            textQuery.append("%' ");
+            SQL.append(textQuery);
+        }
     }
     if(parameters->filtersEnabled()){
         criterias = parameters->getCriterias();
