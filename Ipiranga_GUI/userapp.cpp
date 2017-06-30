@@ -56,9 +56,11 @@ UserApp::UserApp(QWidget *parent, User* _CurrentUser) :
 
     // Page 2 - FriendsPage
     PageTwo = new FriendsPage;
+    ui->Pages->insertWidget(2,PageTwo);
 
     //Page 3 - Historic
     PageThree = new HistoricPage;
+    ui->Pages->insertWidget(3,PageThree);
 
     // Page 4 - Advertise
     PageFour.SetCurrentUser(&CurrentUser);
@@ -234,9 +236,10 @@ void UserApp::on_line_search_returnPressed()
 
         try{
             search_result_friend = Search::userSearch(&parameters);
-        }catch(char *err){
-            cout<<err<<endl;
-        }
+        }catch(...){}
+
+        criterias.~vector();
+        keywords.~vector();
 
         PageResult->~SearchResult();
 
@@ -316,9 +319,10 @@ void UserApp::on_line_search_returnPressed()
 
         try{
             search_result_ads = Search::adsSearch(&parameters);
-        }catch(char *err){
-            cout<<err<<endl;
-        }
+        }catch(...){}
+
+        criterias.~vector();
+        keywords.~vector();
 
         PageResult->~SearchResult();
 
