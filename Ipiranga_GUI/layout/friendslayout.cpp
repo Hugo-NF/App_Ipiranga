@@ -77,7 +77,7 @@ void FriendsLayout::on_Button_delete_clicked()
             try{
                 Account::deleteAccount(My_F_Address->getId());
                 QMessageBox::information(this,tr("Delete Account"),tr("This account was deleted with sucess!"));
-                this->~FriendsLayout();
+                this->hide();
             }catch(char* err){
                 QMessageBox::warning(this,tr("Delete Account"),tr(err));
             }
@@ -105,8 +105,8 @@ void FriendsLayout::on_Button_show_friends_clicked()
 {
     FriendsPage* friends = new FriendsPage;
     friends->setWindowFlags(Qt::SubWindow);
-    friends->SetCurrentUser(My_F_Address);
     friends->setAdminMode();
+    friends->SetCurrentUser(My_F_Address);
     friends->setGeometry(100,100,900,700);
     friends->show();
 }

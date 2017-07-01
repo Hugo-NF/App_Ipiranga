@@ -92,6 +92,9 @@
                 <string>Balance</string>
                </property>
                <widget class="QLineEdit" name="line_balance">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
                 <property name="geometry">
                  <rect>
                   <x>40</x>

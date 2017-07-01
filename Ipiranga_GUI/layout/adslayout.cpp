@@ -13,6 +13,7 @@ AdsLayout::AdsLayout(QWidget *parent) :
 AdsLayout::~AdsLayout()
 {
     delete ui;
+    AdminMode=false;
 }
 
 //------------------BUTTONS CLICKED------------------
@@ -21,11 +22,20 @@ void AdsLayout::on_Button_delete_clicked()
     if(QMessageBox::question(this,tr("Delete AdsLayout"),tr("Are you sure that want to DELETE this Ads?"))
             == QMessageBox::Yes){
         Deals::deleteAd(ID);
-        this->~AdsLayout();
+
+        if(!AdminMode)
+            this->hide();
+        else
+            this->~AdsLayout();
     }
 }
 
 //-----------------SET FUNCTIONS----------------------
+void AdsLayout::setAdminMode()
+{
+    AdminMode=true;
+}
+
 void AdsLayout::setDescription(QString text)
 {
     ui->text_description->setText(text);

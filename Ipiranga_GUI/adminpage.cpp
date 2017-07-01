@@ -49,6 +49,35 @@ void AdminPage::on_Button_delete_historic_clicked()
     }
 }
 
+//---------------DELETE OBJECTS-----------------
+
+//--USERS---------------------------------------
+void AdminPage::deleteUsersObject()
+{
+    for(int i=0; i<users_size; i++){
+        user_object[i]->~FriendsLayout();
+    }
+    users_size=0;
+}
+
+//--TRANSATIONS---------------------------------
+void AdminPage::deleteTransationsObject()
+{
+    for(int i=0; i<transations_size; i++){
+        transations_object[i]->~AdsLayout();
+    }
+    transations_size=0;
+}
+
+//--HISTORICS------------------------------------
+void AdminPage::deleteHistoricObject()
+{
+    for(int i=0; i<historics_size; i++){
+        historic_object[i]->~HistoricLayout();
+    }
+    historics_size=0;
+}
+
 //---------------SET METHODS--------------------
 void AdminPage::setHomePage()
 {
@@ -59,23 +88,29 @@ void AdminPage::setHomePage()
 void AdminPage::setUsers_default()
 {
     vector <User*> users;
+    Search parameters(0);
+
+    parameters.enableTextSearch(true);
+    parameters.setText("");
+
+    users = Search::userSearch(&parameters);
 
     this->setUsers(users);
 }
 
 void AdminPage::setUsers(vector <User*> users)
 {
-    int size;
+    users_size = users.size();
 
-    size = users.size();
+    user_object.resize(users_size);
 
-    for(int i=0; i<size; i++){
-        FriendsLayout* user_object = new FriendsLayout;
+    for(int i=0; i<users_size; i++){
+        user_object[i] = new FriendsLayout;
 
-        user_object->setAdminMode();
-        user_object->setMy_F_Address(users[i]);
+        user_object[i]->setAdminMode();
+        user_object[i]->setMy_F_Address(users[i]);
 
-        ui->box_users->addWidget(user_object);
+        ui->box_users->addWidget(user_object[i]);
     }
 }
 
@@ -83,22 +118,37 @@ void AdminPage::setUsers(vector <User*> users)
 void AdminPage::setTransations_default()
 {
     vector <Ads*> ads;
+    Search parameters(0);
+
+    parameters.enableTextSearch(true);
+    parameters.setText("");
+
+    ads = Search::adsSearch(&parameters);
 
     this->setTransations(ads);
 }
 
 void AdminPage::setTransations(vector <Ads*> ads)
 {
-    int size;
 
-    size = ads.size();
+    transations_size = ads.size();
 
-    for(int i=0; i<size; i++){
-        AdsLayout* ads_object = new AdsLayout;
+    transations_object.resize(transations_size);
 
-        ads_object->setID(ads[i]->getId());
+    for(int i=0; i<transations_size; i++){
 
-        ui->box_transation->addWidget(ads_object);
+        transations_object[i] = new AdsLayout;
+
+        transations_object[i]->setAdminMode();
+        transations_object[i]->setID(ads[i]->getId());
+        transations_object[i]->setTitle(QString::fromStdString(ads[i]->getTitle()));
+        transations_object[i]->setCategory(QString::fromStdString(ads[i]->getCategory()));
+        transations_object[i]->setPrice(QString::number(ads[i]->getPrice()));
+        transations_object[i]->setDate(QString::fromStdString(ads[i]->getDate()));
+        transations_object[i]->setQuantity(QString::number(ads[i]->getAmount()));
+        transations_object[i]->setDescription(QString::fromStdString(ads[i]->getDescription()));
+
+        ui->box_transation->addWidget(transations_object[i]);
     }
 }
 
@@ -107,22 +157,25 @@ void AdminPage::setHistoric_default()
 {
     vector <Historic*> historic;
 
+    historic = Historic::retrieveHistoric(0,false,false);
+
     this->setHistoric(historic);
 }
 
 void AdminPage::setHistoric(vector <Historic*> historic)
 {
-    int size;
+    historics_size = historic.size();
 
-    size = historic.size();
+    historic_object.resize(historics_size);
 
-    for(int i=0; i<size; i++){
-        HistoricLayout* historic_object = new HistoricLayout;
+    for(int i=0; i<historics_size; i++){
 
-        historic_object->setHist_Address(historic[i]);
-        historic_object->setAdminMode();
+        historic_object[i] = new HistoricLayout;
 
-        ui->box_transation->addWidget(historic_object);
+        historic_object[i]->setHist_Address(historic[i]);
+        historic_object[i]->setAdminMode();
+
+        ui->box_historics->addWidget(historic_object[i]);
     }
 }
 
@@ -134,14 +187,29 @@ void AdminPage::on_Button_search_users_clicked()
     this->on_line_search_users_returnPressed();
 }
 
+void AdminPage::on_line_search_users_textChanged()
+{
+    this->on_line_search_users_returnPressed();
+}
+
 void AdminPage::on_line_search_users_returnPressed()
 {
     vector <User*> search_result;
-    Search parameters();
+    Search parameters(0);
 
     if(!ui->line_search_users->text().isEmpty()){   //if is not empty
 
+        this->deleteUsersObject();
+
+        parameters.enableTextSearch(true);
+        parameters.setText(ui->line_search_users->text().toStdString());
+
+        search_result = Search::userSearch(&parameters);
+
         this->setUsers(search_result);
+    }else{
+        this->deleteUsersObject();
+        this->setUsers_default();
     }
 }
 
@@ -151,30 +219,28 @@ void AdminPage::on_Button_search_transation_clicked()
     this->on_line_search_transation_returnPressed();
 }
 
+void AdminPage::on_line_search_transation_textChanged()
+{
+    this->on_line_search_transation_returnPressed();
+}
+
 void AdminPage::on_line_search_transation_returnPressed()
 {
     vector <Ads*> search_result;
-    Search parameters();
+    Search parameters(0);
 
     if(!ui->line_search_transation->text().isEmpty()){   //if is not empty
 
+        this->deleteTransationsObject();
+
+        parameters.enableTextSearch(true);
+        parameters.setText(ui->line_search_transation->text().toStdString());
+
+        search_result = Search::adsSearch(&parameters);
+
         this->setTransations(search_result);
-    }
-}
-
-//--HISTORICS------------------------------------
-void AdminPage::on_Button_search_historics_clicked()
-{
-    this->on_line_search_historics_returnPressed();
-}
-
-void AdminPage::on_line_search_historics_returnPressed()
-{
-    vector <Historic*> search_result;
-    Search parameters();
-
-    if(!ui->line_search_historics->text().isEmpty()){   //if is not empty
-
-        this->setHistoric(search_result);
+    }else{
+        this->deleteTransationsObject();
+        this->setTransations_default();
     }
 }

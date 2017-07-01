@@ -16,6 +16,7 @@ public:
     ~AdsLayout();
 
     //Sets and Get Methods
+    void setAdminMode();
     void setDescription(QString);
     void setTitle(QString);
     void setPrice(QString);
@@ -31,6 +32,7 @@ private slots:
 private:
     Ui::AdsLayout *ui;
     int ID; // id ads
+    bool AdminMode;
 };
 
 #endif // AdsLayout_H
