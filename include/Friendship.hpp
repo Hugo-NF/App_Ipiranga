@@ -52,7 +52,7 @@ public:
      * Metodo para adição de novos amigos
      * @Argumento1: inteiro com o id do usuário que está adicionando
      * @Argumento2: inteiro com o id do usuário que está sendo adicionado
-     * @throws: @InvalidAdd: Metodo pode lançar mensagem de repetição de amizade
+     * @throws: @InvalidAdd: Metodo pode lançar mensagem de repetição de amizade ou tentativa de auto-adicionar
      */
     static void addAsFriend(unsigned int, unsigned int);
     /**
@@ -78,6 +78,25 @@ public:
     * @Argumento2: inteiro com o id do usuário
     */
     static vector<unsigned int> getFriendsofFriendsIds(sqlite3 *, unsigned int);
+
+    /**
+     * vector<unsigned int> diff (vector<unsigned int>, vector<unsigned int>, int, int)
+     * @Assertivas_entrada: os inteiros indicarão corretamente o tamanho dos conteineres vector
+     * @Argumentos 1 e 2: vectors os quais deseja-se a diferença
+     * @Argumentos 3 e 4: inteiros com os tamanhos dos vectors 1 e 2, respectivamente.
+     * @return : conteiner vector com o resultado da diferença
+     */
+    static vector<unsigned int> diff(vector<unsigned int>, vector<unsigned int>, int, int);
+    /**
+     * int binSearch(int, vector<unsigned int>, int , int);
+     * @Assertivas de entrada: os parametros int indicarão corretamente quais são os extremos do conteiner vector
+     * @Argumento1: Elemento a ser buscado
+     * @Argumento2: conteiner vector onde serão procurados os elementos
+     * @Argumento3: Indice do extremo esquerdo do vector
+     * @Argumento4: Indice do extremo direito do vector
+     * @return: Inteiro indicando o indice onde se encontra o elemento, ou -1 caso não encontre.
+     */
+    static int binSearch (int, vector<unsigned int>, int, int);
 
 };
 

@@ -58,7 +58,7 @@ public:
      * @Argumento2: um inteiro correspondente ao id da conta que será atualizada
      * @Argumento3: booleano para indicar o preenchimento da area opcional de cartão
      * @Argumento4: booleano para indicar o preenchimento da area opcional de conta bancária
-     * @Assertivas_entrada: CPF e Username não podem ser editados
+     * @Restricoes: CPF e Username não podem ser editados
      * @throws: @InvalidRegister: Função pode dar throw de uma mensagem de campos invalidos (Email, username repetidos, etc.)
      */
     static void updateProfile(vector<string>, unsigned int, bool, bool);

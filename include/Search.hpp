@@ -63,7 +63,7 @@ public:
     /**
      * vector<User *> userSearch(Search *);
      * Metodo para a realização de buscas por usuário
-     * @Assertivas_entrada: O objeto da classe Search terá ao menos os atributos booleanos definidos
+     * @Hipotese: O objeto da classe Search terá ao menos os atributos booleanos definidos
      * @Argumento1: Objeto Search com os parametros da busca a ser realizada
      * @Retorno: conteiner vector da classe User com os usuários retornados da busca
      */
@@ -71,7 +71,7 @@ public:
     /**
      * vector<User *> adsSearch(Search *);
      * Metodo para a realização de buscas por anúncios
-     * @Assertivas_entrada: O objeto da classe Search terá ao menos os atributos booleanos definidos
+     * @Hipotese: O objeto da classe Search terá ao menos os atributos booleanos definidos
      * @Argumento1: Objeto Search com os parametros da busca a ser realizada
      * @Retorno: conteiner vector da classe Ads com os Anúncios retornados da busca
      */

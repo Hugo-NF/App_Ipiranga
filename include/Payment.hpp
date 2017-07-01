@@ -21,7 +21,7 @@ public:
     /**
      * void makePayment(Ads *, User*, unsigned int);
      * Realiza a compra de um anuncio
-     * @Assertivas_entrada: Ads* e User* definem objetos com atributos definidos
+     * @Hipotese: Ads* e User* definem objetos com atributos definidos
      * @Argumento1: Ponteiro para o objeto que define o anuncio da ser comprado
      * @Argumento2: Ponteiro para o objeto que define o usuario comprador
      * @Argumento3: Inteiro definindo a quantidade de itens a serem comprados
@@ -31,6 +31,7 @@ public:
     /**
      * void withdrawBalance(User *, double);
      * Permite ao usuário retirar o dinheiro da sua conta Ipiranga(TM)
+     * @Hipotese: User* define um objeto usuário com os atributos definidos
      * @Argumento1: Ponteiro para o usuário atual, que realizará o saque
      * @Argumento2: double definindo o valor a ser retirado
      * @throws: @InvalidWithdraw: Metodo pode lancar mensagem de saldo indisponivel

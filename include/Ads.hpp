@@ -77,6 +77,7 @@ public:
      * void insertOperation(sqlite3*, Ads*);
      * Define a interface de inserção com a DB
      * @Assertivas_entrada: O parametro sqlite3* já possuirá uma conexão aberta com a DB. Ads* possuirá um objeto com todos os campos setados
+     * @Hipotese: O ponteiro para a classe Ads estará setado para um objeto válido
      * @Argumento1: Objeto da classe sqlite3 que fornecerá a conexão com o DB
      * @Argumento2: Objeto da classe Ads que fornecerá o registro a ser inserido
      */
@@ -85,6 +86,7 @@ public:
      * void updateOperation(sqlite3*, Ads*);
      * Define a interface de atualização com a DB
      * @Assertivas_entrada: O parametro sqlite3* já possuirá uma conexão aberta com a DB. Ads* possuirá um objeto com todos os campos setados
+     * @Hipotese: O ponteiro para a classe Ads estará setado para um objeto válido
      * @Argumento1: Objeto da classe sqlite3 que fornecerá a conexão com o DB
      * @Argumento2: Objeto da classe Ads que fornecerá o registro a ser atualizado
      */

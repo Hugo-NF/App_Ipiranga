@@ -16,7 +16,8 @@ class Security{
 public:
     /**
      * void verifyCPF(const char *);
-     * Confere se os digitos verificados conferem com o restante do CPF
+     * Realiza a rotina mod 11 no CPF
+     * @Hipotese: o parametro do tipo const char* conterá uma string com o CPF do usuário
      * @Argumento1: const char * com o numero do CPF
      * @throws: @InvalidEntry pode lançar mensagem de campo CPF inválido
      */
@@ -24,6 +25,7 @@ public:
     /**
      * void verifyCard(User *);
      * Confere os digitos do cartão informado e atribui a qual operadora este pertence
+     * @Hipotese: User* é um ponteiro para um objeto válido e com atributos setados
      * @Argumento1: Usuario a ser validado
      * @throws: @InvalidEntry pode lancar uma mensagem de campo Cartão inválido
      */
@@ -31,6 +33,7 @@ public:
     /**
      * void filter(Ads *);
      * Confere a presença de palavras bloqueadas em um anuncio
+     * @Hipotese: Ads* é um ponteiro para um objeto válido e com atributos setados
      * @Argumento1: Anuncio a ser validado
      * @throws: @InvalidEntry pode lançar uma mensagem de anúncio recusado
      */

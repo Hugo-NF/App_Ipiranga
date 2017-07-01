@@ -156,20 +156,37 @@ vector<unsigned int> Friendship::getFriendsofFriendsIds(sqlite3 *connection, uns
             else
                 fOfFriendsIds.push_back(friendshipNodes[i]->getUser1Id());
         }
-        if(friendsIds.size() > fOfFriendsIds.size())
-            results.resize(friendsIds.size());
-        else
-            results.resize(fOfFriendsIds.size());
-
         sort(friendsIds.begin(), friendsIds.end());
         sort(fOfFriendsIds.begin(), fOfFriendsIds.end());
-        it = std::set_difference(friendsIds.begin(), friendsIds.end(), fOfFriendsIds.begin(), fOfFriendsIds.end(), results.begin());
-
-        results.resize(it-results.begin());
-
+        results = Friendship::diff(fOfFriendsIds, friendsIds, fOfFriendsIds.size(), friendsIds.size());
     }
     return results;
+}
 
+int Friendship::binSearch (int x, vector<unsigned int> v, int e, int d) {
+    int meio = (e + d)/2;
+    if (v[meio] == x)
+        return meio;
+    if (e >= d)
+        return -1;
+    else
+    if (v[meio] < x)
+        return binSearch(x, v, meio+1, d);
+    else
+        return binSearch(x, v, e, meio-1);
+}
+
+vector<unsigned int> Friendship::diff(vector<unsigned int> possibilidades, vector<unsigned int> vetor, int tamPossibilidades, int tamVetor){
+    int i;
+    int resultado;
+    vector<unsigned int> diferenca;
+
+    for(i=0; i<tamPossibilidades; i++){
+        resultado = binSearch(possibilidades[i], vetor, 0, tamVetor-1);
+        if(resultado == -1)
+            diferenca.push_back(possibilidades[i]);
+    }
+    return diferenca;
 }
 
 

@@ -35,6 +35,7 @@ public:
     static void deleteAd(unsigned int);
     /**
      * void editAd(unsigned int, vector<string>, double, unsigned int);
+     * @Assertivas_entrada: vector<string> estará preenchido com os novos dados do anúncio
      * @Argumento1: inteiro contendo o id do anuncio a ser editado
      * @Argumento2: conteiner vector de strings com os campos capturados na interface de edição de anuncio
      * @Argumento3: double contendo o preço setado pelo usuário
