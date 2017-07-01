@@ -1,17 +1,4 @@
-- Campos:
-	Podem receber qualquer caracter;
-	Todos os campos podem receber espaço (Login, senha, e-mail, cartão);
-    
-    
 #------------ADICIONAR---------------
--Passagem do usuario
-    Alterar todos para endereço
-    
--Pages
-    Deletar e criar ao clicar
-    
--Como reiniciar Historico/ Lista de amigos/ .. apos deletar algo;
-
 -Formulario
     Campo de aceitar compromisso (question box)
     
@@ -20,9 +7,17 @@
     
 -Layouts
     Adicionar botão de mudar de Paginas
+    e limitar resultados mostrado para 20 por pagina
+    
+-Friends e Ads search
+    adicionar campo para exibição de estado
 
 -Ads
     ordem de tab incorreta
     
 -Formularios (Ads, Ads_search)
     Todos os campos obrigatorios
+
+- Campos:
+	Podem receber qualquer caracter;
+	Todos os campos podem receber espaço (Login, senha, e-mail, cartão);

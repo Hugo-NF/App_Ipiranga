@@ -7,6 +7,12 @@
 #include "../include/Ads.hpp"
 #include "../include/Payment.hpp"
 
+/**
+ * Class SerachFriends
+ * Classe responsável por criar a interface grafica para exibição de informações de um único anuncio retornado em buscas, exibindo informações e permitindo intereções com o programa (comprar) de forma intuitiva.
+ * @Assertivas_estruturais: Esta classe esta diretamente conectada a classe com respectivo nome acrescido de -ui, a qual é responsável pela criação de muitos widgets exibidos ao usuario. Esta classe herda de -ui todos seus atributos e metodos.
+ **/
+
 namespace Ui {
 class SearchAds;
 }

@@ -5,6 +5,12 @@
 #include "../include/User.hpp"
 #include "../include/User.hpp"
 
+/**
+ * Class SerachFriends
+ * Classe responsável por criar a interface grafica para exibição de informações de um único usuario retornado em buscas, exibindo informações e permitindo intereções com o programa (adicionar como amigo) de forma intuitiva.
+ * @Assertivas_estruturais: Esta classe esta diretamente conectada a classe com respectivo nome acrescido de -ui, a qual é responsável pela criação de muitos widgets exibidos ao usuario. Esta classe herda de -ui todos seus atributos e metodos.
+ **/
+
 namespace Ui {
 class SerachFriends;
 }
@@ -17,7 +23,7 @@ public:
     explicit SerachFriends(QWidget *parent = 0,User* _CurrentUser=0);
     ~SerachFriends();
 
-    //Sets methods
+    //Sets methods  
     void setMyaddress(User*);
 
 private slots:

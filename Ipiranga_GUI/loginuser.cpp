@@ -26,7 +26,9 @@ void LoginUser::on_pushLogin_clicked()
     string username = ui->lineName->text().toStdString();   //Login field
     string password = ui->linePass->text().toStdString();   //Pass field
 
+    //check if is the admin
     if(username=="admin" && password=="admin"){
+        //show the adminpage
         adminpage = new AdminPage;
         adminpage->showMaximized();
         this->hide();
@@ -39,6 +41,7 @@ void LoginUser::on_pushLogin_clicked()
 
         this->hide(); //Hide login form
 
+        //show the user page
         userapp = new UserApp(this, CurrentUser);
         userapp->showMaximized();
     }

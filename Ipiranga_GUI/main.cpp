@@ -7,6 +7,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     LoginUser w;
 
+    //open the app
     w.show();
     w.setFixedSize(400,310);
 

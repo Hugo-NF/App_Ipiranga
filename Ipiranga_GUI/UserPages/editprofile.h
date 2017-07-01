@@ -5,6 +5,12 @@
 #include "../include/User.hpp"
 #include <QDate>
 
+/**
+ * Class EditProfile
+ * Classe responsável por criar a interface grafica da pagina de edição de perfil, exibindo informações e permitindo alterações na conta.
+ * @Assertivas_estruturais: Esta classe esta diretamente conectada a classe com respectivo nome acrescido de -ui, a qual é responsável pela criação de muitos widgets exibidos ao usuario. Esta classe herda de -ui todos seus atributos e metodos.
+ **/
+
 namespace Ui {
 class EditProfile;
 }
@@ -17,14 +23,42 @@ public:
     explicit EditProfile(QWidget *parent = 0);
     ~EditProfile();
 
+    /**
+     * void setAdminMode()
+     * Esta função é responsável por tornar todos os campos não editaveis, permitindo ao administrados somente, visualizar, deletar e inativar as informações do usuario em questão.
+     */
     void setAdminMode();         //Set fields to admin
+    /**
+     * void SetCurrentUser(User*)
+     * Esta função é responsável por atribuir ao atributo CurrentUser o endereço que contem as informações do usuario atual.
+     */
     void SetCurrentUser(User*);  //Set the User Active
+    /**
+     * void SetFather(QWidget *)
+     * Esta função é responsável por atribuir ao atributo Father, o endereço do objeto que deu origim a este. Permitindo chamada do objeto chamador no futuro.
+     */
     void SetFather(QWidget *);
 
 private slots:
+    /**
+     * void on_pushButton_Undo_clicked()
+     * Quando o botão undo é clicado esta função é chamada, realizando o resetamento de todos os campos que contem informações do usuario.
+     */
     void on_pushButton_Undo_clicked();      // reset de fields
+    /**
+     * void on_pushButton_Save_clicked()
+     * Quando o botão save é clicado esta fução é chamada, realizando o arquivamento no BD.
+     */
     void on_pushButton_Save_clicked();      // save the modifications
+    /**
+     * void on_pushButton_Delete_clicked()
+     * Quando o botão delete é clicado esta função é chamada, realizando a exclusão permanente da conta em questão.
+     */
     void on_pushButton_Delete_clicked();    // delete account
+    /**
+     * void on_pushButton_Inactive_clicked()
+     * Quando o botão inactive é clicado esta função é chamada, realizando a inativação da conta em questão.
+     */
     void on_pushButton_Inactive_clicked();  // inactive account
 
 private:
@@ -45,7 +79,16 @@ private:
     bool Bank_active;       //bank account is activated?
 
     //Methods
+    /**
+     * void SetUserFields()
+     * Esta função é responsável por preencher todos os campos do formulario com iinformações do usuario atual.
+     */
     void SetUserFields();
+    /**
+     * bool checkFields()
+     * Esta função é responsável por chegar os campos do formulario.
+     * @Argumento1: Boleano que indica se os campos foram preenchidos conforme esperado, retornando true caso verdadeiro e false em outro caso.
+     */
     bool checkFields();
 };
 

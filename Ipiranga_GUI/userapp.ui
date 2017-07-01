@@ -603,7 +603,7 @@ Friends</string>
          </property>
          <property name="maximumSize">
           <size>
-           <width>225</width>
+           <width>55</width>
            <height>22</height>
           </size>
          </property>

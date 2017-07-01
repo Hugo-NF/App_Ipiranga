@@ -7,6 +7,12 @@
 #include "../include/User.hpp"
 #include "UserPages/editprofile.h"
 
+/**
+ * Class SerachFriends
+ * Classe responsável por criar a interface grafica para exibição de informações de um unico usuario. Permitindo excluir amizade no caso de usuario comum, e deleção de conta visualização de amigos e visualização de informações inerentes a conta, caso administrador.
+ * @Assertivas_estruturais: Esta classe esta diretamente conectada a classe com respectivo nome acrescido de -ui, a qual é responsável pela criação de muitos widgets exibidos ao usuario. Esta classe herda de -ui todos seus atributos e metodos.
+ **/
+
 namespace Ui {
 class FriendsLayout;
 }
@@ -19,6 +25,10 @@ public:
     explicit FriendsLayout(QWidget *parent = 0);
     ~FriendsLayout();
 
+    /**
+     * void SetCurrentUser(User*)
+     * Esta função é responsável por atribuir ao atributo CurrentUser o endereço que contem as informações do usuario atual.
+     */
     void setCurrentUser(User*);  //User address
     void setMy_F_Address(User*); //Friend address
     void setAdminMode();         //Set mode Admin

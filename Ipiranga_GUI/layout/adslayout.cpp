@@ -23,6 +23,8 @@ void AdsLayout::on_Button_delete_clicked()
             == QMessageBox::Yes){
         Deals::deleteAd(ID);
 
+        //if is admin only hide, because the structure used delete in another class
+        //if is not this object is independent, so his can delete yourself
         if(!AdminMode)
             this->hide();
         else

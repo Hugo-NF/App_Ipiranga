@@ -71,6 +71,8 @@ void FriendsLayout::setRating(QString rating)
 //------------------BUTTONS CLICKED------------------
 void FriendsLayout::on_Button_delete_clicked()
 {
+    //if is admin only hide the object, because the structure used delete in another class
+    //if is not this object is independent, so his can delete yourself
     if(AdminMode){
         if(QMessageBox::question(this,tr("Delete User"),tr("Are you sure that want to DELETE this USER?"))
                 == QMessageBox::Yes){

@@ -35,7 +35,7 @@ void SearchResult::set_A_Results(vector <Ads*> results){
     //Set the quantity of returns on the screen
     ui->n_results->setText(QString::number(size));
 
-    //----Set Ads-----
+    //----Set Ads object on the screen-----
 
    for(int i=0; i<size; i++){
        SearchAds *result_ads = new SearchAds(this,CurrentUser);
@@ -54,7 +54,7 @@ void SearchResult::set_F_Results(vector <User*> results){
     //Set the quantity of returns on the screen
     ui->n_results->setText(QString::number(size));
 
-    //----Set Ads-----
+    //----Set friends object on the screen-----
 
    for(int i=0; i<size; i++){
        SerachFriends* result_ads = new SerachFriends(this,CurrentUser);
