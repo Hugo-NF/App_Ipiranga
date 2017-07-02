@@ -75,7 +75,7 @@ double Ads::getPrice() {
 }
 
 void Ads::deallocateAds(vector<Ads*> vector){
-    for(int i= 0; i<vector.size(); i++){
+    for(unsigned int i= 0; i<vector.size(); i++){
         delete vector[i];
     }
 }

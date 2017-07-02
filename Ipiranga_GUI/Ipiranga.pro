@@ -11,9 +11,9 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 TARGET = Ipiranga
 TEMPLATE = app
 
-CCFLAG  +=  -ftest-coverage -fprofile-arcs
+CCFLAG  +=  -ftest-coverage -fprofile-arcs #gcov
 
-LIBS += -lm ../lib/libsqlite3.a -ldl -l sqlite3
+LIBS += -lm ../lib/libsqlite3.a -ldl -l sqlite3 #SQLite3
 
 DEFINES += QT_DEPRECATED_WARNINGS
 

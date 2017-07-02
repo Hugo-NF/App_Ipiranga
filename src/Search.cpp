@@ -165,8 +165,6 @@ vector<User *> Search::userSearch(Search *parameters) {
     if (flag != SQLITE_OK)
         throw (char *) CONNECTION_ERROR;
 
-    cout<<SQL<<endl;
-
     return queryResult;
 }
 
@@ -271,8 +269,6 @@ vector<Ads *> Search::adsSearch(Search *parameters) {
     flag = sqlite3_close(connection);
     if (flag != SQLITE_OK)
         throw (char *) CONNECTION_ERROR;
-
-    cout<<SQL<<endl;
 
     return queryResult;
 }
