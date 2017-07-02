@@ -13,3 +13,5 @@ Tudo que você precisa em um só lugar
         
         * Opção 2
         1. Abra o arquivo Ipiranga.pro no Qt Creator, clique em configurar projeto, em seguida clique em Run.
+        
+    - OBS: Alguns icones são próprios do QT, portanto caso haja ausência de algum botão é provável que sua versão do QT está desatualizada ou incompleta, entretanto ainda é possível que ele seja clicado, porém estará completamente invisível a primeira vista.
