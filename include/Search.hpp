@@ -5,10 +5,10 @@
 #define QUERY_INVALID "Invalid search parameters"
 
 /**
- * Class Search
- * Responsável por definir a interface de buscas entre a view e a DB.
- * Define atributos que serão parametros de busca, bem como os metodos de busca.
- * @Assertivas_estruturais: Todas os metodos dessa classe realizam operações atômicas, consistentes, isoladas e duráveis(ACID).Propriedade herdada do sqlite.
+ * @abstract Class Search\n
+ * Responsável por definir a interface de buscas entre a view e a DB.\n
+ * Define atributos que serão parametros de busca, bem como os metodos de busca.\n
+ * @note: Todas os metodos dessa classe realizam operações atômicas, consistentes, isoladas e duráveis(ACID). Propriedade herdada do sqlite.@endabstract
  */
 
 class Search {
@@ -61,19 +61,19 @@ public:
     bool friendsOfFriendsSearchEnabled();
 
     /**
-     * vector<User *> userSearch(Search *);
+     * @addindex vector<User *> userSearch(Search *);
      * Metodo para a realização de buscas por usuário
-     * @Hipotese: O objeto da classe Search terá ao menos os atributos booleanos definidos
-     * @Argumento1: Objeto Search com os parametros da busca a ser realizada
-     * @Retorno: conteiner vector da classe User com os usuários retornados da busca
+     * @warning : O objeto da classe Search terá ao menos os atributos booleanos definidos
+     * @arg 1: Objeto Search com os parametros da busca a ser realizada
+     * @return: conteiner vector da classe User com os usuários retornados da busca
      */
     static vector<User *> userSearch(Search *);
     /**
-     * vector<User *> adsSearch(Search *);
+     * @addindex vector<User *> adsSearch(Search *);
      * Metodo para a realização de buscas por anúncios
-     * @Hipotese: O objeto da classe Search terá ao menos os atributos booleanos definidos
-     * @Argumento1: Objeto Search com os parametros da busca a ser realizada
-     * @Retorno: conteiner vector da classe Ads com os Anúncios retornados da busca
+     * @warning : O objeto da classe Search terá ao menos os atributos booleanos definidos
+     * @arg 1: Objeto Search com os parametros da busca a ser realizada
+     * @return: conteiner vector da classe Ads com os Anúncios retornados da busca
      */
     static vector<Ads *> adsSearch(Search *);
 

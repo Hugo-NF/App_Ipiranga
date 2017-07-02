@@ -11,86 +11,86 @@
 using namespace std;
 
 /**
- * Class Callbacks
- * Classe responsável por definir métodos estáticos para mapeamento dos retornos da DB dentro das suas classes.
- * @Assertivas_estruturais: Todas os metodos dessa classe realizam operações atômicas, consistentes, isoladas e duráveis(ACID).Propriedade herdada do sqlite.
+ * @abstract Class Callbacks\n
+ * Classe responsável por definir métodos estáticos para mapeamento dos retornos da DB dentro das suas classes.\n
+ * Todas os metodos dessa classe realizam operações atômicas, consistentes, isoladas e duráveis(ACID). Propriedade herdada do sqlite.@endabstract
  */
 
 class Callbacks {
 public:
     /**
-     * int userCallback(void *, int, char **, char **);
-     * Define o mapeamento para uma conta de usuário
-     * @Argumento1: ponteiro void* para armazenamento dos dados retornados pela DB
-     * @Argumento2: inteiro com a quantidade de dados retornados, equivalente a numero de campos/registro
-     * @Argumento3: ponteiro char** com os dados retornados pela DB
-     * @Argumento4: ponteiro char** para os nomes dos campos retornados pela DB
-     * @Retorno: inteiro 0 de completude da função
+     * @addindex int userCallback(void *, int, char **, char **);
+     * @abstract Define o mapeamento para uma conta de usuário @endabstract
+     * @arg  1: ponteiro void* para armazenamento dos dados retornados pela DB
+     * @arg  2: inteiro com a quantidade de dados retornados, equivalente a numero de campos/registro
+     * @arg  3: ponteiro char** com os dados retornados pela DB
+     * @arg  4: ponteiro char** para os nomes dos campos retornados pela DB
+     * @return : inteiro indicando a condição de retorno da função. Essa condição é enviada pelo sqlite e é coincidente com suas macros.
      */
     static int userCallback(void *, int, char **, char **);
     /**
-     * int adsCallback(void *, int, char **, char **);
-     * Define o mapeamento para uma registro de anuncio
-     * @Argumento1: ponteiro void* para armazenamento dos dados retornados pela DB
-     * @Argumento2: inteiro com a quantidade de dados retornados, equivalente a numero de campos/registro
-     * @Argumento3: ponteiro char** com os dados retornados pela DB
-     * @Argumento4: ponteiro char** para os nomes dos campos retornados pela DB
-     * @Retorno: inteiro 0 de completude da função
+     * @addindex int adsCallback(void *, int, char **, char **);
+     * @abstract Define o mapeamento para uma registro de anuncio @endabstract
+     * @arg  1: ponteiro void* para armazenamento dos dados retornados pela DB
+     * @arg  2: inteiro com a quantidade de dados retornados, equivalente a numero de campos/registro
+     * @arg  3: ponteiro char** com os dados retornados pela DB
+     * @arg  4: ponteiro char** para os nomes dos campos retornados pela DB
+     * @return : inteiro indicando a condição de retorno da função. Essa condição é enviada pelo sqlite e é coincidente com suas macros.
      */
     static int adsCallback(void *, int, char **, char **);
     /**
-     * int historicCallback(void *, int, char **, char **);
-     * Define o mapeamento para uma entrada do histórico
-     * @Argumento1: ponteiro void* para armazenamento dos dados retornados pela DB
-     * @Argumento2: inteiro com a quantidade de dados retornados, equivalente a numero de campos/registro
-     * @Argumento3: ponteiro char** com os dados retornados pela DB
-     * @Argumento4: ponteiro char** para os nomes dos campos retornados pela DB
-     * @Retorno: inteiro 0 de completude da função
+     * @addindex int historicCallback(void *, int, char **, char **);
+     * @abstract Define o mapeamento para uma entrada do histórico @endabstract
+     * @arg  1: ponteiro void* para armazenamento dos dados retornados pela DB
+     * @arg  2: inteiro com a quantidade de dados retornados, equivalente a numero de campos/registro
+     * @arg  3: ponteiro char** com os dados retornados pela DB
+     * @arg  4: ponteiro char** para os nomes dos campos retornados pela DB
+     * @return : inteiro indicando a condição de retorno da função. Essa condição é enviada pelo sqlite e é coincidente com suas macros.
      */
     static int historicCallback(void *, int, char **, char **);
     /**
-     * int friendshipCallback(void *, int, char **, char **);
-     * Define o mapeamento para um nó de amizade
-     * @Argumento1: ponteiro void* para armazenamento dos dados retornados pela DB
-     * @Argumento2: inteiro com a quantidade de dados retornados, equivalente a numero de campos/registro
-     * @Argumento3: ponteiro char** com os dados retornados pela DB
-     * @Argumento4: ponteiro char** para os nomes dos campos retornados pela DB
-     * @Retorno: inteiro 0 de completude da função
+     * @addindex int friendshipCallback(void *, int, char **, char **);
+     * @abstract Define o mapeamento para um nó de amizade @endabstract
+     * @arg  1: ponteiro void* para armazenamento dos dados retornados pela DB
+     * @arg  2: inteiro com a quantidade de dados retornados, equivalente a numero de campos/registro
+     * @arg  3: ponteiro char** com os dados retornados pela DB
+     * @arg  4: ponteiro char** para os nomes dos campos retornados pela DB
+     * @return : inteiro indicando a condição de retorno da função. Essa condição é enviada pelo sqlite e é coincidente com suas macros.
      */
     static int friendshipCallback(void *, int, char **, char **);
     /**
-     * int averageCallback(void *, int, char **, char **);
-     * Define o mapeamento para a operação de agregação AVG()
-     * @Argumento1: ponteiro void* para armazenamento dos dados retornados pela DB
-     * @Argumento2: inteiro com a quantidade de dados retornados, equivalente a numero de campos/registro
-     * @Argumento3: ponteiro char** com os dados retornados pela DB
-     * @Argumento4: ponteiro char** para os nomes dos campos retornados pela DB
-     * @Retorno: inteiro 0 de completude da função
+     * @addindex int averageCallback(void *, int, char **, char **);
+     * @abstract Define o mapeamento para a operação de agregação AVG() @endabstract
+     * @arg  1: ponteiro void* para armazenamento dos dados retornados pela DB
+     * @arg  2: inteiro com a quantidade de dados retornados, equivalente a numero de campos/registro
+     * @arg  3: ponteiro char** com os dados retornados pela DB
+     * @arg  4: ponteiro char** para os nomes dos campos retornados pela DB
+     * @return : inteiro indicando a condição de retorno da função. Essa condição é enviada pelo sqlite e é coincidente com suas macros.
      */
     static int averageCallback(void *, int, char **, char **);
     /**
-     * int countCallback(void *, int, char **, char **);
-     * Define o mapeamento para a operação de agregação COUNT()
-     * @Argumento1: ponteiro void* para armazenamento dos dados retornados pela DB
-     * @Argumento2: inteiro com a quantidade de dados retornados, equivalente a numero de campos/registro
-     * @Argumento3: ponteiro char** com os dados retornados pela DB
-     * @Argumento4: ponteiro char** para os nomes dos campos retornados pela DB
-     * @Retorno: inteiro 0 de completude da função
+     * @addindex int countCallback(void *, int, char **, char **);
+     * @abstract Define o mapeamento para a operação de agregação COUNT() @endabstract
+     * @arg  1: ponteiro void* para armazenamento dos dados retornados pela DB
+     * @arg  2: inteiro com a quantidade de dados retornados, equivalente a numero de campos/registro
+     * @arg  3: ponteiro char** com os dados retornados pela DB
+     * @arg  4: ponteiro char** para os nomes dos campos retornados pela DB
+     * @return : inteiro indicando a condição de retorno da função. Essa condição é enviada pelo sqlite e é coincidente com suas macros.
      */
     static int countCallback(void *, int, char **, char **);
     /**
-     * int sumCallback(void *, int, char **, char **);
-     * Define o mapeamento para a operação de agregação SUM()
-     * @Argumento1: ponteiro void* para armazenamento dos dados retornados pela DB
-     * @Argumento2: inteiro com a quantidade de dados retornados, equivalente a numero de campos/registro
-     * @Argumento3: ponteiro char** com os dados retornados pela DB
-     * @Argumento4: ponteiro char** para os nomes dos campos retornados pela DB
-     * @Retorno: inteiro 0 de completude da função
+     * @addindex int sumCallback(void *, int, char **, char **);
+     * @abstract Define o mapeamento para a operação de agregação SUM() @endabstract
+     * @arg  1: ponteiro void* para armazenamento dos dados retornados pela DB
+     * @arg  2: inteiro com a quantidade de dados retornados, equivalente a numero de campos/registro
+     * @arg  3: ponteiro char** com os dados retornados pela DB
+     * @arg  4: ponteiro char** para os nomes dos campos retornados pela DB
+     * @return : inteiro indicando a condição de retorno da função. Essa condição é enviada pelo sqlite e é coincidente com suas macros.
      */
     static int sumCallback(void *, int, char **, char **);
     /**
-     * Define uma função estática para a captura formatada da data corrente.
-     * @Retorno: String contendo a data atual formatada
+     * @abstract Define uma função estática para a captura formatada da data corrente. @endchapter
+     * @return : String contendo a data atual formatada
      */
     static string getCurrentDate();
 };

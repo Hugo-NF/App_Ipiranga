@@ -7,9 +7,10 @@
 #include <string>
 
 /**
- * Class FormRegister
- * Classe responsável por criar a interface grafica de administrador, obtendo informações e criando uma nova conta
- * @Assertivas_estruturais: Esta classe esta diretamente conectada a classe com respectivo nome acrescido de -ui, a qual é responsável pela criação de muitos widgets exibidos ao usuario. Esta classe herda de -ui todos seus atributos e metodos.
+ * @abstract Class FormRegister\n
+ * Classe responsável por criar a interface grafica de administrador, obtendo informações e criando uma nova conta\n
+ * @warning: Esta classe esta diretamente conectada a classe com respectivo nome acrescido de -ui, a qual é responsável pela criação de muitos widgets exibidos ao usuario.\n
+ * @extends Esta classe herda de -ui todos seus atributos e metodos. @endabstract
  **/
 
 namespace Ui {
@@ -26,12 +27,12 @@ public:
 
 private slots:
     /**
-     * void on_pushButton_Cancel_clicked()
+     * @addindex void on_pushButton_Cancel_clicked()
      * Quando o botão de cancelar é clicado esta função é chamada, realizado o fechamento da janela.
      */
     void on_pushButton_Cancel_clicked();    //Cancel Button
     /**
-     * void on_pushButton_Register_clicked();
+     * @addindex void on_pushButton_Register_clicked();
      * Quando o botão de register é clicado esta função é chamada, realizado a obtenção dos campos, chamando outra função para verificação e caso tudo esteja correto é realizado o novo cadastro de usuario no BD.
      */
     void on_pushButton_Register_clicked();  //Register Button
@@ -92,9 +93,9 @@ private:
 
     // Methods
     /**
-     * bool checkFields()
+     * @addindex bool checkFields()
      * Esta função realiza a verificação dos campos que o usuario entrou
-     * @Retorno: Caso todas as entradas do usuario estejam conforme esperado é retornado true, caso contrario é retornado false.
+     * @return: Caso todas as entradas do usuario estejam conforme esperado é retornado true, caso contrario é retornado false.
      */
     bool checkFields();
 };

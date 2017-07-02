@@ -6,9 +6,10 @@
 #include "../include/Historic.hpp"
 
 /**
- * Class SerachFriends
- * Classe responsável por criar a interface grafica para exibição de informações de um unico historico.
- * @Assertivas_estruturais: Esta classe esta diretamente conectada a classe com respectivo nome acrescido de -ui, a qual é responsável pela criação de muitos widgets exibidos ao usuario. Esta classe herda de -ui todos seus atributos e metodos.
+ * @abstract Class HistoricLayout\n
+ * Classe responsável por criar a interface grafica para exibição de informações de um unico historico.\n
+ * @warning: Esta classe esta diretamente conectada a classe com respectivo nome acrescido de -ui, a qual é responsável pela criação de muitos widgets exibidos ao usuario.\n
+ * @extends Esta classe herda de -ui todos seus atributos e metodos. @endabstract
  **/
 
 namespace Ui {

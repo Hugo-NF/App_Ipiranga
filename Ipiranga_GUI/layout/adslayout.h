@@ -8,9 +8,10 @@ class AdsLayout;
 }
 
 /**
- * Class SerachFriends
+ * @abstract Class SerachFriends\n
  * Classe responsável por criar a interface grafica para exibição de informações de um unico anuncio. Permitindo excluir o anuncio em qualquer hora.
- * @Assertivas_estruturais: Esta classe esta diretamente conectada a classe com respectivo nome acrescido de -ui, a qual é responsável pela criação de muitos widgets exibidos ao usuario. Esta classe herda de -ui todos seus atributos e metodos.
+ * Esta classe esta diretamente conectada a classe com respectivo nome acrescido de -ui, a qual é responsável pela criação de muitos widgets exibidos ao usuario.\n
+ * @extends Esta classe herda de -ui todos seus atributos e metodos. @endabstract
  **/
 
 class AdsLayout : public QWidget

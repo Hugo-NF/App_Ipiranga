@@ -7,9 +7,9 @@
 
 using namespace std;
 /**
- * Class Historic
- * Classe responsável por definir os atributos de uma entrada de histórico, bem como metodos de inserção e remoção
- * @Assertivas_estruturais: Todas os metodos dessa classe realizam operações atômicas, consistentes, isoladas e duráveis(ACID).Propriedade herdada do sqlite.
+ * @abstract Class Historic\n
+ * Classe responsável por definir os atributos de uma entrada de histórico, bem como metodos de inserção e remoção\n
+ * @note: Todas os metodos dessa classe realizam operações atômicas, consistentes, isoladas e duráveis(ACID). Propriedade herdada do sqlite.@endabstract
  */
 class Historic{
 private:
@@ -28,14 +28,14 @@ private:
     string date;
 
     /**
-     * void createTable(sqlite3 *);
-     * @Assertivas_entrada: O parâmetro sqlite3 * já possuirá uma conexão aberta com a DB.
+     * @addindex void createTable(sqlite3 *);
+     * @warning  : O parâmetro sqlite3 * já possuirá uma conexão aberta com a DB.
      * Cria, de forma condicional, uma nova tabela na DB para representar a classe Historic
      */
     static void createTable(sqlite3 *);
     /**
-     * void deleteTable(sqlite3 *);
-     * @Assertivas_entrada: O parâmetro sqlite3 * já possuirá uma conexão aberta com a DB.
+     * @addindex void deleteTable(sqlite3 *);
+     * @warning  : O parâmetro sqlite3 * já possuirá uma conexão aberta com a DB.
      * Deleta, de forma condicional, a tabela que representa a classe Historic
      */
     static void deleteTable(sqlite3 *);
@@ -75,33 +75,34 @@ public:
     void setCategory(string);
 
     /**
-     * void cleanTable();
+     * @addindex void cleanTable();
      * Limpa todos os registros da classe Historic.
      */
     static void cleanTable();
     /**
-     * void insertOperation(sqlite3*, Historic*);
+     * @addindex void insertOperation(sqlite3*, Historic*);
      * Define a interface de inserção com a DB
-     * @Assertivas_entrada: O parametro sqlite3* já possuirá uma conexão aberta com a DB. Historic* possuirá um objeto com todos os campos setados
-     * @Argumento1: Objeto da classe sqlite3 que fornecerá a conexão com o DB
-     * @Argumento2: Objeto da classe Historic que fornecerá o registro a ser inserido
+     * @warning  : O parametro sqlite3* já possuirá uma conexão aberta com a DB. Historic* possuirá um objeto com todos os campos setados
+     * @arg 1: Objeto da classe sqlite3 que fornecerá a conexão com o DB
+     * @arg 2: Objeto da classe Historic que fornecerá o registro a ser inserido
      */
     void insertOperation(sqlite3 *, Historic *);
     /**
-     * void evaluate(Historic *, unsigned int);
+     * @addindex void evaluate(Historic *, unsigned int);
      * Metodo para avaliação de uma operação no historico
-     * @Argumento1: Objeto Historic com a operação a ser avaliada
-     * @Argumento2: inteiro com o id do usuário avaliador
-     * @Assetivas_saida: O rating do usuário avaliado será atualizado em todos os seus registros
+     * @arg 1: Objeto Historic com a operação a ser avaliada
+     * @arg 2: inteiro com o id do usuário avaliador
+     * @note: O rating do usuário avaliado será atualizado em todos os seus registros
      */
     static void evaluate(Historic *, unsigned int, unsigned int);
     /**
-     * vector<Historic *> retrieveHistoric(unsigned int, bool, bool);
+     * @addindex vector<Historic *> retrieveHistoric(unsigned int, bool, bool);
      * Metodo para a recuperação do historico de um usuario
-     * @Argumento1: inteiro com o id do usuário
-     * @Argumento2: booleano indicando a requisição do historico como vendedor
-     * @Argumento3: booleano indicando a requisição do historico como comprador
-     * @Obs: Se os argumentos 2 e 3 forem iguais entre si, será retornado o histórico inteiro
+     * @arg 1: inteiro com o id do usuário
+     * @arg 2: booleano indicando a requisição do historico como vendedor
+     * @arg 3: booleano indicando a requisição do historico como comprador
+     * @note: Se os argumentos 2 e 3 forem iguais entre si e iguais a true, será retornado todo o historico do usuário.\n
+     * @note: Se os argumentos 2 e 3 forem iguais entre si e iguais a false, será retornado o histórico de todo o sistema
      * @return conteiner vector da classe Historic contendo as entradas de histórico do usuário
      */
     static vector<Historic *> retrieveHistoric(unsigned int, bool, bool);

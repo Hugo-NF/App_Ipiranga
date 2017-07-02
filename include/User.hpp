@@ -21,9 +21,9 @@
 
 using namespace std;
 /**
- * Class User
+ * @abstract Class User
  * Define todos os atributos e metodo inerentes a uma conta de usuário
- * @Assertivas_estruturais: Todas os metodos dessa classe realizam operações atômicas, consistentes, isoladas e duráveis(ACID).Propriedade herdada do sqlite.
+ * @note: Todas os metodos dessa classe realizam operações atômicas, consistentes, isoladas e duráveis(ACID). Propriedade herdada do sqlite. @endabstract
  */
 class User {
     //Class attributes
@@ -74,14 +74,14 @@ private:
 
 
     /**
-     * void deleteTable(sqlite3 *);
-     * @Assertivas_entrada: O parâmetro sqlite3 * já possuirá uma conexão aberta com a DB.
+     * @addindex void deleteTable(sqlite3 *);
+     * @warning : O parâmetro sqlite3 * já possuirá uma conexão aberta com a DB.
      * Deleta, de forma condicional, a tabela que representa a classe User
      */
     static void deleteTable(sqlite3 *); //WARNING: The following methods may throw SQLite error messages
     /**
-     * void createTable(sqlite3 *);
-     * @Assertivas_entrada: O parâmetro sqlite3 * já possuirá uma conexão aberta com a DB.
+     * @addindex void createTable(sqlite3 *);
+     * @warning : O parâmetro sqlite3 * já possuirá uma conexão aberta com a DB.
      * Cria, de forma condicional, uma nova tabela na DB para representar a classe User
      */
     static void createTable(sqlite3 *);
@@ -163,34 +163,34 @@ public: //Public Methods
     double getRating();
 
     /**
-     * void cleanTable();
+     * @addindex void cleanTable();
      * Limpa todos os registros da classe User.
      */
     static void cleanTable();
     /**
-     * void insertOperation(sqlite3*, User*);
+     * @addindex void insertOperation(sqlite3*, User*);
      * Define a interface de inserção com a DB
-     * @Assertivas_entrada: O parametro sqlite3* já possuirá uma conexão aberta com a DB. Ads* possuirá um objeto com todos os campos setados
-     * @Argumento1: Objeto da classe sqlite3 que fornecerá a conexão com o DB
-     * @Argumento2: Objeto da classe User que fornecerá o registro a ser inserido
+     * @warning : O parametro sqlite3* já possuirá uma conexão aberta com a DB. Ads* possuirá um objeto com todos os campos setados
+     * @arg 1: Objeto da classe sqlite3 que fornecerá a conexão com o DB
+     * @arg 2: Objeto da classe User que fornecerá o registro a ser inserido
      */
     void insertOperation(sqlite3 *, User *);
     /**
-     * void updateOperation(sqlite3*, User*);
+     * @addindex void updateOperation(sqlite3*, User*);
      * Define a interface de atualização com a DB
-     * @Assertivas_entrada: O parametro sqlite3* já possuirá uma conexão aberta com a DB. Ads* possuirá um objeto com todos os campos setados
-     * @Argumento1: Objeto da classe sqlite3 que fornecerá a conexão com o DB
-     * @Argumento2: Objeto da classe User que fornecerá o registro a ser atualizado
+     * @warning : O parametro sqlite3* já possuirá uma conexão aberta com a DB. Ads* possuirá um objeto com todos os campos setados
+     * @arg 1: Objeto da classe sqlite3 que fornecerá a conexão com o DB
+     * @arg 2: Objeto da classe User que fornecerá o registro a ser atualizado
      */
     void updateOperation(sqlite3 *, User *);
     /**
-     * vector<User *> listFriends(unsigned int, bool, string, bool);
+     * @addindex vector<User *> listFriends(unsigned int, bool, string, bool);
      * Metodo que retorna todos os amigos de um User
-     * @Argumento1: id do usuário atual
-     * @Argumento2: booleano para indicar a requisição de alguma ordenação
-     * @Argumento3: string para indicar o critério de ordenação
-     * @Argumento4: booleano para indicar a sequencia de ordenação
-     * @Retorno: conteiner vector da classe User com os amigos do usuario
+     * @arg 1: id do usuário atual
+     * @arg 2: booleano para indicar a requisição de alguma ordenação
+     * @arg 3: string para indicar o critério de ordenação
+     * @arg 4: booleano para indicar a sequencia de ordenação
+     * @return : conteiner vector da classe User com os amigos do usuario
      */
     static vector<User *> listFriends(unsigned int, bool, string, bool);
 

@@ -6,9 +6,10 @@
 #include "../include/User.hpp"
 
 /**
- * Class SerachFriends
+ * @abstract Class SerachFriends
  * Classe responsável por criar a interface grafica , exibindo informações e permitindo intereções com o programa de forma intuitiva.
- * @Assertivas_estruturais: Esta classe esta diretamente conectada a classe com respectivo nome acrescido de -ui, a qual é responsável pela criação de muitos widgets exibidos ao usuario. Esta classe herda de -ui todos seus atributos e metodos.
+ * @warning: Esta classe esta diretamente conectada a classe com respectivo nome acrescido de -ui, a qual é responsável pela criação de muitos widgets exibidos ao usuario.\n
+ * @extends Esta classe herda de -ui todos seus atributos e metodos. @endabstract
  **/
 
 namespace Ui {

@@ -8,9 +8,10 @@
 #include "UserPages/editprofile.h"
 
 /**
- * Class SerachFriends
- * Classe responsável por criar a interface grafica para exibição de informações de um unico usuario. Permitindo excluir amizade no caso de usuario comum, e deleção de conta visualização de amigos e visualização de informações inerentes a conta, caso administrador.
- * @Assertivas_estruturais: Esta classe esta diretamente conectada a classe com respectivo nome acrescido de -ui, a qual é responsável pela criação de muitos widgets exibidos ao usuario. Esta classe herda de -ui todos seus atributos e metodos.
+ * @abstract Class Friendslayout\n
+ * Classe responsável por criar a interface grafica para exibição de informações de um unico usuario. Permitindo excluir amizade no caso de usuario comum, e deleção de conta visualização de amigos e visualização de informações inerentes a conta, caso administrador.\n
+ * @warning: Esta classe esta diretamente conectada a classe com respectivo nome acrescido de -ui, a qual é responsável pela criação de muitos widgets exibidos ao usuario.\n
+ * @extends: Esta classe herda de -ui todos seus atributos e metodos.@endabstract
  **/
 
 namespace Ui {
