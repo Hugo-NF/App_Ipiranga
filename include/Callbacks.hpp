@@ -93,6 +93,11 @@ public:
      * @return : String contendo a data atual formatada
      */
     static string getCurrentDate();
+
+    static void deallocateUsers(vector<User *>);
+    static void deallocateAds(vector<Ads *>);
+    static void deallocateHistoric(vector<Historic *>);
+    static void deallocateFriendship(vector<Friendship *>);
 };
 
 #endif //APP_IPIRANGA_CALLBACKS_HPP

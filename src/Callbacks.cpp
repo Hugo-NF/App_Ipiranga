@@ -116,3 +116,27 @@ string Callbacks::getCurrentDate(){
     returningDate = date;
     return returningDate;
 }
+
+void Callbacks::deallocateUsers(vector<User*> vector){
+    for(int i= 0; i<vector.size(); i++){
+        delete vector[i];
+    }
+}
+
+void Callbacks::deallocateAds(vector<Ads*> vector){
+    for(int i= 0; i<vector.size(); i++){
+        delete vector[i];
+    }
+}
+
+void Callbacks::deallocateHistoric(vector<Historic*> vector){
+    for(int i= 0; i<vector.size(); i++){
+        delete vector[i];
+    }
+}
+
+void Callbacks::deallocateFriendship(vector<Friendship*> vector){
+    for(int i= 0; i<vector.size(); i++){
+        delete vector[i];
+    }
+}
