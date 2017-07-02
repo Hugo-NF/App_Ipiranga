@@ -16,6 +16,12 @@ unsigned int Friendship::getId() {
     return this->id;
 }
 
+void Friendship::deallocateFriendship(vector<Friendship*> vector){
+    for(int i= 0; i<vector.size(); i++){
+        delete vector[i];
+    }
+}
+
 void Friendship::createTable(sqlite3 *connection) {
     int result;
     char *errMsg = 0;

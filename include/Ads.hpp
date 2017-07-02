@@ -67,6 +67,7 @@ public:
     unsigned int getAmount();
     void setPrice(double);
     double getPrice();
+    static void deallocateAds(vector<Ads *>);
 
     /**
      * void cleanTable();

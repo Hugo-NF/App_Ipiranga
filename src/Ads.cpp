@@ -74,6 +74,12 @@ double Ads::getPrice() {
     return this->price;
 }
 
+void Ads::deallocateAds(vector<Ads*> vector){
+    for(int i= 0; i<vector.size(); i++){
+        delete vector[i];
+    }
+}
+
 void Ads::createTable(sqlite3 *connection) {
     int result;
     char *errMsg = 0;

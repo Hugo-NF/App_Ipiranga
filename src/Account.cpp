@@ -101,7 +101,7 @@ void Account::activateAccount(unsigned int id, bool activation){
     if(flag!=SQLITE_OK)
         throw (char *) CONNECTION_ERROR;
 
-    sprintf(SQL, "UPDATE USERS set activation=%d WHERE id=%d;", activation, id);
+    sprintf(SQL, "UPDATE USERS set activation=%d WHERE id=%u;", activation, id);
     result = sqlite3_exec(connection, SQL, Callbacks::userCallback, 0, &errMsg);
     if(result != SQLITE_OK)
         throw (char *) ACTIVATION_ERROR;
@@ -120,7 +120,7 @@ void Account::activateAccount(unsigned int id, bool activation){
 void Account::deleteAccount(int id) {
     int result, flag;
     char *errMsg = 0;
-    char SQL[50];
+    char SQL[100];
     sqlite3 *connection;
 
     flag = sqlite3_open(DATABASE, &connection);

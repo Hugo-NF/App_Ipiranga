@@ -2,10 +2,10 @@
 #ifndef APP_IPIRANGA_CALLBACKS_HPP
 #define APP_IPIRANGA_CALLBACKS_HPP
 
-#include "User.hpp"
 #include "Ads.hpp"
 #include "Historic.hpp"
 #include "Friendship.hpp"
+#include "User.hpp"
 #include <ctime>
 
 using namespace std;
@@ -93,11 +93,6 @@ public:
      * @return : String contendo a data atual formatada
      */
     static string getCurrentDate();
-
-    static void deallocateUsers(vector<User *>);
-    static void deallocateAds(vector<Ads *>);
-    static void deallocateHistoric(vector<Historic *>);
-    static void deallocateFriendship(vector<Friendship *>);
 };
 
 #endif //APP_IPIRANGA_CALLBACKS_HPP

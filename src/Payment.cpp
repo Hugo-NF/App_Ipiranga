@@ -22,13 +22,13 @@ void Payment::makePayment(Ads *ad, User *buyer, unsigned int quantity) {
     if(flag!= SQLITE_OK)
         throw (char *) CONNECTION_ERROR;
 
-    sprintf(SQL, "UPDATE USERS set balance = balance+%s WHERE id = %d AND username = '%s';", price.c_str(), ad->getSellerId(), ad->getSellerUsername().c_str());
+    sprintf(SQL, "UPDATE USERS set balance = balance+%s WHERE id = %u AND username = '%s';", price.c_str(), ad->getSellerId(), ad->getSellerUsername().c_str());
 
     flag = sqlite3_exec(connection, SQL, Callbacks::historicCallback, 0, &errMsg);
     if(flag!= SQLITE_OK)
         throw (char *) PAYMENT_ERROR;
 
-    sprintf(SQL, "UPDATE ADS set quantity = quantity-%d WHERE id = %d;", quantity, ad->getId());
+    sprintf(SQL, "UPDATE ADS set quantity = quantity-%u WHERE id = %u;", quantity, ad->getId());
     flag = sqlite3_exec(connection, SQL, Callbacks::historicCallback, 0, &errMsg);
     if(flag!= SQLITE_OK)
         throw (char *) PAYMENT_ERROR;
@@ -74,7 +74,7 @@ void Payment::withdrawBalance(User *currentUser, double userAmount) {
     if(flag!= SQLITE_OK)
         throw (char *) CONNECTION_ERROR;
 
-    sprintf(SQL, "UPDATE USERS set balance = balance-%s WHERE id = %d;", amount.c_str(), currentUser->getId());
+    sprintf(SQL, "UPDATE USERS set balance = balance-%s WHERE id = %u;", amount.c_str(), currentUser->getId());
     flag = sqlite3_exec(connection, SQL, NULL, 0, &errMsg);
     if(flag!= SQLITE_OK)
         throw (char *) PAYMENT_ERROR;

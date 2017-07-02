@@ -78,6 +78,12 @@ string Historic::getDate(){
     return this->date;
 }
 
+void Historic::deallocateHistoric(vector<Historic*> vector){
+    for(int i= 0; i<vector.size(); i++){
+        delete vector[i];
+    }
+}
+
 unsigned int Historic::getUserRating(unsigned int id){
     if(id == this->getBuyerId()){
         return this->getSellerRating();
@@ -139,7 +145,7 @@ void Historic::insertOperation(sqlite3 *connection, Historic *newEntry) {
     char SQL[5000];
     sprintf(SQL, "INSERT INTO HISTORIC ("\
     "sellerId, sellerUsername, buyerId, buyerUsername, selleRating, buyeRating, adId, quantity, adTitle, category, price, date)"\
-    " VALUES(%d,'%s',%d,'%s',%d,%d,%d,%d,'%s','%s',%s,'%s');", newEntry->getSellerId(), newEntry->getSellerUsername().c_str(), newEntry->getBuyerId(),\
+    " VALUES(%u,'%s',%u,'%s',%u,%u,%u,%u,'%s','%s',%s,'%s');", newEntry->getSellerId(), newEntry->getSellerUsername().c_str(), newEntry->getBuyerId(),\
      newEntry->getBuyerUsername().c_str(), newEntry->getSellerRating(), newEntry->getBuyerRating(),\
      newEntry->getAdId(), newEntry->getQuantity(),newEntry->getAdTitle().c_str(),\
      newEntry->getCategory().c_str(), price.c_str(), newEntry->getDate().c_str());

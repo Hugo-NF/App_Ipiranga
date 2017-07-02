@@ -73,6 +73,7 @@ public:
     unsigned int getUserRating(unsigned int);
     string getCategory();
     void setCategory(string);
+    static void deallocateHistoric(vector<Historic *>);
 
     /**
      * @addindex void cleanTable();

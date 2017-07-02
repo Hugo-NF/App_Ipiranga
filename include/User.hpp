@@ -162,6 +162,8 @@ public: //Public Methods
     void setRating(double);
     double getRating();
 
+    static void deallocateUsers(vector<User *>);
+
     /**
      * @addindex void cleanTable();
      * Limpa todos os registros da classe User.

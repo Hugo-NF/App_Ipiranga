@@ -233,6 +233,12 @@ double User::getRating() {
     return this->rating;
 }
 
+void User::deallocateUsers(vector<User*> vector){
+    for(int i= 0; i<vector.size(); i++){
+        delete vector[i];
+    }
+}
+
 //----------------------------------Methods for manipulating SQLite-------------------------------
 
 //Database Setup Operations

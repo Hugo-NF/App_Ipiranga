@@ -41,6 +41,7 @@ public:
     unsigned int getUser1Id();
     void setUser2Id(unsigned int);
     unsigned int getUser2Id();
+    static void deallocateFriendship(vector<Friendship *>);
 
     /**
      * @addindex void cleanTable();
