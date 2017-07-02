@@ -29,6 +29,7 @@ int Callbacks::userCallback(void *ptr, int argc, char **argv, char **colNames) {
     currentUser->setZipCode(argv[24]);
     currentUser->setState(argv[25]);
     currentUser->setCity(argv[26]);
+    argv[27][1]=',';
     currentUser->setRating(atof(argv[27]));
 
     result->push_back(currentUser);

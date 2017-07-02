@@ -25,10 +25,6 @@ public:
     explicit FriendsLayout(QWidget *parent = 0);
     ~FriendsLayout();
 
-    /**
-     * void SetCurrentUser(User*)
-     * Esta função é responsável por atribuir ao atributo CurrentUser o endereço que contem as informações do usuario atual.
-     */
     void setCurrentUser(User*);  //User address
     void setMy_F_Address(User*); //Friend address
     void setAdminMode();         //Set mode Admin
