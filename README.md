@@ -9,9 +9,10 @@ Tudo que você precisa em um só lugar
         
     - Compilação
         * Opção 1
-        1. Abra a pasta build_Qt_5.9 (o nome dessa pasta pode variar de acordo com a máquina) no terminal e digite make
+        1. Abra a pasta Ipiranga_GUI no terminal e utilize o QMake no arquivo Ipiranga.pro
         
         * Opção 2
-        1. Abra o arquivo Ipiranga.pro no Qt Creator, clique em configurar projeto, em seguida clique em Run.
+        1. Abra o arquivo Ipiranga_GUI/Ipiranga.pro no Qt Creator, clique em configurar projeto, em seguida clique em Run.
         
-    - OBS: Alguns icones são próprios do QT, portanto caso haja ausência de algum botão é provável que sua versão do QT está desatualizada ou incompleta, entretanto ainda é possível que ele seja clicado, porém estará completamente invisível a primeira vista.
+    - Obs.1: Alguns icones são do pacote padrão do Qt, portanto caso haja ausência de algum botão, isso deve-se a ausência do icone do botão (o botão ainda está presente) devido a alguma diferença de versão do Qt.
+    - Obs.2: O uso do QMake é necessário, pois não foram utilizadas as bibliotecas de link dinâmico (dll) do Qt.
